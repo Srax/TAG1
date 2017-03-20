@@ -13,6 +13,7 @@ import java.util.Random;
  */
 public class Controller {
     Random r = new Random();
+    
     public void go(){
     Room startRoom = new Room(r.nextInt(100)+1,"Start room, bla bla bla");
     Room room1 = new Room(r.nextInt(100)+1,"Start room, bla bla bla");
@@ -36,10 +37,43 @@ public class Controller {
     Room room19 = new Room(r.nextInt(100)+1,"Start room, bla bla bla");
     Room room20 = new Room(r.nextInt(100)+1,"Start room, bla bla bla");
     
-        System.out.println(room8.toString());
-        System.out.println(room1.toString());
     startRoom.setEast(room1);
+    //startRoom.setSouth();
     
-    room1.setWest(startRoom);
+    room1.setSouth(startRoom);
+    room1.setWest(room2);
+    room1.setEast(room3);
+    
+    room2.setEast(room1);
+    room2.setWest(room9);
+    
+    room3.setEast(room1);
+    room3.setNorth(room5);
+    room3.setSouth(room5);
+    
+    room4.setNorth(room3);
+    
+    room5.setNorth(room8);
+    room5.setEast(room6);
+    room5.setSouth(room3);
+    
+    room6.setNorth(room7);
+    room6.setEast(room14);
+    room6.setWest(room5);
+    
+    room7.setNorth(room15);
+    room7.setWest(room8);
+    room7.setSouth(room6);
+    
+    room8.setEast(room7);
+    room8.setSouth(room5);
+    
+    room8.setSouth(room5);
+    
+    
+    
+    
+    
+    
     }
 }

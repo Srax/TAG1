@@ -16,7 +16,9 @@ public class Player {
     private int bank;
 
     
-    public Player(String name, int hp, int bank) {
+    
+    
+    public Player(String name/*, int hp, int bank*/) {
         this.name = name;
         this.hp = hp;
         this.bank = bank;
