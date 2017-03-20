@@ -16,9 +16,9 @@ public class Controller {
     Description desc = new Description();
     public void go(){
     Room startRoom = new Room(r.nextInt(100)+1, desc.startRoom());
-    Room room1 = new Room(r.nextInt(100)+1,"Start room, bla bla bla");
-    Room room2 = new Room(r.nextInt(100)+1,"Start room, bla bla bla");
-    Room room3 = new Room(r.nextInt(100)+1,"Start room, bla bla bla");
+    Room room1 = new Room(r.nextInt(100)+1,desc.hallWay1());
+    Room room2 = new Room(r.nextInt(100)+1,desc.hallWay1());
+    Room room3 = new Room(r.nextInt(100)+1,desc.hallWay2());
     Room room4 = new Room(r.nextInt(100)+1,"Start room, bla bla bla");
     Room room5 = new Room(r.nextInt(100)+1,"Start room, bla bla bla");
     Room room6 = new Room(r.nextInt(100)+1,"Start room, bla bla bla");
@@ -39,10 +39,6 @@ public class Controller {
     //Goal Room
     Room room20 = new Room(r.nextInt(100)+1,"Start room, bla bla bla");
     
-
-        System.out.println(startRoom.toString());
-        
-
     startRoom.setEast(room1);
     //startRoom.setSouth();
     
