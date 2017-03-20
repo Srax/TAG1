@@ -10,22 +10,25 @@ import java.util.Scanner;
 public class Boundry {
     Scanner scan = new Scanner(System.in);
     
-    public String playerDirection(){
-        String choice = scan.next();
-        
-        switch(choice){
-            case "North" :
-                break;
-            case "South" :
-                break;
-            case "East" :
-                break;
-            case "West" :
-                break;
-        
-        }  
-    
-    }
+//    public String playerDirection(){
+//        String choice = scan.next();
+//        
+//        switch(choice){
+//            case "North" :
+//                break;
+//            case "South" :
+//                break;
+//            case "East" :
+//                break;
+//            case "West" :
+//                break;
+//        
+//        }
+//                    
+//                
+//        
+//        
+//    }
     
     public void createName() {
     

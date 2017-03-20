@@ -9,6 +9,7 @@ public class Controller {
     /**
     * Creating of Rooms and The Dungeon
     */
+    Description desc = new Description();
     public void go(){
         
         //Creates the Rooms
@@ -102,3 +103,14 @@ public class Controller {
     }
 
 }
+
+
+
+
+
+
+
+
+        
+    
+

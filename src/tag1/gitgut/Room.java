@@ -1,9 +1,8 @@
 
 package tag1.gitgut;
 
-
-
 public class Room {
+
     private int gold;
     private String Discription;
     private Room North;
@@ -66,9 +65,11 @@ public class Room {
 
     @Override
     public String toString() {
-        return "Room{" + "gold=" + gold + ", Discription=" + Discription + '}';
+        if (gold <= 0) {
+            return Discription + "\n\nIn the Room you find " + gold + " Space Dollars";
+        } else {
+            return null;
+        }
     }
 
-    
-    
 }
