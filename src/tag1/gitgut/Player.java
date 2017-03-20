@@ -10,8 +10,7 @@ package tag1.gitgut;
  * @author thoma
  */
 public class Player {
-    
-    
+        
     private String name;
     private int hp;
     private int bank;

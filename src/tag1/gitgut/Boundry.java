@@ -5,10 +5,33 @@
  */
 package tag1.gitgut;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Stanislav
  */
 public class Boundry {
+    Scanner scan = new Scanner(System.in);
+    
+    public String playerDirection(){
+        String choice = scan.next();
+        
+        switch(choice){
+            case "North" :
+                break;
+            case "South" :
+                break;
+            case "East" :
+                break;
+            case "West" :
+                break;
+        
+        }
+                    
+                
+        
+        
+    }
     
 }
