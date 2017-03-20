@@ -5,6 +5,8 @@
  */
 package tag1.gitgut;
 
+import java.awt.BorderLayout;
+
 /**
  *
  * @author thoma
@@ -19,6 +21,7 @@ public class TAG1GitGut {
         System.out.println("Can i have a pull pls?");
         
         System.out.println("Andreas");
+        System.out.println("aosdasoidasoidsa");
                
     }
     public static void Boi() {
