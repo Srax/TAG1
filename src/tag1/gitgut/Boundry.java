@@ -5,10 +5,17 @@
  */
 package tag1.gitgut;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Stanislav
  */
 public class Boundry {
+    Player player = new Player("Peter");
     
+    public void createName() {
+        Scanner sc = new Scanner(System.in);
+        
+    }
 }
