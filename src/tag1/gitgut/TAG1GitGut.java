@@ -18,8 +18,7 @@ public class TAG1GitGut {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-     
-        Room r = new Room();
-                
+        Controller c = new Controller();
+        c.go(); 
     }
 }
