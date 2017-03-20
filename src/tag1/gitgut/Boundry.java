@@ -7,10 +7,6 @@ package tag1.gitgut;
 
 import java.util.Scanner;
 
-/**
- *
- * @author Stanislav
- */
 public class Boundry {
     Scanner scan = new Scanner(System.in);
     
@@ -27,11 +23,8 @@ public class Boundry {
             case "West" :
                 break;
         
-        }
-                    
-                
-        
-        
+        }  
+    
     }
     
     public void createName() {
