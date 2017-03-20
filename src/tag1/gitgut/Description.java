@@ -31,7 +31,7 @@ public class Description {
     
     
     public String hallWay(){
-    return "You enter a dark and scilent hallway, wiers of ";
+    return "You enter a dark and scilent hallway, broken wiers ";
     
     }
     

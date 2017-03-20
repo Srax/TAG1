@@ -10,14 +10,15 @@ package tag1.gitgut;
  * @author thoma
  */
 public class Player {
-    
-    
+        
     private String name;
     private int hp;
     private int bank;
 
     
-    public Player(String name, int hp, int bank) {
+    
+    
+    public Player(String name/*, int hp, int bank*/) {
         this.name = name;
         this.hp = hp;
         this.bank = bank;

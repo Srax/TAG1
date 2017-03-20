@@ -5,10 +5,69 @@
  */
 package tag1.gitgut;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Stanislav
  */
 public class Boundry {
+    Scanner scan = new Scanner(System.in);
     
+//    public String playerDirection(){
+//        String choice = scan.next();
+//        
+//        switch(choice){
+//            case "North" :
+//                break;
+//            case "South" :
+//                break;
+//            case "East" :
+//                break;
+//            case "West" :
+//                break;
+//        
+//        }
+//                    
+//                
+//        
+//        
+//    }
+    
+    public void createName() {
+    
+        boolean donePickingName = false;
+        
+        while (donePickingName == false ) {
+            System.out.println("\nWHAT IS YOUR NAME?");
+            System.out.print("NAME: ");
+            
+            Scanner sc = new Scanner(System.in);
+            
+            String inputName;         
+            
+            inputName = sc.next();      
+            Player p = new Player(inputName);
+        
+            
+            System.out.println("You chose " + "'" + p.getName() + "'" +" as your name.\n");
+            System.out.println("Hello " + p.getName() + "!");
+            System.out.println("This will be your name through the whole game, do you want to keep it?\n"
+                    + "YES/NO");
+            System.out.print("ACTION: ");
+            
+            String input;
+            input = sc.next().substring(0,1);
+            
+            if (input.equalsIgnoreCase("n")){                
+                donePickingName = false;
+            }
+            else if (input.equalsIgnoreCase("y")) {
+                System.out.println("You chose to keep your name");
+                donePickingName = true;
+            }
+            
+        }
+        
+    }
 }
