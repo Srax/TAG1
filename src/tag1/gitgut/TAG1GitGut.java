@@ -21,5 +21,18 @@ public class TAG1GitGut {
         System.out.println("Andreas");
                
     }
-    
+    public static void Boi() {
+        System.out.println("Boii");
+
+    }
+
 }
+
+
+
+
+
+
+
+
+
