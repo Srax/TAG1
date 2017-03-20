@@ -13,8 +13,9 @@ import java.util.Random;
  */
 public class Controller {
     Random r = new Random();
+    Description desc = new Description();
     public void go(){
-    Room startRoom = new Room(r.nextInt(100)+1,"Start room, bla bla bla");
+    Room startRoom = new Room(r.nextInt(100)+1, desc.startRoom());
     Room room1 = new Room(r.nextInt(100)+1,"Start room, bla bla bla");
     Room room2 = new Room(r.nextInt(100)+1,"Start room, bla bla bla");
     Room room3 = new Room(r.nextInt(100)+1,"Start room, bla bla bla");
@@ -34,12 +35,24 @@ public class Controller {
     Room room17 = new Room(r.nextInt(100)+1,"Start room, bla bla bla");
     Room room18 = new Room(r.nextInt(100)+1,"Start room, bla bla bla");
     Room room19 = new Room(r.nextInt(100)+1,"Start room, bla bla bla");
+    //Goal Room
     Room room20 = new Room(r.nextInt(100)+1,"Start room, bla bla bla");
     
-        System.out.println(room8.toString());
-        System.out.println(room1.toString());
+        System.out.println(startRoom.toString());
+        
     startRoom.setEast(room1);
     
     room1.setWest(startRoom);
     }
 }
+
+
+
+
+
+
+
+
+        
+    
+

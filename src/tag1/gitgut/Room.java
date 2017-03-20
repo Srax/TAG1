@@ -70,7 +70,7 @@ public class Room {
 
     @Override
     public String toString() {
-        return "Room{" + "gold=" + gold + ", Discription=" + Discription + '}';
+        return Discription + "\n\nIn the Room you find " + gold + " Space Dollars";
     }
 
     
