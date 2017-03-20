@@ -7,16 +7,13 @@ public class Player {
     private int hp;
     private int bank;
 
-    
-    
-    
-    public Player(String name) {
-        this.name = name;
-        this.hp = hp;
-        this.bank = bank;
+    public Player() {
     }
 
     
+    public Player(String name) {
+        this.name = name;
+    }
     
     public String getName() {
         return name;

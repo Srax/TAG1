@@ -13,7 +13,7 @@ public class Description {
     
     
     public String startRoom() {
-               return  "=== DUNGEON ENTRANCE ===\n"
+                String desc = "=== DUNGEON ENTRANCE ===\n"
                 + "\n"
                 + "After a Long journey from earth, you have finally docked with the\n"
                 + "abandond spaceship that you were sent to find.\n"
@@ -23,7 +23,7 @@ public class Description {
                 + "futher into the old metal wreck.\n"
                 + "________________________________________________________________________________\n"
                        + "From this room you can\nEast\nWest\nSouth";
-                
+                return desc;
                 
                 
                        
@@ -31,7 +31,7 @@ public class Description {
     
     
     public String hallWay(){
-    return "You enter a dark and scilent hallway, broken wiers ";
+    return "You enter a dark and scilent hallway, broken wires ";
     
     }
     

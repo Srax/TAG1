@@ -10,24 +10,11 @@ import java.util.Scanner;
 public class Boundry {
     Scanner scan = new Scanner(System.in);
     
+//    //Direction Test
 //    public String playerDirection(){
-//        String choice = scan.next();
-//        
-//        switch(choice){
-//            case "North" :
-//                break;
-//            case "South" :
-//                break;
-//            case "East" :
-//                break;
-//            case "West" :
-//                break;
-//        
-//        }
-//                    
-//                
-//        
-//        
+//        System.out.println("Choose your direction");
+//        String choice = scan.next().toLowerCase();
+//        return choice;
 //    }
     
     public void createName() {
@@ -65,5 +52,14 @@ public class Boundry {
             
         }
         
+    }
+
+    public void welcomeToGame() {
+        System.out.println("=== WELCOME ===\n");
+        System.out.println("Welcome to the game\n");
+        System.out.println("Intro Blah blah blah");
+        System.out.println("Intro Blah blah blah");
+        System.out.println("Intro Blah blah blah");
+        System.out.println("Intro Blah blah blah");
     }
 }

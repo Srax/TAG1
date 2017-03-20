@@ -6,6 +6,7 @@ public class TAG1GitGut {
     public static void main(String[] args) {
 
         Controller c = new Controller();
-        c.go();
+        c.start();
+        
     }
 }

@@ -4,16 +4,14 @@ package tag1.gitgut;
 import java.util.Random;
 
 public class Controller {
+    Boundry b = new Boundry();
     Random r = new Random();
-    
-    /**
-    * Creating of Rooms and The Dungeon
-    */
+    Player p = new Player();
     Description desc = new Description();
-    public void go(){
-        
-        //Creates the Rooms
-        Room startRoom = new Room(r.nextInt(100)+1,"Start room, bla bla bla");
+    boolean flag;
+    
+        //Creates the Rooms as individual objects
+        Room startRoom = new Room(r.nextInt(100)+1,desc.startRoom());
         Room room1 = new Room(r.nextInt(100)+1,"Start room, bla bla bla");
         Room room2 = new Room(r.nextInt(100)+1,"Start room, bla bla bla");
         Room room3 = new Room(r.nextInt(100)+1,"Start room, bla bla bla");
@@ -34,7 +32,25 @@ public class Controller {
         Room room18 = new Room(r.nextInt(100)+1,"Start room, bla bla bla");
         Room room19 = new Room(r.nextInt(100)+1,"Start room, bla bla bla");
         Room room20 = new Room(r.nextInt(100)+1,"Start room, bla bla bla");
-
+    
+    public void start() {
+        go();
+        b.welcomeToGame();
+        b.createName();
+    //    int hp = p.getHp();
+        
+//        while(flag = true){
+//            System.out.println(startRoom.getDiscription());
+//            String choice = b.playerDirection();
+//            room1.Direction(choice);
+//            
+//        }
+    }
+    
+    /**
+    * Creating of Rooms and The Dungeon
+    */
+    public void go(){
     //Map and Room direction rules
     startRoom.setEast(room1);
         
@@ -101,7 +117,6 @@ public class Controller {
     room19.setNorth(room18);
     
     }
-
 }
 
 
