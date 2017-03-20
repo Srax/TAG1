@@ -30,9 +30,11 @@ public class TAG1GitGut {
         System.out.println("Boii");
         System.out.println("hahahah");
     }
-
+public static int Banan(){
+ return int banan;
+ 
 }
-
+}
 
 
 
