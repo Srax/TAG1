@@ -29,5 +29,6 @@ public class TAG1GitGut {
     public static void Boi() {
         System.out.println("Boii");
         System.out.println("hahahah");
+        System.out.println("asdasdasd");
     }
 }
