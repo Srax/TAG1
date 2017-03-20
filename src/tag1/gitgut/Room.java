@@ -5,6 +5,8 @@
  */
 package tag1.gitgut;
 
+import java.util.Scanner;
+
 /**
  *
  * @author thoma
