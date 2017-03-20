@@ -5,12 +5,8 @@
  */
 package tag1.gitgut;
 
-import java.util.Scanner;
 
-/**
- *
- * @author thoma
- */
+
 public class Room {
     private int gold;
     private String Discription;
