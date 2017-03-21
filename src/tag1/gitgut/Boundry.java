@@ -84,6 +84,14 @@ public class Boundry {
     }
 
     public void welcomeToGame() {
+        System.out.println("     _____                                    _____                             _               \n" +
+"    / ____|                                  / ____|                           | |              \n" +
+"   | (___    _ __     __ _    ___    ___    | |       _ __    __ _  __      __ | |   ___   _ __ \n" +
+"    \\___ \\  | '_ \\   / _` |  / __|  / _ \\   | |      | '__|  / _` | \\ \\ /\\ / / | |  / _ \\ | '__|\n" +
+"    ____) | | |_) | | (_| | | (__  |  __/   | |____  | |    | (_| |  \\ V  V /  | | |  __/ | |   \n" +
+"   |_____/  | .__/   \\__,_|  \\___|  \\___|    \\_____| |_|     \\__,_|   \\_/\\_/   |_|  \\___| |_|   \n" +
+"            | |                                                                                 \n" +
+"            |_| \n\n");
         System.out.println("=== WELCOME ===\n");
         System.out.println("Welcome to the game\n");
         System.out.println("Intro Blah blah blah");

@@ -36,6 +36,6 @@ public class Player {
     }
 
     public void setBank(int bank) {
-        this.bank = bank;
+        this.bank += bank;
     } 
 }

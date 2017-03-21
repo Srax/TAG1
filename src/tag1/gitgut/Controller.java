@@ -3,20 +3,20 @@ package tag1.gitgut;
 import java.util.Random;
 
 public class Controller {
-    
+
     Boundry b = new Boundry();
     Random r = new Random();
     Player p = new Player();
     Description desc = new Description();
     boolean flag = true;
     Room currentRoom;
-    
+
     //Creates the Rooms as individual objects
-    Room startRoom = new Room(r.nextInt(100) + 1, desc.startRoom());
+    Room startRoom = new Room(0,desc.startRoom());
     Room room1 = new Room(r.nextInt(100) + 1, desc.hallWay1());
     Room room2 = new Room(r.nextInt(100) + 1, desc.closet());
     Room room3 = new Room(r.nextInt(100) + 1, desc.hallWay2());
-    Room room4 = new Room(r.nextInt(100) + 1, desc.commandBridge());
+    Room finish = new Room(0, desc.commandBridge());
 //        Room room5 = new Room(r.nextInt(100) + 1, "Start room, bla bla bla");
 //        Room room6 = new Room(r.nextInt(100) + 1, "Start room, bla bla bla");
 //        Room room7 = new Room(r.nextInt(100) + 1, "Start room, bla bla bla");
@@ -35,16 +35,13 @@ public class Controller {
 //        Room room20 = new Room(r.nextInt(100) + 1, "Start room, bla bla bla");
 //    
 
-    
-    
-
     public void start() {
         go();
         b.welcomeToGame();
         //b.createName();
         game();
         //    int hp = p.getHp();
-        
+
     }
 
     /**
@@ -63,9 +60,9 @@ public class Controller {
 
         room3.setEast(room1);
         //room3.setNorth(room5);
-        room3.setSouth(room4);
+        room3.setSouth(finish);
 
-        room4.setNorth(room3);
+        finish.setNorth(room3);
 
 //        room5.setNorth(room8);
 //        room5.setEast(room6);
@@ -115,31 +112,51 @@ public class Controller {
 //        room18.setSouth(room19);
 //
 //        room19.setNorth(room18);
-
     }
 
     public void game() {
-            currentRoom = startRoom;
         
-        while(flag){
-        System.out.println(currentRoom.toString());
-        String direct = b.playerDirection(currentRoom);
+        currentRoom = startRoom;
         
-            switch(direct){
-                case "north": currentRoom = currentRoom.getNorth();
-                    break;
-                case "south": currentRoom = currentRoom.getSouth();
-                    break;
-                case "east": currentRoom = currentRoom.getEast();
-                    break;
-                case "west": currentRoom = currentRoom.getWest();
-                    break;
+        while (flag) {
+            System.out.println(currentRoom.toString());
+            if (currentRoom.equals(finish)) {
+                System.out.println(p.getBank());
+                System.out.println("You won");
+                flag = false;
+            } else {
+                int gold = currentRoom.getGold();
+               
+               if(gold > 0){
+                   System.out.println("In this room you find " + gold + " Space dollars");
+                   p.setBank(gold);
+                   currentRoom.setGold(0);
+               } else {
+                   System.out.println("");
+               }
+               
+               
+               
+               
+                String direct = b.playerDirection(currentRoom);
+
+                switch (direct) {
+                    case "north":
+                        currentRoom = currentRoom.getNorth();
+                        break;
+                    case "south":
+                        currentRoom = currentRoom.getSouth();
+                        break;
+                    case "east":
+                        currentRoom = currentRoom.getEast();
+                        break;
+                    case "west":
+                        currentRoom = currentRoom.getWest();
+                        break;
+                }
             }
         }
+
     }
-    
-    
-    
-    
-        
+
 }

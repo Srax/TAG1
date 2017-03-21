@@ -44,7 +44,7 @@ public class Description {
         String desc = "=== HALLWAY ===\n"
                 + "Still a hallway.\n"
                 + "__________________________________________________________________\n"
-                + "From this hallway oyu can go:\nWest\nEast";
+                + "From this hallway oyu can go:\nSouth\nWest";
         return desc;
     }
 
