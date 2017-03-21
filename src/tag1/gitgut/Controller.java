@@ -9,7 +9,8 @@ public class Controller {
     Player p = new Player();
     Description desc = new Description();
     boolean flag;
-
+    Room currentRoom;
+    
     //Creates the Rooms as individual objects
     Room startRoom = new Room(r.nextInt(100) + 1, desc.startRoom());
     Room room1 = new Room(r.nextInt(100) + 1, desc.hallWay1());
@@ -41,15 +42,9 @@ public class Controller {
         go();
         b.welcomeToGame();
         b.createName();
-        CurrentRoom(room1);
+        game();
         //    int hp = p.getHp();
-
-//        while(flag = true){
-//            System.out.println(startRoom.getDiscription());
-//            String choice = b.playerDirection();
-//            room1.Direction(choice);
-//            
-//        }
+        
     }
 
     /**
@@ -120,6 +115,27 @@ public class Controller {
 //        room18.setSouth(room19);
 //
 //        room19.setNorth(room18);
+
+    }
+
+    private void game() {
+            currentRoom = startRoom;
+        
+        while(flag){
+        System.out.println(currentRoom.toString());
+        String direct = b.playerDirection();
+        
+            switch(direct){
+                case "north": currentRoom = currentRoom.getNorth();
+                    break;
+                case "south": currentRoom = currentRoom.getSouth();
+                    break;
+                case "east": currentRoom = currentRoom.getEast();
+                    break;
+                case "west": currentRoom = currentRoom.getWest();
+                    break;
+            }
+        }
     }
     
     public void CurrentRoom(Room abc) {
