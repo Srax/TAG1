@@ -10,30 +10,47 @@ package tag1.gitgut;
  * @author DD
  */
 public class Description {
-    
-    
+
     public String startRoom() {
-                String desc = "=== DUNGEON ENTRANCE ===\n"
+
+        String desc = "=== DUNGEON ENTRANCE ===\n"
                 + "\n"
-                + "After a Long journey from earth, you have finally docked with the\n"
+                + "After a Long journey from earth, you have finally docked at the\n"
                 + "abandond spaceship that you were sent to find.\n"
                 + "\n"
                 + "The ship was lost during an exploration Mission from earth a few years prior.\n"
                 + "The light is dim, and the atmosphere is cold around you as you decide to float\n"
                 + "futher into the old metal wreck.\n"
                 + "________________________________________________________________________________\n"
-                       + "From this room you can\nEast\nWest\nSouth";
-                return desc;
-                
-                
-                       
+                + "From this room you can go:\nNorth\nSouth";
+        return desc;
     }
-    
-    
-    public String hallWay(){
-    return "You enter a dark and scilent hallway, broken wires ";
-    
+
+    //hallWay1 bruges på rum 1 og 2
+    public String hallWay1() {
+        String desc = "=== HALLWAY ===\n"
+                + "You enter a dark and silent hallway, broken wiers floats around \n"
+                + "throwing sparks flying everywhere in the crammed space\n"
+                + "There is noting of real intrest here.\n"
+                + "__________________________________________________________________\n"
+                + "From this room you can\nEast\nWest\nSouth";
+        return desc;
+    } 
+
+    //Bruges på rum 3
+        public String hallWay2() {
+        return "=== HALLWAY ===\n"
+                + "You enter a dark and silent hallway, broken wiers floats around \n"
+                + "throwing sparks flying everywhere in the crammed space\n"
+                + "There is noting of real intrest here.\n"
+                + "__________________________________________________________________\n"
+                + "From this hallway oyu can go:\nWest\nEast";
     }
-    
-    
+
+    public String hallWay() {
+
+        String desc = "You enter a dark and scilent hallway, broken wires ";
+
+        return desc;
+    }
 }

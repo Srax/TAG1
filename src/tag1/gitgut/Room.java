@@ -65,11 +65,9 @@ public class Room {
 
     @Override
     public String toString() {
-        if (gold <= 0) {
+       
             return Discription + "\n\nIn the Room you find " + gold + " Space Dollars";
-        } else {
-            return null;
-        }
+       
     }
 //    public Room Direction(String choice){
 //        if(choice.equals("north"))

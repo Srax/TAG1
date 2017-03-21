@@ -10,12 +10,12 @@ import java.util.Scanner;
 public class Boundry {
     Scanner scan = new Scanner(System.in);
     
-//    //Direction Test
-//    public String playerDirection(){
-//        System.out.println("Choose your direction");
-//        String choice = scan.next().toLowerCase();
-//        return choice;
-//    }
+    //Direction Test
+    public String playerDirection(){
+        System.out.println("Choose your direction");
+        String choice = scan.next().toLowerCase();
+        return choice;
+    }
     
     public void createName() {
     
