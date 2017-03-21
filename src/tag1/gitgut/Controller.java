@@ -8,7 +8,7 @@ public class Controller {
     Random r = new Random();
     Player p = new Player();
     Description desc = new Description();
-    boolean flag;
+    boolean flag = true;
     Room currentRoom;
     
     //Creates the Rooms as individual objects
@@ -41,7 +41,7 @@ public class Controller {
     public void start() {
         go();
         b.welcomeToGame();
-        b.createName();
+        //b.createName();
         game();
         //    int hp = p.getHp();
         
@@ -118,12 +118,12 @@ public class Controller {
 
     }
 
-    private void game() {
+    public void game() {
             currentRoom = startRoom;
         
         while(flag){
         System.out.println(currentRoom.toString());
-        String direct = b.playerDirection();
+        String direct = b.playerDirection(currentRoom);
         
             switch(direct){
                 case "north": currentRoom = currentRoom.getNorth();
@@ -138,10 +138,7 @@ public class Controller {
         }
     }
     
-    public void CurrentRoom(Room abc) {
-        System.out.println(abc);
-        
-    }
+    
     
     
         

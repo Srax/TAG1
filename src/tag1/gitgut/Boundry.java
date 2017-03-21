@@ -8,43 +8,41 @@ package tag1.gitgut;
 import java.util.Scanner;
 
 public class Boundry {
-
+    
     Room room = new Room();
     Scanner scan = new Scanner(System.in);
 
 //    //Direction Test
-    public String playerDirection() {
+    public String playerDirection(Room currentRoom) {
 
-        boolean donePickDirection = true;
-        System.out.println("Choose your direction");
-        String choice = scan.next().substring(0, 1);
-        while (donePickDirection) {
-            if (choice.equalsIgnoreCase("N") && room.getNorth() != null) {
+        boolean pickingDirection = true;
+        String choice = "";
+
+        while (pickingDirection) {
+            System.out.print("Choose your direction: ");
+            choice = scan.next().toLowerCase();
+            if (choice.equalsIgnoreCase("north") && currentRoom.getNorth() != null) {
                 System.out.println("You went North");
-                donePickDirection = false;
-            }
-
-            else if (choice.equalsIgnoreCase("S") && room.getSouth() != null) {
+                pickingDirection = false;
+            } else if (choice.equalsIgnoreCase("south") && currentRoom.getSouth() != null) {
                 System.out.println("You went South");
-                donePickDirection = false;
-            }
-            else if (choice.equalsIgnoreCase("E") && room.getEast() != null) {
+                pickingDirection = false;
+            } else if (choice.equalsIgnoreCase("east") && room.getEast() != null) {
                 System.out.println("You went East");
-                donePickDirection = false;
-                
-            }
-            else if (choice.equalsIgnoreCase("W") && room.getWest() != null) {
+                pickingDirection = false;
+
+            } else if (choice.equalsIgnoreCase("west") && room.getWest() != null) {
                 System.out.println("You went West");
-                donePickDirection = false;
-                
+                pickingDirection = false;
+
             } else {
-                System.out.println("You can't go that way, try another way.");
-                donePickDirection = true;
-                
+                System.out.println("'"+choice+"'" + " is an invalid input.. Please pick a valid direction.");
+                pickingDirection = true;
+
             }
+            
         }
         return choice;
-
     }
 
     public void createName() {
