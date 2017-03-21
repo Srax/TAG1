@@ -1,30 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tag1.gitgut;
 
-/**
- *
- * @author thoma
- */
 public class Player {
         
     private String name;
     private int hp;
     private int bank;
 
-    
-    
-    
-    public Player(String name/*, int hp, int bank*/) {
-        this.name = name;
-        this.hp = hp;
-        this.bank = bank;
+    public Player() {
     }
 
     
+    public Player(String name) {
+        this.name = name;
+    }
     
     public String getName() {
         return name;

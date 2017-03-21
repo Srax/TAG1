@@ -1,18 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tag1.gitgut;
 
 public class Room {
 
     private int gold;
     private String Discription;
-    private Room North;
-    private Room South;
-    private Room West;
-    private Room East;
+    private Room North = null;
+    private Room South = null;
+    private Room West = null;
+    private Room East = null;
 
     public int getGold() {
         return gold;
@@ -73,5 +69,16 @@ public class Room {
             return Discription + "\n\nIn the Room you find " + gold + " Space Dollars";
        
     }
-
+//    public Room Direction(String choice){
+//        if(choice.equals("north"))
+//            return getNorth();
+//        if(choice.equals("south"))
+//            return getSouth();
+//        if(choice.equals("east"))
+//            return getEast();
+//        if(choice.equals("west"))
+//            return getWest();
+//        
+//        return null;
+//    }
 }
