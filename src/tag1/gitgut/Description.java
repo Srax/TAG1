@@ -15,7 +15,7 @@ Player p = new Player();
         
         String desc = "=== DUNGEON ENTRANCE ===\n"
                 + "\n"
-                + "After a Long journey from earth, you have finally docked at the\n"
+                + "After a long journey from earth, you have finally docked at the\n"
                 + "abandon spaceship that you were sent to find.\n"
                 + "\n"
                 + "The ship was lost during an exploration Mission from earth a few years prior.\n"
