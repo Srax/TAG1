@@ -52,7 +52,8 @@ public class Controller {
     */
     public void go(){
     //Map and Room direction rules
-    startRoom.setEast(room1);
+    startRoom.setNorth(room1);
+    //startRoom.setSouth();
         
     room1.setWest(room2);
     room1.setEast(room3);
