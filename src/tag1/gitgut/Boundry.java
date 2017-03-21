@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class Boundry {
     
-    Room room = new Room();
+    
     Scanner scan = new Scanner(System.in);
 
 //    //Direction Test
@@ -27,11 +27,11 @@ public class Boundry {
             } else if (choice.equalsIgnoreCase("south") && currentRoom.getSouth() != null) {
                 System.out.println("You went South");
                 pickingDirection = false;
-            } else if (choice.equalsIgnoreCase("east") && room.getEast() != null) {
+            } else if (choice.equalsIgnoreCase("east") && currentRoom.getEast() != null) {
                 System.out.println("You went East");
                 pickingDirection = false;
 
-            } else if (choice.equalsIgnoreCase("west") && room.getWest() != null) {
+            } else if (choice.equalsIgnoreCase("west") && currentRoom.getWest() != null) {
                 System.out.println("You went West");
                 pickingDirection = false;
 
