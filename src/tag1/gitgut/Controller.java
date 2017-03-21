@@ -3,7 +3,7 @@ package tag1.gitgut;
 import java.util.Random;
 
 public class Controller {
-
+    
     Boundry b = new Boundry();
     Random r = new Random();
     Player p = new Player();
@@ -34,10 +34,14 @@ public class Controller {
 //        Room room20 = new Room(r.nextInt(100) + 1, "Start room, bla bla bla");
 //    
 
+    
+    
+
     public void start() {
         go();
         b.welcomeToGame();
         b.createName();
+        CurrentRoom(room1);
         //    int hp = p.getHp();
 
 //        while(flag = true){
@@ -53,17 +57,17 @@ public class Controller {
      */
     public void go() {
         //Map and Room direction rules
-        startRoom.setEast(room1);
+        startRoom.setNorth(room1);
 
         room1.setWest(room2);
         room1.setEast(room3);
         room1.setSouth(startRoom);
 
         room2.setEast(room1);
-        room2.setWest(room9);
+        //room2.setWest(room9);
 
         room3.setEast(room1);
-        room3.setNorth(room5);
+        //room3.setNorth(room5);
         room3.setSouth(room4);
 
         room4.setNorth(room3);
@@ -117,4 +121,12 @@ public class Controller {
 //
 //        room19.setNorth(room18);
     }
+    
+    public void CurrentRoom(Room abc) {
+        System.out.println(abc);
+        
+    }
+    
+    
+        
 }

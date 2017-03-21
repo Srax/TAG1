@@ -10,9 +10,9 @@ package tag1.gitgut;
  * @author DD
  */
 public class Description {
-
+Player p = new Player();
     public String startRoom() {
-
+        
         String desc = "=== DUNGEON ENTRANCE ===\n"
                 + "\n"
                 + "After a Long journey from earth, you have finally docked at the\n"

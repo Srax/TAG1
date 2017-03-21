@@ -10,6 +10,12 @@ public class Room {
     private Room West = null;
     private Room East = null;
 
+    public Room() {
+    }
+
+    
+    
+    
     public int getGold() {
         return gold;
     }
