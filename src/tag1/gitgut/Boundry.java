@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tag1.gitgut;
 
 import java.util.Scanner;
@@ -12,7 +7,11 @@ public class Boundry {
     
     Scanner scan = new Scanner(System.in);
 
-//    //Direction Test
+/**
+ * Takes the parameter currentRoom and return the direction as a String, if the direction is possible, else try again.
+ * @param currentRoom
+ * @return String choice
+ */
     public String playerDirection(Room currentRoom) {
 
         boolean pickingDirection = true;
@@ -44,51 +43,68 @@ public class Boundry {
         }
         return choice;
     }
-
-    public void createName() {
+/**
+ * 
+ * Creates a player name 
+     * @return String with name
+ */
+    public String createName() {
 
         boolean donePickingName = false;
-
+        String inputName ="";
+        
         while (donePickingName == false) {
             System.out.println("\nWHAT IS YOUR NAME?");
             System.out.print("NAME: ");
-
-            Scanner sc = new Scanner(System.in);
-
-            String inputName;
-
-            inputName = sc.next();
-            Player p = new Player(inputName);
-
-            System.out.println("You chose " + "'" + p.getName() + "'" + " as your name.\n");
-            System.out.println("Hello " + p.getName() + "!");
+            inputName = scan.next();
+           
+            System.out.println("You chose " + "'" + inputName + "'" + " as your name.\n");
+            System.out.println("Hello " + inputName + "!");
             System.out.println("This will be your name through the whole game, do you want to keep it?\n"
                     + "YES/NO");
             System.out.print("ACTION: ");
 
-            String input;
-            input = sc.next().substring(0, 1);
+            String actionInput;
+            actionInput = scan.next().substring(0, 1);
 
-            if (input.equalsIgnoreCase("n")) {
+            if (actionInput.equalsIgnoreCase("n")) {
                 donePickingName = false;
             }
-            if (input.equalsIgnoreCase("y")) {
+            if (actionInput.equalsIgnoreCase("y")) {
                 System.out.println("You chose to keep your name");
                 donePickingName = true;
             } else {
-                System.out.println("\n'" + input + "'" + " is not a valid option... Try again.");
+                System.out.println("\n'" + actionInput + "'" + " is not a valid option... Try again.");
             }
-
+            
         }
-
+    return inputName;
     }
-
+/**
+ * Welcoming to game statement.
+ */
     public void welcomeToGame() {
+        System.out.println("     _____                                    _____                             _               \n" +
+"    / ____|                                  / ____|                           | |              \n" +
+"   | (___    _ __     __ _    ___    ___    | |       _ __    __ _  __      __ | |   ___   _ __ \n" +
+"    \\___ \\  | '_ \\   / _` |  / __|  / _ \\   | |      | '__|  / _` | \\ \\ /\\ / / | |  / _ \\ | '__|\n" +
+"    ____) | | |_) | | (_| | | (__  |  __/   | |____  | |    | (_| |  \\ V  V /  | | |  __/ | |   \n" +
+"   |_____/  | .__/   \\__,_|  \\___|  \\___|    \\_____| |_|     \\__,_|   \\_/\\_/   |_|  \\___| |_|   \n" +
+"            | |                                                                                 \n" +
+"            |_| \n\n");
         System.out.println("=== WELCOME ===\n");
         System.out.println("Welcome to the game\n");
         System.out.println("Intro Blah blah blah");
         System.out.println("Intro Blah blah blah");
         System.out.println("Intro Blah blah blah");
         System.out.println("Intro Blah blah blah");
+    }
+
+    public String takeGold() {
+        String choice = "";
+        System.out.println("\nDo you wish to pick up the gold ?");
+        System.out.println("YES/NO");
+        choice = scan.next();
+        return choice;
     }
 }

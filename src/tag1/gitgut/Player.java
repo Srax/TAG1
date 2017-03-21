@@ -10,11 +10,10 @@ public class Player {
     public Player() {
     }
 
-    
-    public Player(String name) {
-        this.name = name;
+    @Override
+    public String toString() {
+        return "Player " + name + "\n" + hp + "HP\n" + bank + " Space dollars";
     }
-    
     public String getName() {
         return name;
     }
@@ -36,6 +35,6 @@ public class Player {
     }
 
     public void setBank(int bank) {
-        this.bank = bank;
+        this.bank += bank;
     } 
 }
