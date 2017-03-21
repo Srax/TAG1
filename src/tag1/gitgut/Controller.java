@@ -14,9 +14,9 @@ public class Controller {
     //Creates the Rooms as individual objects
     Room startRoom = new Room(r.nextInt(100) + 1, desc.startRoom());
     Room room1 = new Room(r.nextInt(100) + 1, desc.hallWay1());
-    Room room2 = new Room(r.nextInt(100) + 1, desc.hallWay1());
+    Room room2 = new Room(r.nextInt(100) + 1, desc.closet());
     Room room3 = new Room(r.nextInt(100) + 1, desc.hallWay2());
-    Room room4 = new Room(r.nextInt(100) + 1, "Start room, bla bla bla");
+    Room room4 = new Room(r.nextInt(100) + 1, desc.commandBridge());
 //        Room room5 = new Room(r.nextInt(100) + 1, "Start room, bla bla bla");
 //        Room room6 = new Room(r.nextInt(100) + 1, "Start room, bla bla bla");
 //        Room room7 = new Room(r.nextInt(100) + 1, "Start room, bla bla bla");
