@@ -12,6 +12,7 @@ public class Controller {
     Room currentRoom;
     
     //Creates the Rooms as individual objects
+    Room endGame = new Room();
     Room startRoom = new Room(r.nextInt(100) + 1, desc.startRoom());
     Room room1 = new Room(r.nextInt(100) + 1, desc.hallWay1());
     Room room2 = new Room(r.nextInt(100) + 1, desc.hallWay1());
