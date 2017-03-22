@@ -60,6 +60,7 @@ public class Controller {
         room1.setSouth(startRoom);
 
         room2.setEast(room1);
+        room2.setTaxCollector(1);
         //room2.setWest(room9);
 
         room3.setEast(room1);
@@ -126,9 +127,9 @@ public class Controller {
         boolean checkVictory = true;
         currentRoom = startRoom;
         System.out.println(currentRoom.toString());
-        Thread.sleep(1000);
+        Thread.sleep(500);
         while (checkVictory) {
-            Thread.sleep(1000);
+            Thread.sleep(500);
 
             if (currentRoom.equals(finish)) {
                 System.out.println(finish.getDescription());
@@ -146,8 +147,6 @@ public class Controller {
         }
     }
 
-    
-    
     public void collectGold() {
         int gold = currentRoom.getGold();
         String pickup = "";
@@ -165,18 +164,24 @@ public class Controller {
         }
     }
 
-    
-    
     public Room playerAction(Room currentRoom) {
         boolean flag = true;
-        Room tempRoom = currentRoom; 
+        Room tempRoom = currentRoom;
+        int taxCollector;
         while (flag) {
 
             String action = b.chooseAction();
 
             switch (action) {
                 case "inspect":
+
                     System.out.println(currentRoom.toString());
+                    taxCollector = currentRoom.getTaxCollector();
+                    if (taxCollector == 1) {
+                        taxRobot();
+
+                    }
+
                     currentRoom.availableDirections();
                     break;
 
@@ -189,7 +194,7 @@ public class Controller {
                         System.out.println("\nYou went North");
                         tempRoom = currentRoom.getNorth();
                         flag = false;
-                       
+
                     } else {
                         System.out.println("You are trying to walk into a wall");
 
@@ -201,7 +206,7 @@ public class Controller {
                         System.out.println("\nYou went South");
                         tempRoom = currentRoom.getSouth();
                         flag = false;
-                      
+
                     } else {
                         System.out.println("You are trying to walk into a wall");
 
@@ -213,7 +218,7 @@ public class Controller {
                         tempRoom = currentRoom.getEast();
 
                         flag = false;
-                       
+
                     } else {
                         System.out.println("You are trying to walk into a wall");
 
@@ -225,7 +230,6 @@ public class Controller {
                         System.out.println("\nYou went West");
                         tempRoom = currentRoom.getWest();
                         flag = false;
-                        
 
                     } else {
                         System.out.println("You are trying to walk into a wall");
@@ -241,14 +245,39 @@ public class Controller {
                     System.out.println(p.getBank() + "$");
                     break;
                 case "exit":
-                    currentRoom = spaceShip;
-                    System.out.println(spaceShip.toString());
-                    System.out.println(p.toString());
+                    tempRoom = spaceShip;
                     flag = false;
                     break;
 
             }
         }
-    return tempRoom;
+        return tempRoom;
+    }
+
+    public void taxRobot() {
+
+        b.taxCollectorMeeting();
+        String choice = b.chooseAction();
+        if (p.getBank() > 20) {
+            if (choice.equalsIgnoreCase("pay")) {
+                p.setBank(-20);
+                currentRoom.setTaxCollector(0);
+            } else if (choice.equalsIgnoreCase("deny")) {
+                p.setHp(-20);
+                System.out.println("The Robot bitchslaps you, you now have " + p.getHp() + "HP");
+                System.out.println("The Robot powers down, and should no longer be a problem");
+                currentRoom.setTaxCollector(0);
+
+            }
+
+        } else if (choice.equalsIgnoreCase("pay") && p.getBank() < 20) {
+            System.out.println("You were unable to pay the Robot");
+            p.setHp(-20);
+            System.out.println("The Robot bitchslaps you, you now have " + p.getHp() + "HP");
+            System.out.println("The Robot powers down, and should no longer be a problem");
+            currentRoom.setTaxCollector(0);
+        } else {
+            
+        }
     }
 }

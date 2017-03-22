@@ -27,7 +27,7 @@ public class Player {
     }
 
     public void setHp(int hp) {
-        this.hp = hp;
+        this.hp += hp;
     }
 
     public int getBank() {
@@ -35,6 +35,10 @@ public class Player {
     }
 
     public void setBank(int bank) {
+        if(bank < 0)
+        {
+            System.out.println("");
+        }
         this.bank += bank;
     } 
 }

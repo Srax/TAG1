@@ -48,7 +48,7 @@ public class Description {
         String desc = "\n=== CLOSET ==\n"
                 + "You entered an old dirty closet...\n"
                 + "The closet contains an wooden broom, a rusty bucket and some old rags.\n"
-                + "There appears to be nothing of value in here, go back."
+                + "There appears to be nothing of value in here, go back.\n"
                 +"__________________________________________________________________\n";
                 
         return desc;

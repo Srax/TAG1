@@ -4,11 +4,27 @@ package App;
 public class Room {
 
     private int gold;
-    private String Description;
-    private Room North = null;
-    private Room South = null;
-    private Room West = null;
-    private Room East = null;
+    private String description;
+    private Room north = null;
+    private Room south = null;
+    private Room west = null;
+    private Room east = null;
+    private int taxCollector;
+
+    public Room(String Description) {
+        this.description = Description;
+    }
+    
+    
+    public int getTaxCollector() {
+        return taxCollector;
+    }
+
+    public void setTaxCollector(int TaxCollector) {
+        this.taxCollector = TaxCollector;
+        
+        
+    }
 
     public Room() {
     }
@@ -19,7 +35,7 @@ public class Room {
 
     public Room(int gold, String Description) {
         this.gold = gold;
-        this.Description = Description;
+        this.description = Description;
     }
 
     public void setGold(int gold) {
@@ -27,43 +43,43 @@ public class Room {
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
     public void setDescription(String Description) {
-        this.Description = Description;
+        this.description = Description;
     }
 
     public Room getNorth() {
-        return North;
+        return north;
     }
 
     public void setNorth(Room North) {
-        this.North = North;
+        this.north = North;
     }
 
     public Room getSouth() {
-        return South;
+        return south;
     }
 
     public void setSouth(Room South) {
-        this.South = South;
+        this.south = South;
     }
 
     public Room getWest() {
-        return West;
+        return west;
     }
 
     public void setWest(Room West) {
-        this.West = West;
+        this.west = West;
     }
 
     public Room getEast() {
-        return East;
+        return east;
     }
 
     public void setEast(Room East) {
-        this.East = East;
+        this.east = East;
     }
     public void availableDirections(){
         System.out.println("From this room you can go : ");
@@ -82,7 +98,7 @@ public class Room {
     @Override
     public String toString() {
         
-            return Description;
+            return description;
        
     }
 
