@@ -8,7 +8,7 @@ public class Controller {
     Random r = new Random();
     Player p = new Player();
     Description desc = new Description();
-    boolean flag = true;
+    
     Room currentRoom;
 
     //Creates the Rooms as individual objects
@@ -42,7 +42,7 @@ public class Controller {
     public void start() throws InterruptedException {
         go();
         b.welcomeToGame();
-        p.setName(b.createName());
+        //p.setName(b.createName());
         game();
 
     }
@@ -53,7 +53,8 @@ public class Controller {
     public void go() {
         //Map and Room direction rules
         startRoom.setNorth(room1);
-        startRoom.setSouth(finish);
+        startRoom.setSouth(spaceShip);
+        
 
         room1.setWest(room2);
         room1.setEast(room3);
@@ -67,6 +68,8 @@ public class Controller {
         room3.setSouth(finish);
 
         finish.setNorth(room3);
+       
+                
 
 //        room5.setNorth(room8);
 //        room5.setEast(room6);
@@ -123,21 +126,21 @@ public class Controller {
      * collection of gold.
      */
     public void game() throws InterruptedException {
-
+        boolean checkVictory = true;
         currentRoom = startRoom;
         System.out.println(currentRoom.toString());
         Thread.sleep(1000);
-        while (flag) {
+        while (checkVictory) {
             Thread.sleep(1000);
 
-            if (currentRoom.equals(finish) || currentRoom.equals(spaceShip)) {
+            if (currentRoom.equals(finish)) {
                 System.out.println(p.toString());
                 System.out.println("You won");
-                flag = false;
+                checkVictory = false;
             } else if (currentRoom.equals(spaceShip)) {
                 System.out.println(p.toString());
                 System.out.println("You chose to return to your ship");
-                flag = false;
+                checkVictory = false;
             } else {
                 playerAction(currentRoom);
 
@@ -183,7 +186,7 @@ public class Controller {
     public void playerAction(Room currentRoom) {
         boolean flag = true;
 
-        while (flag = true) {
+        while (flag ==true) {
             String action = b.chooseAction();
 
             switch (action) {
@@ -200,20 +203,31 @@ public class Controller {
                         System.out.println("\nYou went North");
                         currentRoom = currentRoom.getNorth();
                         flag = false;
-
-                        break;
-
-//                    case "south" :
-//                            break;
-//                    case "east" :
-//                            break;
-//                    case "west" :
-//                            break;
-//                    case "exit" : 
-//                            break;
-//                    case "help" : b.helpCommand();
-//                            break;
                     }
+
+                    break;
+                case "south":
+                    break;
+                case "east":
+                    break;
+                case "west":
+                    break;
+                case "bank":
+                    System.out.print("Your current Bank balance is:");
+                    System.out.println(p.getBank() + "$");
+                    break;
+                case "exit":
+                        currentRoom = spaceShip;
+                        System.out.println(spaceShip.toString());
+                        System.out.println(p.toString());
+                        flag = false;
+                        break;
+                        
+                    
+
+                case "help":
+                    b.helpCommand();
+                    break;
             }
         }
     }
