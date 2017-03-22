@@ -39,7 +39,7 @@ public class Controller {
 /**
  * Starts the application
  */
-    public void start() {
+    public void start() throws InterruptedException {
         go();
         b.welcomeToGame();
         p.setName(b.createName());
@@ -117,15 +117,17 @@ public class Controller {
 //        room18.setSouth(room19);
 //
 //        room19.setNorth(room18);
+
     }
 /**
  * Manages game, movement form room, to next room, checks for winning room, collection of gold.
  */
-    public void game() {
+    public void game() throws InterruptedException {
         
         currentRoom = startRoom;
-        
+        Thread.sleep(1000);
         while (flag) {
+            Thread.sleep(1000);
             System.out.println(currentRoom.toString());
             
             if (currentRoom.equals(finish) || currentRoom.equals(spaceShip)) {

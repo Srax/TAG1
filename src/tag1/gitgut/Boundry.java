@@ -21,21 +21,21 @@ public class Boundry {
             System.out.print("Choose your direction: ");
             choice = scan.next().toLowerCase();
             if (choice.equalsIgnoreCase("north") && currentRoom.getNorth() != null) {
-                System.out.println("You went North");
+                System.out.println("\nYou went North");
                 pickingDirection = false;
             } else if (choice.equalsIgnoreCase("south") && currentRoom.getSouth() != null) {
-                System.out.println("You went South");
+                System.out.println("\nYou went South");
                 pickingDirection = false;
             } else if (choice.equalsIgnoreCase("east") && currentRoom.getEast() != null) {
-                System.out.println("You went East");
+                System.out.println("\nYou went East");
                 pickingDirection = false;
 
             } else if (choice.equalsIgnoreCase("west") && currentRoom.getWest() != null) {
-                System.out.println("You went West");
+                System.out.println("\nYou went West");
                 pickingDirection = false;
 
             } else {
-                System.out.println("'"+choice+"'" + " is an invalid input.. Please pick a valid direction.");
+                System.out.println("'"+choice+"'" + " is an invalid input.. Please pick a valid direction.\n");
                 pickingDirection = true;
 
             }
@@ -71,7 +71,7 @@ public class Boundry {
                 donePickingName = false;
             }
             if (actionInput.equalsIgnoreCase("y")) {
-                System.out.println("You chose to keep your name");
+                System.out.println("\nYou chose to keep your name");
                 donePickingName = true;
             } else {
                 System.out.println("\n'" + actionInput + "'" + " is not a valid option... Try again.");
