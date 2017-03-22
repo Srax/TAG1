@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Boundry {
     
-    
+    Player p = new Player();
     Scanner scan = new Scanner(System.in);
 
 /**
@@ -106,5 +106,17 @@ public class Boundry {
         System.out.println("YES/NO");
         choice = scan.next();
         return choice;
+    }
+    
+    
+    public void helpCommand() {
+        System.out.println("\n=== HELP ===");
+        System.out.println("- Inspect");
+        System.out.println("- Search");
+        System.out.println("- Bank");
+        System.out.println("- Help");
+        System.out.println("- Exit");
+        System.out.println("- North / South / East / West");
+        System.out.println("- Yes / No");
     }
 }
