@@ -8,7 +8,6 @@ public class Controller {
     Random r = new Random();
     Player p = new Player();
     Description desc = new Description();
-    boolean flag = true;
     Room currentRoom;
 
     //Creates the Rooms as individual objects
@@ -123,7 +122,7 @@ public class Controller {
      * collection of gold.
      */
     public void game() throws InterruptedException {
-
+        boolean flag=true;
         currentRoom = startRoom;
         System.out.println(currentRoom.toString());
         Thread.sleep(1000);
@@ -161,29 +160,11 @@ public class Controller {
             System.out.println("\nThere are no Space dollars in here");
         }
     }
-//    public void chooseDirection(){
-//        String direct = b.playerDirection(currentRoom);
-//
-//            switch (direct) {
-//                case "north":
-//                    currentRoom = currentRoom.getNorth();
-//                    break;
-//                case "south":
-//                    currentRoom = currentRoom.getSouth();
-//                    break;
-//                case "east":
-//                    currentRoom = currentRoom.getEast();
-//                    break;
-//                case "west":
-//                    currentRoom = currentRoom.getWest();
-//                    break;
-//    }
-//}
 
     public void playerAction(Room currentRoom) {
         boolean flag = true;
 
-        while (flag = true) {
+        while (flag) {
             String action = b.chooseAction();
 
             switch (action) {
@@ -200,21 +181,49 @@ public class Controller {
                         System.out.println("\nYou went North");
                         currentRoom = currentRoom.getNorth();
                         flag = false;
-
+                    }else{
+                        System.out.println("You are trying to walk into a wall");
                         break;
+                    }
+                    break;
 
-//                    case "south" :
-//                            break;
-//                    case "east" :
-//                            break;
-//                    case "west" :
-//                            break;
-//                    case "exit" : 
-//                            break;
-//                    case "help" : b.helpCommand();
-//                            break;
+                    case "south" :
+                        if (action.equalsIgnoreCase("south") && currentRoom.getSouth() != null) {
+                        System.out.println("\nYou went South");
+                        currentRoom = currentRoom.getSouth();
+                        flag = false;
+                    }else{
+                        System.out.println("You are trying to walk into a wall");
+                        break;
+                    }
+                            break;
+                    case "east" :
+                        if (action.equalsIgnoreCase("east") && currentRoom.getEast() != null) {
+                        System.out.println("\nYou went East");
+                        currentRoom = currentRoom.getEast();
+                        flag = false;
+                    }else{
+                        System.out.println("You are trying to walk into a wall");
+                        break;
+                    }
+                            break;
+                    case "west" :
+                        if (action.equalsIgnoreCase("west") && currentRoom.getWest() != null) {
+                        System.out.println("\nYou went West");
+                        currentRoom = currentRoom.getWest();
+                        flag = false;
+                    }else{
+                        System.out.println("You are trying to walk into a wall");
+                        break;
+                    }
+                            break;
+                    case "exit" : 
+                            break;
+                    case "help" : b.helpCommand();
+                            break;
                     }
             }
         }
     }
-}
+    
+

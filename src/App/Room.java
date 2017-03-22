@@ -77,7 +77,7 @@ public class Room {
             System.out.println(" West");
             
         if(getEast() != null)
-            System.out.println(" West");
+            System.out.println(" East");
     }
     @Override
     public String toString() {
