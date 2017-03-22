@@ -109,6 +109,13 @@ public class Boundry {
     }
 
     void chooseAction() {
+        System.out.println("Choose your action: ");
+        String action = scan.next().toLowerCase();
+        switch(action){
+            case "inspect"
+            case ""
+        }
+                
         
     }
     public void helpCommand() {
