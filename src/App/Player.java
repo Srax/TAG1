@@ -1,10 +1,10 @@
 
-package tag1.gitgut;
+package App;
 
 public class Player {
         
     private String name;
-    private int hp;
+    private int hp = 100;
     private int bank;
 
     public Player() {

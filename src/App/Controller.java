@@ -1,4 +1,4 @@
-package tag1.gitgut;
+package App;
 
 import java.util.Random;
 
@@ -139,29 +139,15 @@ public class Controller {
                     System.out.println("You chose to return to your ship");
                     flag = false;
             } else {
+                b.chooseAction();
                 collectGold();
+                chooseDirection();
                 
-                
-                String direct = b.playerDirection(currentRoom);
 
-                switch (direct) {
-                    case "north":
-                        currentRoom = currentRoom.getNorth();
-                        break;
-                    case "south":
-                        currentRoom = currentRoom.getSouth();
-                        break;
-                    case "east":
-                        currentRoom = currentRoom.getEast();
-                        break;
-                    case "west":
-                        currentRoom = currentRoom.getWest();
-                        break;
                 }
             }
         }
 
-    }
     public void collectGold(){
                     int gold = currentRoom.getGold();
                     String pickup = "";
@@ -177,5 +163,23 @@ public class Controller {
                     } else {
                         System.out.println("\nThere are no Space dollars in here");
                     }
+}
+    public void chooseDirection(){
+        String direct = b.playerDirection(currentRoom);
+
+            switch (direct) {
+                case "north":
+                    currentRoom = currentRoom.getNorth();
+                    break;
+                case "south":
+                    currentRoom = currentRoom.getSouth();
+                    break;
+                case "east":
+                    currentRoom = currentRoom.getEast();
+                    break;
+                case "west":
+                    currentRoom = currentRoom.getWest();
+                    break;
+    }
 }
 }

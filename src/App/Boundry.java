@@ -1,4 +1,4 @@
-package tag1.gitgut;
+package App;
 
 import java.util.Scanner;
 
@@ -106,5 +106,19 @@ public class Boundry {
         System.out.println("YES/NO");
         choice = scan.next();
         return choice;
+    }
+
+    void chooseAction() {
+        
+    }
+    public void helpCommand() {
+        System.out.println("\n=== HELP ===");
+        System.out.println("- Inspect");
+        System.out.println("- Search");
+        System.out.println("- Bank");
+        System.out.println("- Help");
+        System.out.println("- Exit");
+        System.out.println("- North / South / East / West");
+        System.out.println("- Yes / No");
     }
 }

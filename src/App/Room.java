@@ -1,5 +1,5 @@
 
-package tag1.gitgut;
+package App;
 
 public class Room {
 
