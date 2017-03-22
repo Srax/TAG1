@@ -4,7 +4,7 @@ package App;
 public class Room {
 
     private int gold;
-    private String Discription;
+    private String Description;
     private Room North = null;
     private Room South = null;
     private Room West = null;
@@ -13,28 +13,25 @@ public class Room {
     public Room() {
     }
 
-    
-    
-    
     public int getGold() {
         return gold;
     }
 
-    public Room(int gold, String Discription) {
+    public Room(int gold, String Description) {
         this.gold = gold;
-        this.Discription = Discription;
+        this.Description = Description;
     }
 
     public void setGold(int gold) {
         this.gold = gold;
     }
 
-    public String getDiscription() {
-        return Discription;
+    public String getDescription() {
+        return Description;
     }
 
-    public void setDiscription(String Discription) {
-        this.Discription = Discription;
+    public void setDescription(String Description) {
+        this.Description = Description;
     }
 
     public Room getNorth() {
@@ -68,23 +65,25 @@ public class Room {
     public void setEast(Room East) {
         this.East = East;
     }
-
+    public void availableDirections(){
+        System.out.println("From this room you can go : ");
+        if(getNorth() != null)
+            System.out.println(" North");
+        
+        if(getSouth() != null)
+            System.out.println(" South");
+        
+        if(getWest() != null)
+            System.out.println(" West");
+            
+        if(getEast() != null)
+            System.out.println(" West");
+    }
     @Override
     public String toString() {
-       
-            return Discription + "\n\nIn the Room you find " + gold + " Space Dollars";
+        
+            return Description;
        
     }
-//    public Room Direction(String choice){
-//        if(choice.equals("north"))
-//            return getNorth();
-//        if(choice.equals("south"))
-//            return getSouth();
-//        if(choice.equals("east"))
-//            return getEast();
-//        if(choice.equals("west"))
-//            return getWest();
-//        
-//        return null;
-//    }
+
 }

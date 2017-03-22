@@ -24,7 +24,7 @@ public class Boundry {
                 System.out.println("\nYou went North");
                 pickingDirection = false;
             } else if (choice.equalsIgnoreCase("south") && currentRoom.getSouth() != null) {
-                System.out.println("\nYou went South");
+                           System.out.println("\nYou went South");
                 pickingDirection = false;
             } else if (choice.equalsIgnoreCase("east") && currentRoom.getEast() != null) {
                 System.out.println("\nYou went East");
@@ -108,16 +108,13 @@ public class Boundry {
         return choice;
     }
 
-    void chooseAction() {
+    public String chooseAction() {
+        String action = "";
         System.out.println("Choose your action: ");
-        String action = scan.next().toLowerCase();
-        switch(action){
-            case "inspect"
-            case ""
-        }
-                
-        
-    }
+        action = scan.next().toLowerCase();
+        return action;
+    }        
+    
     public void helpCommand() {
         System.out.println("\n=== HELP ===");
         System.out.println("- Inspect");

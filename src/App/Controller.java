@@ -12,9 +12,9 @@ public class Controller {
     Room currentRoom;
 
     //Creates the Rooms as individual objects
-    Room spaceShip = new Room (0,desc.spaceShip());
+    Room spaceShip = new Room(0, desc.spaceShip());
     Room finish = new Room(0, desc.commandBridge());
-    Room startRoom = new Room(0,desc.startRoom());
+    Room startRoom = new Room(0, desc.startRoom());
     Room room1 = new Room(r.nextInt(100) + 1, desc.hallWay1());
     Room room2 = new Room(r.nextInt(100) + 1, desc.closet());
     Room room3 = new Room(r.nextInt(100) + 1, desc.hallWay2());
@@ -36,26 +36,25 @@ public class Controller {
 //        Room room19 = new Room(r.nextInt(100) + 1, "Start room, bla bla bla");
 //        Room room20 = new Room(r.nextInt(100) + 1, "Start room, bla bla bla");
 //    
-/**
- * Starts the application
- */
+    /**
+     * Starts the application
+     */
     public void start() throws InterruptedException {
         go();
         b.welcomeToGame();
         p.setName(b.createName());
         game();
-    
 
     }
 
-/**
-* Creating connection of Rooms and The Dungeon
-*/
+    /**
+     * Creating connection of Rooms and The Dungeon
+     */
     public void go() {
         //Map and Room direction rules
         startRoom.setNorth(room1);
         startRoom.setSouth(finish);
-        
+
         room1.setWest(room2);
         room1.setEast(room3);
         room1.setSouth(startRoom);
@@ -117,69 +116,105 @@ public class Controller {
 //        room18.setSouth(room19);
 //
 //        room19.setNorth(room18);
-
     }
-/**
- * Manages game, movement form room, to next room, checks for winning room, collection of gold.
- */
+
+    /**
+     * Manages game, movement form room, to next room, checks for winning room,
+     * collection of gold.
+     */
     public void game() throws InterruptedException {
-        
+
         currentRoom = startRoom;
+        System.out.println(currentRoom.toString());
         Thread.sleep(1000);
         while (flag) {
             Thread.sleep(1000);
-            System.out.println(currentRoom.toString());
-            
+
             if (currentRoom.equals(finish) || currentRoom.equals(spaceShip)) {
                 System.out.println(p.toString());
                 System.out.println("You won");
                 flag = false;
             } else if (currentRoom.equals(spaceShip)) {
-                    System.out.println(p.toString());
-                    System.out.println("You chose to return to your ship");
-                    flag = false;
+                System.out.println(p.toString());
+                System.out.println("You chose to return to your ship");
+                flag = false;
             } else {
-                b.chooseAction();
-                collectGold();
-                chooseDirection();
-                
+                playerAction(currentRoom);
 
-                }
             }
         }
-
-    public void collectGold(){
-                    int gold = currentRoom.getGold();
-                    String pickup = "";
-                    
-                    if(gold > 0){
-                        System.out.println("In this room you find " + gold + " Space dollars");
-                        pickup = b.takeGold();
-                        if (pickup.equalsIgnoreCase("yes")){
-                            p.setBank(gold);
-                            currentRoom.setGold(0);
-                        }
-
-                    } else {
-                        System.out.println("\nThere are no Space dollars in here");
-                    }
-}
-    public void chooseDirection(){
-        String direct = b.playerDirection(currentRoom);
-
-            switch (direct) {
-                case "north":
-                    currentRoom = currentRoom.getNorth();
-                    break;
-                case "south":
-                    currentRoom = currentRoom.getSouth();
-                    break;
-                case "east":
-                    currentRoom = currentRoom.getEast();
-                    break;
-                case "west":
-                    currentRoom = currentRoom.getWest();
-                    break;
     }
-}
+
+    public void collectGold() {
+        int gold = currentRoom.getGold();
+        String pickup = "";
+
+        if (gold > 0) {
+            System.out.println("In this room you find " + gold + " Space dollars");
+            pickup = b.takeGold();
+            if (pickup.equalsIgnoreCase("yes")) {
+                p.setBank(gold);
+                currentRoom.setGold(0);
+            }
+
+        } else {
+            System.out.println("\nThere are no Space dollars in here");
+        }
+    }
+//    public void chooseDirection(){
+//        String direct = b.playerDirection(currentRoom);
+//
+//            switch (direct) {
+//                case "north":
+//                    currentRoom = currentRoom.getNorth();
+//                    break;
+//                case "south":
+//                    currentRoom = currentRoom.getSouth();
+//                    break;
+//                case "east":
+//                    currentRoom = currentRoom.getEast();
+//                    break;
+//                case "west":
+//                    currentRoom = currentRoom.getWest();
+//                    break;
+//    }
+//}
+
+    public void playerAction(Room currentRoom) {
+        boolean flag = true;
+
+        while (flag = true) {
+            String action = b.chooseAction();
+
+            switch (action) {
+                case "inspect":
+                    System.out.println(currentRoom.toString());
+                    currentRoom.availableDirections();
+                    break;
+
+                case "search":
+                    break;
+
+                case "north":
+                    if (action.equalsIgnoreCase("north") && currentRoom.getNorth() != null) {
+                        System.out.println("\nYou went North");
+                        currentRoom = currentRoom.getNorth();
+                        flag = false;
+
+                        break;
+
+//                    case "south" :
+//                            break;
+//                    case "east" :
+//                            break;
+//                    case "west" :
+//                            break;
+//                    case "exit" : 
+//                            break;
+//                    case "help" : b.helpCommand();
+//                            break;
+                    }
+            }
+        }
+    }
 }
