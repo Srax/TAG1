@@ -60,14 +60,14 @@ public class Controller {
         room1.setSouth(startRoom);
 
         room2.setEast(room1);
-        room2.setTaxCollector(1);
         room2.setWest(room9);
+        room2.setTaxCollector(1);
 
         room3.setWest(room1);
         room3.setNorth(room5);
-        room3.setSouth(finish);
+        room3.setSouth(room4);
 
-        finish.setNorth(room3);
+        room4.setNorth(room3);
 
         room5.setNorth(room8);
         room5.setEast(room6);
@@ -108,8 +108,9 @@ public class Controller {
         room15.setWest(room16);
         room15.setSouth(room7);
 
-        room16.setSouth(room20);
-
+        room16.setSouth(finish);
+        room16.setEast(room15);
+        
         room17.setEast(room18);
         room17.setWest(room15);
 
@@ -117,6 +118,8 @@ public class Controller {
         room18.setSouth(room19);
 
         room19.setNorth(room18);
+        room19.setTaxCollector(1);
+        
     }
 
     /**
