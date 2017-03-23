@@ -23,7 +23,7 @@ public class Description {
         return desc;
     }
 
-    //hallWay1 bruges på rum 1 og 2
+    //hallWay1 bruges på rum 1 
     public String hallWay1() {
         String desc = "\n=== HALLWAY ===\n"
                 + "You enter a dark and silent hallway, broken wiers floats around \n"
@@ -73,5 +73,42 @@ public class Description {
                 
         return desc;        
     }
+    //Bruges på rum 2 and 14
+    public String hallWay3() {
+        String desc = "\n=== HALLWAY ===\n"
+                + "This is a dark and spooky hallway where the dust is thick.\n"
+                + "__________________________________________________________________\n";
+                
+        return desc;
+    }
+    //Bruges på rum 9
+    public String cross() {
+        String desc = "\n=== HALLWAY CROSSROAD ===\n"
+                + "Your at a crossroad there are 4 ways you can go choose wisely.\n"
+                + "__________________________________________________________________\n";
+                
+        return desc;
+    }
+    //Bruges på rum 5
+    public String kitchen() {
+        String desc = "\n=== KITCHEN ===\n"
+                + "Your at the ships kitchen rusted kitchen utensils,"
+                + " are located in piles all over the room,"
+                + "it looks like someone has stached it there.\n"
+                + "__________________________________________________________________\n";
+                
+        return desc;
+    }
+    
+    //Bruges på rum 18
+    public String lab() {
+        String desc = "\n=== LAbBOrRATORY ===\n"
+                + "You inter the ships lab the first thing you see, is the surprising lack of dust in the room,"
+                + "and the weird wiers that spark all over the place.\n"
+                + "__________________________________________________________________\n";
+                
+        return desc;
+    }
+    
     
 }
