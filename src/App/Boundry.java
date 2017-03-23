@@ -62,15 +62,17 @@ public class Boundry {
                 + "    \\___ \\  | '_ \\   / _` |  / __|  / _ \\   | |      | '__|  / _` | \\ \\ /\\ / / | |  / _ \\ | '__|\n"
                 + "    ____) | | |_) | | (_| | | (__  |  __/   | |____  | |    | (_| |  \\ V  V /  | | |  __/ | |   \n"
                 + "   |_____/  | .__/   \\__,_|  \\___|  \\___|    \\_____| |_|     \\__,_|   \\_/\\_/   |_|  \\___| |_|   \n"
-                + "            | |                                                                                 \n"
+                + "            | |  \t  BECAUSE SPACE INVADERS WERE ALREADY TAKEN                                                                               \n"
                 + "            |_| \n\n");
+        
         System.out.println("=== WELCOME ===\n");
-        System.out.println("Welcome to the game\n");
-        System.out.println("Intro Blah blah blah");
-        System.out.println("Intro Blah blah blah");
-        System.out.println("Intro Blah blah blah");
-        System.out.println("Intro Blah blah blah");
+        System.out.println("Welcome to Space Crawler!");
+        System.out.println("Space Crawler is a text-based Dungeon-Crawler where the main objective of the game is to reach the command bridge.");
+        System.out.println("You interact with the game by 'USER INPUT':\n - E.G: Write 'HELP' to recieve a list of commands.");
+        
+        System.out.println("\n=== GAME : RUNNING ===");
     }
+    
 
     public String takeGold() {
         String choice = "";

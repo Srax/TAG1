@@ -137,8 +137,8 @@ public class Description {
     //Bruges på rum 5
     public String kitchen() {
         String desc = "\n=== KITCHEN ===\n"
-                + "Your at the ships kitchen rusted kitchen utensils,"
-                + " are located in piles all over the room,"
+                + "Your at the ships kitchen rusted kitchen utensils,\n"
+                + "are located in piles all over the room,\n"
                 + "it looks like someone has stached it there.\n"
                 + "__________________________________________________________________\n";
                 
@@ -148,7 +148,7 @@ public class Description {
     //Bruges på rum 18
     public String lab() {
         String desc = "\n=== LAbBOrRATORY ===\n"
-                + "You inter the ships lab the first thing you see, is the surprising lack of dust in the room,"
+                + "You inter the ships lab the first thing you see, is the surprising lack of dust in the room,\n"
                 + "and the weird wiers that spark all over the place.\n"
                 + "__________________________________________________________________\n";
                 
