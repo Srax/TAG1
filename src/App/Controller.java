@@ -260,33 +260,45 @@ public class Controller {
     public void taxRobot() {
 
         b.taxCollectorMeeting();
-        String choice = b.chooseAction();
-        if (p.getBank() > 20) {
-            if (choice.equalsIgnoreCase("pay")) {
-                  System.out.println("The Robot powers down,  and screams FREEDOOM !!!!!!! he should no longer be a problem");
-                p.setBank(-20);
-                currentRoom.setTaxCollector(0);
-            }else if(choice.equalsIgnoreCase("help")){
-                b.helpCommand();
-            }    
-             else if (choice.equalsIgnoreCase("deny")) {
-                p.setBank(-p.getBank());
+        boolean interaction = true;
+        ////////////////////////////////////////////
+        while (interaction) {
+            String choice = b.chooseAction();
+            if (p.getBank() > 20) {
+                if (choice.equalsIgnoreCase("help")) {
+                    b.helpCommand();
+
+                } else if (choice.equalsIgnoreCase("pay")) {
+                    System.out.println("You pay the robot and he looks satisfied");
+                    System.out.println("The Robot powers down.The robot should no longer be a problem");
+                    currentRoom.setTaxCollector(0);
+
+                    interaction = false;
+                } else if (choice.equalsIgnoreCase("deny")) {
+                    currentRoom.setGold(p.getBank());
+                    p.setBank(-p.getBank());
+                    p.setHp(-20);
+                    System.out.println("The Robot bitchslaps you, and steals all your money. you now have " + p.getHp() + "HP");
+                    System.out.println("The Robot powers down, and drops its moeny\n The robot should no longer be a problem");
+                    currentRoom.setTaxCollector(0);
+                    interaction = false;
+                } else {
+                    System.out.println("Nothing happend");
+                }
+
+            } else if (choice.equalsIgnoreCase("pay") && p.getBank() < 20) {
+                currentRoom.setGold(p.getBank());
+                System.out.println("You were unable to pay the Robot");
                 p.setHp(-20);
-                System.out.println("The Robot bitchslaps you, and steals all your money. you now have " + p.getHp() + "HP");
-                System.out.println("The Robot powers down, and should no longer be a problem");
-              
+                System.out.println("The Robot bitchslaps you, you now have " + p.getHp() + "HP");
+                System.out.println("The Robot powers down, and drops its moeny\n The robot should no longer be a problem");
                 currentRoom.setTaxCollector(0);
-
+                interaction = false;
+            } else {
+                System.out.println("Nothing happend");
             }
-
-        } else if (choice.equalsIgnoreCase("pay") && p.getBank() < 20) {
-            System.out.println("You were unable to pay the Robot");
-            p.setHp(-20);
-            System.out.println("The Robot bitchslaps you, you now have " + p.getHp() + "HP");
-            System.out.println("The Robot powers down, and should no longer be a problem");
-            currentRoom.setTaxCollector(0);
-        } else {
-            System.out.println("Nothing happend");
+            //////////////////////////////////////////////////
         }
+
     }
 }
