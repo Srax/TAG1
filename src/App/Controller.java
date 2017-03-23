@@ -63,7 +63,7 @@ public class Controller {
         room2.setTaxCollector(1);
         //room2.setWest(room9);
 
-        room3.setEast(room1);
+        room3.setWest(room1);
         //room3.setNorth(room5);
         room3.setSouth(finish);
 
@@ -263,8 +263,9 @@ public class Controller {
                 p.setBank(-20);
                 currentRoom.setTaxCollector(0);
             } else if (choice.equalsIgnoreCase("deny")) {
+                p.setBank(-p.getBank());
                 p.setHp(-20);
-                System.out.println("The Robot bitchslaps you, you now have " + p.getHp() + "HP");
+                System.out.println("The Robot bitchslaps you, and steals all your money. you now have " + p.getHp() + "HP");
                 System.out.println("The Robot powers down, and should no longer be a problem");
                 currentRoom.setTaxCollector(0);
 
