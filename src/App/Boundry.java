@@ -7,13 +7,6 @@ public class Boundry {
     Scanner scan = new Scanner(System.in);
 
     /**
-     * Takes the parameter currentRoom and return the direction as a String, if
-     * the direction is possible, else try again.
-     *
-     * @param currentRoom
-     * @return String choice
-     */
-    /**
      *
      * Creates a player name
      *
@@ -54,6 +47,7 @@ public class Boundry {
 
     /**
      * Welcoming to game statement.
+     * Introduce the games name and Rules.
      */
     public void welcomeToGame() {
         System.out.println("     _____                                    _____                             _               \n"
@@ -73,7 +67,11 @@ public class Boundry {
         System.out.println("\n=== GAME : RUNNING ===");
     }
     
-
+    /**
+     * When encountering gold in the game, takeGold will display the following
+     * statement.
+     * @return 
+     */
     public String takeGold() {
         String choice = "";
         System.out.println("\nDo you wish to pick up the gold ?");
@@ -81,14 +79,20 @@ public class Boundry {
         choice = scan.next();
         return choice;
     }
-
+/**
+ * This Method lets the player know that he/she can preform an action in various situations
+ * @return 
+ */
     public String chooseAction() {
         String action = "";
         System.out.println("Choose your action: ");
         action = scan.next().toLowerCase();
         return action;
     }
-
+/**
+ * If the player is lost, helpCommadn will allow the player to enter "Help" as an input
+ * and get a list of all possible actions in the game.
+ */
     public void helpCommand() {
         System.out.println("\n=== HELP ===");
         System.out.println("- Inspect");
@@ -101,7 +105,10 @@ public class Boundry {
         System.out.println("Pay");
         System.out.println("deny");
     }
-    
+    /**
+     * When encountering the taxRobot, this method will display the following
+     * for the player to react to.
+     */
     public void taxCollectorMeeting(){
         
        System.out.println("The door close behind you.");

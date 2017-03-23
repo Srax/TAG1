@@ -34,7 +34,7 @@ public class Controller {
     Room room17 = new Room(r.nextInt(100) + 1, desc.hallWay3());
     Room room18 = new Room(r.nextInt(100) + 1, desc.lab());
     Room room19 = new Room(r.nextInt(100) + 1, desc.closet());
-       
+
 //    
     /**
      * Starts the application
@@ -110,7 +110,7 @@ public class Controller {
 
         room16.setSouth(finish);
         room16.setEast(room15);
-        
+
         room17.setEast(room18);
         room17.setWest(room15);
 
@@ -119,7 +119,7 @@ public class Controller {
 
         room19.setNorth(room18);
         room19.setTaxCollector(1);
-        
+
     }
 
     /**
@@ -149,7 +149,10 @@ public class Controller {
             }
         }
     }
-
+/**
+ * When the player choose to collect the money in the room, and modifies the player
+ * gold entity
+ */
     public void collectGold() {
         int gold = currentRoom.getGold();
         String pickup = "";
@@ -166,12 +169,18 @@ public class Controller {
             System.out.println("\nThere are no Space dollars in here");
         }
     }
-
+/**
+ * Manages the players action input. The method is set up to print out all the
+ * possible directions in the currentRoom. It then returns a new room to place 
+ * the player in.
+ * @param currentRoom
+ * @return 
+ */
     public Room playerAction(Room currentRoom) {
-        boolean flag = true;
+        boolean takingAction = true;
         Room tempRoom = currentRoom;
         int taxCollector;
-        while (flag) {
+        while (takingAction) {
 
             String action = b.chooseAction();
 
@@ -196,7 +205,7 @@ public class Controller {
                     if (action.equalsIgnoreCase("north") && currentRoom.getNorth() != null) {
                         System.out.println("\nYou went North");
                         tempRoom = currentRoom.getNorth();
-                        flag = false;
+                        takingAction = false;
 
                     } else {
                         System.out.println("You are trying to walk into a wall");
@@ -208,7 +217,7 @@ public class Controller {
                     if (action.equalsIgnoreCase("south") && currentRoom.getSouth() != null) {
                         System.out.println("\nYou went South");
                         tempRoom = currentRoom.getSouth();
-                        flag = false;
+                        takingAction = false;
 
                     } else {
                         System.out.println("You are trying to walk into a wall");
@@ -220,7 +229,7 @@ public class Controller {
                         System.out.println("\nYou went East");
                         tempRoom = currentRoom.getEast();
 
-                        flag = false;
+                        takingAction = false;
 
                     } else {
                         System.out.println("You are trying to walk into a wall");
@@ -232,7 +241,7 @@ public class Controller {
                     if (action.equalsIgnoreCase("west") && currentRoom.getWest() != null) {
                         System.out.println("\nYou went West");
                         tempRoom = currentRoom.getWest();
-                        flag = false;
+                        takingAction = false;
 
                     } else {
                         System.out.println("You are trying to walk into a wall");
@@ -249,14 +258,18 @@ public class Controller {
                     break;
                 case "exit":
                     tempRoom = spaceShip;
-                    flag = false;
+                    takingAction = false;
                     break;
-        
+                default: System.out.println("Nothing happend");    
             }
         }
         return tempRoom;
     }
 
+    /**
+     * Interacts with the taxCollector. After a checking if there is a tax collector in the room
+     * this method runs the possible outcomes of this encounter based on player input.
+     */
     public void taxRobot() {
 
         b.taxCollectorMeeting();
@@ -265,10 +278,8 @@ public class Controller {
         while (interaction) {
             String choice = b.chooseAction();
             if (p.getBank() > 20) {
-                if (choice.equalsIgnoreCase("help")) {
-                    b.helpCommand();
 
-                } else if (choice.equalsIgnoreCase("pay")) {
+                if (choice.equalsIgnoreCase("pay")) {
                     System.out.println("You pay the robot and he looks satisfied");
                     System.out.println("The Robot powers down.The robot should no longer be a problem");
                     currentRoom.setTaxCollector(0);
@@ -279,19 +290,21 @@ public class Controller {
                     p.setBank(-p.getBank());
                     p.setHp(-20);
                     System.out.println("The Robot bitchslaps you, and steals all your money. you now have " + p.getHp() + "HP");
-                    System.out.println("The Robot powers down, and drops its moeny\n The robot should no longer be a problem");
+                    System.out.println("The Robot powers down, and drops its moeny\nThe robot should no longer be a problem");
                     currentRoom.setTaxCollector(0);
                     interaction = false;
                 } else {
                     System.out.println("Nothing happend");
                 }
 
-            } else if (choice.equalsIgnoreCase("pay") && p.getBank() < 20) {
+            } else if (choice.equalsIgnoreCase("help")) {
+                b.helpCommand();
+            } else if (choice.equalsIgnoreCase("pay")|| choice.equalsIgnoreCase("deny")&& p.getBank() < 20) {
                 currentRoom.setGold(p.getBank());
                 System.out.println("You were unable to pay the Robot");
                 p.setHp(-20);
                 System.out.println("The Robot bitchslaps you, you now have " + p.getHp() + "HP");
-                System.out.println("The Robot powers down, and drops its moeny\n The robot should no longer be a problem");
+                System.out.println("The Robot powers down, and drops its moeny\nThe robot should no longer be a problem");
                 currentRoom.setTaxCollector(0);
                 interaction = false;
             } else {
@@ -299,6 +312,5 @@ public class Controller {
             }
             //////////////////////////////////////////////////
         }
-
     }
 }

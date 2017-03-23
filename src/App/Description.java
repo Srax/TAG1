@@ -2,7 +2,8 @@
 package App;
 
 /**
- *
+ * This method contains descriptions that can be assigned and called for each room
+ * in the game
  * @author DD
  */
 public class Description {
