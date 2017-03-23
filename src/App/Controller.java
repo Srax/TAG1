@@ -63,7 +63,7 @@ public class Controller {
         room2.setTaxCollector(1);
         //room2.setWest(room9);
 
-        room3.setEast(room1);
+        room3.setWest(room1);
         //room3.setNorth(room5);
         room3.setSouth(finish);
 
@@ -248,7 +248,7 @@ public class Controller {
                     tempRoom = spaceShip;
                     flag = false;
                     break;
-
+        
             }
         }
         return tempRoom;

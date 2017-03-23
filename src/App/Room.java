@@ -22,8 +22,6 @@ public class Room {
 
     public void setTaxCollector(int TaxCollector) {
         this.taxCollector = TaxCollector;
-        
-        
     }
 
     public Room() {

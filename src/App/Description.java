@@ -23,7 +23,7 @@ public class Description {
         return desc;
     }
 
-    //hallWay1 bruges på rum 1 og 2
+    //hallWay1 bruges på rum 1 13
     public String hallWay1() {
         String desc = "\n=== HALLWAY ===\n"
                 + "You enter a dark and silent hallway, broken wiers floats around \n"
@@ -42,7 +42,7 @@ public class Description {
                 
         return desc;
     }
-
+    // Closet på rum 4
     public String closet() {
 
         String desc = "\n=== CLOSET ==\n"
@@ -73,5 +73,44 @@ public class Description {
                 
         return desc;        
     }
-    
+    public String deadGarden() {
+
+        String desc = "\n=== DEAD BOTANIC GARDEN ==\n"
+                + "You entered an creepy dead garden\n"
+                + "The Garden contains alot of plants you have never seen before\n"
+                + "Some of the trees still appear to be alive\n"
+                + ",that makes you wonder how without oxygen.\n"
+                +"__________________________________________________________________\n";   
+        return desc;
+    }
+    public String barracks() {
+
+        String desc = "\n=== BARRACKS ==\n"
+                + "You entered the sleeping area\n"
+                + "Its litteraly a mess...\n"
+                + "You look around and find frozen corpses floating around\n"
+                + "in one of the room corners.\n"
+                +"__________________________________________________________________\n";   
+        return desc;
+    }
+    public String dinningRoom() {
+
+        String desc = "\n=== DINNING ROOM ==\n"
+                + "You entered a large dinning hall.\n"
+                + "Tabels are floating around and it is mostly in ruin.\n"
+                + "There is half a kitchen robot floating around\n"
+                + "there is also a frozen buffet scattered all over the place.\n"
+                +"__________________________________________________________________\n";   
+        return desc;
+    }
+    public String officersLounge() {
+
+        String desc = "\n=== OFFICERS LOUNGE ==\n"
+                + "You enter a pretty decent room\n"
+                + "the room looks more classy than the other rooms\n"
+                + "obviously it is somekind of officer lounge,\n"
+                + "there is nothing in paticular here.\n"
+                +"__________________________________________________________________\n";   
+        return desc;
+    }
 }
