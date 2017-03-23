@@ -18,6 +18,7 @@ public class Controller {
     Room room1 = new Room(r.nextInt(100) + 1, desc.hallWay1());
     Room room2 = new Room(r.nextInt(100) + 1, desc.closet());
     Room room3 = new Room(r.nextInt(100) + 1, desc.dinningRoom());
+    Room room4 = new Room(r.nextInt(100) + 1, desc.closet());
 
         Room room5 = new Room(r.nextInt(100) + 1, desc.kitchen());
         Room room6 = new Room(r.nextInt(100) + 1, desc.hallWay3());
@@ -34,7 +35,7 @@ public class Controller {
         Room room17 = new Room(r.nextInt(100) + 1, desc.hallWay3());
         Room room18 = new Room(r.nextInt(100) + 1, desc.lab());
         Room room19 = new Room(r.nextInt(100) + 1, desc.closet());
-        Room room20 = new Room(r.nextInt(100) + 1, "Start room, bla bla bla");
+       
 //    
     /**
      * Starts the application

@@ -23,7 +23,7 @@ public class Description {
         return desc;
     }
 
-    //hallWay1 bruges på rum 1 13
+    //hallWay1 bruges på rum 1, 10 ,
     public String hallWay1() {
         String desc = "\n=== HALLWAY ===\n"
                 + "You enter a dark and silent hallway, broken wiers floats around \n"
@@ -34,7 +34,7 @@ public class Description {
         return desc;
     }
 
-    //Bruges på rum 3
+    //Bruges på rum 11,12,13
     public String hallWay2() {
         String desc = "\n=== HALLWAY ===\n"
                 + "Still a hallway.\n"
@@ -42,7 +42,7 @@ public class Description {
                 
         return desc;
     }
-    // Closet på rum 4
+    //Bruges på rum 4,19
     public String closet() {
 
         String desc = "\n=== CLOSET ==\n"
@@ -53,6 +53,7 @@ public class Description {
                 
         return desc;
     }
+     //Bruges på rum 20
     public String commandBridge(){
         String desc = "\n=== Command Bridge ===\n"
                 + "You finally enter the Command Bridge.\n"
@@ -66,13 +67,14 @@ public class Description {
     
     
     }
-
+    //Bruges på exit room
     public String spaceShip() {
         String desc = "\n=== Space Ship ===\n"
                 + "You have returned to your spaceship.\n";
                 
         return desc;        
     }
+    //Bruges på room 7
     public String deadGarden() {
 
         String desc = "\n=== DEAD BOTANIC GARDEN ==\n"
@@ -83,6 +85,7 @@ public class Description {
                 +"__________________________________________________________________\n";   
         return desc;
     }
+    //Bruges på room 6
     public String barracks() {
 
         String desc = "\n=== BARRACKS ==\n"
@@ -93,6 +96,7 @@ public class Description {
                 +"__________________________________________________________________\n";   
         return desc;
     }
+    ///Bruges på rum 3
     public String dinningRoom() {
 
         String desc = "\n=== DINNING ROOM ==\n"
@@ -103,6 +107,7 @@ public class Description {
                 +"__________________________________________________________________\n";   
         return desc;
     }
+    //Bruges på rum 15
     public String officersLounge() {
 
         String desc = "\n=== OFFICERS LOUNGE ==\n"
@@ -113,7 +118,7 @@ public class Description {
                 +"__________________________________________________________________\n";   
         return desc;
     }
-    //Bruges på rum 2 and 14
+    //Bruges på rum 2,8,16,17
     public String hallWay3() {
         String desc = "\n=== HALLWAY ===\n"
                 + "This is a dark and spooky hallway where the dust is thick.\n"
