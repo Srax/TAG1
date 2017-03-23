@@ -248,7 +248,7 @@ public class Controller {
                     tempRoom = spaceShip;
                     flag = false;
                     break;
-
+        
             }
         }
         return tempRoom;
