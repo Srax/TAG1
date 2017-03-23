@@ -17,24 +17,25 @@ public class Controller {
     Room startRoom = new Room(0, desc.startRoom());
     Room room1 = new Room(r.nextInt(100) + 1, desc.hallWay1());
     Room room2 = new Room(r.nextInt(100) + 1, desc.closet());
-    Room room3 = new Room(r.nextInt(100) + 1, desc.hallWay2());
+    Room room3 = new Room(r.nextInt(100) + 1, desc.dinningRoom());
+    Room room4 = new Room(r.nextInt(100) + 1, desc.closet());
 
-        Room room5 = new Room(r.nextInt(100) + 1, "Start room, bla bla bla");
+        Room room5 = new Room(r.nextInt(100) + 1, desc.kitchen());
         Room room6 = new Room(r.nextInt(100) + 1, desc.hallWay3());
-        Room room7 = new Room(r.nextInt(100) + 1, "Start room, bla bla bla");
-        Room room8 = new Room(r.nextInt(100) + 1, "Start room, bla bla bla");
-        Room room9 = new Room(r.nextInt(100) + 1, "Start room, bla bla bla");
-        Room room10 = new Room(r.nextInt(100) + 1, "Start room, bla bla bla");
-        Room room11 = new Room(r.nextInt(100) + 1, "Start room, bla bla bla");
-        Room room12 = new Room(r.nextInt(100) + 1, "Start room, bla bla bla");
-        Room room13 = new Room(r.nextInt(100) + 1, "Start room, bla bla bla");
-        Room room14 = new Room(r.nextInt(100) + 1, "Start room, bla bla bla");
-        Room room15 = new Room(r.nextInt(100) + 1, "Start room, bla bla bla");
-        Room room16 = new Room(r.nextInt(100) + 1, "Start room, bla bla bla");
-        Room room17 = new Room(r.nextInt(100) + 1, "Start room, bla bla bla");
-        Room room18 = new Room(r.nextInt(100) + 1, "Start room, bla bla bla");
-        Room room19 = new Room(r.nextInt(100) + 1, "Start room, bla bla bla");
-        Room room20 = new Room(r.nextInt(100) + 1, "Start room, bla bla bla");
+        Room room7 = new Room(r.nextInt(100) + 1, desc.deadGarden());
+        Room room8 = new Room(r.nextInt(100) + 1, desc.hallWay3());
+        Room room9 = new Room(r.nextInt(100) + 1, desc.cross());
+        Room room10 = new Room(r.nextInt(100) + 1, desc.hallWay1());
+        Room room11 = new Room(r.nextInt(100) + 1, desc.hallWay2());
+        Room room12 = new Room(r.nextInt(100) + 1, desc.hallWay2());
+        Room room13 = new Room(r.nextInt(100) + 1, desc.hallWay2());
+        Room room14 = new Room(r.nextInt(100) + 1, desc.hallWay3());
+        Room room15 = new Room(r.nextInt(100) + 1, desc.officersLounge());
+        Room room16 = new Room(r.nextInt(100) + 1, desc.hallWay3());
+        Room room17 = new Room(r.nextInt(100) + 1, desc.hallWay3());
+        Room room18 = new Room(r.nextInt(100) + 1, desc.lab());
+        Room room19 = new Room(r.nextInt(100) + 1, desc.closet());
+       
 //    
     /**
      * Starts the application
