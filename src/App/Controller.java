@@ -260,13 +260,18 @@ public class Controller {
         String choice = b.chooseAction();
         if (p.getBank() > 20) {
             if (choice.equalsIgnoreCase("pay")) {
+                  System.out.println("The Robot powers down, and should no longer be a problem");
                 p.setBank(-20);
                 currentRoom.setTaxCollector(0);
-            } else if (choice.equalsIgnoreCase("deny")) {
+            }else if(choice.equalsIgnoreCase("help")){
+                b.helpCommand();
+            }    
+             else if (choice.equalsIgnoreCase("deny")) {
                 p.setBank(-p.getBank());
                 p.setHp(-20);
                 System.out.println("The Robot bitchslaps you, and steals all your money. you now have " + p.getHp() + "HP");
                 System.out.println("The Robot powers down, and should no longer be a problem");
+              
                 currentRoom.setTaxCollector(0);
 
             }
@@ -278,7 +283,7 @@ public class Controller {
             System.out.println("The Robot powers down, and should no longer be a problem");
             currentRoom.setTaxCollector(0);
         } else {
-            
+            System.out.println("Nothing happend");
         }
     }
 }
