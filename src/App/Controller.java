@@ -15,25 +15,25 @@ public class Controller {
     Room spaceShip = new Room(0, desc.spaceShip());
     Room finish = new Room(0, desc.commandBridge());
     Room startRoom = new Room(0, desc.startRoom());
-    Room room1 = new Room(r.nextInt(100) + 1, desc.hallWay1());
-    Room room2 = new Room(r.nextInt(100) + 1, desc.hallWay3());
-    Room room3 = new Room(r.nextInt(100) + 1, desc.dinningRoom());
-    Room room4 = new Room(r.nextInt(100) + 1, desc.closet());
-    Room room5 = new Room(r.nextInt(100) + 1, desc.kitchen());
-    Room room6 = new Room(r.nextInt(100) + 1, desc.hallWay3());
-    Room room7 = new Room(r.nextInt(100) + 1, desc.deadGarden());
-    Room room8 = new Room(r.nextInt(100) + 1, desc.hallWay3());
-    Room room9 = new Room(r.nextInt(100) + 1, desc.cross());
-    Room room10 = new Room(r.nextInt(100) + 1, desc.hallWay1());
-    Room room11 = new Room(r.nextInt(100) + 1, desc.hallWay2());
-    Room room12 = new Room(r.nextInt(100) + 1, desc.hallWay2());
-    Room room13 = new Room(r.nextInt(100) + 1, desc.hallWay2());
-    Room room14 = new Room(r.nextInt(100) + 1, desc.hallWay3());
-    Room room15 = new Room(r.nextInt(100) + 1, desc.officersLounge());
-    Room room16 = new Room(r.nextInt(100) + 1, desc.hallWay3());
-    Room room17 = new Room(r.nextInt(100) + 1, desc.hallWay3());
-    Room room18 = new Room(r.nextInt(100) + 1, desc.lab());
-    Room room19 = new Room(r.nextInt(100) + 1, desc.closet());
+    Room room1 = new Room(r.nextInt(101), desc.hallWay1());
+    Room room2 = new Room(r.nextInt(101), desc.hallWay3());
+    Room room3 = new Room(r.nextInt(101), desc.dinningRoom());
+    Room room4 = new Room(r.nextInt(101), desc.closet());
+    Room room5 = new Room(r.nextInt(101), desc.kitchen());
+    Room room6 = new Room(r.nextInt(101), desc.hallWay3());
+    Room room7 = new Room(r.nextInt(101), desc.deadGarden());
+    Room room8 = new Room(r.nextInt(101), desc.hallWay3());
+    Room room9 = new Room(r.nextInt(101), desc.cross());
+    Room room10 = new Room(r.nextInt(101), desc.hallWay1());
+    Room room11 = new Room(r.nextInt(101), desc.hallWay2());
+    Room room12 = new Room(r.nextInt(101), desc.hallWay2());
+    Room room13 = new Room(r.nextInt(101), desc.hallWay2());
+    Room room14 = new Room(r.nextInt(101), desc.hallWay3());
+    Room room15 = new Room(r.nextInt(51)+50, desc.officersLounge());
+    Room room16 = new Room(r.nextInt(101), desc.hallWay3());
+    Room room17 = new Room(r.nextInt(101), desc.hallWay3());
+    Room room18 = new Room(r.nextInt(101), desc.lab());
+    Room room19 = new Room(r.nextInt(101), desc.closet());
 
 //    
     /**
@@ -133,15 +133,15 @@ public class Controller {
         Thread.sleep(500);
         while (checkVictory) {
             Thread.sleep(500);
-
+            currentRoom.toString();                                     /// TEST
             if (currentRoom.equals(finish)) {
                 System.out.println(finish.getDescription());
                 System.out.println(p.toString());
                 System.out.println("You won");
                 checkVictory = false;
             } else if (currentRoom.equals(spaceShip)) {
+                System.out.println(desc.spaceShip());
                 System.out.println(p.toString());
-                System.out.println("You chose to return to your ship");
                 checkVictory = false;
             } else {
                 currentRoom = playerAction(currentRoom);
@@ -149,10 +149,11 @@ public class Controller {
             }
         }
     }
-/**
- * When the player choose to collect the money in the room, and modifies the player
- * gold entity
- */
+
+    /**
+     * When the player choose to collect the money in the room, and modifies the
+     * player gold entity
+     */
     public void collectGold() {
         int gold = currentRoom.getGold();
         String pickup = "";
@@ -169,13 +170,15 @@ public class Controller {
             System.out.println("\nThere are no Space dollars in here");
         }
     }
-/**
- * Manages the players action input. The method is set up to print out all the
- * possible directions in the currentRoom. It then returns a new room to place 
- * the player in.
- * @param currentRoom
- * @return 
- */
+
+    /**
+     * Manages the players action input. The method is set up to print out all
+     * the possible directions in the currentRoom. It then returns a new room to
+     * place the player in.
+     *
+     * @param currentRoom
+     * @return
+     */
     public Room playerAction(Room currentRoom) {
         boolean takingAction = true;
         Room tempRoom = currentRoom;
@@ -191,7 +194,6 @@ public class Controller {
                     taxCollector = currentRoom.getTaxCollector();
                     if (taxCollector == 1) {
                         taxRobot();
-
                     }
 
                     currentRoom.availableDirections();
@@ -260,15 +262,17 @@ public class Controller {
                     tempRoom = spaceShip;
                     takingAction = false;
                     break;
-                default: System.out.println("Nothing happend");    
+                default:
+                    System.out.println("Nothing happend");
             }
         }
         return tempRoom;
     }
 
     /**
-     * Interacts with the taxCollector. After a checking if there is a tax collector in the room
-     * this method runs the possible outcomes of this encounter based on player input.
+     * Interacts with the taxCollector. After a checking if there is a tax
+     * collector in the room this method runs the possible outcomes of this
+     * encounter based on player input.
      */
     public void taxRobot() {
 
@@ -280,17 +284,18 @@ public class Controller {
             if (p.getBank() > 20) {
 
                 if (choice.equalsIgnoreCase("pay")) {
+                    p.setBank(-20);
+                    System.out.println("-20 Space dollars your Bank balance is now :" + p.getBank() + "$\n");
                     System.out.println("You pay the robot and he looks satisfied");
                     System.out.println("The Robot powers down.The robot should no longer be a problem");
                     currentRoom.setTaxCollector(0);
-
                     interaction = false;
                 } else if (choice.equalsIgnoreCase("deny")) {
                     currentRoom.setGold(p.getBank());
                     p.setBank(-p.getBank());
                     p.setHp(-20);
                     System.out.println("The Robot bitchslaps you, and steals all your money. you now have " + p.getHp() + "HP");
-                    System.out.println("The Robot powers down, and drops its moeny\nThe robot should no longer be a problem");
+                    System.out.println("The Robot powers down, and drops its money\nThe robot should no longer be a problem");
                     currentRoom.setTaxCollector(0);
                     interaction = false;
                 } else {
@@ -299,12 +304,12 @@ public class Controller {
 
             } else if (choice.equalsIgnoreCase("help")) {
                 b.helpCommand();
-            } else if (choice.equalsIgnoreCase("pay")|| choice.equalsIgnoreCase("deny")&& p.getBank() < 20) {
+            } else if (choice.equalsIgnoreCase("pay") || choice.equalsIgnoreCase("deny") && p.getBank() < 20) {
                 currentRoom.setGold(p.getBank());
                 System.out.println("You were unable to pay the Robot");
                 p.setHp(-20);
                 System.out.println("The Robot bitchslaps you, you now have " + p.getHp() + "HP");
-                System.out.println("The Robot powers down, and drops its moeny\nThe robot should no longer be a problem");
+                System.out.println("The Robot powers down, and drops its money\nThe robot should no longer be a problem");
                 currentRoom.setTaxCollector(0);
                 interaction = false;
             } else {

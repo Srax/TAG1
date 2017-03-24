@@ -34,7 +34,7 @@ public class Boundry {
             if (actionInput.equalsIgnoreCase("n")) {
                 donePickingName = false;
             }
-            if (actionInput.equalsIgnoreCase("y")) {
+            else if (actionInput.equalsIgnoreCase("y")) {
                 System.out.println("\nYou chose to keep your name");
                 donePickingName = true;
             } else {
@@ -102,8 +102,8 @@ public class Boundry {
         System.out.println("- Exit");
         System.out.println("- North / South / East / West");
         System.out.println("- Yes / No");
-        System.out.println("Pay");
-        System.out.println("deny");
+        System.out.println("- Pay");
+        System.out.println("- Deny");
     }
     /**
      * When encountering the taxRobot, this method will display the following

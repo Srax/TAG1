@@ -20,8 +20,11 @@ public class Room {
         return taxCollector;
     }
 
-    public void setTaxCollector(int TaxCollector) {
-        this.taxCollector = TaxCollector;
+    public void setTaxCollector(int taxCollector) {
+        this.taxCollector = taxCollector;
+        if(taxCollector>0){
+            this.setGold(0);        
+        }
     }
 
     public Room() {
