@@ -58,7 +58,8 @@ public class Controller {
         room1.setWest(room2);
         room1.setEast(room3);
         room1.setSouth(startRoom);
-
+        room1.setTrap(1);
+        
         room2.setEast(room1);
         room2.setWest(room9);
         room2.setTaxCollector(1);
@@ -88,7 +89,8 @@ public class Controller {
         room9.setEast(room2);
         room9.setWest(room12);
         room9.setSouth(room10);
-
+        
+        
         room10.setNorth(room9);
         room10.setWest(room11);
 
@@ -182,7 +184,7 @@ public class Controller {
     public Room playerAction(Room currentRoom) {
         boolean takingAction = true;
         Room tempRoom = currentRoom;
-        int taxCollector;
+        int taxCollector, trap;
         while (takingAction) {
 
             String action = b.chooseAction();
@@ -192,8 +194,11 @@ public class Controller {
 
                     System.out.println(currentRoom.toString());
                     taxCollector = currentRoom.getTaxCollector();
+                    trap = currentRoom.getTrap();
                     if (taxCollector == 1) {
                         taxRobot();
+                    }else if(trap>0){
+                        trap();
                     }
 
                     currentRoom.availableDirections();
@@ -317,5 +322,12 @@ public class Controller {
             }
             //////////////////////////////////////////////////
         }
+    }
+    public void trap(){
+        b.trapInteraction();
+        p.setHp(-10);
+        System.out.println("You now have: "+p.getHp()+"HP");
+        currentRoom.setTrap(0);
+        
     }
 }

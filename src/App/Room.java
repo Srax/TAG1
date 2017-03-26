@@ -10,6 +10,15 @@ public class Room {
     private Room west = null;
     private Room east = null;
     private int taxCollector;
+    private int trap;
+
+    public int getTrap() {
+        return trap;
+    }
+
+    public void setTrap(int trap) {
+        this.trap = trap;
+    }
 
     public Room(String Description) {
         this.description = Description;
