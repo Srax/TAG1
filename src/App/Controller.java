@@ -8,7 +8,7 @@ public class Controller {
     Random r = new Random();
     Player p = new Player();
     Description desc = new Description();
-
+    
     Room currentRoom;
 
     //Creates the Rooms as individual objects
@@ -130,11 +130,15 @@ public class Controller {
      */
     public void game() throws InterruptedException {
         boolean checkVictory = true;
+        int trap;
+        
         currentRoom = startRoom;
+        
         System.out.println(currentRoom.toString());
         Thread.sleep(500);
         while (checkVictory) {
             Thread.sleep(500);
+            trap = currentRoom.getTrap();                               /// TEST
             currentRoom.toString();                                     /// TEST
             if (currentRoom.equals(finish)) {
                 System.out.println(finish.getDescription());
@@ -146,6 +150,9 @@ public class Controller {
                 System.out.println(p.toString());
                 checkVictory = false;
             } else {
+                if(trap>0){
+                        trap();
+                    }
                 currentRoom = playerAction(currentRoom);
 
             }
@@ -194,11 +201,11 @@ public class Controller {
 
                     System.out.println(currentRoom.toString());
                     taxCollector = currentRoom.getTaxCollector();
-                    trap = currentRoom.getTrap();
+//                    trap = currentRoom.getTrap();
                     if (taxCollector == 1) {
                         taxRobot();
-                    }else if(trap>0){
-                        trap();
+//                    }else if(trap>0){
+//                        trap();
                     }
 
                     currentRoom.availableDirections();
@@ -210,48 +217,48 @@ public class Controller {
 
                 case "north":
                     if (action.equalsIgnoreCase("north") && currentRoom.getNorth() != null) {
-                        System.out.println("\nYou went North");
+                        System.out.println("\nYou went North\n");
                         tempRoom = currentRoom.getNorth();
                         takingAction = false;
 
                     } else {
-                        System.out.println("You are trying to walk into a wall");
+                        System.out.println("You are trying to walk into a wall\n");
 
                     }
                     break;
 
                 case "south":
                     if (action.equalsIgnoreCase("south") && currentRoom.getSouth() != null) {
-                        System.out.println("\nYou went South");
+                        System.out.println("\nYou went South\n");
                         tempRoom = currentRoom.getSouth();
                         takingAction = false;
 
                     } else {
-                        System.out.println("You are trying to walk into a wall");
+                        System.out.println("You are trying to walk into a wall\n");
 
                     }
                     break;
                 case "east":
                     if (action.equalsIgnoreCase("east") && currentRoom.getEast() != null) {
-                        System.out.println("\nYou went East");
+                        System.out.println("\nYou went East\n");
                         tempRoom = currentRoom.getEast();
 
                         takingAction = false;
 
                     } else {
-                        System.out.println("You are trying to walk into a wall");
+                        System.out.println("You are trying to walk into a wall\n");
 
                     }
                     break;
 
                 case "west":
                     if (action.equalsIgnoreCase("west") && currentRoom.getWest() != null) {
-                        System.out.println("\nYou went West");
+                        System.out.println("\nYou went West\n");
                         tempRoom = currentRoom.getWest();
                         takingAction = false;
 
                     } else {
-                        System.out.println("You are trying to walk into a wall");
+                        System.out.println("You are trying to walk into a wall\n");
 
                     }
                     break;
@@ -268,7 +275,7 @@ public class Controller {
                     takingAction = false;
                     break;
                 default:
-                    System.out.println("Nothing happend");
+                    System.out.println("Nothing happend\n");
             }
         }
         return tempRoom;
