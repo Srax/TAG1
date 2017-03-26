@@ -122,7 +122,7 @@ public class Boundry {
     }
 
     void trapInteraction() {
-        System.out.println("THE SOUNDS A BANG!!!\n");
+        System.out.println("THERE SOUNDS A LOUD BANG!!!\n");
         System.out.println("Some of the ceiling collapses\n");
         System.out.println("You get hit by some rubble and lose 10 HP\n");
     }
