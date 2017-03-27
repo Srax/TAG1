@@ -122,7 +122,7 @@ public class Boundry {
     public void taxCollectorPay(Player player){
         System.out.println("-20 Space dollars your Bank balance is now :" + player.getBank() + "$\n");
         System.out.println("You pay the robot and he looks satisfied");
-        System.out.println("The Robot powers down and says finally. The robot should no longer be a problem");        
+        System.out.println("The Robot powers down while whispering finally. The robot should no longer be a problem");        
     }
     public void taxCollectorDeny(Player player){    
     System.out.println("The Robot bitchslaps you, and steals all your money. you now have " + player.getHp() + "HP");
