@@ -116,14 +116,36 @@ public class Boundry {
         System.out.println("He is the \"TAXCOLLETOR\" and he is here to collect your money");
         System.out.println("You must pay his price to exit the room");
         System.out.println("You must pay me, 20 dollars");
-        
-        
-       
+    }
+    public void taxCollectorPay(Player player){
+        System.out.println("-20 Space dollars your Bank balance is now :" + player.getBank() + "$\n");
+        System.out.println("You pay the robot and he looks satisfied");
+        System.out.println("The Robot powers down and says finally. The robot should no longer be a problem");        
+    }
+    public void taxCollectorDeny(Player player){    
+    System.out.println("The Robot bitchslaps you, and steals all your money. you now have " + player.getHp() + "HP");
+    System.out.println("The Robot powers down, and drops its money\nThe robot should no longer be a problem");
+    }
+   
+   public void taxCollectorCantPay(Player player){
+       System.out.println("You were unable to pay the Robot"); 
+       System.out.println("The Robot bitchslaps you, you now have " + player.getHp() + "HP");
+       System.out.println("The Robot powers down, and drops its money\nThe robot should no longer be a problem");   
     }
 
     void trapInteraction() {
         System.out.println("THERE SOUNDS A LOUD BANG!!!\n");
         System.out.println("Some of the ceiling collapses\n");
         System.out.println("You get hit by some rubble and lose 10 HP\n");
+    }
+    
+    void getHp(Player hp){
+        System.out.println("You now have: "+hp.getHp()+"HP");
+    }
+    void nothingHappend(){
+        System.out.println("Nothing happend\n");
+    }
+    public void canGo(){
+        System.out.println("From this room you can go : ");
     }
 }

@@ -275,7 +275,7 @@ public class Controller {
                     takingAction = false;
                     break;
                 default:
-                    System.out.println("Nothing happend\n");
+                    b.nothingHappend();
             }
         }
         return tempRoom;
@@ -297,31 +297,27 @@ public class Controller {
 
                 if (choice.equalsIgnoreCase("pay")) {
                     p.setBank(-20);
-                    System.out.println("-20 Space dollars your Bank balance is now :" + p.getBank() + "$\n");
-                    System.out.println("You pay the robot and he looks satisfied");
-                    System.out.println("The Robot powers down.The robot should no longer be a problem");
+                    b.taxCollectorPay(p);
                     currentRoom.setTaxCollector(0);
                     interaction = false;
                 } else if (choice.equalsIgnoreCase("deny")) {
                     currentRoom.setGold(p.getBank());
                     p.setBank(-p.getBank());
                     p.setHp(-20);
-                    System.out.println("The Robot bitchslaps you, and steals all your money. you now have " + p.getHp() + "HP");
-                    System.out.println("The Robot powers down, and drops its money\nThe robot should no longer be a problem");
+                    b.taxCollectorDeny(p);
                     currentRoom.setTaxCollector(0);
                     interaction = false;
                 } else {
-                    System.out.println("Nothing happend");
+                    b.nothingHappend();
                 }
 
             } else if (choice.equalsIgnoreCase("help")) {
                 b.helpCommand();
             } else if (choice.equalsIgnoreCase("pay") || choice.equalsIgnoreCase("deny") && p.getBank() < 20) {
                 currentRoom.setGold(p.getBank());
-                System.out.println("You were unable to pay the Robot");
+             
                 p.setHp(-20);
-                System.out.println("The Robot bitchslaps you, you now have " + p.getHp() + "HP");
-                System.out.println("The Robot powers down, and drops its money\nThe robot should no longer be a problem");
+                b.taxCollectorCantPay(p);
                 currentRoom.setTaxCollector(0);
                 interaction = false;
             } else {
@@ -333,7 +329,7 @@ public class Controller {
     public void trap(){
         b.trapInteraction();
         p.setHp(-10);
-        System.out.println("You now have: "+p.getHp()+"HP");
+        b.getHp(p);
         currentRoom.setTrap(0);
         
     }

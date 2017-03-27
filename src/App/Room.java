@@ -92,7 +92,8 @@ public class Room {
         this.east = East;
     }
     public void availableDirections(){
-        System.out.println("From this room you can go : ");
+        Boundry b = new Boundry();
+        b.canGo();
         if(getNorth() != null)
             System.out.println(" North");
         
