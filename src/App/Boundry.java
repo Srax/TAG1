@@ -157,4 +157,15 @@ public class Boundry {
     public void canGo(){
         System.out.println("From this room you can go : ");
     }
+    void showBank(Player p) {
+        System.out.print("Your current Bank balance is:");
+        System.out.println(p.getBank() + "$");
+    }
+    void directionChoice(String action) {
+        System.out.println("\nYou went "+action+"\n");
+    }
+
+    void walkIntoWall() {
+        System.out.println("You are trying to walk into a wall\n");
+    }
 }

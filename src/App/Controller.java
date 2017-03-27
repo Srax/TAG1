@@ -11,6 +11,7 @@ public class Controller {
     CreateRoom cr = new CreateRoom();
     
     Room currentRoom;
+    Room tempRoom = currentRoom;
 
     //Creates the Rooms as individual objects
 //    Room spaceShip = new Room(0, desc.spaceShip());
@@ -151,9 +152,7 @@ public class Controller {
                 System.out.println(p.toString());
                 checkVictory = false;
             } else {
-                if(trap>0){
-                        trap();
-                    }
+                
                 currentRoom = playerAction(currentRoom);
 
             }
@@ -189,94 +188,46 @@ public class Controller {
      * @param currentRoom
      * @return
      */
-    public Room playerAction(Room currentRoom) {
+   public Room playerAction(Room currentRoom) {
         boolean takingAction = true;
-        Room tempRoom = currentRoom;
-        int taxCollector, trap;
-        while (takingAction) {
 
+
+        while (takingAction) {
             String action = b.chooseAction();
 
             switch (action) {
                 case "inspect":
-
                     System.out.println(currentRoom.toString());
-                    taxCollector = currentRoom.getTaxCollector();
-//                    trap = currentRoom.getTrap();
-                    if (taxCollector == 1) {
-                        taxRobot();
-//                    }else if(trap>0){
-//                        trap();
-                    }
-
+                    taxRobot();
                     currentRoom.availableDirections();
                     break;
-
                 case "search":
+                    trap(currentRoom);
                     collectGold();
                     break;
 
-                case "north":
-                    if (action.equalsIgnoreCase("north") && currentRoom.getNorth() != null) {
-                        System.out.println("\nYou went North\n");
-                        tempRoom = currentRoom.getNorth();
-                        takingAction = false;
-
-                    } else {
-                        System.out.println("You are trying to walk into a wall\n");
-
-                    }
+                case "north":   takingAction = north(action);
                     break;
 
-                case "south":
-                    if (action.equalsIgnoreCase("south") && currentRoom.getSouth() != null) {
-                        System.out.println("\nYou went South\n");
-                        tempRoom = currentRoom.getSouth();
-                        takingAction = false;
-
-                    } else {
-                        System.out.println("You are trying to walk into a wall\n");
-
-                    }
+                case "south":   takingAction = south(action);
                     break;
-                case "east":
-                    if (action.equalsIgnoreCase("east") && currentRoom.getEast() != null) {
-                        System.out.println("\nYou went East\n");
-                        tempRoom = currentRoom.getEast();
-
-                        takingAction = false;
-
-                    } else {
-                        System.out.println("You are trying to walk into a wall\n");
-
-                    }
+                
+                case "east":    takingAction = east(action);
                     break;
 
-                case "west":
-                    if (action.equalsIgnoreCase("west") && currentRoom.getWest() != null) {
-                        System.out.println("\nYou went West\n");
-                        tempRoom = currentRoom.getWest();
-                        takingAction = false;
-
-                    } else {
-                        System.out.println("You are trying to walk into a wall\n");
-
-                    }
+                case "west":    takingAction = west(action);
                     break;
-                case "help":
-                    b.helpCommand();
+                case "help":    b.helpCommand();
                     break;
 
-                case "bank":
-                    System.out.print("Your current Bank balance is:");
-                    System.out.println(p.getBank() + "$");
+                case "bank":    b.showBank(p);
                     break;
                 case "exit":
                     tempRoom = cr.spaceShip;
                     takingAction = false;
                     break;
                 default:
-                    b.nothingHappend();
+                    System.out.println("Nothing happend\n");
             }
         }
         return tempRoom;
@@ -288,7 +239,8 @@ public class Controller {
      * encounter based on player input.
      */
     public void taxRobot() {
-
+        int taxRobot = currentRoom.getTrap();
+        if (taxRobot>0){
         b.taxCollectorMeeting();
         boolean interaction = true;
         ////////////////////////////////////////////
@@ -326,12 +278,70 @@ public class Controller {
             }
             //////////////////////////////////////////////////
         }
+        }
     }
-    public void trap(){
+    public void trap(Room currentRoom){
+        int trap = currentRoom.getTrap();
+        if (trap>0){
         b.trapInteraction();
         p.setHp(-10);
         b.getHp(p);
-        currentRoom.setTrap(0);
+        currentRoom.setTrap(0);}
+        
+    }
+    public boolean north(String action){
+        boolean takingAction = true;
+        
+        if (action.equalsIgnoreCase("north") && currentRoom.getNorth() != null) {
+            b.directionChoice(action);
+            tempRoom = currentRoom.getNorth();
+            return takingAction = false;
+
+        } else {
+            b.walkIntoWall();
+            return takingAction = true;
+        }
+    }
+    public boolean south(String action){
+        boolean takingAction = true;
+        
+        if (action.equalsIgnoreCase("south") && currentRoom.getSouth() != null) {
+            b.directionChoice(action);
+            tempRoom = currentRoom.getSouth();
+            return takingAction = false;
+
+        } else {
+            b.walkIntoWall();
+            return takingAction = true;
+        }
+        
+    }
+    public boolean east(String action){
+        boolean takingAction = true;
+        
+        if (action.equalsIgnoreCase("east") && currentRoom.getEast() != null) {
+            b.directionChoice(action);
+            tempRoom = currentRoom.getEast();
+            return takingAction = false;
+
+        } else {
+            b.walkIntoWall();
+            return takingAction = true;
+        }
+        
+    }
+    public boolean west(String action){
+        boolean takingAction = true;
+        
+        if (action.equalsIgnoreCase("west") && currentRoom.getWest() != null) {
+            b.directionChoice(action);
+            tempRoom = currentRoom.getWest();
+            return takingAction = false;
+
+        } else {
+            b.walkIntoWall();
+            return takingAction = true;
+        }
         
     }
 }
