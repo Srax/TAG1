@@ -79,6 +79,8 @@ public class Boundry {
         choice = scan.next();
         return choice;
     }
+    
+
 /**
  * This Method lets the player know that he/she can preform an action in various situations
  * @return 
@@ -139,6 +141,13 @@ public class Boundry {
         System.out.println("You get hit by some rubble and lose 10 HP\n");
     }
     
+    
+    public void youFindGold(int gold) {
+        System.out.println("In this room you find " + gold + " space dollars");        
+    }
+    public void noGold() {
+        System.out.println("There are no space dollars in here.");
+    }
     void getHp(Player hp){
         System.out.println("You now have: "+hp.getHp()+"HP");
     }
