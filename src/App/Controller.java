@@ -169,7 +169,7 @@ public class Controller {
         String pickup = "";
 
         if (gold > 0) {
-            System.out.println("In this room you find " + gold + " Space dollars");
+            b.youFindGold(gold);
             pickup = b.takeGold();
             if (pickup.equalsIgnoreCase("yes")) {
                 p.setBank(gold);
@@ -177,7 +177,7 @@ public class Controller {
             }
 
         } else {
-            System.out.println("\nThere are no Space dollars in here");
+            b.noGold();
         }
     }
 
