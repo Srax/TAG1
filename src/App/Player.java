@@ -21,7 +21,7 @@ public class Player {
 
     @Override
     public String toString() {
-        return "Player " + name + "\n" + hp + "HP\n" + bank + " Space dollars";
+        return "Player: " + name + "\nHP: " + hp + "\nBank: " + bank + " Space dollars";
     }
     public String getName() {
         return name;

@@ -22,6 +22,7 @@ public class Controller {
         cr.roomFeatures();
         b.welcomeToGame();
         p.setName(b.createName());
+        
         currentRoom = cr.startRoom;
         
         System.out.println(currentRoom.toString());
@@ -31,14 +32,16 @@ public class Controller {
             if (currentRoom.equals(cr.finish)) {
                 System.out.println(cr.finish.getDescription());
                 System.out.println(p.toString());
+                //b.playSound(b.doorSound);
                 b.youWon();
                 checkVictory = false;
             } else if (currentRoom.equals(cr.spaceShip)) {
                 System.out.println(cr.spaceShip());
                 System.out.println(p.toString());
+                //b.playSound(b.doorSound);
                 checkVictory = false;
             } else {
-                
+                b.playSound(b.doorSound);
                 currentRoom = playerAction(currentRoom);
 
             }

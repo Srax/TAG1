@@ -17,6 +17,7 @@ public class Boundry {
     Scanner scan = new Scanner(System.in);
     
     public static String coinSound = System.getProperty("user.dir") + "\\src\\App\\coin.wav";
+    public static String doorSound = System.getProperty("user.dir") + "\\src\\App\\doorShortLoud.wav";
 
     /**
      *
@@ -75,6 +76,7 @@ public class Boundry {
         System.out.println("Welcome to Space Crawler!");
         System.out.println("Space Crawler is a text-based Dungeon-Crawler where the main objective of the game is to reach the command bridge.");
         System.out.println("You interact with the game by 'USER INPUT':\n - E.G: Write 'HELP' to recieve a list of commands.");
+        System.out.println("\nThis game supports sounds, so turn up the volume.");
         
         System.out.println("\n=== GAME : RUNNING ===");
     }
@@ -99,7 +101,7 @@ public class Boundry {
  */
     public String chooseAction() {
         String action = "";
-        System.out.println("Choose your action: ");
+        System.out.print("Choose your action: ");
         action = scan.next().toLowerCase();
         return action;
     }
