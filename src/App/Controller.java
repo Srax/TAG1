@@ -1,6 +1,5 @@
 package App;
 
-import java.util.Random;
 
 public class Controller {
 
@@ -59,6 +58,7 @@ public class Controller {
             pickup = b.takeGold();
             if (pickup.equalsIgnoreCase("yes")) {
                 p.setBank(gold);
+                b.playSound(b.coinSound);
                 currentRoom.setGold(0);
             }
 
