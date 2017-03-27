@@ -4,9 +4,7 @@ package App;
 public class Controller {
 
     Boundry b = new Boundry();
-    //Random r = new Random();
     Player p = new Player();
-    Description desc = new Description();
     CreateRoom cr = new CreateRoom();
     
     Room currentRoom;
@@ -16,6 +14,7 @@ public class Controller {
     /**
      * Manages game, movement form room, to next room, checks for winning room,
      * collection of gold.
+     * @throws java.lang.InterruptedException
      */
     public void game() throws InterruptedException {
         boolean checkVictory = true;
@@ -35,10 +34,11 @@ public class Controller {
                 b.youWon();
                 checkVictory = false;
             } else if (currentRoom.equals(cr.spaceShip)) {
-                System.out.println(desc.spaceShip());
+                System.out.println(cr.spaceShip());
                 System.out.println(p.toString());
                 checkVictory = false;
             } else {
+                
                 currentRoom = playerAction(currentRoom);
 
             }
