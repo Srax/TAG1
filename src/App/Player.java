@@ -6,6 +6,15 @@ public class Player {
     private String name;
     private int hp = 100;
     private int bank;
+    private int dmg = 10;
+
+    public int getDmg() {
+        return dmg;
+    }
+
+    public void setDmg(int dmg) {
+        this.dmg = dmg;
+    }
 
     public Player() {
     }
