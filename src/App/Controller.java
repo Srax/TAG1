@@ -161,7 +161,7 @@ public class Controller {
                 currentRoom.setTaxCollector(0);
                 interaction = false;
             } else {
-                System.out.println("Nothing happend");
+                b.nothingHappend();
             }
             //////////////////////////////////////////////////
         }
