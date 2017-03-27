@@ -168,4 +168,7 @@ public class Boundry {
     void walkIntoWall() {
         System.out.println("You are trying to walk into a wall\n");
     }
+    void youWon(){
+        System.out.println("You won !!!!!");
+    }
 }

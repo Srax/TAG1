@@ -33,7 +33,7 @@ public class Controller {
             if (currentRoom.equals(cr.finish)) {
                 System.out.println(cr.finish.getDescription());
                 System.out.println(p.toString());
-                System.out.println("You won");
+                b.youWon();
                 checkVictory = false;
             } else if (currentRoom.equals(cr.spaceShip)) {
                 System.out.println(desc.spaceShip());
