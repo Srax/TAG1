@@ -93,6 +93,7 @@ public class Controller {
                     break;
                 case "search":
                     trap();
+                    potion();
                     collectGold();
                     break;
 
@@ -233,5 +234,11 @@ public class Controller {
             return takingAction = true;
         }
         
+    }
+
+    private void potion() {
+       if(currentRoom.getPotion()>0){
+           
+       }
     }
 }

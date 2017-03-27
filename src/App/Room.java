@@ -11,6 +11,15 @@ public class Room {
     private Room east = null;
     private int taxCollector;
     private int trap;
+    private int potion;
+
+    public int getPotion() {
+        return potion;
+    }
+
+    public void setPotion(int potion) {      
+        this.potion = potion;
+    }
 
     public int getTrap() {
         return trap;
