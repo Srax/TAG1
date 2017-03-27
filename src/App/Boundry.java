@@ -183,7 +183,11 @@ public class Boundry {
         System.out.println("You are trying to walk into a wall\n");
     }
     void youWon(){
-        System.out.println("You won !!!!!");
+        System.out.println("*********************************");
+        System.out.println("*                               *");
+        System.out.println("*        You won !!!!!          *");
+        System.out.println("*                               *");
+        System.out.println("*********************************");
     }
     
     public void playSound(String s) {
