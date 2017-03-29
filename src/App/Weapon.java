@@ -49,10 +49,7 @@ public class Weapon implements Iitem{
     @Override
     public void amountOf(int amount) {
     }    
-    @Override
-    public void name(String name) {
-        this.name = name;
-    }
+  
 
     public int getAttackDMG() {
         return attackDMG;

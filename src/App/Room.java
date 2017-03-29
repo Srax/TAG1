@@ -1,5 +1,6 @@
-
 package App;
+
+import java.util.ArrayList;
 
 public class Room {
 
@@ -12,12 +13,37 @@ public class Room {
     private int taxCollector;
     private int trap;
     private int potion;
+    ArrayList<Iitem> loot = new ArrayList<>();
+
+    public void add(Iitem item) {
+        loot.add(item);
+    }
+
+    public void moveFromRoomToInventory(String item) {
+
+        System.out.println(loot.size());
+        for (int i = 0; i < loot.size(); i++) {
+            System.out.println(loot.get(i).getName());
+            if (loot.get(i).getName().equalsIgnoreCase(item)) {
+                
+                this.loot.remove(i);
+                showLoot();
+            }
+
+        }
+    }
+
+    public void showLoot() {
+        for (int i = 0; i < loot.size(); i++) {
+            System.out.println(loot.get(i));
+        }
+    }
 
     public int getPotion() {
         return potion;
     }
 
-    public void setPotion(int potion) {      
+    public void setPotion(int potion) {
         this.potion = potion;
     }
 
@@ -32,16 +58,15 @@ public class Room {
     public Room(String Description) {
         this.description = Description;
     }
-    
-    
+
     public int getTaxCollector() {
         return taxCollector;
     }
 
     public void setTaxCollector(int taxCollector) {
         this.taxCollector = taxCollector;
-        if(taxCollector>0){
-            this.setGold(0);        
+        if (taxCollector > 0) {
+            this.setGold(0);
         }
     }
 
@@ -100,26 +125,32 @@ public class Room {
     public void setEast(Room East) {
         this.east = East;
     }
-    public void availableDirections(){
+
+    public void availableDirections() {
         Boundry b = new Boundry();
         b.canGo();
-        if(getNorth() != null)
+        if (getNorth() != null) {
             System.out.println(" North");
-        
-        if(getSouth() != null)
+        }
+
+        if (getSouth() != null) {
             System.out.println(" South");
-        
-        if(getWest() != null)
+        }
+
+        if (getWest() != null) {
             System.out.println(" West");
-            
-        if(getEast() != null)
+        }
+
+        if (getEast() != null) {
             System.out.println(" East");
+        }
     }
+
     @Override
     public String toString() {
-        
-            return description;
-       
+
+        return description;
+
     }
 
 }

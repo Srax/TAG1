@@ -1,32 +1,29 @@
 package App;
 
-
 public class Controller {
 
     Boundry b = new Boundry();
     Player p = new Player();
     CreateRoom cr = new CreateRoom();
-    
+
     Room currentRoom;
     Room tempRoom = currentRoom;
-
 
     /**
      * Manages game, movement form room, to next room, checks for winning room,
      * collection of gold.
+     *
      * @throws java.lang.InterruptedException
      */
     public void game() throws InterruptedException {
-//        boolean checkVictory = true;
-        
 
+        boolean checkVictory = true;
+        cr.roomFeatures();
+        b.welcomeToGame();
+        //  p.setName(b.createName());
 
-//        cr.roomFeatures();
-//        b.welcomeToGame();
-//        p.setName(b.createName());
-//        
-//        currentRoom = cr.startRoom;
-//        
+        currentRoom = cr.startRoom;
+        pickUp();
 //        System.out.println(currentRoom.toString());
 //        Thread.sleep(500);
 //        while (checkVictory) {
@@ -49,7 +46,7 @@ public class Controller {
 //                
 //            }
 //        }
-//    }
+    }
 //
 //    /**
 //     * When the player choose to collect the money in the room, and modifies the
@@ -243,5 +240,16 @@ public class Controller {
 //       if(currentRoom.getPotion()>0){
 //           
 //       }
+
+    private void pickUp() {
+        currentRoom.showLoot();
+
+        String choice = b.chooseAction();
+        currentRoom.moveFromRoomToInventory(choice);
+
     }
 }
+
+   
+
+//}
