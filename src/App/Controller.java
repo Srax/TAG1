@@ -257,31 +257,26 @@ public class Controller {
 
         b.chooseItemToPick();
         String choice = b.chooseAction();
-        Iitem toMove = currentRoom.moveFromRoomToInventory(choice);
+        Iitem itemToMove = currentRoom.moveFromRoomToInventory(choice);
 
-        if (toMove == null) {
+        if (itemToMove == null) {
             b.nothingHappend();
 
         } else {
-            inv.add(toMove);
-            inv.show();
-            System.out.println("banan\n");
-            currentRoom.showLoot();
+            inv.add(itemToMove);
+            
         }
     }
 
     private void dropItem() {
         inv.show();
-        System.out.println("Debug abe test");
-        currentRoom.showLoot();
-        
-        
+        b.chooseItemToDrop();
         String choice = b.chooseAction();
-        Iitem toMove = inv.MoveFromInventoryToRoom(choice);
-            if(toMove == null){
+        Iitem itemToMove = inv.MoveFromInventoryToRoom(choice);
+            if(itemToMove == null){
             b.nothingHappend();
             }else{
-                tempRoom.add(toMove);
+                tempRoom.add(itemToMove);
                 
             }
             
