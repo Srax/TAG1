@@ -6,9 +6,6 @@ public class Controller {
     Boundry b = new Boundry();
     Player p = new Player();
     CreateRoom cr = new CreateRoom();
-    Inventory inv = new Inventory();
-    
-    Iitem w = new Weapon(20,"Gun");                     //TEST
     
     Room currentRoom;
     Room tempRoom = currentRoom;
@@ -21,10 +18,7 @@ public class Controller {
      */
     public void game() throws InterruptedException {
 //        boolean checkVictory = true;
-           inv.add(w);
-           
-           inv.show();
-
+        
 
 
 //        cr.roomFeatures();

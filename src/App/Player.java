@@ -8,7 +8,8 @@ public class Player {
     private int hp = 100;
     private int bank;
     private int dmg = 10;
- 
+    Inventory inv = new Inventory();
+    
     public int getDmg() {
         return dmg;
     }

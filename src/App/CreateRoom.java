@@ -42,10 +42,10 @@ public class CreateRoom {
     public void roomFeatures() {
         //Creates the Rooms as individual objects
         //Map and Room direction rules
+        
         startRoom.setNorth(room1);
         startRoom.setSouth(spaceShip);
         
-        room1.setPotion(1);
         room1.setWest(room2);
         room1.setEast(room3);
         room1.setSouth(startRoom);
