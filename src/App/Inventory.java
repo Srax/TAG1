@@ -13,10 +13,20 @@ import java.util.ArrayList;
  */
 public class Inventory {
     
+    
+    
     ArrayList inventory = new ArrayList<>();
+    
+    
     
     public void add(Iitem item){
         inventory.add(item);
+    }
+    
+    public void remove(Iitem item){
+        inventory.contains(item);
+        inventory.remove(item);
+        
     }
     
     public void show(){
@@ -24,5 +34,7 @@ public class Inventory {
                 System.out.println(inventory.get(i));
             }
     }
+  
+    
     
 }
