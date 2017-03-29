@@ -32,7 +32,7 @@ public class CreateRoom {
     Room room11 = new Room(r.nextInt(101), hallWay2());
     Room room12 = new Room(r.nextInt(101), hallWay2());
     Room room13 = new Room(r.nextInt(101), hallWay2());
-    Room room14 = new Room(r.nextInt(101), hallWay3());
+    Room room14 = new Room(r.nextInt(101), hallWay3()); 
     Room room15 = new Room(r.nextInt(51)+50, officersLounge());
     Room room16 = new Room(r.nextInt(101), hallWay3());
     Room room17 = new Room(r.nextInt(101), hallWay3());
