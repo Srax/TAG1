@@ -1,7 +1,6 @@
 
 package App;
 
-import java.util.ArrayList;
 
 public class Player {
         
@@ -9,23 +8,7 @@ public class Player {
     private int hp = 100;
     private int bank;
     private int dmg = 10;
-    ArrayList inventory = new ArrayList<>();
-
-    public void getInventory() {
-        for (int i = 0; i < inventory.size(); i++) {
-            System.out.println(inventory.get(i)+" ,");
-            
-        }
-
-       
-    }
-
-    public void setInventory() {
-        inventory.add(p);
-        this.inventory = inventory;
-    }
-   
-
+ 
     public int getDmg() {
         return dmg;
     }
