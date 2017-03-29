@@ -5,10 +5,8 @@ package App;
 public class Player {
         
     private String name;
-    private int hp = 100;
-    private int bank;
-    private int dmg = 10;
-    
+    private int hp = 100,dmg = 10,bank, def=0;
+        
     public int getDmg() {
         return dmg;
     }

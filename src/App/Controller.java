@@ -253,12 +253,6 @@ public class Controller {
 
     }
 
-    private void potion() {
-        if (currentRoom.getPotion() > 0) {
-
-        }
-    }
-
     private void pickUpItem() {
 
         b.chooseItemToPick();

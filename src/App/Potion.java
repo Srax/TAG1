@@ -11,16 +11,21 @@ package App;
  */
 public class Potion implements Iitem{
     String name, description;
-    private int hpRestore;
+    private int hpRestore, type;
     
-    Potion() {
-       
-    }    
 
-    public Potion(String name, String description, int hpRestore) {
+    public Potion(String name, String description, int type) {
         this.name = name;
         this.description = description;
-        this.hpRestore = hpRestore;
+                    
+        switch(type){
+            case 1: this.hpRestore = 10;
+                    break;
+            case 2: this.hpRestore = 20;
+                    break;
+            case 3: this.hpRestore = 30;
+                    break;
+             }
     }
 
     @Override
@@ -28,26 +33,21 @@ public class Potion implements Iitem{
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    @Override
+    public String getDescription() {
+        return description;
     }
- 
-    public int getAttackDMG() {
-        return hpRestore;
-    }
-
-    public void setAttackDMG(int defense) {
-        this.hpRestore = defense;
-    }
-
+    
     @Override
     public String toString() {
         return "Weapon " + " name: " + name + " HP restore amount: "+hpRestore + " Description: "+getDescription();
     }
 
-    @Override
-    public String getDescription() {
-        return description;
+    public int getHpRestore() {
+        return hpRestore;
     }
 
+    public void setHpRestore(int hpRestore) {
+        this.hpRestore = hpRestore;
+    }
 }
