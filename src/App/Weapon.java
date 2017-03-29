@@ -37,7 +37,7 @@ public class Weapon implements Iitem{
 
     @Override
     public String toString() {
-        return "Weapon " + " name= " + name + " attackDMG= "+attackDMG;
+        return "Weapon " + " name: " + name + " Attack Damage: "+attackDMG + " Description: "+getDescription();
     }
 
     @Override

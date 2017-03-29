@@ -102,7 +102,7 @@ public class Boundry {
     public String chooseAction() {
         String action = "";
         System.out.print("Choose your action: ");
-        action = scan.next();
+        action = scan.nextLine();
         return action;
     }
 /**
