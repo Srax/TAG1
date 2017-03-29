@@ -40,6 +40,8 @@ public class CreateRoom {
     Room room19 = new Room(r.nextInt(101), closet());
     Iitem w = new Weapon("Gun", "Awesome", 1);
     Iitem w2 = new Weapon("Monkey", "Awesome", 1);
+    Iitem d1 = new Armor("Monkey Suit", "Makes you look like a monkey", 10);
+    
     
 
     public void roomFeatures() {
@@ -50,6 +52,7 @@ public class CreateRoom {
         startRoom.setSouth(spaceShip);
         startRoom.loot.add(w);
         startRoom.loot.add(w2);
+        startRoom.loot.add(d1);
         
         
         room1.setWest(room2);
