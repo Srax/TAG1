@@ -23,12 +23,6 @@ public class Inventory {
         inventory.add(item);
     }
     
-    public void remove(Iitem item){
-        inventory.contains(item);
-        inventory.remove(item);
-        
-    }
-    
     public void show(){
         for (int i=0; i < inventory.size();i++) {
                 System.out.println(inventory.get(i));

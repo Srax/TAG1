@@ -8,7 +8,8 @@ package App;
 import java.util.Random;
 
 /**
- *
+ *This class creates rooms and items.
+ * Afterwards the class combines the rooms and distributes items, traps and monsters
  * @author thoma
  */
 public class CreateRoom {
@@ -38,10 +39,12 @@ public class CreateRoom {
     Room room17 = new Room(r.nextInt(101), hallWay3());
     Room room18 = new Room(r.nextInt(101), lab());
     Room room19 = new Room(r.nextInt(101), closet());
+    
+    
+    // Items that will be created
     Iitem w = new Weapon("Gun", "Awesome", 1);
     Iitem w2 = new Weapon("Monkey", "Awesome", 1);
     Iitem d1 = new Armor("Monkey Suit", "Makes you look like a monkey", 10);
-    
     
 
     public void roomFeatures() {

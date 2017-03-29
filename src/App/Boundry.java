@@ -223,4 +223,8 @@ public class Boundry {
         
     
     }
+    
+    void chooseItemToDrop(){
+        System.out.println("Which item do you wish to drop");
+    }
 }
