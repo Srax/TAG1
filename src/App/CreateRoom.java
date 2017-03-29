@@ -42,11 +42,12 @@ public class CreateRoom {
     
     
     // Items that will be created
-    Iitem w = new Weapon("Gun", "Awesome", 1);
-    Iitem w2 = new Weapon("Monkey", "Awesome", 1);
-    Iitem d1 = new Armor("Monkey Suit", "Makes you look like a monkey", 10);
-    Iitem p1 = new Potion("Super Potion", "Makes you feel nice",3);
-    Iitem p2 = new Potion("Super Potion", "Makes you feel not nearly so nice",2);
+    Iitem gun = new Weapon("Small Laserpistol", "PewPewPew", 5);
+    Iitem monkey= new Weapon("Monkey", "Bananas thrown by Pro banana tosser", 1);
+    Iitem  monkeySuit = new Armor("Monkey Suit", "Makes you look like a Space-monkey", 10);
+    Iitem p3 = new Potion("Super Stimpack", "Makes you feel nice",3);
+    Iitem p2 = new Potion("Medium Stimpack", "Makes you feel not nearly so nice",2);
+    Iitem p1 = new Potion("Small Stimpack", "Makes you feel not nearly so nice",2);
 
     public void roomFeatures() {
         //Creates the Rooms as individual objects
@@ -54,10 +55,12 @@ public class CreateRoom {
         
         startRoom.setNorth(room1);
         startRoom.setSouth(spaceShip);
-        startRoom.loot.add(w);
-        startRoom.loot.add(w2);
-        startRoom.loot.add(d1);
+        startRoom.loot.add(gun);
+        startRoom.loot.add(monkey);
+        startRoom.loot.add(monkeySuit);
         startRoom.loot.add(p1);
+        startRoom.loot.add(p2);
+        startRoom.loot.add(p3);
         
         room1.setWest(room2);
         room1.setEast(room3);

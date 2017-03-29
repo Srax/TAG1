@@ -40,7 +40,7 @@ public class Potion implements Iitem{
     
     @Override
     public String toString() {
-        return "Weapon " + " name: " + name + " HP restore amount: "+hpRestore + " Description: "+getDescription();
+        return "Potion >" +"\""+name+"\"" + "Restores "+hpRestore+"HP " + "Description: \""+getDescription()+"\"";
     }
 
     public int getHpRestore() {

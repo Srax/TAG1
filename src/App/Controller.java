@@ -117,6 +117,8 @@ public class Controller {
                     tempRoom = cr.spaceShip;
                     takingAction = false;
                     break;
+                case "inventory" : inv.show();
+                    break;
                 default:
                     b.nothingHappend();
                     break;

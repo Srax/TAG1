@@ -42,7 +42,7 @@ public class Armor implements Iitem{
 
     @Override
     public String toString() {
-        return "Weapon " + " name: " + name + " Defense: "+defense + " Description: "+getDescription();
+        return "Armor > " + "\""+name+"\"" + " Defense +"+defense + " Description: \""+getDescription()+"\"";
     }
 
     @Override

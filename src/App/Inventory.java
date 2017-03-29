@@ -25,7 +25,7 @@ public class Inventory {
     
     public void show(){
         for (int i=0; i < inventory.size();i++) {
-                System.out.println(inventory.get(i));
+                System.out.print(inventory.get(i)+"\n");
             }
     }
       public Iitem MoveFromInventoryToRoom(String item){
