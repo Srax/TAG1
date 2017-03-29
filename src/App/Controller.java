@@ -54,7 +54,7 @@ public class Controller {
      */
     public void collectGold() {
         int gold = currentRoom.getGold();
-        String pickup = "";
+        String pickup;
 
         if (gold > 0) {
             b.youFindGold(gold);
@@ -128,8 +128,9 @@ public class Controller {
                     tempRoom = cr.spaceShip;
                     takingAction = false;
                     break;
-                default:
+                default :
                     b.nothingHappend();
+                    break;
             }
         }
         return tempRoom;
