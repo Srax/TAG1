@@ -21,8 +21,8 @@ public class Controller {
         boolean checkVictory = true;
         cr.roomFeatures();
         b.welcomeToGame();
-//TEST        //  p.setName(b.createName());
 
+//UDKOMMENTERET TIL DEBUG        //  p.setName(b.createName());
         currentRoom = cr.startRoom;
 
         System.out.println(currentRoom.toString());
@@ -52,21 +52,11 @@ public class Controller {
      * When the player choose to collect the money in the room, and modifies the
      * player gold entity
      */
-    public void collectGold() {
+    public void checkGold() {
         int gold = currentRoom.getGold();
-        String pickup;
-
         if (gold > 0) {
             b.youFindGold(gold);
-            pickup = b.takeGold();
-            if (pickup.equalsIgnoreCase("yes")) {
-                p.setBank(gold);
-                b.playSound(b.coinSound);
-                currentRoom.setGold(0);
-            }
 
-        } else {
-            b.noGold();
         }
     }
 
@@ -93,7 +83,7 @@ public class Controller {
                 case "search":
                     trap();
                     currentRoom.showLoot();
-                    collectGold();
+                    checkGold();
                     break;
 
                 case "north":
@@ -123,12 +113,11 @@ public class Controller {
                 case "bank":
                     b.showBank(p);
                     break;
-
                 case "exit":
                     tempRoom = cr.spaceShip;
                     takingAction = false;
                     break;
-                default :
+                default:
                     b.nothingHappend();
                     break;
             }
@@ -258,14 +247,25 @@ public class Controller {
 
         b.chooseItemToPick();
         String choice = b.chooseAction();
-        Iitem itemToMove = currentRoom.moveFromRoomToInventory(choice);
 
-        if (itemToMove == null) {
-            b.nothingHappend();
+        if (choice.equalsIgnoreCase("gold")) {
+            int gold = currentRoom.getGold();
 
+            p.setBank(gold);
+            b.playSound(b.coinSound);
+            currentRoom.setGold(0);
+            //}
         } else {
-            inv.add(itemToMove);
-            
+
+            Iitem itemToMove = currentRoom.moveFromRoomToInventory(choice);
+
+            if (itemToMove == null) {
+                b.nothingHappend();
+
+            } else {
+                inv.add(itemToMove);
+
+            }
         }
     }
 
@@ -274,13 +274,12 @@ public class Controller {
         b.chooseItemToDrop();
         String choice = b.chooseAction();
         Iitem itemToMove = inv.MoveFromInventoryToRoom(choice);
-            if(itemToMove == null){
+        if (itemToMove == null) {
             b.nothingHappend();
-            }else{
-                tempRoom.add(itemToMove);
-                
-            }
-            
-    
+        } else {
+            tempRoom.add(itemToMove);
+
+        }
+
     }
 }

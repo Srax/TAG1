@@ -45,7 +45,8 @@ public class CreateRoom {
     Iitem w = new Weapon("Gun", "Awesome", 1);
     Iitem w2 = new Weapon("Monkey", "Awesome", 1);
     Iitem d1 = new Armor("Monkey Suit", "Makes you look like a monkey", 10);
-    
+    Iitem p1 = new Potion("Super Potion", "Makes you feel nice",3);
+    Iitem p2 = new Potion("Super Potion", "Makes you feel not nearly so nice",2);
 
     public void roomFeatures() {
         //Creates the Rooms as individual objects
@@ -56,11 +57,12 @@ public class CreateRoom {
         startRoom.loot.add(w);
         startRoom.loot.add(w2);
         startRoom.loot.add(d1);
-        
+        startRoom.loot.add(p1);
         
         room1.setWest(room2);
         room1.setEast(room3);
         room1.setSouth(startRoom);
+        room1.loot.add(p2);
         
         
         room2.setEast(room1);

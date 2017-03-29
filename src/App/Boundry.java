@@ -87,7 +87,7 @@ public class Boundry {
      * @return 
      */
     public String takeGold() {
-        String choice = "";
+        String choice;
         System.out.println("\nDo you wish to pick up the gold ?");
         System.out.println("YES/NO");
         choice = scan.next();
@@ -100,7 +100,7 @@ public class Boundry {
  * @return 
  */
     public String chooseAction() {
-        String action = "";
+        String action;
         System.out.print("Choose your action: ");
         action = scan.nextLine();
         return action;
