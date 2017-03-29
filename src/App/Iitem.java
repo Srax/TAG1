@@ -7,7 +7,8 @@ package App;
 public interface Iitem {
     
     public String getName();
-    public void description(String desc);
-    public void amountOf(int amount);
+    public String getDescription();
+    @Override
+    public String toString();
     
 }

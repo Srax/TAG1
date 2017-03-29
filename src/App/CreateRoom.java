@@ -38,8 +38,9 @@ public class CreateRoom {
     Room room17 = new Room(r.nextInt(101), hallWay3());
     Room room18 = new Room(r.nextInt(101), lab());
     Room room19 = new Room(r.nextInt(101), closet());
-     Iitem w = new Weapon("Gun", "Awesome", 1, 1);
-      
+    Iitem w = new Weapon("Gun", "Awesome", 1);
+    Iitem w2 = new Weapon("Monkey", "Awesome", 1);
+    
 
     public void roomFeatures() {
         //Creates the Rooms as individual objects
@@ -48,6 +49,8 @@ public class CreateRoom {
         startRoom.setNorth(room1);
         startRoom.setSouth(spaceShip);
         startRoom.loot.add(w);
+        startRoom.loot.add(w2);
+        
         
         room1.setWest(room2);
         room1.setEast(room3);

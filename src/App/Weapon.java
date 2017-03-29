@@ -5,20 +5,20 @@ package App;
  * @author Stanislav
  */
 public class Weapon implements Iitem{
-    String name, descrition;
-    private int attackDMG, amountOf;
+    String name, description;
+    private int attackDMG;
     
     Weapon() {
        
     }    
 
-    public Weapon(String name, String descrition, int attackDMG, int amountOf) {
+    public Weapon(String name, String description, int attackDMG) {
         this.name = name;
-        this.descrition = descrition;
+        this.description = description;
         this.attackDMG = attackDMG;
-        this.amountOf = amountOf;
     }
 
+    @Override
     public String getName() {
         return name;
     }
@@ -26,31 +26,7 @@ public class Weapon implements Iitem{
     public void setName(String name) {
         this.name = name;
     }
-
-    public String getDescrition() {
-        return descrition;
-    }
-
-    public void setDescrition(String descrition) {
-        this.descrition = descrition;
-    }
-
-    public int getAmountOf() {
-        return amountOf;
-    }
-
-    public void setAmountOf(int amountOf) {
-        this.amountOf = amountOf;
-    }
-    @Override
-    public void description(String desc) {
-    }
-
-    @Override
-    public void amountOf(int amount) {
-    }    
-  
-
+ 
     public int getAttackDMG() {
         return attackDMG;
     }
@@ -61,7 +37,12 @@ public class Weapon implements Iitem{
 
     @Override
     public String toString() {
-        return "Weapon " + "name= " + name + "attackDMG= "+attackDMG+"Quantity= "+amountOf;
+        return "Weapon " + " name= " + name + " attackDMG= "+attackDMG;
+    }
+
+    @Override
+    public String getDescription() {
+        return description;
     }
 
 }
