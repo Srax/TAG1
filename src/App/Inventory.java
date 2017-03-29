@@ -15,7 +15,7 @@ public class Inventory {
     
     
     
-    ArrayList inventory = new ArrayList<>();
+    ArrayList<Iitem> inventory = new ArrayList<>();
     
     
     
@@ -33,6 +33,19 @@ public class Inventory {
         for (int i=0; i < inventory.size();i++) {
                 System.out.println(inventory.get(i));
             }
+    }
+      public Iitem MoveFromInventoryToRoom(String item){
+        Iitem temp;
+        for (int i = 0; i < inventory.size(); i++) {
+            if (inventory.get(i).getName().equalsIgnoreCase(item)) {
+                temp = inventory.get(i);
+                this.inventory.remove(i);
+                
+            return temp;
+        }
+    }return null;
+        
+    
     }
   
     

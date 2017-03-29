@@ -6,7 +6,7 @@ public class Controller {
     Player p = new Player();
     CreateRoom cr = new CreateRoom();
     Inventory inv = new Inventory();
-    
+
     Room currentRoom;
     Room tempRoom = currentRoom;
 
@@ -43,8 +43,7 @@ public class Controller {
             } else {
                 b.playSound(b.doorSound);
                 currentRoom = playerAction(currentRoom);
-                
-                
+
             }
         }
     }
@@ -79,9 +78,8 @@ public class Controller {
      * @param currentRoom
      * @return
      */
-   public Room playerAction(Room currentRoom) {
+    public Room playerAction(Room currentRoom) {
         boolean takingAction = true;
-
 
         while (takingAction) {
             String action = b.chooseAction();
@@ -94,28 +92,38 @@ public class Controller {
                     break;
                 case "search":
                     trap();
-                    potion();
+                    currentRoom.showLoot();
                     collectGold();
                     break;
 
-                case "north":   takingAction = north(action);
+                case "north":
+                    takingAction = north(action);
                     break;
 
-                case "south":   takingAction = south(action);
-                    break;
-                
-                case "east":    takingAction = east(action);
+                case "south":
+                    takingAction = south(action);
                     break;
 
-                case "west":    takingAction = west(action);
-                    break;
-                case "help":    b.helpCommand();
+                case "east":
+                    takingAction = east(action);
                     break;
 
-                case "bank":    b.showBank(p);
+                case "west":
+                    takingAction = west(action);
                     break;
-                case "pickup":    pickUp();
+                case "help":
+                    b.helpCommand();
                     break;
+                case "pickup":
+                    pickUpItem();
+                    break;
+                case "drop":
+                    dropItem();
+                    break;
+                case "bank":
+                    b.showBank(p);
+                    break;
+
                 case "exit":
                     tempRoom = cr.spaceShip;
                     takingAction = false;
@@ -134,58 +142,61 @@ public class Controller {
      */
     public void taxRobot() {
         int taxRobot = currentRoom.getTaxCollector();
-        if (taxRobot>0){
-        b.taxCollectorMeeting();
-        boolean interaction = true;
-        ////////////////////////////////////////////
-        while (interaction) {
-            String choice = b.chooseAction();
-            if (p.getBank() > 20) {
+        if (taxRobot > 0) {
+            b.taxCollectorMeeting();
+            boolean interaction = true;
+            ////////////////////////////////////////////
+            while (interaction) {
+                String choice = b.chooseAction();
+                if (p.getBank() > 20) {
 
-                if (choice.equalsIgnoreCase("pay")) {
-                    p.setBank(-20);
-                    b.taxCollectorPay(p);
-                    currentRoom.setTaxCollector(0);
-                    interaction = false;
-                } else if (choice.equalsIgnoreCase("deny")) {
+                    if (choice.equalsIgnoreCase("pay")) {
+                        p.setBank(-20);
+                        b.taxCollectorPay(p);
+                        currentRoom.setTaxCollector(0);
+                        interaction = false;
+                    } else if (choice.equalsIgnoreCase("deny")) {
+                        currentRoom.setGold(p.getBank());
+                        p.setBank(-p.getBank());
+                        p.setHp(-20);
+                        b.taxCollectorDeny(p);
+                        currentRoom.setTaxCollector(0);
+                        interaction = false;
+                    } else {
+                        b.nothingHappend();
+                    }
+
+                } else if (choice.equalsIgnoreCase("help")) {
+                    b.helpCommand();
+                } else if (choice.equalsIgnoreCase("pay") || choice.equalsIgnoreCase("deny") && p.getBank() < 20) {
                     currentRoom.setGold(p.getBank());
-                    p.setBank(-p.getBank());
+
                     p.setHp(-20);
-                    b.taxCollectorDeny(p);
+                    b.taxCollectorCantPay(p);
                     currentRoom.setTaxCollector(0);
                     interaction = false;
                 } else {
                     b.nothingHappend();
                 }
-
-            } else if (choice.equalsIgnoreCase("help")) {
-                b.helpCommand();
-            } else if (choice.equalsIgnoreCase("pay") || choice.equalsIgnoreCase("deny") && p.getBank() < 20) {
-                currentRoom.setGold(p.getBank());
-             
-                p.setHp(-20);
-                b.taxCollectorCantPay(p);
-                currentRoom.setTaxCollector(0);
-                interaction = false;
-            } else {
-                b.nothingHappend();
+                //////////////////////////////////////////////////
             }
-            //////////////////////////////////////////////////
-        }
         }
     }
-    public void trap(){
+
+    public void trap() {
         int trap = currentRoom.getTrap();
-        if (trap>0){
-        b.trapInteraction();
-        p.setHp(-10);
-        b.getHp(p);
-        currentRoom.setTrap(0);}
-        
+        if (trap > 0) {
+            b.trapInteraction();
+            p.setHp(-10);
+            b.getHp(p);
+            currentRoom.setTrap(0);
+        }
+
     }
-    public boolean north(String action){
+
+    public boolean north(String action) {
         boolean takingAction = true;
-        
+
         if (action.equalsIgnoreCase("north") && currentRoom.getNorth() != null) {
             b.directionChoice(action);
             tempRoom = currentRoom.getNorth();
@@ -196,9 +207,10 @@ public class Controller {
             return takingAction = true;
         }
     }
-    public boolean south(String action){
+
+    public boolean south(String action) {
         boolean takingAction = true;
-        
+
         if (action.equalsIgnoreCase("south") && currentRoom.getSouth() != null) {
             b.directionChoice(action);
             tempRoom = currentRoom.getSouth();
@@ -208,11 +220,12 @@ public class Controller {
             b.walkIntoWall();
             return takingAction = true;
         }
-        
+
     }
-    public boolean east(String action){
+
+    public boolean east(String action) {
         boolean takingAction = true;
-        
+
         if (action.equalsIgnoreCase("east") && currentRoom.getEast() != null) {
             b.directionChoice(action);
             tempRoom = currentRoom.getEast();
@@ -222,11 +235,12 @@ public class Controller {
             b.walkIntoWall();
             return takingAction = true;
         }
-        
+
     }
-    public boolean west(String action){
+
+    public boolean west(String action) {
         boolean takingAction = true;
-        
+
         if (action.equalsIgnoreCase("west") && currentRoom.getWest() != null) {
             b.directionChoice(action);
             tempRoom = currentRoom.getWest();
@@ -236,31 +250,47 @@ public class Controller {
             b.walkIntoWall();
             return takingAction = true;
         }
-        
+
     }
 
     private void potion() {
-       if(currentRoom.getPotion()>0){
-           
-       }
+        if (currentRoom.getPotion() > 0) {
+
+        }
     }
-    
-    private void pickUp() {
+
+    private void pickUpItem() {
+
+        b.chooseItemToPick();
+        String choice = b.chooseAction();
+        Iitem toMove = currentRoom.moveFromRoomToInventory(choice);
+
+        if (toMove == null) {
+            b.nothingHappend();
+
+        } else {
+            inv.add(toMove);
+            inv.show();
+            System.out.println("banan\n");
+            currentRoom.showLoot();
+        }
+    }
+
+    private void dropItem() {
         inv.show();
-        System.out.println("abe\n");
+        System.out.println("Debug abe test");
         currentRoom.showLoot();
+        
         
         String choice = b.chooseAction();
-        Iitem toMove =currentRoom.moveFromRoomToInventory(choice);
-        inv.add(toMove);
-        inv.show();
-        System.out.println("banan\n");
-        currentRoom.showLoot();
-        
+        Iitem toMove = inv.MoveFromInventoryToRoom(choice);
+            if(toMove == null){
+            b.nothingHappend();
+            }else{
+                tempRoom.add(toMove);
+                
+            }
+            
+    
     }
 }
-
-
-   
-
-

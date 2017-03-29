@@ -22,6 +22,7 @@ public class Room {
     public Iitem moveFromRoomToInventory(String item) {
         Iitem temp;
         System.out.println(loot.size());
+        
         for (int i = 0; i < loot.size(); i++) {
             System.out.println(loot.get(i).getName());
             if (loot.get(i).getName().equalsIgnoreCase(item)) {
@@ -32,6 +33,8 @@ public class Room {
         }
     }return null;
     }
+    
+  
 
     public void showLoot() {
         for (int i = 0; i < loot.size(); i++) {
