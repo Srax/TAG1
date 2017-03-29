@@ -54,21 +54,23 @@ public class Controller {
      */
     public void collectGold() {
         int gold = currentRoom.getGold();
-        String pickup = "";
-
-        if (gold > 0) {
-            b.youFindGold(gold);
-            pickup = b.takeGold();
-            if (pickup.equalsIgnoreCase("yes")) {
-                p.setBank(gold);
-                b.playSound(b.coinSound);
-                currentRoom.setGold(0);
-            }
-
-        } else {
-            b.noGold();
+        String takeGold = b.chooseAction();
+        if (takeGold.equalsIgnoreCase("pickup")) {
+            p.setBank(gold);
+            b.playSound(b.coinSound);
+            currentRoom.setGold(0);
         }
+
     }
+
+        public void checkGold(){
+        int gold = currentRoom.getGold();
+            if (gold > 0) {
+              b.youFindGold(gold);
+              
+
+        }
+        }
 
     /**
      * Manages the players action input. The method is set up to print out all
@@ -93,7 +95,7 @@ public class Controller {
                 case "search":
                     trap();
                     currentRoom.showLoot();
-                    collectGold();
+                    checkGold();
                     break;
 
                 case "north":
@@ -122,6 +124,9 @@ public class Controller {
                     break;
                 case "bank":
                     b.showBank(p);
+                    break;
+                case "gold":
+                    collectGold();
                     break;
 
                 case "exit":
@@ -264,7 +269,7 @@ public class Controller {
 
         } else {
             inv.add(itemToMove);
-            
+
         }
     }
 
@@ -273,13 +278,12 @@ public class Controller {
         b.chooseItemToDrop();
         String choice = b.chooseAction();
         Iitem itemToMove = inv.MoveFromInventoryToRoom(choice);
-            if(itemToMove == null){
+        if (itemToMove == null) {
             b.nothingHappend();
-            }else{
-                tempRoom.add(itemToMove);
-                
-            }
-            
-    
+        } else {
+            tempRoom.add(itemToMove);
+
+        }
+
     }
 }
