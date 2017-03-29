@@ -217,4 +217,10 @@ public class Boundry {
         } catch (UnsupportedAudioFileException e) {
         }
     }
+
+    void chooseItemToPick() {
+        System.out.println("Which item do you wish to pick up?");
+        
+    
+    }
 }
