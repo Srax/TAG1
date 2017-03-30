@@ -23,6 +23,7 @@ public class Controller {
     public void game() throws InterruptedException {
 
         boolean checkVictory = true;
+        
         cr.roomFeatures();
         b.welcomeToGame();
 
@@ -34,22 +35,10 @@ public class Controller {
         while (checkVictory) {
             Thread.sleep(500);
             if (currentRoom.equals(cr.finish)) {
-                System.out.println(cr.finish.getDescription());
-                System.out.println(p.toString());
-                
-                b.youWon();
-                
-                // Adds highscore
-                hm.addScore(p.getName(), p.getBank(), p.getHp());
-
-                System.out.print(hm.getHighscoreString());
+                b.youWon(currentRoom, p);
                 checkVictory = false;
             } else if (currentRoom.equals(cr.spaceShip)) {
-                System.out.println(cr.spaceShip());
-                System.out.println(p.toString());
-                //b.playSound(b.doorSound);
-                
-                hm.addScore(p.getName(), p.getBank(), p.getHp());
+                b.youQuit(currentRoom, p);
                 checkVictory = false;
             } else {
                 b.playSound(b.doorSound);
@@ -79,7 +68,7 @@ public class Controller {
      * place the player in.
      *
      * @param currentRoom
-     * @return
+     * @return tempRoom
      */
     public Room playerAction(Room currentRoom) {
         boolean takingAction = true;
@@ -118,6 +107,7 @@ public class Controller {
                     b.helpCommand();
                     break;
                 case "pickup":
+                case "pick up":
                     pickUpItem();
                     break;
                 case "drop":
@@ -151,7 +141,7 @@ public class Controller {
         if (taxRobot > 0) {
             b.taxCollectorMeeting();
             boolean interaction = true;
-            ////////////////////////////////////////////
+        
             while (interaction) {
                 String choice = b.chooseAction();
                 if (p.getBank() > 20) {
@@ -184,11 +174,12 @@ public class Controller {
                 } else {
                     b.nothingHappend();
                 }
-                //////////////////////////////////////////////////
             }
         }
     }
-
+/**
+ * Runs the trap encounter.
+ */
     public void trap() {
         int trap = currentRoom.getTrap();
         if (trap > 0) {
@@ -227,13 +218,16 @@ public class Controller {
 
         }
     }
-    
+    /**
+     * This method allows the player to pick up an object from the rooms loot 
+     * array and moves it to the players inventory array
+     */
     private void pickUpItem() {
 
         b.chooseItemToPick();
         String choice = b.chooseAction();
 
-        if (choice.equalsIgnoreCase("gold")) {
+        if (choice.equalsIgnoreCase("money")) {
             int gold = currentRoom.getGold();
 
             p.setBank(gold);
@@ -253,7 +247,10 @@ public class Controller {
             }
         }
     }
-
+/**
+ * This method allows the player to drop an object and and move it from the 
+ * players inventory array into the currentRooms loot array.
+ */
     private void dropItem() {
         inv.show();
         b.chooseItemToDrop();
