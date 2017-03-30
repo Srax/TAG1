@@ -83,11 +83,12 @@ public class Controller {
      */
     public Room playerAction(Room currentRoom) {
         boolean takingAction = true;
-
+        
         while (takingAction) {
-            String action = b.chooseAction();
+        String action = b.chooseAction();
 
             switch (action) {
+                
                 case "inspect":
                     System.out.println(currentRoom.toString());
                     taxRobot();
