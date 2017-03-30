@@ -1,5 +1,6 @@
 package App;
 
+import com.sun.crypto.provider.HmacMD5;
 
 public class Controller {
 
@@ -25,7 +26,6 @@ public class Controller {
         
         cr.roomFeatures();
         b.welcomeToGame();
-
         p.setName(b.createName());
         currentRoom = cr.startRoom;
 
@@ -35,9 +35,11 @@ public class Controller {
             Thread.sleep(500);
             if (currentRoom.equals(cr.finish)) {
                 b.youWon(currentRoom, p);
+                hm.addScore(p.getName(), p.getBank(), p.getHp());
                 checkVictory = false;
             } else if (currentRoom.equals(cr.spaceShip)) {
                 b.youQuit(currentRoom, p);
+                hm.addScore(p.getName(), p.getBank(), p.getHp());
                 checkVictory = false;
             } else {
                 b.playSound(b.doorSound);

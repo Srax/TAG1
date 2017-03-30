@@ -14,8 +14,8 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class Boundry {
 
-    Scanner scan = new Scanner(System.in);
-
+    Scanner scan = new Scanner(System.in); //used for actions
+    Scanner scan2 = new Scanner(System.in); //Used in creatName
     public static String coinSound = System.getProperty("user.dir") + "\\src\\App\\coin.wav";
     public static String doorSound = System.getProperty("user.dir") + "\\src\\App\\doorShortLoud.wav";
 
@@ -33,7 +33,7 @@ public class Boundry {
         while (donePickingName == false) {
             System.out.println("\nWHAT IS YOUR NAME?");
             System.out.print("NAME: ");
-            inputName = scan.next();
+            inputName = scan2.next();
 
             if (inputName.length() <= 12) {
                 System.out.println("You chose " + "'" + inputName + "'" + " as your name.\n");
@@ -43,7 +43,7 @@ public class Boundry {
                 System.out.print("ACTION: ");
 
                 String actionInput;
-                actionInput = scan.next().substring(0, 1);
+                actionInput = scan2.next().substring(0, 1);
 
                 if (actionInput.equalsIgnoreCase("n")) {
                     donePickingName = false;
