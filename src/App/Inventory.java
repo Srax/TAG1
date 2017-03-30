@@ -24,6 +24,7 @@ public class Inventory {
     }
     
     public void show(){
+        System.out.println("\n------------INVENTORY------------");
         for (int i=0; i < inventory.size();i++) {
                 System.out.print(inventory.get(i)+"\n");
             }
