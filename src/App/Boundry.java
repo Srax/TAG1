@@ -84,7 +84,7 @@ public class Boundry {
     /**
      * When encountering gold in the game, takeGold will display the following
      * statement.
-     * @return 
+     * @return choice
      */
     public String takeGold() {
         String choice;

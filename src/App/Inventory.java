@@ -30,6 +30,7 @@ public class Inventory {
      * Prints out the inventory array.
      */
     public void show(){
+        System.out.println("\n------------INVENTORY------------");
         for (int i=0; i < inventory.size();i++) {
                 System.out.print(inventory.get(i)+"\n");
             }
@@ -39,7 +40,7 @@ public class Inventory {
      * When given objects name as a string, this method moves the targeted object
      * from the room loot array to the players inventory array
      * @param item
-     * @return 
+     * @return temp
      */
       public Iitem MoveFromInventoryToRoom(String item){
         Iitem temp;

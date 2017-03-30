@@ -19,10 +19,12 @@ public class Controller {
     public void game() throws InterruptedException {
 
         boolean checkVictory = true;
+        
         cr.roomFeatures();
         b.welcomeToGame();
 
-//UDKOMMENTERET TIL DEBUG        //  p.setName(b.createName());
+//UDKOMMENTERET TIL DEBUG        
+        p.setName(b.createName());
         currentRoom = cr.startRoom;
 
         System.out.println(currentRoom.toString());
@@ -61,7 +63,7 @@ public class Controller {
      * place the player in.
      *
      * @param currentRoom
-     * @return
+     * @return tempRoom
      */
     public Room playerAction(Room currentRoom) {
         boolean takingAction = true;
@@ -82,19 +84,19 @@ public class Controller {
                     break;
 
                 case "north":
-                    takingAction = north(action);
+                    takingAction = directionChoice(action);
                     break;
 
                 case "south":
-                    takingAction = south(action);
+                    takingAction = directionChoice(action);
                     break;
 
                 case "east":
-                    takingAction = east(action);
+                    takingAction = directionChoice(action);
                     break;
 
                 case "west":
-                    takingAction = west(action);
+                    takingAction = directionChoice(action);
                     break;
                 case "help":
                     b.helpCommand();
@@ -170,7 +172,9 @@ public class Controller {
             }
         }
     }
-
+/**
+ * Runs the trap encounter.
+ */
     public void trap() {
         int trap = currentRoom.getTrap();
         if (trap > 0) {
@@ -182,68 +186,37 @@ public class Controller {
 
     }
 
-    public boolean north(String action) {
+    public boolean directionChoice(String action) {
         boolean takingAction = true;
+        Room goToRoom = null;
 
-        if (action.equalsIgnoreCase("north") && currentRoom.getNorth() != null) {
-            b.directionChoice(action);
-            tempRoom = currentRoom.getNorth();
-            return takingAction = false;
-
-        } else {
+        switch (action) {
+            case "north":
+                goToRoom = currentRoom.getNorth();
+                break;
+            case "south":
+                goToRoom = currentRoom.getSouth();
+                break;
+            case "east":
+                goToRoom = currentRoom.getEast();
+                break;
+            case "west":
+                goToRoom = currentRoom.getWest();
+                break;
+        }
+        if (goToRoom == null) {
             b.walkIntoWall();
             return takingAction = true;
-        }
-    }
-
-    public boolean south(String action) {
-        boolean takingAction = true;
-
-        if (action.equalsIgnoreCase("south") && currentRoom.getSouth() != null) {
-            b.directionChoice(action);
-            tempRoom = currentRoom.getSouth();
+        } else {
+            tempRoom = goToRoom;
             return takingAction = false;
 
-        } else {
-            b.walkIntoWall();
-            return takingAction = true;
         }
-
     }
-
-    public boolean east(String action) {
-        boolean takingAction = true;
-
-        if (action.equalsIgnoreCase("east") && currentRoom.getEast() != null) {
-            b.directionChoice(action);
-            tempRoom = currentRoom.getEast();
-            return takingAction = false;
-
-        } else {
-            b.walkIntoWall();
-            return takingAction = true;
-        }
-
-    }
-
-    public boolean west(String action) {
-        boolean takingAction = true;
-
-        if (action.equalsIgnoreCase("west") && currentRoom.getWest() != null) {
-            b.directionChoice(action);
-            tempRoom = currentRoom.getWest();
-            return takingAction = false;
-
-        } else {
-            b.walkIntoWall();
-            return takingAction = true;
-        }
-
-    }
-/**
- * This method allows the player to pick up an object and move it from the
- * currentRooms loot array, and the place it in the players inventory array.
- */
+    /**
+     * This method allows the player to pick up an object from the rooms loot 
+     * array and moves it to the players inventory array
+     */
     private void pickUpItem() {
 
         b.chooseItemToPick();
