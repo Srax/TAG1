@@ -43,12 +43,12 @@ public class CreateRoom {
     
     // Items that will be created weapons
     Iitem gun = new Weapon("Small Laserpistol", "PewPewPew", 3);   
-    Iitem laserBlade = new Weapon("Laser blade", "This can be used too all kinds of thinks even making food", 3);
-    Iitem darlekRifle = new Weapon("Darlek Rifle", "This Rifle is build from a Darlek's laser shooter", 7);
+    Iitem laserBlade = new Weapon("Laser blade", "This can be used too all kinds of thinks even making food", 4);
+    Iitem darlekRifle = new Weapon("Darlek Rifle", "This Rifle is build from a Darlek's laser shooter", 14);
     Iitem partikelRemovelMop = new Weapon("Partikel removel mop", "Just a normal high tech mop, but you can still hit things with it", 1);
-    Iitem sonicSwordOfTheWhisperMen = new Weapon("Sonic sword of The Whisper Men", "A Sword that makes a sonic vibration which sounds like a whisper", 6);
-    Iitem plasmaCannon = new Weapon("Plasma Cannon", "fired a plasma discharge in the form of a beam", 4);
-    Iitem hanBlaster = new Weapon("Han's Blaster", "This blaster was once owned by a guy called Han", 9);
+    Iitem sonicSwordOfTheWhisperMen = new Weapon("Sonic sword of The Whisper Men", "A Sword that makes a sonic vibration which sounds like a whisper", 13);
+    Iitem plasmaCannon = new Weapon("Plasma Cannon", "fired a plasma discharge in the form of a beam", 6);
+    Iitem hanBlaster = new Weapon("Han's Blaster", "This blaster was once owned by a guy called Han", 17);
     
     //Armors    
     Iitem beatUpEngineeringSpaceSuit = new Armor("Beat up engineering space suit", "This old suit have taken alot of damge, and is bearly holding it self together", 2);
