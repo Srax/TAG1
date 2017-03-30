@@ -12,6 +12,7 @@ package App;
 public class Armor implements Iitem{
     String name, description;
     private int defense;
+    boolean usable = false;
     
     Armor() {
        
@@ -50,5 +51,14 @@ public class Armor implements Iitem{
         return description;
     }
 
+    @Override
+    public boolean getUsable() {
+        return this.usable;
+    }
+
+    @Override
+    public void setUsable(boolean usable) {
+        this.usable = usable;
+    }
 }
 

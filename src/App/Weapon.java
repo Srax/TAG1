@@ -7,6 +7,7 @@ package App;
 public class Weapon implements Iitem{
     String name, description;
     private int attackDMG;
+    boolean usable=false;
     
     Weapon() {
        
@@ -43,6 +44,16 @@ public class Weapon implements Iitem{
     @Override
     public String getDescription() {
         return description;
+    }
+
+    @Override
+    public boolean getUsable() {
+        return this.usable;
+    }
+
+    @Override
+    public void setUsable(boolean usable) {
+        this.usable = usable;
     }
 
 }

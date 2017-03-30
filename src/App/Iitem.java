@@ -10,5 +10,8 @@ public interface Iitem {
     public String getDescription();
     @Override
     public String toString();
+    public boolean getUsable();
+    public void setUsable(boolean usable);
+    
     
 }

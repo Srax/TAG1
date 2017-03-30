@@ -1,14 +1,11 @@
 package App;
 
-import com.sun.crypto.provider.HmacMD5;
-
 public class Controller {
 
     Boundry b = new Boundry();
     Player p = new Player();
     CreateRoom cr = new CreateRoom();
     Inventory inv = new Inventory();
-    
     HighscoreManager hm = new HighscoreManager();
 
     Room currentRoom;
@@ -26,7 +23,7 @@ public class Controller {
         
         cr.roomFeatures();
         b.welcomeToGame();
-        p.setName(b.createName());
+        b.createName(p);
         currentRoom = cr.startRoom;
 
         System.out.println(currentRoom.toString());
@@ -44,7 +41,6 @@ public class Controller {
             } else {
                 b.playSound(b.doorSound);
                 currentRoom = playerAction(currentRoom);
-
             }
         }
         //Prints highscore
@@ -73,11 +69,12 @@ public class Controller {
      */
     public Room playerAction(Room currentRoom) {
         boolean takingAction = true;
-
+        
         while (takingAction) {
-            String action = b.chooseAction();
+        String action = b.chooseAction();
 
             switch (action) {
+                
                 case "inspect":
                     System.out.println(currentRoom.toString());
                     taxRobot();
@@ -124,6 +121,8 @@ public class Controller {
                 case "inventory":
                     inv.show();
                     break;
+                case "yes": System.out.println("");
+                    break;
                 default:
                     b.nothingHappend();
                     break;
@@ -132,6 +131,41 @@ public class Controller {
         return tempRoom;
     }
 
+    /**
+ * Takes a action, and checks if the direction is possible, in the current room
+ * then sets the current Room to the room if available, else returns a statement
+ * that the direction is not possible.
+ * @param action
+ * @return takingAction 
+ */
+    public boolean directionChoice(String action) {
+        boolean takingAction = true;
+        Room goToRoom = null;
+
+        switch (action) {
+            case "north":
+                goToRoom = currentRoom.getNorth();
+                break;
+            case "south":
+                goToRoom = currentRoom.getSouth();
+                break;
+            case "east":
+                goToRoom = currentRoom.getEast();
+                break;
+            case "west":
+                goToRoom = currentRoom.getWest();
+                break;
+        }
+        if (goToRoom == null) {
+            b.walkIntoWall();
+            return takingAction = true;
+        } else {
+            tempRoom = goToRoom;
+            return takingAction = false;
+
+        }
+    }
+    
     /**
      * Interacts with the taxCollector. After a checking if there is a tax
      * collector in the room this method runs the possible outcomes of this
@@ -178,6 +212,7 @@ public class Controller {
             }
         }
     }
+    
 /**
  * Runs the trap encounter.
  */
@@ -192,33 +227,6 @@ public class Controller {
 
     }
 
-    public boolean directionChoice(String action) {
-        boolean takingAction = true;
-        Room goToRoom = null;
-
-        switch (action) {
-            case "north":
-                goToRoom = currentRoom.getNorth();
-                break;
-            case "south":
-                goToRoom = currentRoom.getSouth();
-                break;
-            case "east":
-                goToRoom = currentRoom.getEast();
-                break;
-            case "west":
-                goToRoom = currentRoom.getWest();
-                break;
-        }
-        if (goToRoom == null) {
-            b.walkIntoWall();
-            return takingAction = true;
-        } else {
-            tempRoom = goToRoom;
-            return takingAction = false;
-
-        }
-    }
     /**
      * This method allows the player to pick up an object from the rooms loot 
      * array and moves it to the players inventory array
@@ -228,13 +236,13 @@ public class Controller {
         b.chooseItemToPick();
         String choice = b.chooseAction();
 
-        if (choice.equalsIgnoreCase("money")) {
+        if (choice.equalsIgnoreCase("money") && currentRoom.getGold()>0) {
             int gold = currentRoom.getGold();
 
             p.setBank(gold);
             b.playSound(b.coinSound);
             currentRoom.setGold(0);
-            //}
+            
         } else {
 
             Iitem itemToMove = currentRoom.moveFromRoomToInventory(choice);
