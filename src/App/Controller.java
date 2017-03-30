@@ -1,11 +1,15 @@
 package App;
 
+import com.sun.crypto.provider.HmacMD5;
+
 public class Controller {
 
     Boundry b = new Boundry();
     Player p = new Player();
     CreateRoom cr = new CreateRoom();
     Inventory inv = new Inventory();
+    
+    HighscoreManager hm = new HighscoreManager();
 
     Room currentRoom;
     Room tempRoom = currentRoom;
@@ -22,7 +26,7 @@ public class Controller {
         cr.roomFeatures();
         b.welcomeToGame();
 
-//UDKOMMENTERET TIL DEBUG        //  p.setName(b.createName());
+        p.setName(b.createName());
         currentRoom = cr.startRoom;
 
         System.out.println(currentRoom.toString());
@@ -34,11 +38,18 @@ public class Controller {
                 System.out.println(p.toString());
                 
                 b.youWon();
+                
+                // Adds highscore
+                hm.addScore(p.getName(), p.getBank(), p.getHp());
+
+                System.out.print(hm.getHighscoreString());
                 checkVictory = false;
             } else if (currentRoom.equals(cr.spaceShip)) {
                 System.out.println(cr.spaceShip());
                 System.out.println(p.toString());
+                //b.playSound(b.doorSound);
                 
+                hm.addScore(p.getName(), p.getBank(), p.getHp());
                 checkVictory = false;
             } else {
                 b.playSound(b.doorSound);
@@ -46,6 +57,8 @@ public class Controller {
 
             }
         }
+        //Prints highscore
+            System.out.print(hm.getHighscoreString());
     }
 
     /**
