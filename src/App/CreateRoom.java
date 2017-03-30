@@ -44,10 +44,10 @@ public class CreateRoom {
     // Items that will be created
     Iitem gun = new Weapon("Small Laserpistol", "PewPewPew", 5);
     Iitem monkey= new Weapon("Monkey", "Bananas thrown by Pro banana tosser", 1);
-    Iitem  monkeySuit = new Armor("Monkey Suit", "Makes you look like a Space-monkey", 10);
+    Iitem monkeySuit = new Armor("Monkey Suit", "Makes you look like a Space-monkey", 10);
     Iitem p3 = new Potion("Super Stimpack", "Makes you feel nice",3);
     Iitem p2 = new Potion("Medium Stimpack", "Makes you feel not nearly so nice",2);
-    Iitem p1 = new Potion("Small Stimpack", "Makes you feel not nearly so nice",2);
+    Iitem p1 = new Potion("Small Stimpack", "Makes you feel not nearly so nice",1);
 
     public void roomFeatures() {
         //Creates the Rooms as individual objects
@@ -66,6 +66,7 @@ public class CreateRoom {
         room1.setEast(room3);
         room1.setSouth(startRoom);
         room1.loot.add(p2);
+        
         
         
         room2.setEast(room1);
