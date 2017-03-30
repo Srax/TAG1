@@ -11,8 +11,8 @@ package App;
  */
 public class Potion implements Iitem{
     String name, description;
-    private int hpRestore, type;
-    
+    private int hpRestore;
+    private boolean usable = true;
 
     public Potion(String name, String description, int type) {
         this.name = name;
@@ -49,5 +49,15 @@ public class Potion implements Iitem{
 
     public void setHpRestore(int hpRestore) {
         this.hpRestore = hpRestore;
+    }
+
+    @Override
+    public boolean getUsable() {
+        return this.usable;
+    }
+
+    @Override
+    public void setUsable(boolean usable) {
+        this.usable = usable;
     }
 }

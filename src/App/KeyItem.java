@@ -11,7 +11,7 @@ package App;
  */
 public class KeyItem implements Iitem{
     String name, description;
-  
+    boolean usable = false;
     
     KeyItem() {
        
@@ -20,7 +20,6 @@ public class KeyItem implements Iitem{
     public KeyItem(String name, String description) {
         this.name = name;
         this.description = description;
-       
     }
 
     @Override
@@ -32,10 +31,6 @@ public class KeyItem implements Iitem{
         this.name = name;
     }
  
-    
-
-
-
     @Override
     public String toString() {
         return "Misc item >" + "\""+name+"\"" + " Description: \""+getDescription()+"\"";
@@ -44,6 +39,16 @@ public class KeyItem implements Iitem{
     @Override
     public String getDescription() {
         return description;
+    }
+
+    @Override
+    public boolean getUsable() {
+        return this.usable;
+    }
+
+    @Override
+    public void setUsable(boolean usable) {
+        this.usable = usable;
     }
 
 }

@@ -6,7 +6,6 @@ public class Controller {
     Player p = new Player();
     CreateRoom cr = new CreateRoom();
     Inventory inv = new Inventory();
-    
     HighscoreManager hm = new HighscoreManager();
 
     Room currentRoom;
@@ -24,8 +23,7 @@ public class Controller {
         
         cr.roomFeatures();
         b.welcomeToGame();
-
-        p.setName(b.createName());
+        b.createName(p);
         currentRoom = cr.startRoom;
 
         System.out.println(currentRoom.toString());
@@ -41,7 +39,6 @@ public class Controller {
             } else {
                 b.playSound(b.doorSound);
                 currentRoom = playerAction(currentRoom);
-
             }
         }
         //Prints highscore
@@ -121,6 +118,8 @@ public class Controller {
                     break;
                 case "inventory":
                     inv.show();
+                    break;
+                case "yes": System.out.println("");
                     break;
                 default:
                     b.nothingHappend();
@@ -211,6 +210,7 @@ public class Controller {
             }
         }
     }
+    
 /**
  * Runs the trap encounter.
  */

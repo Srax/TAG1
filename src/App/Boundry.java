@@ -20,16 +20,15 @@ public class Boundry {
     public static String doorSound = System.getProperty("user.dir") + "\\src\\App\\doorShortLoud.wav";
 
     /**
-     *
      * Creates a player name
-     *
-     * @return String with name
+     * @param p
      */
-    public String createName() {
+    public void createName(Player p) {
 
         boolean donePickingName = false;
-        String inputName = "";
-
+        String inputName=null;
+        String actionInput;
+        
         while (donePickingName == false) {
             System.out.println("\nWHAT IS YOUR NAME?");
             System.out.print("NAME: ");
@@ -42,7 +41,7 @@ public class Boundry {
                         + "YES/NO");
                 System.out.print("ACTION: ");
 
-                String actionInput;
+                
                 actionInput = scan.next().substring(0, 1);
 
                 if (actionInput.equalsIgnoreCase("n")) {
@@ -56,9 +55,9 @@ public class Boundry {
             } else {
                 System.out.println("\nSORRY BUT YOUR NAME IS TOO LONG!\nPlease keep your name at 12 or less characters.");
             }
-
+        
         }
-        return inputName;
+        p.setName(inputName);
     }
 
     /**
