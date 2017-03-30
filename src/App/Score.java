@@ -12,25 +12,25 @@ package App;
 import java.io.Serializable;
 
 public class Score  implements Serializable {
-    private int score;
-    private String naam;
-    private int hp;
+    private int highscoreGold;
+    private String highscoreName;
+    private int highscoreHp;
     
     public int getHp() {
-        return hp;
+        return highscoreHp;
     }
 
     public int getScore() {
-        return score;
+        return highscoreGold;
     }
 
     public String getNaam() {
-        return naam;
+        return highscoreName;
     }
 
     public Score(String naam, int score, int hp) {
-        this.score = score;
-        this.naam = naam;
-        this.hp = hp;
+        this.highscoreGold = score;
+        this.highscoreName = naam;
+        this.highscoreHp = hp;
     }
 }
