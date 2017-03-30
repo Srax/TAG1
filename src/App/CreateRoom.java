@@ -47,7 +47,7 @@ public class CreateRoom {
     Iitem  monkeySuit = new Armor("Monkey Suit", "Makes you look like a Space-monkey", 10);
     Iitem p3 = new Potion("Super Stimpack", "Makes you feel nice",3);
     Iitem p2 = new Potion("Medium Stimpack", "Makes you feel not nearly so nice",2);
-    Iitem p1 = new Potion("Small Stimpack", "Makes you feel not nearly so nice",2);
+    Iitem p1 = new Potion("Small Stimpack", "Makes you feel okay",1);
 
     public void roomFeatures() {
         //Creates the Rooms as individual objects
