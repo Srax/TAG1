@@ -129,6 +129,41 @@ public class Controller {
     }
 
     /**
+ * Takes a action, and checks if the direction is possible, in the current room
+ * then sets the current Room to the room if available, else returns a statement
+ * that the direction is not possible.
+ * @param action
+ * @return takingAction 
+ */
+    public boolean directionChoice(String action) {
+        boolean takingAction = true;
+        Room goToRoom = null;
+
+        switch (action) {
+            case "north":
+                goToRoom = currentRoom.getNorth();
+                break;
+            case "south":
+                goToRoom = currentRoom.getSouth();
+                break;
+            case "east":
+                goToRoom = currentRoom.getEast();
+                break;
+            case "west":
+                goToRoom = currentRoom.getWest();
+                break;
+        }
+        if (goToRoom == null) {
+            b.walkIntoWall();
+            return takingAction = true;
+        } else {
+            tempRoom = goToRoom;
+            return takingAction = false;
+
+        }
+    }
+    
+    /**
      * Interacts with the taxCollector. After a checking if there is a tax
      * collector in the room this method runs the possible outcomes of this
      * encounter based on player input.
@@ -175,7 +210,6 @@ public class Controller {
             }
         }
     }
-
     public void trap() {
         int trap = currentRoom.getTrap();
         if (trap > 0) {
@@ -187,46 +221,18 @@ public class Controller {
 
     }
 
-    public boolean directionChoice(String action) {
-        boolean takingAction = true;
-        Room goToRoom = null;
-
-        switch (action) {
-            case "north":
-                goToRoom = currentRoom.getNorth();
-                break;
-            case "south":
-                goToRoom = currentRoom.getSouth();
-                break;
-            case "east":
-                goToRoom = currentRoom.getEast();
-                break;
-            case "west":
-                goToRoom = currentRoom.getWest();
-                break;
-        }
-        if (goToRoom == null) {
-            b.walkIntoWall();
-            return takingAction = true;
-        } else {
-            tempRoom = goToRoom;
-            return takingAction = false;
-
-        }
-    }
-    
     private void pickUpItem() {
 
         b.chooseItemToPick();
         String choice = b.chooseAction();
 
-        if (choice.equalsIgnoreCase("gold")) {
+        if (choice.equalsIgnoreCase("money") && currentRoom.getGold()>0) {
             int gold = currentRoom.getGold();
 
             p.setBank(gold);
             b.playSound(b.coinSound);
             currentRoom.setGold(0);
-            //}
+            
         } else {
 
             Iitem itemToMove = currentRoom.moveFromRoomToInventory(choice);
