@@ -19,6 +19,7 @@ import java.util.Collections;
  * @author thoma
  */
 public class HighscoreManager {
+    
     // An arraylist of the type "score" we will use to work with the scores inside the class
     private ArrayList<Score> scores;
 
@@ -96,7 +97,8 @@ public class HighscoreManager {
     public String getHighscoreString() {
         String highscoreString = "\n=== HIGHSCORES ===\n\n"
                 + "No\tPLAYER\t\tBANK\t\tHP\n";
-	int max = 10;
+        
+	int max = 10; //The maximum number of scores displayed
 
         ArrayList<Score> scores;
         scores = getScores();
@@ -107,8 +109,12 @@ public class HighscoreManager {
             x = max;
         }
         while (i < x) {
-            highscoreString += (i + 1) + ".\t" + scores.get(i).getNaam() + "\t" + scores.get(i).getScore() + "$\t\t" + scores.get(i).getHp() + "HP\n";
-            i++;
+            if (scores.get(i).getNaam().length()<8) { //If the length of the name is less than 8 characters, add an extra \t after the name is displayed.
+                highscoreString += (i + 1) + ".\t" + scores.get(i).getNaam() + "\t\t" + scores.get(i).getScore() + "$\t\t" + scores.get(i).getHp() + "HP\n";
+            } else {
+                highscoreString += (i + 1) + ".\t" + scores.get(i).getNaam() + "\t" + scores.get(i).getScore() + "$\t\t" + scores.get(i).getHp() + "HP\n";
+            }
+            i++; // adds +1 to i
         }
         return highscoreString;
     }
