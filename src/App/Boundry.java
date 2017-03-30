@@ -182,7 +182,15 @@ public class Boundry {
     void walkIntoWall() {
         System.out.println("You are trying to walk into a wall\n");
     }
-    void youWon(){
+    void youQuit(Room currentRoom, Player p){
+        System.out.println(currentRoom.getDescription());
+        System.out.println(p.toString());
+    
+    }
+    
+    void youWon(Room currentRoom, Player p){
+        System.out.println(currentRoom.getDescription());
+        System.out.println(p.toString());
         System.out.println("*********************************");
         System.out.println("*                               *");
         System.out.println("*        You won !!!!!          *");
@@ -190,6 +198,22 @@ public class Boundry {
         System.out.println("*********************************");
     }
     
+
+    void chooseItemToPick() {
+        System.out.println("Which item do you wish to pick up?");
+        
+    
+    }
+    
+    void chooseItemToDrop(){
+        System.out.println("Which item do you wish to drop");
+    }
+    
+    /**
+     * The method reads a path to a .wav sound file, given by a string then plays 
+     * the sound when called
+     * @param s 
+     */
     public void playSound(String s) {
         try {
             File soundFile = new File(s);
@@ -216,15 +240,5 @@ public class Boundry {
         } catch (LineUnavailableException e) {
         } catch (UnsupportedAudioFileException e) {
         }
-    }
-
-    void chooseItemToPick() {
-        System.out.println("Which item do you wish to pick up?");
-        
-    
-    }
-    
-    void chooseItemToDrop(){
-        System.out.println("Which item do you wish to drop");
     }
 }

@@ -30,15 +30,10 @@ public class Controller {
         while (checkVictory) {
             Thread.sleep(500);
             if (currentRoom.equals(cr.finish)) {
-                System.out.println(cr.finish.getDescription());
-                System.out.println(p.toString());
-                //b.playSound(b.doorSound);
-                b.youWon();
+                b.youWon(currentRoom, p);
                 checkVictory = false;
             } else if (currentRoom.equals(cr.spaceShip)) {
-                System.out.println(cr.spaceShip());
-                System.out.println(p.toString());
-                //b.playSound(b.doorSound);
+                b.youQuit(currentRoom, p);
                 checkVictory = false;
             } else {
                 b.playSound(b.doorSound);
@@ -105,6 +100,7 @@ public class Controller {
                     b.helpCommand();
                     break;
                 case "pickup":
+                case "pick up":
                     pickUpItem();
                     break;
                 case "drop":
@@ -117,7 +113,8 @@ public class Controller {
                     tempRoom = cr.spaceShip;
                     takingAction = false;
                     break;
-                case "inventory" : inv.show();
+                case "inventory":
+                    inv.show();
                     break;
                 default:
                     b.nothingHappend();
@@ -137,7 +134,7 @@ public class Controller {
         if (taxRobot > 0) {
             b.taxCollectorMeeting();
             boolean interaction = true;
-            ////////////////////////////////////////////
+        
             while (interaction) {
                 String choice = b.chooseAction();
                 if (p.getBank() > 20) {
@@ -170,7 +167,6 @@ public class Controller {
                 } else {
                     b.nothingHappend();
                 }
-                //////////////////////////////////////////////////
             }
         }
     }
@@ -244,7 +240,10 @@ public class Controller {
         }
 
     }
-
+/**
+ * This method allows the player to pick up an object and move it from the
+ * currentRooms loot array, and the place it in the players inventory array.
+ */
     private void pickUpItem() {
 
         b.chooseItemToPick();
@@ -270,7 +269,10 @@ public class Controller {
             }
         }
     }
-
+/**
+ * This method allows the player to drop an object and and move it from the 
+ * players inventory array into the currentRooms loot array.
+ */
     private void dropItem() {
         inv.show();
         b.chooseItemToDrop();

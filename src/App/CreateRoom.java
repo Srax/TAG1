@@ -49,6 +49,11 @@ public class CreateRoom {
     Iitem p2 = new Potion("Medium Stimpack", "Makes you feel not nearly so nice",2);
     Iitem p1 = new Potion("Small Stimpack", "Makes you feel not nearly so nice",2);
 
+    
+/**
+ * The method connect the rooms created. Planning out the dungeon and placing items.
+ * 
+ */
     public void roomFeatures() {
         //Creates the Rooms as individual objects
         //Map and Room direction rules
