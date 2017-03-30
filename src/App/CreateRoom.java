@@ -25,7 +25,7 @@ public class CreateRoom {
     Room room3 = new Room(r.nextInt(101), dinningRoom());
     Room room4 = new Room(r.nextInt(101), closet());
     Room room5 = new Room(r.nextInt(101), kitchen());
-    Room room6 = new Room(r.nextInt(101), hallWay3());
+    Room room6 = new Room(r.nextInt(101), barracks());
     Room room7 = new Room(r.nextInt(101), deadGarden());
     Room room8 = new Room(r.nextInt(101), hallWay3());
     Room room9 = new Room(r.nextInt(101), cross());
@@ -44,10 +44,10 @@ public class CreateRoom {
     // Items that will be created
     Iitem gun = new Weapon("Small Laserpistol", "PewPewPew", 5);
     Iitem monkey= new Weapon("Monkey", "Bananas thrown by Pro banana tosser", 1);
-    Iitem  monkeySuit = new Armor("Monkey Suit", "Makes you look like a Space-monkey", 10);
+    Iitem monkeySuit = new Armor("Monkey Suit", "Makes you look like a Space-monkey", 10);
     Iitem p3 = new Potion("Super Stimpack", "Makes you feel nice",3);
     Iitem p2 = new Potion("Medium Stimpack", "Makes you feel not nearly so nice",2);
-    Iitem p1 = new Potion("Small Stimpack", "Makes you feel not nearly so nice",2);
+    Iitem p1 = new Potion("Small Stimpack", "Makes you feel not nearly so nice",1);
 
     public void roomFeatures() {
         //Creates the Rooms as individual objects
@@ -68,6 +68,7 @@ public class CreateRoom {
         room1.loot.add(p2);
         
         
+        
         room2.setEast(room1);
         room2.setWest(room9);
         room2.setTaxCollector(1);
@@ -79,25 +80,25 @@ public class CreateRoom {
         room4.setNorth(room3);
 
         room5.setNorth(room8);
-        room5.setEast(room6);
+        room5.setWest(room6);
         room5.setSouth(room3);
 
         room6.setNorth(room7);
-        room6.setEast(room14);
-        room6.setWest(room5);
+        room6.setWest(room14);
+        room6.setEast(room5);
         room6.setTrap(1);
         
         room7.setNorth(room15);
         room7.setEast(room8);
         room7.setSouth(room6);
 
-        room8.setEast(room7);
+        room8.setWest(room7);
         room8.setSouth(room5);
 
         room9.setNorth(room13);
+        room9.setSouth(room10);
         room9.setEast(room2);
         room9.setWest(room12);
-        room9.setSouth(room10);
         
         
         room10.setNorth(room9);

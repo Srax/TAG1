@@ -36,7 +36,7 @@ public class Controller {
             if (currentRoom.equals(cr.finish)) {
                 System.out.println(cr.finish.getDescription());
                 System.out.println(p.toString());
-                //b.playSound(b.doorSound);
+                
                 b.youWon();
                 
                 // Adds highscore
@@ -100,19 +100,19 @@ public class Controller {
                     break;
 
                 case "north":
-                    takingAction = north(action);
+                    takingAction = directionChoice(action);
                     break;
 
                 case "south":
-                    takingAction = south(action);
+                    takingAction = directionChoice(action);
                     break;
 
                 case "east":
-                    takingAction = east(action);
+                    takingAction = directionChoice(action);
                     break;
 
                 case "west":
-                    takingAction = west(action);
+                    takingAction = directionChoice(action);
                     break;
                 case "help":
                     b.helpCommand();
@@ -130,7 +130,8 @@ public class Controller {
                     tempRoom = cr.spaceShip;
                     takingAction = false;
                     break;
-                case "inventory" : inv.show();
+                case "inventory":
+                    inv.show();
                     break;
                 default:
                     b.nothingHappend();
@@ -199,65 +200,34 @@ public class Controller {
 
     }
 
-    public boolean north(String action) {
+    public boolean directionChoice(String action) {
         boolean takingAction = true;
+        Room goToRoom = null;
 
-        if (action.equalsIgnoreCase("north") && currentRoom.getNorth() != null) {
-            b.directionChoice(action);
-            tempRoom = currentRoom.getNorth();
-            return takingAction = false;
-
-        } else {
+        switch (action) {
+            case "north":
+                goToRoom = currentRoom.getNorth();
+                break;
+            case "south":
+                goToRoom = currentRoom.getSouth();
+                break;
+            case "east":
+                goToRoom = currentRoom.getEast();
+                break;
+            case "west":
+                goToRoom = currentRoom.getWest();
+                break;
+        }
+        if (goToRoom == null) {
             b.walkIntoWall();
             return takingAction = true;
-        }
-    }
-
-    public boolean south(String action) {
-        boolean takingAction = true;
-
-        if (action.equalsIgnoreCase("south") && currentRoom.getSouth() != null) {
-            b.directionChoice(action);
-            tempRoom = currentRoom.getSouth();
+        } else {
+            tempRoom = goToRoom;
             return takingAction = false;
 
-        } else {
-            b.walkIntoWall();
-            return takingAction = true;
         }
-
     }
-
-    public boolean east(String action) {
-        boolean takingAction = true;
-
-        if (action.equalsIgnoreCase("east") && currentRoom.getEast() != null) {
-            b.directionChoice(action);
-            tempRoom = currentRoom.getEast();
-            return takingAction = false;
-
-        } else {
-            b.walkIntoWall();
-            return takingAction = true;
-        }
-
-    }
-
-    public boolean west(String action) {
-        boolean takingAction = true;
-
-        if (action.equalsIgnoreCase("west") && currentRoom.getWest() != null) {
-            b.directionChoice(action);
-            tempRoom = currentRoom.getWest();
-            return takingAction = false;
-
-        } else {
-            b.walkIntoWall();
-            return takingAction = true;
-        }
-
-    }
-
+    
     private void pickUpItem() {
 
         b.chooseItemToPick();
