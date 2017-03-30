@@ -15,7 +15,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 public class Boundry {
 
     Scanner scan = new Scanner(System.in);
-    
+
     public static String coinSound = System.getProperty("user.dir") + "\\src\\App\\coin.wav";
     public static String doorSound = System.getProperty("user.dir") + "\\src\\App\\doorShortLoud.wav";
 
@@ -35,23 +35,26 @@ public class Boundry {
             System.out.print("NAME: ");
             inputName = scan.next();
 
-            System.out.println("You chose " + "'" + inputName + "'" + " as your name.\n");
-            System.out.println("Hello " + inputName + "!");
-            System.out.println("This will be your name through the whole game, do you want to keep it?\n"
-                    + "YES/NO");
-            System.out.print("ACTION: ");
+            if (inputName.length() <= 12) {
+                System.out.println("You chose " + "'" + inputName + "'" + " as your name.\n");
+                System.out.println("Hello " + inputName + "!");
+                System.out.println("This will be your name through the whole game, do you want to keep it?\n"
+                        + "YES/NO");
+                System.out.print("ACTION: ");
 
-            String actionInput;
-            actionInput = scan.next().substring(0, 1);
+                String actionInput;
+                actionInput = scan.next().substring(0, 1);
 
-            if (actionInput.equalsIgnoreCase("n")) {
-                donePickingName = false;
-            }
-            else if (actionInput.equalsIgnoreCase("y")) {
-                System.out.println("\nYou chose to keep your name");
-                donePickingName = true;
+                if (actionInput.equalsIgnoreCase("n")) {
+                    donePickingName = false;
+                } else if (actionInput.equalsIgnoreCase("y")) {
+                    System.out.println("\nYou chose to keep your name");
+                    donePickingName = true;
+                } else {
+                    System.out.println("\n'" + actionInput + "'" + " is not a valid option... Try again.");
+                }
             } else {
-                System.out.println("\n'" + actionInput + "'" + " is not a valid option... Try again.");
+                System.out.println("\nSORRY BUT YOUR NAME IS TOO LONG!\nPlease keep your name at 12 or less characters.");
             }
 
         }
@@ -59,8 +62,7 @@ public class Boundry {
     }
 
     /**
-     * Welcoming to game statement.
-     * Introduce the games name and Rules.
+     * Welcoming to game statement. Introduce the games name and Rules.
      */
     public void welcomeToGame() {
         System.out.println("     _____                                    _____                             _               \n"
@@ -71,16 +73,16 @@ public class Boundry {
                 + "   |_____/  | .__/   \\__,_|  \\___|  \\___|    \\_____| |_|     \\__,_|   \\_/\\_/   |_|  \\___| |_|   \n"
                 + "            | |  \t  BECAUSE SPACE INVADERS WERE ALREADY TAKEN                                                                               \n"
                 + "            |_| \n\n");
-        
+
         System.out.println("=== WELCOME ===\n");
         System.out.println("Welcome to Space Crawler!");
         System.out.println("Space Crawler is a text-based Dungeon-Crawler where the main objective of the game is to reach the command bridge.");
         System.out.println("You interact with the game by 'USER INPUT':\n - E.G: Write 'HELP' to recieve a list of commands.");
         System.out.println("\nThis game supports sounds, so turn up the volume.");
-        
+
         System.out.println("\n=== GAME : RUNNING ===");
     }
-    
+
     /**
      * When encountering gold in the game, takeGold will display the following
      * statement.
@@ -93,22 +95,22 @@ public class Boundry {
         choice = scan.next();
         return choice;
     }
-    
 
-/**
- * This Method lets the player know that he/she can preform an action in various situations
- * @return 
- */
+    /**
+     * This Method lets the player know that he/she can preform an action in various situations
+     *
+     * @return
+     */
     public String chooseAction() {
         String action;
         System.out.print("Choose your action: ");
         action = scan.nextLine();
         return action;
     }
-/**
- * If the player is lost, helpCommadn will allow the player to enter "Help" as an input
- * and get a list of all possible actions in the game.
- */
+
+    /**
+     * If the player is lost, helpCommadn will allow the player to enter "Help" as an input and get a list of all possible actions in the game.
+     */
     public void helpCommand() {
         System.out.println("\n=== HELP ===");
         System.out.println("- Inspect");
@@ -121,32 +123,34 @@ public class Boundry {
         System.out.println("- Pay");
         System.out.println("- Deny");
     }
+
     /**
-     * When encountering the taxRobot, this method will display the following
-     * for the player to react to.
+     * When encountering the taxRobot, this method will display the following for the player to react to.
      */
-    public void taxCollectorMeeting(){
-        
-       System.out.println("The door close behind you.");
+    public void taxCollectorMeeting() {
+
+        System.out.println("The door close behind you.");
         System.out.println("A big robot in a dark coat stands in your way");
         System.out.println("He is the \"TAXCOLLETOR\" and he is here to collect your money");
         System.out.println("You must pay his price to exit the room");
         System.out.println("You must pay me, 20 dollars");
     }
-    public void taxCollectorPay(Player player){
+
+    public void taxCollectorPay(Player player) {
         System.out.println("-20 Space dollars your Bank balance is now :" + player.getBank() + "$\n");
         System.out.println("You pay the robot and he looks satisfied");
-        System.out.println("The Robot powers down while whispering finally. The robot should no longer be a problem");        
+        System.out.println("The Robot powers down while whispering finally. The robot should no longer be a problem");
     }
-    public void taxCollectorDeny(Player player){    
-    System.out.println("The Robot bitchslaps you, and steals all your money. you now have " + player.getHp() + "HP");
-    System.out.println("The Robot powers down, and drops its money\nThe robot should no longer be a problem");
+
+    public void taxCollectorDeny(Player player) {
+        System.out.println("The Robot bitchslaps you, and steals all your money. you now have " + player.getHp() + "HP");
+        System.out.println("The Robot powers down, and drops its money\nThe robot should no longer be a problem");
     }
-   
-   public void taxCollectorCantPay(Player player){
-       System.out.println("You were unable to pay the Robot"); 
-       System.out.println("The Robot bitchslaps you, you now have " + player.getHp() + "HP");
-       System.out.println("The Robot powers down, and drops its money\nThe robot should no longer be a problem");   
+
+    public void taxCollectorCantPay(Player player) {
+        System.out.println("You were unable to pay the Robot");
+        System.out.println("The Robot bitchslaps you, you now have " + player.getHp() + "HP");
+        System.out.println("The Robot powers down, and drops its money\nThe robot should no longer be a problem");
     }
 
     void trapInteraction() {
@@ -154,29 +158,34 @@ public class Boundry {
         System.out.println("Some of the ceiling collapses\n");
         System.out.println("You get hit by some rubble and lose 10 HP\n");
     }
-    
-    
+
     public void youFindGold(int gold) {
-        System.out.println("In this room you find " + gold + " space dollars");        
+        System.out.println("In this room you find " + gold + " space dollars");
     }
+
     public void noGold() {
         System.out.println("There are no space dollars in here.");
     }
-    void getHp(Player hp){
-        System.out.println("You now have: "+hp.getHp()+"HP");
+
+    void getHp(Player hp) {
+        System.out.println("You now have: " + hp.getHp() + "HP");
     }
-    void nothingHappend(){
+
+    void nothingHappend() {
         System.out.println("Nothing happend\n");
     }
-    public void canGo(){
+
+    public void canGo() {
         System.out.println("From this room you can go : ");
     }
+
     void showBank(Player p) {
         System.out.print("Your current Bank balance is:");
         System.out.println(p.getBank() + "$");
     }
+
     void directionChoice(String action) {
-        System.out.println("\nYou went "+action+"\n");
+        System.out.println("\nYou went " + action + "\n");
     }
 
     void walkIntoWall() {
@@ -221,7 +230,7 @@ public class Boundry {
 
             // load the sound into memory (a Clip)
             DataLine.Info info = new DataLine.Info(Clip.class, sound.getFormat());
-            Clip clip = (Clip)AudioSystem.getLine(info);
+            Clip clip = (Clip) AudioSystem.getLine(info);
             clip.open(sound);
 
             // due to bug in Java Sound, explicitly exit the VM when
