@@ -25,7 +25,7 @@ public class CreateRoom {
     Room room3 = new Room(r.nextInt(101), dinningRoom());
     Room room4 = new Room(r.nextInt(101), closet());
     Room room5 = new Room(r.nextInt(101), kitchen());
-    Room room6 = new Room(r.nextInt(101), hallWay3());
+    Room room6 = new Room(r.nextInt(101), barracks());
     Room room7 = new Room(r.nextInt(101), deadGarden());
     Room room8 = new Room(r.nextInt(101), hallWay3());
     Room room9 = new Room(r.nextInt(101), cross());
@@ -43,12 +43,12 @@ public class CreateRoom {
     
     // Items that will be created weapons
     Iitem gun = new Weapon("Small Laserpistol", "PewPewPew", 3);   
-    Iitem laserBlade = new Weapon("Laser blade", "This blade have seen it's fair share of backstabbing", 3);
-    Iitem darlekRifle = new Weapon("Darlek Rifle", "This Rifle is build from a Darlek's laser shooter", 8);
+    Iitem laserBlade = new Weapon("Laser blade", "This can be used too all kinds of thinks even making food", 3);
+    Iitem darlekRifle = new Weapon("Darlek Rifle", "This Rifle is build from a Darlek's laser shooter", 7);
     Iitem partikelRemovelMop = new Weapon("Partikel removel mop", "Just a normal high tech mop, but you can still hit things with it", 1);
     Iitem sonicSwordOfTheWhisperMen = new Weapon("Sonic sword of The Whisper Men", "A Sword that makes a sonic vibration which sounds like a whisper", 6);
     Iitem plasmaCannon = new Weapon("Plasma Cannon", "fired a plasma discharge in the form of a beam", 4);
-    Iitem hanBlaster = new Weapon("Han's Blaster", "This blaster was once owned by a guy called Han", 5);
+    Iitem hanBlaster = new Weapon("Han's Blaster", "This blaster was once owned by a guy called Han", 9);
     
     //Armors    
     Iitem beatUpEngineeringSpaceSuit = new Armor("Beat up engineering space suit", "This old suit have taken alot of damge, and is bearly holding it self together", 2);
@@ -60,6 +60,9 @@ public class CreateRoom {
     Iitem p3 = new Potion("Super Stimpack", "Makes you feel nice",3);
     Iitem p2 = new Potion("Medium Stimpack", "Makes you feel not nearly so nice",2);
     Iitem p1 = new Potion("Small Stimpack", "Makes you feel okay",1);
+    
+    //Misc items
+    Iitem gameSpaceCawler = new KeyItem("The Game Space Cawler", "Cause Space Invaders was already taken");
     
     public void roomFeatures() {
         //Creates the Rooms as individual objects
@@ -79,8 +82,7 @@ public class CreateRoom {
         room1.setEast(room3);
         room1.setSouth(startRoom);
         room1.loot.add(p2);
-        
-        
+
         room2.setEast(room1);
         room2.setWest(room9);
         room2.setTaxCollector(1);
@@ -88,6 +90,7 @@ public class CreateRoom {
         room3.setWest(room1);
         room3.setNorth(room5);
         room3.setSouth(room4);
+        
 
         room4.setNorth(room3);
         room4.add(beatUpEngineeringSpaceSuit);
@@ -96,13 +99,15 @@ public class CreateRoom {
         room5.setNorth(room8);
         room5.setWest(room6);
         room5.setSouth(room3);
+        room5.add(laserBlade);
 
         room6.setNorth(room7);
-        room6.setEast(room14);
-        room6.setWest(room5);
+        room6.setWest(room14);
+        room6.setEast(room5);
         room6.setTrap(1);
         room6.add(darlekRifle);
         room6.add(plasmaCannon);
+        room6.add(gardenersArmor);
         
         
         
@@ -110,13 +115,13 @@ public class CreateRoom {
         room7.setEast(room8);
         room7.setSouth(room6);
 
-        room8.setEast(room7);
+        room8.setWest(room7);
         room8.setSouth(room5);
 
         room9.setNorth(room13);
+        room9.setSouth(room10);
         room9.setEast(room2);
         room9.setWest(room12);
-        room9.setSouth(room10);
         
         
         room10.setNorth(room9);
@@ -125,6 +130,7 @@ public class CreateRoom {
         
         room11.setNorth(room12);
         room11.setEast(room10);
+        room11.add(sonicSwordOfTheWhisperMen);
         
         room12.setEast(room9);
         room12.setSouth(room11);
@@ -141,7 +147,7 @@ public class CreateRoom {
         room15.setTrap(1);
         room15.add(officersUniform);
         room15.add(hanBlaster);
-        room15.add(gardenersArmor);
+        
         
         
         
@@ -154,10 +160,15 @@ public class CreateRoom {
         room18.setWest(room17);
         room18.setSouth(room19);
         room18.add(labCoat);
+        room18.add(cybermanArmor);
         
 
         room19.setNorth(room18);
         room19.setTaxCollector(1);
+        
+        
+        
+        finish.add(gameSpaceCawler);
     
     }
         public String startRoom() {
