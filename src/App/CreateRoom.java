@@ -46,7 +46,7 @@ public class CreateRoom {
     
     
     // Items that will be created weapons
-    Iitem gun = new Weapon("Small Laserpistol", "PewPewPew", 3);   
+    Iitem gun = new Weapon("Small Laserpistol", "PewPewPew", 2);   
     Iitem laserBlade = new Weapon("Laser blade", "This can be used too all kinds of things, even making food", 4);
     Iitem darlekRifle = new Weapon("Darlek Rifle", "This Rifle is build from a Darlek's laser shooter", 14);
     Iitem particlelRemovalMop = new Weapon("Particle removal mop", "Just a normal hightech mop, but you can still hit things with it", 1);
@@ -54,7 +54,8 @@ public class CreateRoom {
     Iitem plasmaCannon = new Weapon("Plasma Cannon", "Fires a plasma discharge in the form of a beam", 6);
     Iitem hanBlaster = new Weapon("Han's Blaster", "This blaster was once owned by a guy called Han", 17);
     
-    //Armors    
+    //Armors
+    Iitem SpaceSuit = new Armor("Space Suit", "Standard issued space suit", 1);
     Iitem beatUpEngineeringSpaceSuit = new Armor("Beat up engineering space suit", "This old suit have taken alot of damage, and is bearly holding it self together", 2);
     Iitem cybermanArmor = new Armor("Cyberman Armor", "You will be upgraded", 10);
     Iitem gardenersArmor = new Armor("Gardeners Armor", "Its a heavily armored suit, that has alot of bitemarks all over it", 5);
