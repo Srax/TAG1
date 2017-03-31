@@ -5,6 +5,11 @@
  */
 package App;
 
+import items.KeyItem;
+import items.Weapon;
+import items.Iitem;
+import items.Armor;
+import items.Potion;
 import java.util.Random;
 
 /**

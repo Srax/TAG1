@@ -1,5 +1,6 @@
 package App;
 
+import items.Iitem;
 import java.util.ArrayList;
 
 public class Room {

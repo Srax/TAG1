@@ -1,5 +1,7 @@
 package App;
 
+import items.Iitem;
+
 public class Controller {
 
     Boundry b = new Boundry();
