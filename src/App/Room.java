@@ -14,6 +14,7 @@ public class Room {
     private int taxCollector;
     private int trap;
     private int potion;
+    
     ArrayList<Iitem> loot = new ArrayList<>();
 
     public void add(Iitem item) {
