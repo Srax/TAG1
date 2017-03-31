@@ -45,14 +45,15 @@ public class Inventory {
      */
       public Iitem MoveFromInventoryToRoom(String item){
         Iitem temp;
-        for (int i = inventory.size(); i > 0 ; i--) {
+        for (int i = 0; i<inventory.size(); i++) {
             if (inventory.get(i).getName().equalsIgnoreCase(item)) {
-                temp = inventory.get(i);
+                temp = this.inventory.get(i);
+                System.out.println("\nYOU DROPPED: "+inventory.get(i).toString()+"\n");
                 this.inventory.remove(i);
-                
-            return temp;
-        }
-    }return null;
+                            
+                return temp;
+            }
+        }return null;
         
     
     }

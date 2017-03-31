@@ -271,7 +271,7 @@ public class Controller {
         if (itemToMove == null) {
             b.nothingHappend();
         } else {
-            tempRoom.add(itemToMove);
+            currentRoom.add(itemToMove);
 
         }
 

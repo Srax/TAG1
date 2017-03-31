@@ -41,14 +41,6 @@ public class Room {
         }
     }
 
-    public int getPotion() {
-        return potion;
-    }
-
-    public void setPotion(int potion) {
-        this.potion = potion;
-    }
-
     public int getTrap() {
         return trap;
     }
