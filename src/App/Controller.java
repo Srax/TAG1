@@ -1,5 +1,6 @@
 package App;
 
+import highscore.HighscoreManager;
 import items.Iitem;
 
 public class Controller {
