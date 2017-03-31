@@ -16,8 +16,8 @@ public class Boundry {
 
     Scanner scan = new Scanner(System.in); //used for actions
     Scanner scan2 = new Scanner(System.in); //Used in creatName
-    public static String coinSound = System.getProperty("user.dir") + "\\src\\App\\coin.wav";
-    public static String doorSound = System.getProperty("user.dir") + "\\src\\App\\doorShortLoud.wav";
+    public static String coinSound = System.getProperty("user.dir") + "\\src\\sounds\\coin.wav";
+    public static String doorSound = System.getProperty("user.dir") + "\\src\\sounds\\doorShortLoud.wav";
 
     /**
      * Creates a player name
