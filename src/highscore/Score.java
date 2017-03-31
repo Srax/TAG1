@@ -9,28 +9,33 @@ package highscore;
  *
  * @author thoma
  */
+
+/**
+ * This class create an arrayList (score) that contains the Name, Gold and Hp of the player.
+ * We implement serializable to be able to sort the array so that the player with the higest score will always be #1 on the scoreboard and so on.
+ */
 import java.io.Serializable;
 
 public class Score  implements Serializable {
-    private int highscoreGold;
+    private int highscoreBank;
     private String highscoreName;
     private int highscoreHp;
     
-    public int getHp() {
+    public int getHighscoreHp() {
         return highscoreHp;
     }
 
-    public int getScore() {
-        return highscoreGold;
+    public int getHighscoreBank() {
+        return highscoreBank;
     }
 
-    public String getNaam() {
+    public String getHighscoreName() {
         return highscoreName;
     }
 
-    public Score(String naam, int score, int hp) {
-        this.highscoreGold = score;
-        this.highscoreName = naam;
-        this.highscoreHp = hp;
+    public Score(String highscoreName, int highscoreGold, int highscoreHp) {
+        this.highscoreBank = highscoreGold;
+        this.highscoreName = highscoreName;
+        this.highscoreHp = highscoreHp;
     }
 }
