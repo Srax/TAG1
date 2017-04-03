@@ -5,23 +5,20 @@
  */
 package MonsterTypes;
 
-import App.Player;
 
 /**
  *
  * @author DD
  */
-public class CorruptesWiers extends Monster {
+public class CorruptedWiers extends Monster {
 
-    public CorruptesWiers(String name, int hp, int dmg, int armor, int tier) {
+    public CorruptedWiers(String name, int hp, int dmg, int armor, int tier) {
         super(name, hp, dmg, armor, tier);
     }
     
     @Override
     public String toString() {
-        return "Tier: " + getMonsterTier()
-                + "\n"
-                + "Name: " + getMonsterName()
+        return "Name: " + getMonsterName()
                 + "\n"
                 + "HP: " + getMonsterHp()
                 +"\n"
