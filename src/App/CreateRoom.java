@@ -5,7 +5,7 @@
  */
 package App;
 
-import MonsterTypes.CorruptesWiers;
+import MonsterTypes.CorruptedWiers;
 import MonsterTypes.Monster;
 import items.KeyItem;
 import items.Weapon;
@@ -73,7 +73,7 @@ public class CreateRoom {
     
     
     //CREATE MONSTERS
-    Monster spaceWier = new CorruptesWiers("Wier", 10, 5, 2, 1);
+    Monster spaceWier = new CorruptedWiers("Wier", 10, 5, 2, 1);
     
     public void roomFeatures() {
         //Creates the Rooms as individual objects
