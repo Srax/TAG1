@@ -1,12 +1,13 @@
-
 package App;
 
+import MonsterTypes.Monster;
 
 public class Player {
-        
+
     private String name;
-    private int hp = 100,dmg = 10,bank, def=0;
-        
+    private int dmg = 2, bank, def = 0;
+    private int hp = 100;
+
     public int getDmg() {
         return dmg;
     }
@@ -22,6 +23,7 @@ public class Player {
     public String toString() {
         return "Player: " + name + "\nHP: " + hp + "\nBank: " + bank + " Space dollars";
     }
+
     public String getName() {
         return name;
     }
@@ -36,6 +38,9 @@ public class Player {
 
     public void setHp(int hp) {
         this.hp += hp;
+        if (this.hp > 100) {
+            this.hp = 100;
+        }
     }
 
     public int getBank() {
@@ -43,10 +48,25 @@ public class Player {
     }
 
     public void setBank(int bank) {
-        if(bank < 0)
-        {
+        if (bank < 0) {
             System.out.println("");
         }
         this.bank += bank;
-    } 
+    }
+
+    public int getDef() {
+        return def;
+    }
+
+    public void setDef(int def) {
+        this.def = def;
+    }
+
+    public int playerAttack(Monster m) {
+        int damage = 0;
+        damage = getDmg() - m.getMonsterDefense();
+        return damage;
+
+    }
+
 }
