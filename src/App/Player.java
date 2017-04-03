@@ -49,4 +49,5 @@ public class Player {
         }
         this.bank += bank;
     } 
-}
+    
+ }
