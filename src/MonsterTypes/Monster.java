@@ -16,13 +16,13 @@ public abstract class Monster {
     private String monsterName;
     private int monsterHp;
     private int monsterDmg;
-    private int MonsterDefense;
+    private int MonsterArmor;
 
-    public Monster(String name, int hp, int dmg, int defense) {
+    public Monster(String name, int hp, int dmg, int armor) {
         this.monsterName = name;
         this.monsterHp = hp;
         this.monsterDmg = dmg;
-        this.MonsterDefense = defense;
+        this.MonsterArmor = armor;
     }
 
     public String getMonsterName() {
@@ -49,12 +49,12 @@ public abstract class Monster {
         this.monsterDmg = monsterDmg;
     }
 
-    public int getMonsterDefense() {
-        return MonsterDefense;
+    public int getMonsterArmor() {
+        return MonsterArmor;
     }
 
-    public void setMonsterDefense(int MonsterDefense) {
-        this.MonsterDefense = MonsterDefense;
+    public void setMonsterArmor(int MonsterArmor) {
+        this.MonsterArmor = MonsterArmor;
     }
     
     

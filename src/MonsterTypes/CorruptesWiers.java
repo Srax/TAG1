@@ -35,7 +35,7 @@ public class CorruptesWiers extends Monster {
                 +"\n"
                 + "Damage: " + getMonsterDmg()
                 +"\n"
-                + "Defense: " + getMonsterDefense();
+                + "Armor: " + getMonsterArmor();
     }
 
     
