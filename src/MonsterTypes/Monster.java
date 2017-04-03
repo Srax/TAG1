@@ -30,7 +30,6 @@ public abstract class Monster {
     public String getMonsterName() {
         return monsterName;
     }
-
     public int getMonsterTier() {
         return monsterTier;
     }
@@ -38,21 +37,16 @@ public abstract class Monster {
     public void setMonsterTier(int monsterTier) {
         this.monsterTier = monsterTier;
     }
-
-    
-    
-    public void setMonsterName(String monsterName) {
+        public void setMonsterName(String monsterName) {
         this.monsterName = monsterName;
     }
 
     public int getMonsterHp() {
         return monsterHp;
     }
-
     public void setMonsterHp(int monsterHp) {
         this.monsterHp = monsterHp;
     }
-
     public int getMonsterDmg() {
         return monsterDmg;
     }
