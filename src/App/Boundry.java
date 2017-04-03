@@ -16,8 +16,8 @@ public class Boundry {
 
     Scanner scan = new Scanner(System.in); //used for actions
     Scanner scan2 = new Scanner(System.in); //Used in creatName
-    public static String coinSound = System.getProperty("user.dir") + "\\src\\App\\coin.wav";
-    public static String doorSound = System.getProperty("user.dir") + "\\src\\App\\doorShortLoud.wav";
+    public static String coinSound = System.getProperty("user.dir") + "\\src\\sounds\\coin.wav";
+    public static String doorSound = System.getProperty("user.dir") + "\\src\\sounds\\doorShortLoud.wav";
 
     /**
      * Creates a player name
@@ -109,16 +109,17 @@ public class Boundry {
      * If the player is lost, helpCommadn will allow the player to enter "Help" as an input and get a list of all possible actions in the game.
      */
     public void helpCommand() {
-        System.out.println("\n=== HELP ===");
+        System.out.println("\n======== HELP ========");
         System.out.println("- Inspect");
         System.out.println("- Search");
         System.out.println("- Bank");
-        System.out.println("- Help");
-        System.out.println("- Exit");
         System.out.println("- North / South / East / West");
-        System.out.println("- Yes / No");
         System.out.println("- Pay");
         System.out.println("- Deny");
+        System.out.println("- Inventory");
+        System.out.println("- Use");
+        System.out.println("- Help");
+        System.out.println("- Exit");
     }
 
     /**
@@ -212,7 +213,7 @@ public class Boundry {
     }
     
     void chooseItemToDrop(){
-        System.out.println("Which item do you wish to drop");
+        System.out.println("Which item do you wish to drop?");
     }
     
     /**
@@ -246,5 +247,21 @@ public class Boundry {
         } catch (LineUnavailableException e) {
         } catch (UnsupportedAudioFileException e) {
         }
+    }
+
+    void chooseItemToUse() {
+        System.out.println("Witch item do you wish to use?");
+    }
+
+    void youDropped(String item) {
+        System.out.println("\nYOU DROPPED: "+item+"\n");
+    }
+
+    void youUsed(String item) {
+        System.out.println("\nYOU USED: "+item+"\n");
+    }
+
+    void youCannotUseItem() {
+        System.out.println("You cannot use this item");
     }
 }

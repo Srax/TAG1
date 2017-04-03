@@ -1,9 +1,12 @@
 package App;
 
+import highscore.HighscoreManager;
+import items.Iitem;
+
 public class Controller {
 
     Boundry b = new Boundry();
-    Player p = new Player();
+    Player player = new Player();
     CreateRoom cr = new CreateRoom();
     Inventory inv = new Inventory();
     HighscoreManager hm = new HighscoreManager();
@@ -23,7 +26,7 @@ public class Controller {
         
         cr.roomFeatures();
         b.welcomeToGame();
-        b.createName(p);
+        b.createName(player);
         currentRoom = cr.startRoom;
 
         System.out.println(currentRoom.toString());
@@ -31,12 +34,12 @@ public class Controller {
         while (checkVictory) {
             Thread.sleep(500);
             if (currentRoom.equals(cr.finish)) {
-                b.youWon(currentRoom, p);
-                hm.addScore(p.getName(), p.getBank(), p.getHp());
+                b.youWon(currentRoom, player);
+                hm.addScore(player.getName(), player.getBank(), player.getHp());
                 checkVictory = false;
             } else if (currentRoom.equals(cr.spaceShip)) {
-                b.youQuit(currentRoom, p);
-                hm.addScore(p.getName(), p.getBank(), p.getHp());
+                b.youQuit(currentRoom, player);
+                hm.addScore(player.getName(), player.getBank(), player.getHp());
                 checkVictory = false;
             } else {
                 b.playSound(b.doorSound);
@@ -112,7 +115,7 @@ public class Controller {
                     dropItem();
                     break;
                 case "bank":
-                    b.showBank(p);
+                    b.showBank(player);
                     break;
                 case "exit":
                     tempRoom = cr.spaceShip;
@@ -121,7 +124,7 @@ public class Controller {
                 case "inventory":
                     inv.show();
                     break;
-                case "yes": System.out.println("");
+                case "use": useItem();
                     break;
                 default:
                     b.nothingHappend();
@@ -179,18 +182,18 @@ public class Controller {
         
             while (interaction) {
                 String choice = b.chooseAction();
-                if (p.getBank() > 20) {
+                if (player.getBank() > 20) {
 
                     if (choice.equalsIgnoreCase("pay")) {
-                        p.setBank(-20);
-                        b.taxCollectorPay(p);
+                        player.setBank(-20);
+                        b.taxCollectorPay(player);
                         currentRoom.setTaxCollector(0);
                         interaction = false;
                     } else if (choice.equalsIgnoreCase("deny")) {
-                        currentRoom.setGold(p.getBank());
-                        p.setBank(-p.getBank());
-                        p.setHp(-20);
-                        b.taxCollectorDeny(p);
+                        currentRoom.setGold(player.getBank());
+                        player.setBank(-player.getBank());
+                        player.setHp(-20);
+                        b.taxCollectorDeny(player);
                         currentRoom.setTaxCollector(0);
                         interaction = false;
                     } else {
@@ -199,11 +202,11 @@ public class Controller {
 
                 } else if (choice.equalsIgnoreCase("help")) {
                     b.helpCommand();
-                } else if (choice.equalsIgnoreCase("pay") || choice.equalsIgnoreCase("deny") && p.getBank() < 20) {
-                    currentRoom.setGold(p.getBank());
+                } else if (choice.equalsIgnoreCase("pay") || choice.equalsIgnoreCase("deny") && player.getBank() < 20) {
+                    currentRoom.setGold(player.getBank());
 
-                    p.setHp(-20);
-                    b.taxCollectorCantPay(p);
+                    player.setHp(-20);
+                    b.taxCollectorCantPay(player);
                     currentRoom.setTaxCollector(0);
                     interaction = false;
                 } else {
@@ -220,8 +223,8 @@ public class Controller {
         int trap = currentRoom.getTrap();
         if (trap > 0) {
             b.trapInteraction();
-            p.setHp(-10);
-            b.getHp(p);
+            player.setHp(-10);
+            b.getHp(player);
             currentRoom.setTrap(0);
         }
 
@@ -239,7 +242,7 @@ public class Controller {
         if (choice.equalsIgnoreCase("money") && currentRoom.getGold()>0) {
             int gold = currentRoom.getGold();
 
-            p.setBank(gold);
+            player.setBank(gold);
             b.playSound(b.coinSound);
             currentRoom.setGold(0);
             
@@ -268,9 +271,15 @@ public class Controller {
         if (itemToMove == null) {
             b.nothingHappend();
         } else {
-            tempRoom.add(itemToMove);
+            currentRoom.add(itemToMove);
 
         }
 
+    }
+
+    private void useItem() {
+        b.chooseItemToUse();
+        String choice = b.chooseAction();
+        inv.use(choice, player);
     }
 }

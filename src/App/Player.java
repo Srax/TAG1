@@ -5,7 +5,8 @@ package App;
 public class Player {
         
     private String name;
-    private int hp = 100,dmg = 10,bank, def=0;
+    private int dmg = 2,bank, def=0;
+    private int hp = 100;
         
     public int getDmg() {
         return dmg;
@@ -36,6 +37,9 @@ public class Player {
 
     public void setHp(int hp) {
         this.hp += hp;
+        if (this.hp>100){
+            this.hp = 100;
+        }
     }
 
     public int getBank() {

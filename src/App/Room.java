@@ -1,5 +1,6 @@
 package App;
 
+import items.Iitem;
 import java.util.ArrayList;
 
 public class Room {
@@ -13,6 +14,7 @@ public class Room {
     private int taxCollector;
     private int trap;
     private int potion;
+    
     ArrayList<Iitem> loot = new ArrayList<>();
 
     public void add(Iitem item) {
@@ -38,14 +40,6 @@ public class Room {
         for (int i = 0; i < loot.size(); i++) {
             System.out.println(loot.get(i));
         }
-    }
-
-    public int getPotion() {
-        return potion;
-    }
-
-    public void setPotion(int potion) {
-        this.potion = potion;
     }
 
     public int getTrap() {

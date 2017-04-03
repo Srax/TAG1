@@ -3,25 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package App;
+package items;
+
+import App.Player;
 
 /**
  *
  * @author jonas
  */
-public class Armor implements Iitem{
+public class KeyItem implements Iitem{
     String name, description;
-    private int defense;
     boolean usable = false;
     
-    Armor() {
+    KeyItem() {
        
     }    
 
-    public Armor(String name, String description, int defense) {
+    public KeyItem(String name, String description) {
         this.name = name;
         this.description = description;
-        this.defense = defense;
     }
 
     @Override
@@ -33,17 +33,9 @@ public class Armor implements Iitem{
         this.name = name;
     }
  
-    public int getDefense() {
-        return defense;
-    }
-
-    public void setDefense(int defense) {
-        this.defense = defense;
-    }
-
     @Override
     public String toString() {
-        return "Armor > " + "\""+name+"\"" + " Defense +"+defense + " Description: \""+getDescription()+"\"";
+        return "Misc item >" + "\""+name+"\"" + " Description: \""+getDescription()+"\"";
     }
 
     @Override
@@ -60,5 +52,10 @@ public class Armor implements Iitem{
     public void setUsable(boolean usable) {
         this.usable = usable;
     }
-}
 
+    @Override
+    public void use(Player player) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+}

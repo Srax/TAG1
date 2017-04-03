@@ -1,4 +1,6 @@
-package App;
+package items;
+
+import App.Player;
 
 /**
  *
@@ -12,6 +14,7 @@ public interface Iitem {
     public String toString();
     public boolean getUsable();
     public void setUsable(boolean usable);
+    public void use(Player player);
     
     
 }

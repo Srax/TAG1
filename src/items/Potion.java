@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package App;
+package items;
+
+import App.Player;
 
 /**
  *
@@ -60,4 +62,10 @@ public class Potion implements Iitem{
     public void setUsable(boolean usable) {
         this.usable = usable;
     }
+    @Override
+    public void use(Player player){
+        player.setHp(hpRestore);
+        
+    }
+            
 }
