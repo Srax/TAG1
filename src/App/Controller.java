@@ -277,7 +277,9 @@ public class Controller {
         }
 
     }
-
+/**
+ * Runs method for using items in the Inventory Class
+ */
     private void useItem() {
         b.chooseItemToUse();
         String choice = b.chooseAction();

@@ -1,5 +1,6 @@
 package App;
 
+import MonsterTypes.Monster;
 import items.Iitem;
 import java.util.ArrayList;
 
@@ -13,7 +14,7 @@ public class Room {
     private Room east = null;
     private int taxCollector;
     private int trap;
-    private int potion;
+    private Monster monster=null;
     
     ArrayList<Iitem> loot = new ArrayList<>();
 
@@ -32,6 +33,10 @@ public class Room {
             return temp;
         }
     }return null;
+    }
+
+    public void setMonster(Monster monster) {
+        this.monster = monster;
     }
     
   

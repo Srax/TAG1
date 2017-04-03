@@ -5,7 +5,6 @@
  */
 package MonsterTypes;
 
-import App.Player;
 
 /**
  *
@@ -19,9 +18,7 @@ public class CorruptedWiers extends Monster {
     
     @Override
     public String toString() {
-        return "Tier: " + getMonsterTier()
-                + "\n"
-                + "Name: " + getMonsterName()
+        return "Name: " + getMonsterName()
                 + "\n"
                 + "HP: " + getMonsterHp()
                 +"\n"
