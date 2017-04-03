@@ -5,8 +5,9 @@
  */
 package App;
 
-import MonsterTypes.CorruptesWiers;
+import MonsterTypes.CorruptedWiers;
 import MonsterTypes.Monster;
+import MonsterTypes.Plants;
 import items.KeyItem;
 import items.Weapon;
 import items.Iitem;
@@ -73,10 +74,10 @@ public class CreateRoom {
     
     
     //CREATE MONSTERS
-    Monster spaceWier = new CorruptesWiers("Wier", 10, 5, 2, 1);
+    Monster spaceWier = new CorruptedWiers("Wiers", 10, 5, 2, 1);
+    Monster spaceRoses = new Plants("Space Roses", 30, 10, 10, 3);
     
     public void roomFeatures() {
-        //Creates the Rooms as individual objects
         //Map and Room direction rules
         
         startRoom.setNorth(room1);
