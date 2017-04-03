@@ -98,7 +98,7 @@ public class CreateRoom {
         startRoom.setNorth(room1);
         startRoom.setSouth(spaceShip);
         startRoom.loot.add(p1);
-        startRoom.setMonster(spaceWier);
+        room1.setMonster(spaceWier);
         
         room1.setWest(room2);
         room1.setEast(room3);

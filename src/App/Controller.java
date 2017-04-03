@@ -1,10 +1,13 @@
 package App;
 
+import MonsterTypes.CorruptedWiers;
+import MonsterTypes.Monster;
 import highscore.HighscoreManager;
 import items.Iitem;
 
 public class Controller {
 
+    Monster mon;
     Boundry b = new Boundry();
     Player player = new Player();
     CreateRoom cr = new CreateRoom();
@@ -23,7 +26,7 @@ public class Controller {
     public void game() throws InterruptedException {
 
         boolean checkVictory = true;
-        
+
         cr.roomFeatures();
         b.welcomeToGame();
         b.createName(player);
@@ -33,6 +36,7 @@ public class Controller {
         Thread.sleep(500);
         while (checkVictory) {
             Thread.sleep(500);
+
             if (currentRoom.equals(cr.finish)) {
                 b.youWon(currentRoom, player);
                 hm.addScore(player.getName(), player.getBank(), player.getHp());
@@ -44,10 +48,11 @@ public class Controller {
             } else {
                 b.playSound(b.doorSound);
                 currentRoom = playerAction(currentRoom);
+                 combat(currentRoom.getMonster(), player);
             }
         }
         //Prints highscore
-            System.out.print(hm.getHighscoreString());
+        System.out.print(hm.getHighscoreString());
     }
 
     /**
@@ -72,12 +77,12 @@ public class Controller {
      */
     public Room playerAction(Room currentRoom) {
         boolean takingAction = true;
-        
+
         while (takingAction) {
-        String action = b.chooseAction();
+            String action = b.chooseAction();
 
             switch (action) {
-                
+
                 case "inspect":
                     System.out.println(currentRoom.toString());
                     taxRobot();
@@ -124,7 +129,8 @@ public class Controller {
                 case "inventory":
                     inv.show();
                     break;
-                case "use": useItem();
+                case "use":
+                    useItem();
                     break;
                 default:
                     b.nothingHappend();
@@ -135,12 +141,13 @@ public class Controller {
     }
 
     /**
- * Takes a action, and checks if the direction is possible, in the current room
- * then sets the current Room to the room if available, else returns a statement
- * that the direction is not possible.
- * @param action
- * @return takingAction 
- */
+     * Takes a action, and checks if the direction is possible, in the current
+     * room then sets the current Room to the room if available, else returns a
+     * statement that the direction is not possible.
+     *
+     * @param action
+     * @return takingAction
+     */
     public boolean directionChoice(String action) {
         boolean takingAction = true;
         Room goToRoom = null;
@@ -168,7 +175,7 @@ public class Controller {
 
         }
     }
-    
+
     /**
      * Interacts with the taxCollector. After a checking if there is a tax
      * collector in the room this method runs the possible outcomes of this
@@ -179,7 +186,7 @@ public class Controller {
         if (taxRobot > 0) {
             b.taxCollectorMeeting();
             boolean interaction = true;
-        
+
             while (interaction) {
                 String choice = b.chooseAction();
                 if (player.getBank() > 20) {
@@ -215,10 +222,10 @@ public class Controller {
             }
         }
     }
-    
-/**
- * Runs the trap encounter.
- */
+
+    /**
+     * Runs the trap encounter.
+     */
     public void trap() {
         int trap = currentRoom.getTrap();
         if (trap > 0) {
@@ -231,7 +238,7 @@ public class Controller {
     }
 
     /**
-     * This method allows the player to pick up an object from the rooms loot 
+     * This method allows the player to pick up an object from the rooms loot
      * array and moves it to the players inventory array
      */
     private void pickUpItem() {
@@ -239,13 +246,13 @@ public class Controller {
         b.chooseItemToPick();
         String choice = b.chooseAction();
 
-        if (choice.equalsIgnoreCase("money") && currentRoom.getGold()>0) {
+        if (choice.equalsIgnoreCase("money") && currentRoom.getGold() > 0) {
             int gold = currentRoom.getGold();
 
             player.setBank(gold);
             b.playSound(b.coinSound);
             currentRoom.setGold(0);
-            
+
         } else {
 
             Iitem itemToMove = currentRoom.moveFromRoomToInventory(choice);
@@ -259,10 +266,11 @@ public class Controller {
             }
         }
     }
-/**
- * This method allows the player to drop an object and and move it from the 
- * players inventory array into the currentRooms loot array.
- */
+
+    /**
+     * This method allows the player to drop an object and and move it from the
+     * players inventory array into the currentRooms loot array.
+     */
     private void dropItem() {
         inv.show();
         b.chooseItemToDrop();
@@ -276,12 +284,42 @@ public class Controller {
         }
 
     }
-/**
- * Runs method for using items in the Inventory Class
- */
+
+    /**
+     * Runs method for using items in the Inventory Class
+     */
     private void useItem() {
         b.chooseItemToUse();
         String choice = b.chooseAction();
         inv.use(choice, player);
     }
+
+    private void combat(Monster monster, Player player) {
+        boolean whileFighting = true;
+        if (monster == null) {
+            whileFighting = false;
+        }
+        while (monster.getMonsterHp() > 0 && player.getHp() > 0 && whileFighting == true) {
+
+            player.setHp(-monster.monsterAttack(player));
+            System.out.println("the monster hits you" + player.getHp());
+            String combatAction = b.chooseAction();
+            switch (combatAction) {
+                case "attack":
+                    monster.setMonsterHp(-player.playerAttack(monster));
+                    System.out.println(player.getName() + " hit the monster for " + player.getDmg());
+                    break;
+                case "use":
+                    useItem();
+                    break;
+                default:
+                    b.nothingHappend();
+                    break;
+            }
+
+        }
+        monster = null;
+
+    }
+
 }

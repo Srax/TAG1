@@ -64,7 +64,7 @@ public class Player {
 
     public int playerAttack(Monster m) {
         int damage = 0;
-        damage = getDmg() - m.getMonsterArmor();
+        damage = this.dmg - m.getMonsterArmor();
         return damage;
 
     }

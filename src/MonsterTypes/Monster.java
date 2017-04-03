@@ -45,7 +45,7 @@ public abstract class Monster {
         return monsterHp;
     }
     public void setMonsterHp(int monsterHp) {
-        this.monsterHp = monsterHp;
+        this.monsterHp += monsterHp;
     }
     public int getMonsterDmg() {
         return monsterDmg;
