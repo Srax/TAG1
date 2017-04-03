@@ -17,7 +17,7 @@ public class Inventory {
     ArrayList<Iitem> inventory = new ArrayList<>();
 
     /**
-     * adds the target object to the inventory array.
+     * Adds the target object to the inventory array.
      *
      * @param item
      */
@@ -58,7 +58,13 @@ public class Inventory {
         return null;
 
     }
-
+    /**
+ * Checks if the item exist in the Inventory Array, thereafter checks if the item
+ * is usable. If usable it runs the use() method in the item, then it removes item
+ * from the Inventory.
+ * @param item
+ * @param player 
+ */
     public void use(String item, Player player) {
         Boundry b = new Boundry();
         for (int i = 0; i < inventory.size(); i++) {

@@ -5,6 +5,8 @@
  */
 package App;
 
+import MonsterTypes.CorruptesWiers;
+import MonsterTypes.Monster;
 import items.KeyItem;
 import items.Weapon;
 import items.Iitem;
@@ -69,6 +71,10 @@ public class CreateRoom {
     //Misc items
     Iitem gameSpaceCawler = new KeyItem("The Game SPACE CAWLER", "Cause Space Invaders was already taken");
     
+    
+    //CREATE MONSTERS
+    Monster spaceWier = new CorruptesWiers("Wier", 10, 5, 2, 1);
+    
     public void roomFeatures() {
         //Creates the Rooms as individual objects
         //Map and Room direction rules
@@ -76,6 +82,7 @@ public class CreateRoom {
         startRoom.setNorth(room1);
         startRoom.setSouth(spaceShip);
         startRoom.loot.add(p1);
+        startRoom.setMonster(spaceWier);
         
         room1.setWest(room2);
         room1.setEast(room3);

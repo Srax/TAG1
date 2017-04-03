@@ -1,9 +1,6 @@
 
 package App;
 
-import MonsterTypes.CorruptesWiers;
-import MonsterTypes.Monster;
-
 public class App {
 
     public static void main(String[] args) throws InterruptedException {
