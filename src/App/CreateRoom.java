@@ -6,7 +6,9 @@
 package App;
 
 import MonsterTypes.CorruptedWiers;
+import MonsterTypes.Lurker;
 import MonsterTypes.Monster;
+import MonsterTypes.Styhr;
 import items.KeyItem;
 import items.Weapon;
 import items.Iitem;
@@ -72,8 +74,19 @@ public class CreateRoom {
     Iitem gameSpaceCawler = new KeyItem("The Game SPACE CAWLER", "Cause Space Invaders was already taken");
     
     
-    //CREATE MONSTERS
-    Monster spaceWier = new CorruptedWiers("Wier", 10, 5, 2, 1);
+    // ** CREATE MONSTERS ** //
+    
+    // TIER 1 MONSTERS (NAME, HP, DAMAGE, ARMOR, TIER)
+        //Space Wier - purposely misspelled
+        Monster spaceWier = new CorruptedWiers("Wier", 10, 5, 2, 1);
+    
+        //Lurkers - Common and weak monster
+        Monster commonLurker = new Lurker("Common Lurker", 5, 1, 0, 1);
+        Monster patheticLurker = new Lurker("Pathetic Lurker", 1, 1, 0, 1);
+    
+    //TIER 2 MONSTERS (NAME, HP, DAMAGE, ARMOR, TIER)
+        //Taint Slasher - Protect your privates
+        Monster Styhr = new Styhr("Taint Slasher", 5, 30, 10, 2);
     
     public void roomFeatures() {
         //Creates the Rooms as individual objects
