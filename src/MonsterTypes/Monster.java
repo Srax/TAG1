@@ -16,19 +16,31 @@ public abstract class Monster {
     private String monsterName;
     private int monsterHp;
     private int monsterDmg;
-    private int MonsterArmor;
+    private int monsterArmor;
+    private int monsterTier; 
 
-    public Monster(String name, int hp, int dmg, int armor) {
+    public Monster(String name, int hp, int dmg, int armor, int tier) {
         this.monsterName = name;
         this.monsterHp = hp;
         this.monsterDmg = dmg;
-        this.MonsterArmor = armor;
+        this.monsterArmor = armor;
+        this.monsterTier = tier;
     }
 
     public String getMonsterName() {
         return monsterName;
     }
 
+    public int getMonsterTier() {
+        return monsterTier;
+    }
+
+    public void setMonsterTier(int monsterTier) {
+        this.monsterTier = monsterTier;
+    }
+
+    
+    
     public void setMonsterName(String monsterName) {
         this.monsterName = monsterName;
     }
@@ -50,11 +62,11 @@ public abstract class Monster {
     }
 
     public int getMonsterArmor() {
-        return MonsterArmor;
+        return monsterArmor;
     }
 
     public void setMonsterArmor(int MonsterArmor) {
-        this.MonsterArmor = MonsterArmor;
+        this.monsterArmor = MonsterArmor;
     }
     
     

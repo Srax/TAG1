@@ -13,23 +13,15 @@ import App.Player;
  */
 public class CorruptesWiers extends Monster {
 
-    private int tier; 
-            
-    public CorruptesWiers(String name, int hp, int dmg, int defence ) {
-        super(name, hp, dmg, defence);
+    public CorruptesWiers(String name, int hp, int dmg, int armor, int tier) {
+        super(name, hp, dmg, armor, tier);
     }
-
-    public int getTier() {
-        return tier;
-    }
-
-    public void setTier(int tier) {
-        this.tier = tier;
-    }
-
+    
     @Override
     public String toString() {
-        return "Name: " + getMonsterName()
+        return "Tier: " + getMonsterTier()
+                + "\n"
+                + "Name: " + getMonsterName()
                 + "\n"
                 + "HP: " + getMonsterHp()
                 +"\n"
@@ -37,6 +29,10 @@ public class CorruptesWiers extends Monster {
                 +"\n"
                 + "Armor: " + getMonsterArmor();
     }
+
+  
+
+    
 
     
     
