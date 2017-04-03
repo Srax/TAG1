@@ -5,7 +5,7 @@
  */
 package App;
 
-import MonsterTypes.CorruptesWiers;
+import MonsterTypes.CorruptedWiers;
 import MonsterTypes.Monster;
 import items.KeyItem;
 import items.Weapon;
@@ -73,7 +73,7 @@ public class CreateRoom {
     
     
     //CREATE MONSTERS
-    Monster spaceWier = new CorruptesWiers("Wier", 10, 5, 2, 1);
+    Monster spaceWier = new CorruptedWiers("Wier", 4, 5, 0, 1);
     
     public void roomFeatures() {
         //Creates the Rooms as individual objects
@@ -82,7 +82,7 @@ public class CreateRoom {
         startRoom.setNorth(room1);
         startRoom.setSouth(spaceShip);
         startRoom.loot.add(p1);
-        startRoom.setMonster(spaceWier);
+        room1.setMonster(spaceWier);
         
         room1.setWest(room2);
         room1.setEast(room3);

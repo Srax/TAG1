@@ -22,6 +22,10 @@ public class Room {
         loot.add(item);
     }
 
+    public Monster getMonster() {
+        return monster;
+    }
+
     public Iitem moveFromRoomToInventory(String item) {
         Iitem temp;
       
