@@ -7,8 +7,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 
 /**
  * HighscoreManager.java class manages the highscore.
@@ -89,7 +91,7 @@ public class HighscoreManager {
             scores = (ArrayList<Score>) inputStream.readObject();
         } catch (FileNotFoundException e) {
             System.out.println("\n[NOTE] FNF Error: " + e.getMessage());
-            System.out.println("\nCreated File highscores.dat");
+            System.out.println("Created File highscores.dat");
         } catch (IOException e) {
             System.out.println("\n[NOTE] IO Error: " + e.getMessage());
         } catch (ClassNotFoundException e) {
@@ -130,7 +132,7 @@ public class HighscoreManager {
             }
         }
     }
-    
+
     
     /**
      * getHighscoreString() define the way the highscore.dat file should be displayed.
@@ -138,8 +140,15 @@ public class HighscoreManager {
      * This can be raised or lowered by changing the value of int maxDisplayedPlayers;
      */
     public String getHighscoreString() {
+        
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
+        String date = sdf.format(new Date());
+        System.out.println(date); //15/10/2013
+        
+        
         String highscoreString = "\n=== HIGHSCORES ===\n\n"
-                + "No\tPLAYER\t\tBANK\t\tHP\n";
+                + "No\tPLAYER\t\tBANK\t\tHP\t\tDATE\n"
+                + "-----------------------------------------------------------------\n";
         
 	int maxDisplayedPlayers = 10; //The maximum number of players displayed in the highscore.dat file.
 
@@ -155,9 +164,9 @@ public class HighscoreManager {
             //If the players name is shorter than 8 characters, add an extra 'tab' at the end of the name.
             //We added this function so that the score will be displayed with the same 'space' between Name, Bank and Hp as long as your name is between 1-12 characters.
             if (scores.get(i).getHighscoreName().length()<8) { //If the length of the name is less than 8 characters, add an extra \t after the name is displayed.
-                highscoreString += (i + 1) + ".\t" + scores.get(i).getHighscoreName() + "\t\t" + scores.get(i).getHighscoreBank() + "$\t\t" + scores.get(i).getHighscoreHp()+ "HP\n";
+                highscoreString += (i + 1) + ".\t" + scores.get(i).getHighscoreName() + "\t\t" + scores.get(i).getHighscoreBank() + "$\t\t" + scores.get(i).getHighscoreHp()+ "HP\t\t" + date + "\n";
             } else {
-                highscoreString += (i + 1) + ".\t" + scores.get(i).getHighscoreName() + "\t" + scores.get(i).getHighscoreBank() + "$\t\t" + scores.get(i).getHighscoreHp()+ "HP\n";
+                highscoreString += (i + 1) + ".\t" + scores.get(i).getHighscoreName() + "\t" + scores.get(i).getHighscoreBank() + "$\t\t" + scores.get(i).getHighscoreHp()+ "HP\t\t" + date + "\n";
             }
             i++; // adds +1 to i
         }
