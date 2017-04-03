@@ -1,10 +1,11 @@
 package App;
 
+import MonsterTypes.CorruptedWiers;
 import highscore.HighscoreManager;
 import items.Iitem;
 
 public class Controller {
-
+    
     Boundry b = new Boundry();
     Player player = new Player();
     CreateRoom cr = new CreateRoom();
@@ -282,4 +283,13 @@ public class Controller {
         String choice = b.chooseAction();
         inv.use(choice, player);
     }
+    
+    private void combat(){
+    
+    
+    
+    
+    }
+    
+    
 }
