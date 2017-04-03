@@ -5,6 +5,8 @@
  */
 package items;
 
+import App.Player;
+
 /**
  *
  * @author jonas
@@ -49,6 +51,11 @@ public class KeyItem implements Iitem{
     @Override
     public void setUsable(boolean usable) {
         this.usable = usable;
+    }
+
+    @Override
+    public void use(Player player) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

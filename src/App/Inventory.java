@@ -13,51 +13,72 @@ import java.util.ArrayList;
  * @author Stanislav
  */
 public class Inventory {
-    
-    
-    
+
     ArrayList<Iitem> inventory = new ArrayList<>();
-    
-    
+
     /**
      * adds the target object to the inventory array.
-     * @param item 
+     *
+     * @param item
      */
-    public void add(Iitem item){
+    public void add(Iitem item) {
         inventory.add(item);
     }
-    
+
     /**
      * Prints out the inventory array.
      */
-    public void show(){
+    public void show() {
         System.out.println("\n------------INVENTORY------------");
-        for (int i=0; i < inventory.size();i++) {
-                System.out.print(inventory.get(i)+"\n");
-            }
+        for (int i = 0; i < inventory.size(); i++) {
+            System.out.print(inventory.get(i) + "\n");
+        }
     }
-    
+
     /**
-     * When given objects name as a string, this method moves the targeted object
-     * from the room loot array to the players inventory array
+     * When given objects name as a string, this method moves the targeted
+     * object from the room loot array to the players inventory array
+     *
      * @param item
      * @return temp
      */
-      public Iitem MoveFromInventoryToRoom(String item){
+    public Iitem MoveFromInventoryToRoom(String item) {
+        Boundry b = new Boundry();
         Iitem temp;
-        for (int i = 0; i<inventory.size(); i++) {
+        for (int i = 0; i < inventory.size(); i++) {
             if (inventory.get(i).getName().equalsIgnoreCase(item)) {
                 temp = this.inventory.get(i);
-                System.out.println("\nYOU DROPPED: "+inventory.get(i).toString()+"\n");
+                b.youDropped(inventory.get(i).toString());
+
                 this.inventory.remove(i);
-                            
+
                 return temp;
             }
-        }return null;
-        
-    
+        }
+        return null;
+
     }
-  
-    
-    
+
+    public void use(String item, Player player) {
+        Boundry b = new Boundry();
+        for (int i = 0; i < inventory.size(); i++) {
+            if (inventory.get(i).getName().equalsIgnoreCase(item)) {
+                this.inventory.get(i);
+
+                if (this.inventory.get(i).getUsable() == true) {
+                    this.inventory.get(i).use(player);
+                    b.youUsed(inventory.get(i).toString());
+
+                    this.inventory.remove(i);
+
+                } else {
+                    b.youCannotUseItem();
+                }
+            } else {
+                b.nothingHappend();
+            }
+        }
+
+    }
+
 }

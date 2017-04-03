@@ -124,7 +124,7 @@ public class Controller {
                 case "inventory":
                     inv.show();
                     break;
-                case "yes": System.out.println("");
+                case "use": useItem();
                     break;
                 default:
                     b.nothingHappend();
@@ -275,5 +275,11 @@ public class Controller {
 
         }
 
+    }
+
+    private void useItem() {
+        b.chooseItemToUse();
+        String choice = b.chooseAction();
+        inv.use(choice, player);
     }
 }

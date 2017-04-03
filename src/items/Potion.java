@@ -5,6 +5,8 @@
  */
 package items;
 
+import App.Player;
+
 /**
  *
  * @author jonas
@@ -60,4 +62,10 @@ public class Potion implements Iitem{
     public void setUsable(boolean usable) {
         this.usable = usable;
     }
+    @Override
+    public void use(Player player){
+        player.setHp(hpRestore);
+        
+    }
+            
 }
