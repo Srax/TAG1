@@ -9,6 +9,11 @@ package App;
  *
  * @author DD
  */
-public abstract class Monster {
+public class Combat {
+    
+    
+    
+    
+    
     
 }
