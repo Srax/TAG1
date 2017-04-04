@@ -27,8 +27,7 @@ public class CorruptedWiers extends Monster {
                 + "Armor: " + getMonsterArmor();
     }
 
-  
-
+   
     
 
     
