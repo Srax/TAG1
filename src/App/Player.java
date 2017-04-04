@@ -3,7 +3,7 @@ package App;
 import MonsterTypes.Monster;
 
 public class Player {
-
+    
     private String name;
     private int dmg = 2, bank, def = 0;
     private int hp = 100;

@@ -30,7 +30,7 @@ public class Controller {
 
         cr.roomFeatures();
         b.welcomeToGame();
-        b.createName(player);
+        //b.createName(player);
         currentRoom = cr.startRoom;
 
         System.out.println(currentRoom.toString());
@@ -242,7 +242,7 @@ public class Controller {
      * This method allows the player to pick up an object from the rooms loot
      * array and moves it to the players inventory array
      */
-    private void pickUpItem() {
+    public void pickUpItem() {
 
         b.chooseItemToPick();
         String choice = b.chooseAction();
@@ -272,7 +272,7 @@ public class Controller {
      * This method allows the player to drop an object and and move it from the
      * players inventory array into the currentRooms loot array.
      */
-    private void dropItem() {
+    public void dropItem() {
         inv.show();
         b.chooseItemToDrop();
         String choice = b.chooseAction();
@@ -289,40 +289,74 @@ public class Controller {
     /**
      * Runs method for using items in the Inventory Class
      */
-    private void useItem() {
+    public void useItem() {
         b.chooseItemToUse();
         String choice = b.chooseAction();
         inv.use(choice, player);
     }
 
-    private void combat(Monster monster, Player player) {
+    public void combat(Monster monster, Player player) {
+        boolean monsterTurn = true;
+        boolean playerTurn = true;
         boolean whileFighting = true;
+
+        String choice = "";
         if (monster == null) {
             whileFighting = false;
         } else {
             b.monsterEncounter(monster.getMonsterName());
+            while (whileFighting == true) {
 
-            while (whileFighting == true && monster.getMonsterHp() > 0 && player.getHp() > 0) {
-                player.setHp(-monster.monsterAttack(player));
-                b.monsterAttacksYou(monster.getMonsterName(), monster.getMonsterDmg(), player.getHp());
-                String choice = b.chooseAction();
-                switch (choice) {
-                    case "attack":
-                        monster.setMonsterHp(-player.playerAttack(monster));
-                        b.playerAttackMonster(monster.getMonsterName(), player.getDmg(), monster.getMonsterHp());
-                        break;
-                    case "use":
-                        useItem();
-                        break;
-                    case "inventory":
-                        inv.show();
-                    default:
-                        b.nothingHappend();
-                        break;
+                if (monster.getMonsterHp() <= 0) {
+                    b.monsterIsDead(monster.getMonsterName());
+                    monster = null;
+                    whileFighting = false;
+                    
+                } else {
+
+                    while (monsterTurn == true) {
+                        player.setHp(-monster.getMonsterDmg());
+                        b.monsterAttacksYou(monster.getMonsterName(), monster.getMonsterDmg(), player.getHp());
+                        monsterTurn = false;
+                        playerTurn = true;
+
+                    }
+
+                    while (playerTurn == true) {
+
+                        choice = b.chooseAction();
+                        switch (choice) {
+                            case "help":
+                                b.helpCommand();
+                                break;
+                            case "inventory":
+                                inv.show();
+                                break;
+                            case "use":
+                                useItem();
+                                playerTurn = false;
+                                monsterTurn = true;
+                                break;
+                            case "attack":
+                                monster.setMonsterHp(-player.getDmg());
+                                b.playerAttackMonster(monster.getMonsterName(), player.getDmg(), monster.getMonsterHp());
+                                playerTurn = false;
+                                monsterTurn = true;
+                                break;
+                            case "exit":
+                                //monster = null;
+                                System.out.println("Shutting down");
+                                tempRoom = cr.spaceShip;
+                                break;
+                            default:
+                                b.nothingHappend();
+                        }
+
+                    }
+
                 }
+
             }
-            b.monsterIsDead(monster.getMonsterName());
-            monster = null;
 
         }
 
