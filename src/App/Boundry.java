@@ -124,6 +124,15 @@ public class Boundry {
         System.out.println("- Help");
         System.out.println("- Exit");
     }
+    public void attackHelp() {
+        System.out.println("\n======== HELP ========");
+        System.out.println("- attack");
+        System.out.println("- run");
+        System.out.println("- inventory");
+        System.out.println("- use");
+        System.out.println("");
+        
+    }
 
     /**
      * When encountering the taxRobot, this method will display the following for the player to react to.

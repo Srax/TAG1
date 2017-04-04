@@ -316,6 +316,10 @@ public class Controller {
                         break;
                     case "inventory":
                         inv.show();
+                        break;
+                    case "help":
+                        b.attackHelp();
+                        break;
                     default:
                         b.nothingHappend();
                         break;
