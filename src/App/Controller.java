@@ -49,7 +49,7 @@ public class Controller {
             } else {
                 b.playSound(b.doorSound);
                 currentRoom = playerAction(currentRoom);
-                combat(currentRoom.getMonster(), player);
+                currentRoom.setMonster(combat(currentRoom.getMonster(), player));
             }
         }
         //Prints highscore
@@ -295,22 +295,31 @@ public class Controller {
         inv.use(choice, player);
     }
 
-    public void combat(Monster monster, Player player) {
+    
+    
+    
+    
+    
+    
+    
+    public Monster combat(Monster monster, Player player) {
         boolean monsterTurn = true;
         boolean playerTurn = true;
         boolean whileFighting = true;
-
+        Monster returnMonster = monster;
+        
         String choice = "";
         if (monster == null) {
             whileFighting = false;
         } else {
             b.monsterEncounter(monster.getMonsterName());
             while (whileFighting == true) {
-
+                
                 if (monster.getMonsterHp() <= 0) {
+                    
                     b.monsterIsDead(monster.getMonsterName());
-                    monster = null;
                     whileFighting = false;
+                    returnMonster = null;
                     
                 } else {
 
@@ -359,7 +368,7 @@ public class Controller {
             }
 
         }
-
+        return returnMonster;
     }
 
 }
