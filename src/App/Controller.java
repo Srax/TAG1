@@ -4,6 +4,7 @@ import MonsterTypes.CorruptedWiers;
 import MonsterTypes.Monster;
 import highscore.HighscoreManager;
 import items.Iitem;
+import java.util.Random;
 
 public class Controller {
 
@@ -34,9 +35,9 @@ public class Controller {
 
         System.out.println(currentRoom.toString());
         Thread.sleep(500);
+
         while (checkVictory) {
             Thread.sleep(500);
-
             if (currentRoom.equals(cr.finish)) {
                 b.youWon(currentRoom, player);
                 hm.addScore(player.getName(), player.getBank(), player.getHp());
@@ -48,7 +49,7 @@ public class Controller {
             } else {
                 b.playSound(b.doorSound);
                 currentRoom = playerAction(currentRoom);
-                 combat(currentRoom.getMonster(), player);
+                combat(currentRoom.getMonster(), player);
             }
         }
         //Prints highscore
@@ -298,27 +299,32 @@ public class Controller {
         boolean whileFighting = true;
         if (monster == null) {
             whileFighting = false;
-        }
-        while (monster.getMonsterHp() > 0 && player.getHp() > 0 && whileFighting == true) {
+        } else {
+            b.monsterEncounter(monster.getMonsterName());
 
-            player.setHp(-monster.monsterAttack(player));
-            System.out.println("the monster hits you" + player.getHp());
-            String combatAction = b.chooseAction();
-            switch (combatAction) {
-                case "attack":
-                    monster.setMonsterHp(-player.playerAttack(monster));
-                    System.out.println(player.getName() + " hit the monster for " + player.getDmg());
-                    break;
-                case "use":
-                    useItem();
-                    break;
-                default:
-                    b.nothingHappend();
-                    break;
+            while (whileFighting == true && monster.getMonsterHp() > 0 && player.getHp() > 0) {
+                player.setHp(-monster.monsterAttack(player));
+                b.monsterAttacksYou(monster.getMonsterName(), monster.getMonsterDmg(), player.getHp());
+                String choice = b.chooseAction();
+                switch (choice) {
+                    case "attack":
+                        monster.setMonsterHp(-player.playerAttack(monster));
+                        b.playerAttackMonster(monster.getMonsterName(), player.getDmg(), monster.getMonsterHp());
+                        break;
+                    case "use":
+                        useItem();
+                        break;
+                    case "inventory":
+                        inv.show();
+                    default:
+                        b.nothingHappend();
+                        break;
+                }
             }
+            b.monsterIsDead(monster.getMonsterName());
+            monster = null;
 
         }
-        monster = null;
 
     }
 
