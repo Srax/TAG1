@@ -78,7 +78,7 @@ public class CreateRoom {
     
     // TIER 1 MONSTERS (NAME, HP, DAMAGE, ARMOR, TIER)
         //Space Wier - purposely misspelled
-        Monster spaceWier = new CorruptedWiers("Wier", 10, 5, 2, 1);
+        Monster spaceWier = new CorruptedWiers("Wier", 10, 5, 0, 1);
     
         //Lurkers - Common and weak monster
         Monster commonLurker = new Lurker("Common Lurker", 5, 1, 0, 1);
