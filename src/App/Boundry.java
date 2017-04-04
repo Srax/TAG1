@@ -115,9 +115,12 @@ public class Boundry {
         System.out.println("- Bank");
         System.out.println("- North / South / East / West");
         System.out.println("- Pay");
-        System.out.println("- Deny");
-        System.out.println("- Inventory");
+        System.out.println("- Deny");              
+//        System.out.println("- Run");        
         System.out.println("- Use");
+//        System.out.println("- Equip");        
+        System.out.println("- Inventory");
+        System.out.println("- Attack");  
         System.out.println("- Help");
         System.out.println("- Exit");
     }
@@ -264,4 +267,46 @@ public class Boundry {
     void youCannotUseItem() {
         System.out.println("You cannot use this item");
     }
+    
+    
+    ///////////////////// COMBAT DISPLAY ////////////////////////
+    
+    void monsterEncounter(String monsterName){
+        System.out.println("You float into the next room, but suddenly infront of you you see a monster!!!!!."
+                + "\n"
+                + "It is an enemy " + monsterName + " ready to fight you!"
+                        + "\n"
+                        + "\n"
+                        + "Before you can react, the"+ monsterName +" attacks you!");
+    
+    
+    }
+    void monsterAttacksYou(String monsterName,int damage, int hp){
+        System.out.println("The "+monsterName+" attacks you and hits you"
+                + " for " + damage + " damage.");
+        System.out.println("You now have " + hp + " HP left");
+            
+    
+    } 
+    
+    void playerAttackMonster(String monsterName,int damage, int hp){
+        System.out.println("You attack the "+ monsterName + " for " + damage + " damage.");
+        System.out.println("The "+monsterName+" now has "+hp+"HP left");
+    }
+    
+    void monsterIsDead(String monsterName){
+        System.out.println("The "+monsterName+"is hit one last time and stops moving.\n"
+                + "Congratulation, you killed the " +monsterName+"!!");
+        System.out.println("You can now explore the room.");
+    
+    }
+    
+    
+//    void monsterIsWeakend(String monsterName){
+//        System.out.println("The "+ monsterName + " looks weakend");
+//    }
+//    void monsterIsDying(String monsterName){
+//        System.out.println("The "+ monsterName + " looks almost dead, hurry up and finish it off");
+//                
+//    }
 }

@@ -14,6 +14,7 @@ import App.Player;
 public abstract class Monster {
 
     private String monsterName;
+    
     private int monsterHp;
     private int monsterDmg;
     private int monsterArmor;
@@ -72,4 +73,7 @@ public abstract class Monster {
         
         return damage;
     }
+    
+    
+
 }

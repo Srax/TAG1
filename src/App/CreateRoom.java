@@ -79,7 +79,8 @@ public class CreateRoom {
     
     // TIER 1 MONSTERS (NAME, HP, DAMAGE, ARMOR, TIER)
         //Space Wier - purposely misspelled
-        Monster spaceWier = new CorruptedWiers("Wier", 10, 5, 2, 1);
+        Monster spaceWier = new CorruptedWiers("Wier", 6, 5, 0, 1);
+        Monster spaceWier2 = new CorruptedWiers("Wier", 6, 5, 0, 1);
     
         //Lurkers - Common and weak monster
         Monster commonLurker = new Lurker("Common Lurker", 5, 1, 0, 1);
@@ -98,20 +99,24 @@ public class CreateRoom {
         startRoom.setNorth(room1);
         startRoom.setSouth(spaceShip);
         startRoom.loot.add(p1);
-        room1.setMonster(spaceWier);
         
         room1.setWest(room2);
         room1.setEast(room3);
         room1.setSouth(startRoom);
-
+        room1.setMonster(spaceWier);
+        
         room2.setEast(room1);
         room2.setWest(room9);
         room2.setTaxCollector(1);
-
+        
+        
+        
         room3.setWest(room1);
         room3.setNorth(room5);
         room3.setSouth(room4);
-
+        room3.setMonster(spaceWier2);
+        
+        
         room4.setNorth(room3);
         room4.add(beatUpEngineeringSpaceSuit);
         room4.add(particlelRemovalMop);
