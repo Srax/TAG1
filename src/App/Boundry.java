@@ -115,9 +115,12 @@ public class Boundry {
         System.out.println("- Bank");
         System.out.println("- North / South / East / West");
         System.out.println("- Pay");
-        System.out.println("- Deny");
-        System.out.println("- Inventory");
+        System.out.println("- Deny");              
+//        System.out.println("- Run");        
         System.out.println("- Use");
+//        System.out.println("- Equip");        
+        System.out.println("- Inventory");
+        System.out.println("- Attack");  
         System.out.println("- Help");
         System.out.println("- Exit");
     }
