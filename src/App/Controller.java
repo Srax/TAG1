@@ -309,6 +309,8 @@ public class Controller {
         Monster returnMonster = monster;
         
         String choice = "";
+        
+        
         if (monster == null) {
             whileFighting = false;
         } else {
@@ -353,7 +355,7 @@ public class Controller {
                                 monsterTurn = true;
                                 break;
                             case "exit":
-                                //monster = null;
+
                                 System.out.println("Shutting down");
                                 tempRoom = cr.spaceShip;
                                 break;
