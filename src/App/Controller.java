@@ -30,7 +30,7 @@ public class Controller {
 
         cr.roomFeatures();
         b.welcomeToGame();
-        //b.createName(player);
+        b.createName(player);
         currentRoom = cr.startRoom;
 
         System.out.println(currentRoom.toString());
