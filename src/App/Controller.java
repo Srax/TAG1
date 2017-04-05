@@ -261,7 +261,7 @@ public class Controller {
         b.chooseItemToPick();
         String choice = b.chooseAction();
 
-        if (choice.equalsIgnoreCase("money") && currentRoom.getGold() > 0) {
+        if (choice.equalsIgnoreCase("money") || choice.equalsIgnoreCase("space dollars") && currentRoom.getGold() > 0) {
             int gold = currentRoom.getGold();
 
             player.setBank(gold);
