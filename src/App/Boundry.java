@@ -21,14 +21,15 @@ public class Boundry {
 
     /**
      * Creates a player name
+     *
      * @param p
      */
     public void createName(Player p) {
 
         boolean donePickingName = false;
-        String inputName=null;
+        String inputName = null;
         String actionInput;
-        
+
         while (donePickingName == false) {
             System.out.println("\nWHAT IS YOUR NAME?");
             System.out.print("NAME: ");
@@ -54,7 +55,7 @@ public class Boundry {
             } else {
                 System.out.println("\nSORRY BUT YOUR NAME IS TOO LONG!\nPlease keep your name at 12 or less characters.");
             }
-        
+
         }
         p.setName(inputName);
     }
@@ -84,6 +85,7 @@ public class Boundry {
     /**
      * When encountering gold in the game, takeGold will display the following
      * statement.
+     *
      * @return choice
      */
     public String takeGold() {
@@ -95,7 +97,8 @@ public class Boundry {
     }
 
     /**
-     * This Method lets the player know that he/she can preform an action in various situations
+     * This Method lets the player know that he/she can preform an action in
+     * various situations
      *
      * @return
      */
@@ -106,7 +109,8 @@ public class Boundry {
     }
 
     /**
-     * If the player is lost, helpCommadn will allow the player to enter "Help" as an input and get a list of all possible actions in the game.
+     * If the player is lost, helpCommadn will allow the player to enter "Help"
+     * as an input and get a list of all possible actions in the game.
      */
     public void helpCommand() {
         System.out.println("\n======== HELP ========");
@@ -115,15 +119,16 @@ public class Boundry {
         System.out.println("- Bank");
         System.out.println("- North / South / East / West");
         System.out.println("- Pay");
-        System.out.println("- Deny");              
+        System.out.println("- Deny");
 //        System.out.println("- Run");        
         System.out.println("- Use");
 //        System.out.println("- Equip");        
         System.out.println("- Inventory");
-        System.out.println("- Attack");  
+        System.out.println("- Attack");
         System.out.println("- Help");
         System.out.println("- Exit");
     }
+
     public void attackHelp() {
         System.out.println("\n======== HELP ========");
         System.out.println("- attack");
@@ -131,11 +136,12 @@ public class Boundry {
         System.out.println("- inventory");
         System.out.println("- use");
         System.out.println("");
-        
+
     }
 
     /**
-     * When encountering the taxRobot, this method will display the following for the player to react to.
+     * When encountering the taxRobot, this method will display the following
+     * for the player to react to.
      */
     public void taxCollectorMeeting() {
 
@@ -201,13 +207,14 @@ public class Boundry {
     void walkIntoWall() {
         System.out.println("You are trying to walk into a wall\n");
     }
-    void youQuit(Room currentRoom, Player p){
+
+    void youQuit(Room currentRoom, Player p) {
         System.out.println(currentRoom.getDescription());
         System.out.println(p.toString());
-    
+
     }
-    
-    void youWon(Room currentRoom, Player p){
+
+    void youWon(Room currentRoom, Player p) {
         System.out.println(currentRoom.getDescription());
         System.out.println(p.toString());
         System.out.println("*********************************");
@@ -216,22 +223,21 @@ public class Boundry {
         System.out.println("*                               *");
         System.out.println("*********************************");
     }
-    
 
     void chooseItemToPick() {
         System.out.println("Which item do you wish to pick up?");
-        
-    
+
     }
-    
-    void chooseItemToDrop(){
+
+    void chooseItemToDrop() {
         System.out.println("Which item do you wish to drop?");
     }
-    
+
     /**
-     * The method reads a path to a .wav sound file, given by a string then plays 
-     * the sound when called
-     * @param s 
+     * The method reads a path to a .wav sound file, given by a string then
+     * plays the sound when called
+     *
+     * @param s
      */
     public void playSound(String s) {
         try {
@@ -266,51 +272,47 @@ public class Boundry {
     }
 
     void youDropped(String item) {
-        System.out.println("\nYOU DROPPED: "+item+"\n");
+        System.out.println("\nYOU DROPPED: " + item + "\n");
     }
 
     void youUsed(String item) {
-        System.out.println("\nYOU USED: "+item+"\n");
+        System.out.println("\nYOU USED: " + item + "\n");
     }
 
     void youCannotUseItem() {
         System.out.println("You cannot use this item");
     }
-    
-    
+
     ///////////////////// COMBAT DISPLAY ////////////////////////
-    
-    void monsterEncounter(String monsterName){
+    void monsterEncounter(String monsterName) {
         System.out.println("You float into the next room, but suddenly infront of you you see a monster!!!!!."
                 + "\n"
                 + "It is an enemy " + monsterName + " ready to fight you!"
-                        + "\n"
-                        + "\n"
-                        + "Before you can react, the"+ monsterName +" attacks you!");
-    
-    
+                + "\n"
+                + "\n"
+                + "Before you can react, the" + monsterName + " attacks you!");
+
     }
-    void monsterAttacksYou(String monsterName,int damage, int hp){
-        System.out.println("The "+monsterName+" attacks you and hits you"
+
+    void monsterAttacksYou(String monsterName, int damage, int hp) {
+        System.out.println("The " + monsterName + " attacks you and hits you"
                 + " for " + damage + " damage.");
         System.out.println("You now have " + hp + " HP left");
-            
-    
-    } 
-    
-    void playerAttackMonster(String monsterName,int damage, int hp){
-        System.out.println("You attack the "+ monsterName + " for " + damage + " damage.");
-        System.out.println("The "+monsterName+" now has "+hp+"HP left");
+
     }
-    
-    void monsterIsDead(String monsterName){
-        System.out.println("The "+monsterName+"is hit one last time and stops moving.\n"
-                + "Congratulation, you killed the " +monsterName+"!!");
+
+    void playerAttackMonster(String monsterName, int damage, int hp) {
+        System.out.println("You attack the " + monsterName + " for " + damage + " damage.");
+        System.out.println("The " + monsterName + " now has " + hp + "HP left");
+    }
+
+    void monsterIsDead(String monsterName) {
+        System.out.println("The " + monsterName + "is hit one last time and stops moving.\n"
+                + "Congratulation, you killed the " + monsterName + "!!");
         System.out.println("You can now explore the room.");
-    
+
     }
-    
-    
+
 //    void monsterIsWeakend(String monsterName){
 //        System.out.println("The "+ monsterName + " looks weakend");
 //    }
@@ -318,4 +320,7 @@ public class Boundry {
 //        System.out.println("The "+ monsterName + " looks almost dead, hurry up and finish it off");
 //                
 //    }
+    public void monsterDroppedGold(String monsterName, int monsterGold) {
+        System.out.println(monsterName + " dropped " + monsterGold + " space dollars.");
+    }
 }

@@ -5,6 +5,8 @@
  */
 package MonsterTypes;
 
+import App.Player;
+
 
 /**
  *
@@ -12,8 +14,8 @@ package MonsterTypes;
  */
 public class CorruptedWiers extends Monster {
 
-    public CorruptedWiers(String name, int hp, int dmg, int armor, int tier) {
-        super(name, hp, dmg, armor, tier);
+    public CorruptedWiers(String name, int hp, int dmg, int armor, int tier, int gold) {
+        super(name, hp, dmg, armor, tier, gold);
     }
     
     @Override
@@ -25,6 +27,18 @@ public class CorruptedWiers extends Monster {
                 + "Damage: " + getMonsterDmg()
                 +"\n"
                 + "Armor: " + getMonsterArmor();
+    }
+
+    @Override
+    public int monsterAttack(Player p) {
+    int damage = 0;
+    
+        System.out.println("The Wier hisses and release a powervull eletric field"
+                + "it hits you for a great amount of damage");
+        damage = this.getMonsterDmg()*2 - p.getDef();
+        
+    return damage;
+    
     }
 
    

@@ -7,7 +7,7 @@ import items.Iitem;
 import java.util.Random;
 
 public class Controller {
-
+    Random rnd = new Random();
     Monster mon;
     Boundry b = new Boundry();
     Player player = new Player();
@@ -48,8 +48,10 @@ public class Controller {
                 checkVictory = false;
             } else {
                 b.playSound(b.doorSound);
+                player.setLastRoom(currentRoom);
                 currentRoom = playerAction(currentRoom);
                 currentRoom.setMonster(combat(currentRoom.getMonster(), player));
+                
             }
         }
         //Prints highscore
@@ -247,7 +249,7 @@ public class Controller {
         b.chooseItemToPick();
         String choice = b.chooseAction();
 
-        if (choice.equalsIgnoreCase("money") && currentRoom.getGold() > 0) {
+        if (choice.equalsIgnoreCase("space dollars") && currentRoom.getGold() > 0) {
             int gold = currentRoom.getGold();
 
             player.setBank(gold);
@@ -306,6 +308,7 @@ public class Controller {
         boolean monsterTurn = true;
         boolean playerTurn = true;
         boolean whileFighting = true;
+        int damage = 0;
         Monster returnMonster = monster;
         
         String choice = "";
@@ -318,21 +321,33 @@ public class Controller {
             while (whileFighting == true) {
                 
                 if (monster.getMonsterHp() <= 0) {
-                    
+                    System.out.println("The monster drops " + monster.getMonsterGold()+"$ into the room " + currentRoom.getGold());
+                    currentRoom.setGold(monster.getMonsterGold());
                     b.monsterIsDead(monster.getMonsterName());
                     whileFighting = false;
                     returnMonster = null;
                     
                 } else {
-
+                    System.out.println("Debug: The room contains " + currentRoom.getGold());
                     while (monsterTurn == true) {
-                        player.setHp(-monster.getMonsterDmg());
-                        b.monsterAttacksYou(monster.getMonsterName(), monster.getMonsterDmg(), player.getHp());
+                        int whatMonsterAttack = rnd.nextInt(5);
+                        
+                        if(whatMonsterAttack > 4){
+                            damage = monster.monsterSpecialAttack(player);
+                            player.setHp(-damage);
+                        
+                        }else if(whatMonsterAttack > 0 && whatMonsterAttack <= 4){
+                            damage = monster.monsterAttack(player);
+                            player.setHp(-damage);
+                        
+                        }else{
+                            System.out.println("Debug: The monster miss the attack");
+                        }
+                        b.monsterAttacksYou(monster.getMonsterName(), damage, player.getHp());
                         monsterTurn = false;
                         playerTurn = true;
 
                     }
-
                     while (playerTurn == true) {
 
                         choice = b.chooseAction();
@@ -355,11 +370,16 @@ public class Controller {
                                 monsterTurn = true;
                                 break;
                             case "exit":
-
-                                System.out.println("Shutting down");
-                                tempRoom = cr.spaceShip;
+                                currentRoom = cr.spaceShip;
+                                whileFighting = false;
+                                playerTurn = false;
                                 break;
-                            default:
+                            case "run":
+                                currentRoom = player.getLastRoom();
+                                whileFighting = false;
+                                playerTurn = false;
+                                break;
+                                 default:
                                 b.nothingHappend();
                         }
 

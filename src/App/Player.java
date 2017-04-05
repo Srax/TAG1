@@ -7,9 +7,18 @@ public class Player {
     private String name;
     private int dmg = 2, bank, def = 0;
     private int hp = 100;
+    private Room lastRoom = null;
 
     public int getDmg() {
         return dmg;
+    }
+
+    public Room getLastRoom() {
+        return lastRoom;
+    }
+
+    public void setLastRoom(Room lastRoom) {
+        this.lastRoom = lastRoom;
     }
 
     public void setDmg(int dmg) {
@@ -48,9 +57,7 @@ public class Player {
     }
 
     public void setBank(int bank) {
-        if (bank < 0) {
-            System.out.println("");
-        }
+        
         this.bank += bank;
     }
 

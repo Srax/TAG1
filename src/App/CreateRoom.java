@@ -28,7 +28,7 @@ public class CreateRoom {
     Room spaceShip = new Room(0, spaceShip());
     Room finish = new Room(0, commandBridge());
     Room startRoom = new Room(0, startRoom());
-    Room room1 = new Room(r.nextInt(101), hallWay1());
+    Room room1 = new Room(10, hallWay1());
     Room room2 = new Room(r.nextInt(101), hallWay3());
     Room room3 = new Room(r.nextInt(101), dinningRoom());
     Room room4 = new Room(r.nextInt(101), closet());
@@ -78,16 +78,16 @@ public class CreateRoom {
     
     // TIER 1 MONSTERS (NAME, HP, DAMAGE, ARMOR, TIER)
         //Space Wier - purposely misspelled
-        Monster spaceWier = new CorruptedWiers("Wier", 6, 5, 0, 1);
-        Monster spaceWier2 = new CorruptedWiers("Wier", 6, 5, 0, 1);
+        Monster spaceWier = new CorruptedWiers("Wier", 6, 5, 0, 1, 20);
+        Monster spaceWier2 = new CorruptedWiers("Wier", 6, 5, 0, 1, 20);
     
         //Lurkers - Common and weak monster
-        Monster commonLurker = new Lurker("Common Lurker", 5, 1, 0, 1);
-        Monster patheticLurker = new Lurker("Pathetic Lurker", 1, 1, 0, 1);
+//        Monster commonLurker = new Lurker("Common Lurker", 5, 1, 0, 1);
+  //      Monster patheticLurker = new Lurker("Pathetic Lurker", 1, 1, 0, 1);
     
     //TIER 2 MONSTERS (NAME, HP, DAMAGE, ARMOR, TIER)
         //Taint Slasher - Protect your privates
-        Monster Styhr = new Styhr("Taint Slasher", 5, 30, 10, 2);
+    //    Monster Styhr = new Styhr("Taint Slasher", 5, 30, 10, 2);
     
     public void roomFeatures() {
         //Creates the Rooms as individual objects

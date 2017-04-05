@@ -11,8 +11,8 @@ package MonsterTypes;
  */
 public class Lurker extends Monster {
     
-    public Lurker(String name, int hp, int dmg, int armor, int tier) {
-        super(name, hp, dmg, armor, tier);
+    public Lurker(String name, int hp, int dmg, int armor, int tier, int gold) {
+        super(name, hp, dmg, armor, tier, gold);
     }
 
     @Override
