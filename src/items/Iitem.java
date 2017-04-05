@@ -15,6 +15,8 @@ public interface Iitem {
     public boolean getUsable();
     public void setUsable(boolean usable);
     public void use(Player player);
-    
+    public boolean equipable();
+    public void equip(Player player);
+
     
 }

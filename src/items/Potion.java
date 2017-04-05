@@ -14,7 +14,7 @@ import App.Player;
 public class Potion implements Iitem{
     String name, description;
     private int hpRestore;
-    private boolean usable = true;
+    private boolean usable = true, equipable = false;
 
     public Potion(String name, String description, int type) {
         this.name = name;
@@ -67,5 +67,15 @@ public class Potion implements Iitem{
         player.setHp(hpRestore);
         
     }
-            
+
+    @Override
+    public boolean equipable() {
+        return equipable;
+    }
+
+    @Override
+    public void equip(Player player) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

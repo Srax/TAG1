@@ -22,8 +22,15 @@ public class Room {
         loot.add(item);
     }
 
-    public Monster getMonster() {
-        return monster;
+    public Room(int gold, String Description) {
+        this.gold = gold;
+        this.description = Description;
+    }
+    public Room(String Description) {
+        this.description = Description;
+    }
+
+    public Room() {
     }
 
     public Iitem moveFromRoomToInventory(String item) {
@@ -38,35 +45,30 @@ public class Room {
         }
     }return null;
     }
-
-    public void setMonster(Monster monster) {
-        this.monster = monster;
-    }
-    
-  
-
+ 
     public void showLoot() {
         for (int i = 0; i < loot.size(); i++) {
             System.out.println(loot.get(i));
         }
     }
 
+    public Monster getMonster() {
+        return monster;
+    }
+    public void setMonster(Monster monster) {
+        this.monster = monster;
+    }
+
     public int getTrap() {
         return trap;
     }
-
     public void setTrap(int trap) {
         this.trap = trap;
-    }
-
-    public Room(String Description) {
-        this.description = Description;
     }
 
     public int getTaxCollector() {
         return taxCollector;
     }
-
     public void setTaxCollector(int taxCollector) {
         this.taxCollector = taxCollector;
         if (taxCollector > 0) {
@@ -74,18 +76,9 @@ public class Room {
         }
     }
 
-    public Room() {
-    }
-
     public int getGold() {
         return gold;
     }
-
-    public Room(int gold, String Description) {
-        this.gold = gold;
-        this.description = Description;
-    }
-
     public void setGold(int gold) {
         this.gold = gold;
     }
@@ -93,7 +86,6 @@ public class Room {
     public String getDescription() {
         return description;
     }
-
     public void setDescription(String Description) {
         this.description = Description;
     }
@@ -101,7 +93,6 @@ public class Room {
     public Room getNorth() {
         return north;
     }
-
     public void setNorth(Room North) {
         this.north = North;
     }
@@ -109,7 +100,6 @@ public class Room {
     public Room getSouth() {
         return south;
     }
-
     public void setSouth(Room South) {
         this.south = South;
     }
@@ -117,7 +107,6 @@ public class Room {
     public Room getWest() {
         return west;
     }
-
     public void setWest(Room West) {
         this.west = West;
     }
@@ -125,7 +114,6 @@ public class Room {
     public Room getEast() {
         return east;
     }
-
     public void setEast(Room East) {
         this.east = East;
     }

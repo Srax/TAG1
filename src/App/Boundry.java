@@ -271,7 +271,7 @@ public class Boundry {
     
     ///////////////////// COMBAT DISPLAY ////////////////////////
     
-    void monsterEncounter(String monsterName){
+    public void monsterEncounter(String monsterName){
         System.out.println("You float into the next room, but suddenly infront of you you see a monster!!!!!."
                 + "\n"
                 + "It is an enemy " + monsterName + " ready to fight you!"
@@ -281,7 +281,7 @@ public class Boundry {
     
     
     }
-    void monsterAttacksYou(String monsterName,int damage, int hp){
+    public void monsterAttacksYou(String monsterName,int damage, int hp){
         System.out.println("The "+monsterName+" attacks you and hits you"
                 + " for " + damage + " damage.");
         System.out.println("You now have " + hp + " HP left");
@@ -289,19 +289,17 @@ public class Boundry {
     
     } 
     
-    void playerAttackMonster(String monsterName,int damage, int hp){
+    public void playerAttackMonster(String monsterName,int damage, int hp){
         System.out.println("You attack the "+ monsterName + " for " + damage + " damage.");
         System.out.println("The "+monsterName+" now has "+hp+"HP left");
     }
     
-    void monsterIsDead(String monsterName){
+    public void monsterIsDead(String monsterName){
         System.out.println("The "+monsterName+"is hit one last time and stops moving.\n"
                 + "Congratulation, you killed the " +monsterName+"!!");
         System.out.println("You can now explore the room.");
     
     }
-    
-    
 //    void monsterIsWeakend(String monsterName){
 //        System.out.println("The "+ monsterName + " looks weakend");
 //    }
@@ -309,4 +307,16 @@ public class Boundry {
 //        System.out.println("The "+ monsterName + " looks almost dead, hurry up and finish it off");
 //                
 //    }
+
+    public void witchItemToEquip() {
+        System.out.println("Witch item do you wish to equip?");
+    }
+
+    public void youCannotEquipItem() {
+        System.out.println("You cannot equip this item");
+    }
+
+    void witchItemToUnequip() {
+        System.out.println("To unequip armor, type \"Armor\", for weapon type \"Weapon\"");
+    }
 }

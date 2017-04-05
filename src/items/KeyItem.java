@@ -13,7 +13,7 @@ import App.Player;
  */
 public class KeyItem implements Iitem{
     String name, description;
-    boolean usable = false;
+    boolean usable = false, equipable = false;
     
     KeyItem() {
        
@@ -57,5 +57,16 @@ public class KeyItem implements Iitem{
     public void use(Player player) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public boolean equipable() {
+        return equipable;
+    }
+
+    @Override
+    public void equip(Player player) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 
 }

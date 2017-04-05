@@ -1,10 +1,8 @@
 package App;
 
-import MonsterTypes.CorruptedWiers;
 import MonsterTypes.Monster;
 import highscore.HighscoreManager;
 import items.Iitem;
-import java.util.Random;
 
 public class Controller {
 
@@ -12,7 +10,6 @@ public class Controller {
     Boundry b = new Boundry();
     Player player = new Player();
     CreateRoom cr = new CreateRoom();
-    Inventory inv = new Inventory();
     HighscoreManager hm = new HighscoreManager();
 
     Room currentRoom;
@@ -30,7 +27,7 @@ public class Controller {
 
         cr.roomFeatures();
         b.welcomeToGame();
-        b.createName(player);
+       ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// b.createName(player);
         currentRoom = cr.startRoom;
 
         System.out.println(currentRoom.toString());
@@ -128,10 +125,20 @@ public class Controller {
                     takingAction = false;
                     break;
                 case "inventory":
-                    inv.show();
+                    player.showInventory();
                     break;
                 case "use":
                     useItem();
+                    break;
+                case "equip":
+                    equipItem();
+                    break;
+                case "unequip":
+                case "un equip":   
+                    unEquipItem();
+                    break;
+                case "stats":
+                    System.out.println(player.toString());
                     break;
                 default:
                     b.nothingHappend();
@@ -242,7 +249,7 @@ public class Controller {
      * This method allows the player to pick up an object from the rooms loot
      * array and moves it to the players inventory array
      */
-    private void pickUpItem() {
+    public void pickUpItem() {
 
         b.chooseItemToPick();
         String choice = b.chooseAction();
@@ -262,7 +269,7 @@ public class Controller {
                 b.nothingHappend();
 
             } else {
-                inv.add(itemToMove);
+                player.addItemToInventory(itemToMove);
 
             }
         }
@@ -272,11 +279,11 @@ public class Controller {
      * This method allows the player to drop an object and and move it from the
      * players inventory array into the currentRooms loot array.
      */
-    private void dropItem() {
-        inv.show();
+    public void dropItem() {
+        player.showInventory();
         b.chooseItemToDrop();
         String choice = b.chooseAction();
-        Iitem itemToMove = inv.MoveFromInventoryToRoom(choice);
+        Iitem itemToMove = player.MoveFromInventoryToRoom(choice);
         if (itemToMove == null) {
             b.nothingHappend();
         } else {
@@ -289,13 +296,13 @@ public class Controller {
     /**
      * Runs method for using items in the Inventory Class
      */
-    private void useItem() {
+    public void useItem() {
         b.chooseItemToUse();
         String choice = b.chooseAction();
-        inv.use(choice, player);
+        player.useItem(choice, player);
     }
 
-    private void combat(Monster monster, Player player) {
+    public void combat(Monster monster, Player player) {
         boolean whileFighting = true;
         if (monster == null) {
             whileFighting = false;
@@ -315,7 +322,7 @@ public class Controller {
                         useItem();
                         break;
                     case "inventory":
-                        inv.show();
+                        player.showInventory();
                     default:
                         b.nothingHappend();
                         break;
@@ -326,6 +333,26 @@ public class Controller {
 
         }
 
+    }
+
+    public void equipItem() {
+        b.witchItemToEquip();
+        String choice = b.chooseAction();
+        player.checkInventoryAndEquip(choice);
+   
+        
+        System.out.println(player.getDef());
+//  System.out.println(player.getEquippedArmor().toString());
+        System.out.println("weapon.......");
+        System.out.println(player.getDmg());
+    //    System.out.println(player.getEquippedWeapon().toString());
+        
+        
+    }
+    public void unEquipItem() {
+        b.witchItemToUnequip();
+        String choice = b.chooseAction();
+        player.checkEquippedItemAndUnequip(choice);
     }
 
 }

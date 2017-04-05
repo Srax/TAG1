@@ -57,15 +57,15 @@ public class CreateRoom {
     Iitem particlelRemovalMop = new Weapon("Particle removal mop", "Just a normal hightech mop, but you can still hit things with it", 1);
     Iitem sonicSwordOfTheWhisperMen = new Weapon("Sonic sword of The Whisper Men", "A Sword that makes a sonic vibration which sounds like a whisper", 13);
     Iitem plasmaCannon = new Weapon("Plasma Cannon", "Fires a plasma discharge in the form of a beam", 6);
-    Iitem hanBlaster = new Weapon("Han's Blaster", "This blaster was once owned by a guy called Han", 17);
+    Iitem blaster = new Weapon("Blaster", "This blaster was once owned by a guy called Han", 17);
     
     //Armors
-    Iitem SpaceSuit = new Armor("Space Suit", "Standard issued space suit", 1);
+    Iitem spaceSuit = new Armor("Space Suit", "Standard issued space suit", 1);
     Iitem beatUpEngineeringSpaceSuit = new Armor("Beat up engineering space suit", "This old suit have taken alot of damage, and is bearly holding it self together", 2);
     Iitem cybermanArmor = new Armor("Cyberman Armor", "You will be upgraded", 10);
     Iitem gardenersArmor = new Armor("Gardeners Armor", "Its a heavily armored suit, that has alot of bitemarks all over it", 5);
     Iitem officersUniform = new Armor("Officers Uniform", "This uniform creates a small force field around it's wearer, that protects the wearer from harm", 7);
-    Iitem labCoat = new Armor("Lab Coat", "This lab coat is just a normal lab coat with many strange things spilled on it", 1);
+    Iitem labCoat = new Armor("Lab Coat", "This lab coat is just a normal lab coat with many strange things spilled on it", 1);     
     //Potions  
     Iitem p3 = new Potion("Super Stimpack", "Increases HP with 30",3);
     Iitem p2 = new Potion("Medium Stimpack", "Increases HP with 20",2);
@@ -98,7 +98,9 @@ public class CreateRoom {
         
         startRoom.setNorth(room1);
         startRoom.setSouth(spaceShip);
-        startRoom.loot.add(p1);
+        startRoom.add(p1);
+        startRoom.add(gun);
+        
         
         room1.setWest(room2);
         room1.setEast(room3);
@@ -169,7 +171,7 @@ public class CreateRoom {
         room15.setSouth(room7);
         room15.setTrap(1);
         room15.add(officersUniform);
-        room15.add(hanBlaster);
+        room15.add(blaster);
         
         room16.setSouth(finish);
         room16.setEast(room15);
