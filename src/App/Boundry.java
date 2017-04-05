@@ -118,11 +118,22 @@ public class Boundry {
         System.out.println("- Deny");              
 //        System.out.println("- Run");        
         System.out.println("- Use");
-//        System.out.println("- Equip");        
+        System.out.println("- Equip");        
+        System.out.println("- Unequip");        
         System.out.println("- Inventory");
+        System.out.println("- Stats");
         System.out.println("- Attack");  
         System.out.println("- Help");
         System.out.println("- Exit");
+    }
+    public void attackHelp() {
+        System.out.println("\n======== HELP ========");
+        System.out.println("- attack");
+        System.out.println("- run");
+        System.out.println("- inventory");
+        System.out.println("- use");
+        System.out.println("");
+        
     }
 
     /**

@@ -7,7 +7,7 @@ import items.Weapon;
 import java.util.ArrayList;
 
 public class Player {
-
+    
     private String name;
     private int dmg = 1, bank, def = 0;
     private int hp = 100;

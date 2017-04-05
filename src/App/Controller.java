@@ -46,7 +46,7 @@ public class Controller {
             } else {
                 b.playSound(b.doorSound);
                 currentRoom = playerAction(currentRoom);
-                combat(currentRoom.getMonster(), player);
+                currentRoom.setMonster(combat(currentRoom.getMonster(), player));
             }
         }
         //Prints highscore
@@ -64,7 +64,7 @@ public class Controller {
 
         }
     }
-
+    
     /**
      * Manages the players action input. The method is set up to print out all
      * the possible directions in the currentRoom. It then returns a new room to
@@ -82,45 +82,57 @@ public class Controller {
             switch (action) {
 
                 case "inspect":
+                case "Inspect":
                     System.out.println(currentRoom.toString());
                     taxRobot();
                     currentRoom.availableDirections();
                     break;
                 case "search":
+                case "Search":
                     trap();
                     currentRoom.showLoot();
                     checkGold();
                     break;
 
                 case "north":
+                case "North":
                     takingAction = directionChoice(action);
                     break;
 
                 case "south":
+                case "South":
                     takingAction = directionChoice(action);
                     break;
 
                 case "east":
+                case "East":
                     takingAction = directionChoice(action);
                     break;
 
                 case "west":
+                case "West":
                     takingAction = directionChoice(action);
                     break;
                 case "help":
+                case "Help":
                     b.helpCommand();
                     break;
                 case "pickup":
+                case "Pickup":
                 case "pick up":
+                case "Pick up":
                     pickUpItem();
                     break;
                 case "drop":
+                case "Drop":
                     dropItem();
                     break;
                 case "bank":
+                case "Bank":
                     b.showBank(player);
                     break;
                 case "exit":
+                case "Exit":
                     tempRoom = cr.spaceShip;
                     takingAction = false;
                     break;
@@ -128,6 +140,7 @@ public class Controller {
                     player.showInventory();
                     break;
                 case "use":
+                case "Use":
                     useItem();
                     break;
                 case "equip":
@@ -254,7 +267,7 @@ public class Controller {
         b.chooseItemToPick();
         String choice = b.chooseAction();
 
-        if (choice.equalsIgnoreCase("money") && currentRoom.getGold() > 0) {
+        if (choice.equalsIgnoreCase("money") || choice.equalsIgnoreCase("space dollars") && currentRoom.getGold() > 0) {
             int gold = currentRoom.getGold();
 
             player.setBank(gold);
@@ -302,37 +315,88 @@ public class Controller {
         player.useItem(choice, player);
     }
 
-    public void combat(Monster monster, Player player) {
+    
+    
+    
+    
+    
+    
+    
+    public Monster combat(Monster monster, Player player) {
+        boolean monsterTurn = true;
+        boolean playerTurn = true;
         boolean whileFighting = true;
+        Monster returnMonster = monster;
+        
+        String choice = "";
+        
+        
         if (monster == null) {
             whileFighting = false;
         } else {
             b.monsterEncounter(monster.getMonsterName());
+            while (whileFighting == true) {
+                
+                if (monster.getMonsterHp() <= 0) {
+                    
+                    b.monsterIsDead(monster.getMonsterName());
+                    whileFighting = false;
+                    returnMonster = null;
+                    
+                } else {
 
-            while (whileFighting == true && monster.getMonsterHp() > 0 && player.getHp() > 0) {
-                player.setHp(-monster.monsterAttack(player));
-                b.monsterAttacksYou(monster.getMonsterName(), monster.getMonsterDmg(), player.getHp());
-                String choice = b.chooseAction();
-                switch (choice) {
-                    case "attack":
-                        monster.setMonsterHp(-player.playerAttack(monster));
-                        b.playerAttackMonster(monster.getMonsterName(), player.getDmg(), monster.getMonsterHp());
-                        break;
-                    case "use":
-                        useItem();
-                        break;
-                    case "inventory":
-                        player.showInventory();
-                    default:
-                        b.nothingHappend();
-                        break;
+                    while (monsterTurn == true) {
+                        player.setHp(-monster.getMonsterDmg());
+                        b.monsterAttacksYou(monster.getMonsterName(), monster.getMonsterDmg(), player.getHp());
+                        monsterTurn = false;
+                        playerTurn = true;
+
+                    }
+
+                    while (playerTurn == true) {
+
+                        choice = b.chooseAction();
+                        switch (choice) {
+                            case "help":
+                                b.helpCommand();
+                                break;
+                            case "inventory":
+                                player.showInventory();
+                                break;
+                            case "use":
+                                useItem();
+                                playerTurn = false;
+                                monsterTurn = true;
+                                break;
+                            case "attack":
+                                monster.setMonsterHp(-player.getDmg());
+                                b.playerAttackMonster(monster.getMonsterName(), player.getDmg(), monster.getMonsterHp());
+                                playerTurn = false;
+                                monsterTurn = true;
+                                break;
+                            case "dance":
+                                monster.setMonsterHp(-5000);
+                                b.playerAttackMonster(monster.getMonsterName(), player.getDmg(), monster.getMonsterHp());
+                                playerTurn = false;
+                                monsterTurn = true;
+                                break;
+                            case "exit":
+
+                                System.out.println("Shutting down");
+                                tempRoom = cr.spaceShip;
+                                break;
+                            default:
+                                b.nothingHappend();
+                        }
+
+                    }
+
                 }
+
             }
-            b.monsterIsDead(monster.getMonsterName());
-            monster = null;
 
         }
-
+        return returnMonster;
     }
 
     public void equipItem() {

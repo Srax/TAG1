@@ -30,24 +30,24 @@ public class CreateRoom {
     Room finish = new Room(0, commandBridge());
     Room startRoom = new Room(0, startRoom());
     Room room1 = new Room(r.nextInt(101), hallWay1());
-    Room room2 = new Room(r.nextInt(101), hallWay3());
-    Room room3 = new Room(r.nextInt(101), dinningRoom());
-    Room room4 = new Room(r.nextInt(101), closet());
-    Room room5 = new Room(r.nextInt(101), kitchen());
-    Room room6 = new Room(r.nextInt(101), barracks());
-    Room room7 = new Room(r.nextInt(101), deadGarden());
-    Room room8 = new Room(r.nextInt(101), hallWay3());
-    Room room9 = new Room(r.nextInt(101), cross());
-    Room room10 = new Room(r.nextInt(101), hallWay1());
-    Room room11 = new Room(r.nextInt(101), hallWay2());
-    Room room12 = new Room(r.nextInt(101), hallWay2());
-    Room room13 = new Room(r.nextInt(101), hallWay2());
-    Room room14 = new Room(r.nextInt(101), hallWay3()); 
+    Room room2 = new Room(r.nextInt(21), hallWay3());
+    Room room3 = new Room(r.nextInt(21), dinningRoom());
+    Room room4 = new Room(r.nextInt(21), closet());
+    Room room5 = new Room(r.nextInt(21), kitchen());
+    Room room6 = new Room(r.nextInt(51)+20, barracks());
+    Room room7 = new Room(r.nextInt(51)+20, deadGarden());
+    Room room8 = new Room(r.nextInt(51)+20, hallWay3());
+    Room room9 = new Room(r.nextInt(51)+20, cross());
+    Room room10 = new Room(r.nextInt(51)+20, hallWay1());
+    Room room11 = new Room(r.nextInt(51)+20, hallWay2());
+    Room room12 = new Room(r.nextInt(51)+20, hallWay2());
+    Room room13 = new Room(r.nextInt(51)+20, hallWay2());
+    Room room14 = new Room(r.nextInt(51)+20, hallWay3()); 
     Room room15 = new Room(r.nextInt(51)+50, officersLounge());
-    Room room16 = new Room(r.nextInt(101), hallWay3());
-    Room room17 = new Room(r.nextInt(101), hallWay3());
-    Room room18 = new Room(r.nextInt(101), lab());
-    Room room19 = new Room(r.nextInt(101), closet());
+    Room room16 = new Room(r.nextInt(101)+30, hallWay3());
+    Room room17 = new Room(r.nextInt(101)+30, hallWay3());
+    Room room18 = new Room(r.nextInt(101)+30, lab());
+    Room room19 = new Room(r.nextInt(101)+30, closet());
     
     
     // Items that will be created weapons
@@ -88,10 +88,10 @@ public class CreateRoom {
     
     //TIER 2 MONSTERS (NAME, HP, DAMAGE, ARMOR, TIER)
         //Taint Slasher - Protect your privates
-        Monster Styhr = new Styhr("Taint Slasher", 5, 30, 10, 2);
-    //CREATE MONSTERS
-
-    Monster spaceRoses = new Plants("Space Roses", 30, 10, 10, 3);
+        Monster Styhr = new Styhr("Slasher", 5, 30, 7, 2);
+        Monster Styhr2 = new Styhr("Killer Pland", 8, 40, 9, 2);
+        
+        
     
     public void roomFeatures() {
         //Map and Room direction rules
@@ -140,6 +140,8 @@ public class CreateRoom {
         room7.setNorth(room15);
         room7.setEast(room8);
         room7.setSouth(room6);
+        room7.setMonster(Styhr2);
+        
 
         room8.setWest(room7);
         room8.setSouth(room5);
