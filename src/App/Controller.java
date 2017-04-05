@@ -85,52 +85,66 @@ public class Controller {
             switch (action) {
 
                 case "inspect":
+                case "Inspect":
                     System.out.println(currentRoom.toString());
                     taxRobot();
                     currentRoom.availableDirections();
                     break;
                 case "search":
+                case "Search":
                     trap();
                     currentRoom.showLoot();
                     checkGold();
                     break;
 
                 case "north":
+                case "North":
                     takingAction = directionChoice(action);
                     break;
 
                 case "south":
+                case "South":
                     takingAction = directionChoice(action);
                     break;
 
                 case "east":
+                case "East":
                     takingAction = directionChoice(action);
                     break;
 
                 case "west":
+                case "West":
                     takingAction = directionChoice(action);
                     break;
                 case "help":
+                case "Help":
                     b.helpCommand();
                     break;
                 case "pickup":
+                case "Pickup":
                 case "pick up":
+                case "Pick up":
                     pickUpItem();
                     break;
                 case "drop":
+                case "Drop":
                     dropItem();
                     break;
                 case "bank":
+                case "Bank":
                     b.showBank(player);
                     break;
                 case "exit":
+                case "Exit":
                     tempRoom = cr.spaceShip;
                     takingAction = false;
                     break;
                 case "inventory":
+                case "Inventory":
                     inv.show();
                     break;
                 case "use":
+                case "Use":
                     useItem();
                     break;
                 default:
@@ -350,6 +364,12 @@ public class Controller {
                                 break;
                             case "attack":
                                 monster.setMonsterHp(-player.getDmg());
+                                b.playerAttackMonster(monster.getMonsterName(), player.getDmg(), monster.getMonsterHp());
+                                playerTurn = false;
+                                monsterTurn = true;
+                                break;
+                            case "dance":
+                                monster.setMonsterHp(-5000);
                                 b.playerAttackMonster(monster.getMonsterName(), player.getDmg(), monster.getMonsterHp());
                                 playerTurn = false;
                                 monsterTurn = true;
