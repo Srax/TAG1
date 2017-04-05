@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class Player {
     
-    private String name;
+    private String name="Random Guy";
     private int dmg = 1, bank, def = 0;
     private int hp = 100;
     private Weapon equippedWeapon = null;
@@ -174,9 +174,6 @@ public class Player {
                 } else {
                     b.youCannotEquipItem();
                 }
-
-            } else {
-                b.nothingHappend();
             }
         }
     }

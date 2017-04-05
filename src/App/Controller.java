@@ -27,7 +27,7 @@ public class Controller {
 
         cr.roomFeatures();
         b.welcomeToGame();
-       ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// b.createName(player);
+        //b.createName(player);
         currentRoom = cr.startRoom;
 
         System.out.println(currentRoom.toString());
@@ -383,7 +383,7 @@ public class Controller {
                             case "exit":
 
                                 System.out.println("Shutting down");
-                                tempRoom = cr.spaceShip;
+                                currentRoom = cr.spaceShip;
                                 break;
                             default:
                                 b.nothingHappend();
@@ -403,15 +403,6 @@ public class Controller {
         b.witchItemToEquip();
         String choice = b.chooseAction();
         player.checkInventoryAndEquip(choice);
-   
-        
-        System.out.println(player.getDef());
-//  System.out.println(player.getEquippedArmor().toString());
-        System.out.println("weapon.......");
-        System.out.println(player.getDmg());
-    //    System.out.println(player.getEquippedWeapon().toString());
-        
-        
     }
     public void unEquipItem() {
         b.witchItemToUnequip();
