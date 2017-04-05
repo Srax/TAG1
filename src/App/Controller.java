@@ -137,6 +137,7 @@ public class Controller {
                     takingAction = false;
                     break;
                 case "inventory":
+                case "Inventory":
                     player.showInventory();
                     break;
                 case "use":
@@ -144,13 +145,18 @@ public class Controller {
                     useItem();
                     break;
                 case "equip":
+                case "Equip":
                     equipItem();
                     break;
                 case "unequip":
+                case "Unequip":
                 case "un equip":   
+                case "Un equip":   
+                case "Un Equip":   
                     unEquipItem();
                     break;
                 case "stats":
+                case "Stats":
                     System.out.println(player.toString());
                     break;
                 default:
