@@ -1,6 +1,5 @@
 package App;
 
-import MonsterTypes.CorruptedWiers;
 import MonsterTypes.Monster;
 import highscore.HighscoreManager;
 import items.Iitem;
@@ -12,7 +11,6 @@ public class Controller {
     Boundry b = new Boundry();
     Player player = new Player();
     CreateRoom cr = new CreateRoom();
-    Inventory inv = new Inventory();
     HighscoreManager hm = new HighscoreManager();
 
     Room currentRoom;
@@ -30,7 +28,7 @@ public class Controller {
 
         cr.roomFeatures();
         b.welcomeToGame();
-        b.createName(player);
+        //b.createName(player);
         currentRoom = cr.startRoom;
 
         System.out.println(currentRoom.toString());
@@ -69,7 +67,7 @@ public class Controller {
 
         }
     }
-
+    
     /**
      * Manages the players action input. The method is set up to print out all
      * the possible directions in the currentRoom. It then returns a new room to
@@ -87,53 +85,82 @@ public class Controller {
             switch (action) {
 
                 case "inspect":
+                case "Inspect":
                     System.out.println(currentRoom.toString());
                     taxRobot();
                     currentRoom.availableDirections();
                     break;
                 case "search":
+                case "Search":
                     trap();
                     currentRoom.showLoot();
                     checkGold();
                     break;
 
                 case "north":
+                case "North":
                     takingAction = directionChoice(action);
                     break;
 
                 case "south":
+                case "South":
                     takingAction = directionChoice(action);
                     break;
 
                 case "east":
+                case "East":
                     takingAction = directionChoice(action);
                     break;
 
                 case "west":
+                case "West":
                     takingAction = directionChoice(action);
                     break;
                 case "help":
+                case "Help":
                     b.helpCommand();
                     break;
                 case "pickup":
+                case "Pickup":
                 case "pick up":
+                case "Pick up":
                     pickUpItem();
                     break;
                 case "drop":
+                case "Drop":
                     dropItem();
                     break;
                 case "bank":
+                case "Bank":
                     b.showBank(player);
                     break;
                 case "exit":
+                case "Exit":
                     tempRoom = cr.spaceShip;
                     takingAction = false;
                     break;
                 case "inventory":
-                    inv.show();
+                case "Inventory":
+                    player.showInventory();
                     break;
                 case "use":
+                case "Use":
                     useItem();
+                    break;
+                case "equip":
+                case "Equip":
+                    equipItem();
+                    break;
+                case "unequip":
+                case "Unequip":
+                case "un equip":   
+                case "Un equip":   
+                case "Un Equip":   
+                    unEquipItem();
+                    break;
+                case "stats":
+                case "Stats":
+                    System.out.println(player.toString());
                     break;
                 default:
                     b.nothingHappend();
@@ -264,7 +291,7 @@ public class Controller {
                 b.nothingHappend();
 
             } else {
-                inv.add(itemToMove);
+                player.addItemToInventory(itemToMove);
 
             }
         }
@@ -275,10 +302,10 @@ public class Controller {
      * players inventory array into the currentRooms loot array.
      */
     public void dropItem() {
-        inv.show();
+        player.showInventory();
         b.chooseItemToDrop();
         String choice = b.chooseAction();
-        Iitem itemToMove = inv.MoveFromInventoryToRoom(choice);
+        Iitem itemToMove = player.MoveFromInventoryToRoom(choice);
         if (itemToMove == null) {
             b.nothingHappend();
         } else {
@@ -294,7 +321,7 @@ public class Controller {
     public void useItem() {
         b.chooseItemToUse();
         String choice = b.chooseAction();
-        inv.use(choice, player);
+        player.useItem(choice, player);
     }
 
     
@@ -356,7 +383,7 @@ public class Controller {
                                 b.helpCommand();
                                 break;
                             case "inventory":
-                                inv.show();
+                                player.showInventory();
                                 break;
                             case "use":
                                 useItem();
@@ -365,6 +392,12 @@ public class Controller {
                                 break;
                             case "attack":
                                 monster.setMonsterHp(-player.getDmg());
+                                b.playerAttackMonster(monster.getMonsterName(), player.getDmg(), monster.getMonsterHp());
+                                playerTurn = false;
+                                monsterTurn = true;
+                                break;
+                            case "dance":
+                                monster.setMonsterHp(-5000);
                                 b.playerAttackMonster(monster.getMonsterName(), player.getDmg(), monster.getMonsterHp());
                                 playerTurn = false;
                                 monsterTurn = true;
@@ -391,6 +424,17 @@ public class Controller {
 
         }
         return returnMonster;
+    }
+
+    public void equipItem() {
+        b.witchItemToEquip();
+        String choice = b.chooseAction();
+        player.checkInventoryAndEquip(choice);
+    }
+    public void unEquipItem() {
+        b.witchItemToUnequip();
+        String choice = b.chooseAction();
+        player.checkEquippedItemAndUnequip(choice);
     }
 
 }

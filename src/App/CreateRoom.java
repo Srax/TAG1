@@ -9,6 +9,7 @@ import MonsterTypes.CorruptedWiers;
 import MonsterTypes.Lurker;
 import MonsterTypes.Monster;
 import MonsterTypes.Styhr;
+import MonsterTypes.Plants;
 import items.KeyItem;
 import items.Weapon;
 import items.Iitem;
@@ -28,25 +29,25 @@ public class CreateRoom {
     Room spaceShip = new Room(0, spaceShip());
     Room finish = new Room(0, commandBridge());
     Room startRoom = new Room(0, startRoom());
-    Room room1 = new Room(10, hallWay1());
-    Room room2 = new Room(r.nextInt(101), hallWay3());
-    Room room3 = new Room(r.nextInt(101), dinningRoom());
-    Room room4 = new Room(r.nextInt(101), closet());
-    Room room5 = new Room(r.nextInt(101), kitchen());
-    Room room6 = new Room(r.nextInt(101), barracks());
-    Room room7 = new Room(r.nextInt(101), deadGarden());
-    Room room8 = new Room(r.nextInt(101), hallWay3());
-    Room room9 = new Room(r.nextInt(101), cross());
-    Room room10 = new Room(r.nextInt(101), hallWay1());
-    Room room11 = new Room(r.nextInt(101), hallWay2());
-    Room room12 = new Room(r.nextInt(101), hallWay2());
-    Room room13 = new Room(r.nextInt(101), hallWay2());
-    Room room14 = new Room(r.nextInt(101), hallWay3()); 
+    Room room1 = new Room(r.nextInt(101), hallWay1());
+    Room room2 = new Room(r.nextInt(21), hallWay3());
+    Room room3 = new Room(r.nextInt(21), dinningRoom());
+    Room room4 = new Room(r.nextInt(21), closet());
+    Room room5 = new Room(r.nextInt(21), kitchen());
+    Room room6 = new Room(r.nextInt(51)+20, barracks());
+    Room room7 = new Room(r.nextInt(51)+20, deadGarden());
+    Room room8 = new Room(r.nextInt(51)+20, hallWay3());
+    Room room9 = new Room(r.nextInt(51)+20, cross());
+    Room room10 = new Room(r.nextInt(51)+20, hallWay1());
+    Room room11 = new Room(r.nextInt(51)+20, hallWay2());
+    Room room12 = new Room(r.nextInt(51)+20, hallWay2());
+    Room room13 = new Room(r.nextInt(51)+20, hallWay2());
+    Room room14 = new Room(r.nextInt(51)+20, hallWay3()); 
     Room room15 = new Room(r.nextInt(51)+50, officersLounge());
-    Room room16 = new Room(r.nextInt(101), hallWay3());
-    Room room17 = new Room(r.nextInt(101), hallWay3());
-    Room room18 = new Room(r.nextInt(101), lab());
-    Room room19 = new Room(r.nextInt(101), closet());
+    Room room16 = new Room(r.nextInt(101)+30, hallWay3());
+    Room room17 = new Room(r.nextInt(101)+30, hallWay3());
+    Room room18 = new Room(r.nextInt(101)+30, lab());
+    Room room19 = new Room(r.nextInt(101)+30, closet());
     
     
     // Items that will be created weapons
@@ -56,15 +57,15 @@ public class CreateRoom {
     Iitem particlelRemovalMop = new Weapon("Particle removal mop", "Just a normal hightech mop, but you can still hit things with it", 1);
     Iitem sonicSwordOfTheWhisperMen = new Weapon("Sonic sword of The Whisper Men", "A Sword that makes a sonic vibration which sounds like a whisper", 13);
     Iitem plasmaCannon = new Weapon("Plasma Cannon", "Fires a plasma discharge in the form of a beam", 6);
-    Iitem hanBlaster = new Weapon("Han's Blaster", "This blaster was once owned by a guy called Han", 17);
+    Iitem blaster = new Weapon("Blaster", "This blaster was once owned by a guy called Han", 17);
     
     //Armors
-    Iitem SpaceSuit = new Armor("Space Suit", "Standard issued space suit", 1);
+    Iitem spaceSuit = new Armor("Space Suit", "Standard issued space suit", 1);
     Iitem beatUpEngineeringSpaceSuit = new Armor("Beat up engineering space suit", "This old suit have taken alot of damage, and is bearly holding it self together", 2);
     Iitem cybermanArmor = new Armor("Cyberman Armor", "You will be upgraded", 10);
     Iitem gardenersArmor = new Armor("Gardeners Armor", "Its a heavily armored suit, that has alot of bitemarks all over it", 5);
     Iitem officersUniform = new Armor("Officers Uniform", "This uniform creates a small force field around it's wearer, that protects the wearer from harm", 7);
-    Iitem labCoat = new Armor("Lab Coat", "This lab coat is just a normal lab coat with many strange things spilled on it", 1);
+    Iitem labCoat = new Armor("Lab Coat", "This lab coat is just a normal lab coat with many strange things spilled on it", 1);     
     //Potions  
     Iitem p3 = new Potion("Super Stimpack", "Increases HP with 30",3);
     Iitem p2 = new Potion("Medium Stimpack", "Increases HP with 20",2);
@@ -87,15 +88,19 @@ public class CreateRoom {
     
     //TIER 2 MONSTERS (NAME, HP, DAMAGE, ARMOR, TIER)
         //Taint Slasher - Protect your privates
-    //    Monster Styhr = new Styhr("Taint Slasher", 5, 30, 10, 2);
+        Monster Styhr = new Styhr("Slasher", 5, 30, 7, 2,1);
+        Monster Styhr2 = new Styhr("Killer Pland", 8, 40, 9, 2, 1);
+        
+        
     
     public void roomFeatures() {
-        //Creates the Rooms as individual objects
         //Map and Room direction rules
         
         startRoom.setNorth(room1);
         startRoom.setSouth(spaceShip);
-        startRoom.loot.add(p1);
+        startRoom.add(p1);
+        startRoom.add(gun);
+        
         
         room1.setWest(room2);
         room1.setEast(room3);
@@ -135,6 +140,8 @@ public class CreateRoom {
         room7.setNorth(room15);
         room7.setEast(room8);
         room7.setSouth(room6);
+        room7.setMonster(Styhr2);
+        
 
         room8.setWest(room7);
         room8.setSouth(room5);
@@ -166,7 +173,7 @@ public class CreateRoom {
         room15.setSouth(room7);
         room15.setTrap(1);
         room15.add(officersUniform);
-        room15.add(hanBlaster);
+        room15.add(blaster);
         
         room16.setSouth(finish);
         room16.setEast(room15);

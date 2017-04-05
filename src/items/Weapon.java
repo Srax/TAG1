@@ -9,7 +9,7 @@ import App.Player;
 public class Weapon implements Iitem{
     String name, description;
     private int attackDMG;
-    boolean usable=false;
+    private boolean usable=false, equipable = true;
     
     Weapon() {
        
@@ -59,8 +59,23 @@ public class Weapon implements Iitem{
     }
 
     @Override
+    public boolean equipable() {
+        return equipable;
+    }
+
+    @Override
     public void use(Player player) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
+    @Override
+    public void equip(Player player){
+    if(player.getEquippedWeapon()!= null){
+            player.addItemToInventory(player.getEquippedWeapon());
+            player.setEquippedWeapon(this);
+        }else{
+        player.setEquippedWeapon(this);
+        }
+        player.setDmg(this.attackDMG);
     }
 
 }

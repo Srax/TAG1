@@ -14,7 +14,7 @@ import App.Player;
 public class Armor implements Iitem{
     String name, description;
     private int defense;
-    boolean usable = false;
+    boolean usable = false, equipable = true;
     
     Armor() {
        
@@ -67,5 +67,21 @@ public class Armor implements Iitem{
     public void use(Player player) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    @Override
+    public boolean equipable() {
+        return this.equipable;
+    }
+    @Override
+    public void equip(Player player){
+        if(player.getEquippedArmor()!= null){
+            player.addItemToInventory(player.getEquippedArmor());
+            player.setEquippedArmor(this);
+        }else{
+        player.setEquippedArmor(this);
+        }
+        player.setDef(this.defense);
+    }
+
 }
 
