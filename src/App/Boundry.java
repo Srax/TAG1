@@ -239,6 +239,9 @@ public class Boundry {
         System.out.println("Which item do you wish to pick up?");
 
     }
+    void youPickedUp(){
+        System.out.println("you picked up ");
+    }
 
     void chooseItemToDrop() {
         System.out.println("Which item do you wish to drop?");
