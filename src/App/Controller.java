@@ -6,6 +6,7 @@ import items.Iitem;
 import java.util.Random;
 
 public class Controller {
+
     CombatController combatController = new CombatController();
     Random rnd = new Random();
     Boundry b = new Boundry();
@@ -15,7 +16,6 @@ public class Controller {
 
 //    Room currentRoom;
 //    Room tempRoom = currentRoom;
-
     /**
      * Manages game, movement form room, to next room, checks for winning room,
      * collection of gold.
@@ -29,9 +29,9 @@ public class Controller {
         cr.roomFeatures();
         cr.addPlayerStartItems(player);
         b.welcomeToGame();
-        
+
         //b.createName(player);
-    player.setCurrentRoom(cr.startRoom); 
+        player.setCurrentRoom(cr.startRoom);
         System.out.println(player.getCurrentRoom().toString());
         Thread.sleep(500);
 
@@ -49,9 +49,8 @@ public class Controller {
                 b.playSound(b.doorSound);
                 player.setLastRoom(player.getCurrentRoom());
                 playerAction(player.getCurrentRoom());
-                combatController.combat(player.getCurrentRoom(),player);
-               
-                
+                combatController.combat(player.getCurrentRoom(), player);
+
             }
         }
         //Prints highscore
@@ -69,14 +68,13 @@ public class Controller {
 
         }
     }
-    
+
     /**
      * Manages the players action input. The method is set up to print out all
      * the possible directions in the currentRoom. It then returns a new room to
      * place the player in.
      *
      * @param currentRoom
-     * @return tempRoom
      */
     public void playerAction(Room currentRoom) {
         boolean takingAction = true;
@@ -85,7 +83,16 @@ public class Controller {
             String action = b.chooseAction();
 
             switch (action.toLowerCase()) {
-
+                case "dance":
+                    combatController.dance(player.getCurrentRoom());
+                    break;
+                
+                case "run":
+                    combatController.run(player.getCurrentRoom());
+                    break;
+                case "attack":
+                    combatController.attack(player.getCurrentRoom());
+                    break;
                 case "inspect":
                     System.out.println(currentRoom.toString());
                     currentRoom.availableDirections();
@@ -122,8 +129,8 @@ public class Controller {
                     dropItem();
                     break;
                 case "bank":
-                
-                   b.showBank(player);
+
+                    b.showBank(player);
                     break;
                 case "exit":
                     player.setCurrentRoom(cr.spaceShip);
@@ -139,13 +146,13 @@ public class Controller {
                     equipItem();
                     break;
                 case "unequip":
-                case "un equip":   
+                case "un equip":
                     unEquipItem();
                     break;
                 case "stats":
                     System.out.println(player.toString());
                     break;
-                    //cheat to debug
+                //cheat to debug
                 case "heal":
                     player.setHp(+50);
                     break;
@@ -154,7 +161,7 @@ public class Controller {
                     break;
             }
         }
-        
+
     }
 
     /**
@@ -172,7 +179,7 @@ public class Controller {
         switch (action) {
             case "north":
                 goToRoom = player.getCurrentRoom().getNorth();
-                        break;
+                break;
             case "south":
                 goToRoom = player.getCurrentRoom().getSouth();
                 break;
@@ -283,6 +290,7 @@ public class Controller {
             }
         }
     }
+
     /**
      * This method allows the player to drop an object and and move it from the
      * players inventory array into the currentRooms loot array.
@@ -300,6 +308,7 @@ public class Controller {
         }
 
     }
+
     /**
      * Runs method for using items in the Inventory Class
      */
@@ -309,20 +318,12 @@ public class Controller {
         player.useItem(choice, player);
     }
 
-    
-    
-    
-    
-    
-    
-    
-    
-
     public void equipItem() {
         b.witchItemToEquip();
         String choice = b.chooseAction();
         player.checkInventoryAndEquip(choice);
     }
+
     public void unEquipItem() {
         b.witchItemToUnequip();
         String choice = b.chooseAction();
