@@ -80,7 +80,7 @@ public class Room {
         return gold;
     }
     public void setGold(int gold) {
-        this.gold = gold;
+        this.gold += gold;
     }
 
     public String getDescription() {

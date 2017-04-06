@@ -19,13 +19,23 @@ public abstract class Monster {
     private int monsterDmg;
     private int monsterArmor;
     private int monsterTier; 
+    private int monsterGold;
 
-    public Monster(String name, int hp, int dmg, int armor, int tier) {
+    public Monster(String name, int hp, int dmg, int armor, int tier, int gold) {
         this.monsterName = name;
         this.monsterHp = hp;
         this.monsterDmg = dmg;
         this.monsterArmor = armor;
         this.monsterTier = tier;
+        this.monsterGold = gold;
+    }
+
+    public int getMonsterGold() {
+        return monsterGold;
+    }
+
+    public void setMonsterGold(int monsterGold) {
+        this.monsterGold = monsterGold;
     }
 
     public String getMonsterName() {
@@ -74,6 +84,6 @@ public abstract class Monster {
         return damage;
     }
     
-    
+    public abstract int monsterSpecialAttack (Player p);
 
 }

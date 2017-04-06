@@ -3,10 +3,10 @@ package App;
 import MonsterTypes.Monster;
 import highscore.HighscoreManager;
 import items.Iitem;
+import java.util.Random;
 
 public class Controller {
-
-    Monster mon;
+    Random rnd = new Random();
     Boundry b = new Boundry();
     Player player = new Player();
     CreateRoom cr = new CreateRoom();
@@ -27,7 +27,7 @@ public class Controller {
 
         cr.roomFeatures();
         b.welcomeToGame();
-        b.createName(player);
+        //b.createName(player);
         currentRoom = cr.startRoom;
 
         System.out.println(currentRoom.toString());
@@ -45,8 +45,10 @@ public class Controller {
                 checkVictory = false;
             } else {
                 b.playSound(b.doorSound);
+                player.setLastRoom(currentRoom);
                 currentRoom = playerAction(currentRoom);
                 currentRoom.setMonster(combat(currentRoom.getMonster(), player));
+                
             }
         }
         //Prints highscore
@@ -79,84 +81,67 @@ public class Controller {
         while (takingAction) {
             String action = b.chooseAction();
 
-            switch (action) {
+            switch (action.toLowerCase()) {
 
                 case "inspect":
-                case "Inspect":
                     System.out.println(currentRoom.toString());
                     taxRobot();
                     currentRoom.availableDirections();
                     break;
                 case "search":
-                case "Search":
                     trap();
                     currentRoom.showLoot();
                     checkGold();
                     break;
 
                 case "north":
-                case "North":
                     takingAction = directionChoice(action);
                     break;
 
                 case "south":
-                case "South":
                     takingAction = directionChoice(action);
                     break;
 
                 case "east":
-                case "East":
                     takingAction = directionChoice(action);
                     break;
 
                 case "west":
-                case "West":
                     takingAction = directionChoice(action);
                     break;
                 case "help":
-                case "Help":
                     b.helpCommand();
                     break;
                 case "pickup":
-                case "Pickup":
                 case "pick up":
-                case "Pick up":
                     pickUpItem();
                     break;
                 case "drop":
-                case "Drop":
                     dropItem();
                     break;
                 case "bank":
-                case "Bank":
-                    b.showBank(player);
+                
+                   b.showBank(player);
                     break;
                 case "exit":
-                case "Exit":
                     tempRoom = cr.spaceShip;
                     takingAction = false;
                     break;
                 case "inventory":
-                case "Inventory":
                     player.showInventory();
                     break;
                 case "use":
-                case "Use":
                     useItem();
                     break;
                 case "equip":
-                case "Equip":
                     equipItem();
                     break;
                 case "unequip":
-                case "Unequip":
                 case "un equip":   
                 case "Un equip":   
-                case "Un Equip":   
                     unEquipItem();
                     break;
                 case "stats":
-                case "Stats":
                     System.out.println(player.toString());
                     break;
                 default:
@@ -273,7 +258,7 @@ public class Controller {
         b.chooseItemToPick();
         String choice = b.chooseAction();
 
-        if (choice.equalsIgnoreCase("money") || choice.equalsIgnoreCase("space dollars") && currentRoom.getGold() > 0) {
+        if (choice.equalsIgnoreCase("space dollars") || choice.equalsIgnoreCase("money") && currentRoom.getGold() > 0) {
             int gold = currentRoom.getGold();
 
             player.setBank(gold);
@@ -332,6 +317,7 @@ public class Controller {
         boolean monsterTurn = true;
         boolean playerTurn = true;
         boolean whileFighting = true;
+        int damage = 0;
         Monster returnMonster = monster;
         
         String choice = "";
@@ -344,21 +330,33 @@ public class Controller {
             while (whileFighting == true) {
                 
                 if (monster.getMonsterHp() <= 0) {
-                    
+                    System.out.println("The monster drops " + monster.getMonsterGold()+"$ into the room " + currentRoom.getGold());
+                    currentRoom.setGold(monster.getMonsterGold());
                     b.monsterIsDead(monster.getMonsterName());
                     whileFighting = false;
                     returnMonster = null;
                     
                 } else {
-
+                    System.out.println("Debug: The room contains " + currentRoom.getGold());
                     while (monsterTurn == true) {
-                        player.setHp(-monster.getMonsterDmg());
-                        b.monsterAttacksYou(monster.getMonsterName(), monster.getMonsterDmg(), player.getHp());
+                        int whatMonsterAttack = rnd.nextInt(5);
+                        
+                        if(whatMonsterAttack > 4){
+                            damage = monster.monsterSpecialAttack(player);
+                            player.setHp(-damage);
+                        
+                        }else if(whatMonsterAttack > 0 && whatMonsterAttack <= 4){
+                            damage = monster.monsterAttack(player);
+                            player.setHp(-damage);
+                        
+                        }else{
+                            System.out.println("Debug: The monster miss the attack");
+                        }
+                        b.monsterAttacksYou(monster.getMonsterName(), damage, player.getHp());
                         monsterTurn = false;
                         playerTurn = true;
 
                     }
-
                     while (playerTurn == true) {
 
                         choice = b.chooseAction();
@@ -387,11 +385,16 @@ public class Controller {
                                 monsterTurn = true;
                                 break;
                             case "exit":
-
-                                System.out.println("Shutting down");
-                                tempRoom = cr.spaceShip;
+                                currentRoom = cr.spaceShip;
+                                whileFighting = false;
+                                playerTurn = false;
                                 break;
-                            default:
+                            case "run":
+                                currentRoom = player.getLastRoom();
+                                whileFighting = false;
+                                playerTurn = false;
+                                break;
+                                 default:
                                 b.nothingHappend();
                         }
 
@@ -409,15 +412,6 @@ public class Controller {
         b.witchItemToEquip();
         String choice = b.chooseAction();
         player.checkInventoryAndEquip(choice);
-   
-        
-        System.out.println(player.getDef());
-//  System.out.println(player.getEquippedArmor().toString());
-        System.out.println("weapon.......");
-        System.out.println(player.getDmg());
-    //    System.out.println(player.getEquippedWeapon().toString());
-        
-        
     }
     public void unEquipItem() {
         b.witchItemToUnequip();

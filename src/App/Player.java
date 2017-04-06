@@ -8,9 +8,10 @@ import java.util.ArrayList;
 
 public class Player {
     
-    private String name;
+    private String name="Random Guy";
     private int dmg = 1, bank, def = 0;
     private int hp = 100;
+    private Room lastRoom = null;
     private Weapon equippedWeapon = null;
     private Armor equippedArmor = null;
     private ArrayList<Iitem> inventory = new ArrayList<>();
@@ -31,6 +32,14 @@ public class Player {
 
     public int getDmg() {
         return dmg;
+    }
+
+    public Room getLastRoom() {
+        return lastRoom;
+    }
+
+    public void setLastRoom(Room lastRoom) {
+        this.lastRoom = lastRoom;
     }
     public void setDmg(int dmg) {
         this.dmg = dmg;
@@ -70,9 +79,7 @@ public class Player {
         return bank;
     }
     public void setBank(int bank) {
-        if (bank < 0) {
-            System.out.println("");
-        }
+        
         this.bank += bank;
     }
 
@@ -157,9 +164,7 @@ public class Player {
                 } else {
                     b.youCannotUseItem();
                 }
-            } else {
-                b.nothingHappend();
-            }
+            } 
         }
 
     }
@@ -174,9 +179,6 @@ public class Player {
                 } else {
                     b.youCannotEquipItem();
                 }
-
-            } else {
-                b.nothingHappend();
             }
         }
     }

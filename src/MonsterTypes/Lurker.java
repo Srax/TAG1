@@ -5,14 +5,16 @@
  */
 package MonsterTypes;
 
+import App.Player;
+
 /**
  *
  * @author thoma
  */
 public class Lurker extends Monster {
     
-    public Lurker(String name, int hp, int dmg, int armor, int tier) {
-        super(name, hp, dmg, armor, tier);
+    public Lurker(String name, int hp, int dmg, int armor, int tier, int gold) {
+        super(name, hp, dmg, armor, tier, gold);
     }
 
     @Override
@@ -25,7 +27,15 @@ public class Lurker extends Monster {
                 +"\n"
                 + "Armor: " + getMonsterArmor();
     }
-    
+    public int monsterSpecialAttack(Player p) {
+        int damage = 0;
+
+        System.out.println("The Wier hisses at you and  release a powerfull electricfield"
+                + "it hits you for a great amount of damage");
+        damage = this.getMonsterDmg() * 2 - p.getDef();
+
+        return damage;
+    }
     
     
 }
