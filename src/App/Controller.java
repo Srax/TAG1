@@ -6,14 +6,15 @@ import items.Iitem;
 import java.util.Random;
 
 public class Controller {
+    CombatController combatController = new CombatController();
     Random rnd = new Random();
     Boundry b = new Boundry();
-    Player player = new Player();
     CreateRoom cr = new CreateRoom();
+    Player player = new Player();
     HighscoreManager hm = new HighscoreManager();
 
-    Room currentRoom;
-    Room tempRoom = currentRoom;
+//    Room currentRoom;
+//    Room tempRoom = currentRoom;
 
     /**
      * Manages game, movement form room, to next room, checks for winning room,
@@ -30,27 +31,27 @@ public class Controller {
         b.welcomeToGame();
         
         //b.createName(player);
-        currentRoom = cr.startRoom;
-
-        System.out.println(currentRoom.toString());
-        Thread.sleep(100);
+    player.setCurrentRoom(cr.startRoom); 
+        System.out.println(player.getCurrentRoom().toString());
+        Thread.sleep(500);
 
         while (checkVictory) {
             Thread.sleep(500);
-            if (currentRoom.equals(cr.finish)) {
-                b.youWon(currentRoom, player);
+            if (player.getCurrentRoom().equals(cr.finish)) {
+                b.youWon(player.getCurrentRoom(), player);
                 hm.addScore(player.getName(), player.getBank(), player.getHp());
                 checkVictory = false;
-            } else if (currentRoom.equals(cr.spaceShip)) {
-                b.youQuit(currentRoom, player);
+            } else if (player.getCurrentRoom().equals(cr.spaceShip)) {
+                b.youQuit(player.getCurrentRoom(), player);
                 hm.addScore(player.getName(), player.getBank(), player.getHp());
                 checkVictory = false;
             } else {
                 b.playSound(b.doorSound);
-                player.setLastRoom(currentRoom);
-                currentRoom = playerAction(currentRoom);
-                currentRoom.setMonster(combat(currentRoom.getMonster(), player));
-                taxRobot();
+                player.setLastRoom(player.getCurrentRoom());
+                playerAction(player.getCurrentRoom());
+                combatController.combat(player.getCurrentRoom(),player);
+               
+                
             }
         }
         //Prints highscore
@@ -62,7 +63,7 @@ public class Controller {
      * player gold entity
      */
     public void checkGold() {
-        int gold = currentRoom.getGold();
+        int gold = player.getCurrentRoom().getGold();
         if (gold > 0) {
             b.youFindGold(gold);
 
@@ -77,7 +78,7 @@ public class Controller {
      * @param currentRoom
      * @return tempRoom
      */
-    public Room playerAction(Room currentRoom) {
+    public void playerAction(Room currentRoom) {
         boolean takingAction = true;
 
         while (takingAction) {
@@ -125,7 +126,7 @@ public class Controller {
                    b.showBank(player);
                     break;
                 case "exit":
-                    tempRoom = cr.spaceShip;
+                    player.setCurrentRoom(cr.spaceShip);
                     takingAction = false;
                     break;
                 case "inventory":
@@ -154,7 +155,7 @@ public class Controller {
                     break;
             }
         }
-        return tempRoom;
+        
     }
 
     /**
@@ -171,23 +172,23 @@ public class Controller {
 
         switch (action) {
             case "north":
-                goToRoom = currentRoom.getNorth();
-                break;
+                goToRoom = player.getCurrentRoom().getNorth();
+                        break;
             case "south":
-                goToRoom = currentRoom.getSouth();
+                goToRoom = player.getCurrentRoom().getSouth();
                 break;
             case "east":
-                goToRoom = currentRoom.getEast();
+                goToRoom = player.getCurrentRoom().getEast();
                 break;
             case "west":
-                goToRoom = currentRoom.getWest();
+                goToRoom = player.getCurrentRoom().getWest();
                 break;
         }
         if (goToRoom == null) {
             b.walkIntoWall(player);
             return takingAction = true;
         } else {
-            tempRoom = goToRoom;
+            player.setCurrentRoom(goToRoom);
             return takingAction = false;
 
         }
@@ -199,7 +200,7 @@ public class Controller {
      * encounter based on player input.
      */
     public void taxRobot() {
-        int taxRobot = currentRoom.getTaxCollector();
+        int taxRobot = player.getCurrentRoom().getTaxCollector();
         if (taxRobot > 0) {
             b.taxCollectorMeeting();
             boolean interaction = true;
@@ -211,14 +212,14 @@ public class Controller {
                     if (choice.equalsIgnoreCase("pay")) {
                         player.setBank(-20);
                         b.taxCollectorPay(player);
-                        currentRoom.setTaxCollector(0);
+                        player.getCurrentRoom().setTaxCollector(0);
                         interaction = false;
                     } else if (choice.equalsIgnoreCase("deny")) {
-                        currentRoom.setGold(player.getBank());
+                        player.getCurrentRoom().setGold(player.getBank());
                         player.setBank(-player.getBank());
                         player.setHp(-20);
                         b.taxCollectorDeny(player);
-                        currentRoom.setTaxCollector(0);
+                        player.getCurrentRoom().setTaxCollector(0);
                         interaction = false;
                     } else {
                         b.nothingHappend();
@@ -227,11 +228,11 @@ public class Controller {
                 } else if (choice.equalsIgnoreCase("help")) {
                     b.helpCommand();
                 } else if (choice.equalsIgnoreCase("pay") || choice.equalsIgnoreCase("deny") && player.getBank() < 20) {
-                    currentRoom.setGold(player.getBank());
+                    player.getCurrentRoom().setGold(player.getBank());
 
                     player.setHp(-20);
                     b.taxCollectorCantPay(player);
-                    currentRoom.setTaxCollector(0);
+                    player.getCurrentRoom().setTaxCollector(0);
                     interaction = false;
                 } else {
                     b.nothingHappend();
@@ -244,12 +245,12 @@ public class Controller {
      * Runs the trap encounter.
      */
     public void trap() {
-        int trap = currentRoom.getTrap();
+        int trap = player.getCurrentRoom().getTrap();
         if (trap > 0) {
             b.trapInteraction();
             player.setHp(-10);
             b.getHp(player);
-            currentRoom.setTrap(0);
+            player.getCurrentRoom().setTrap(0);
         }
 
     }
@@ -263,17 +264,17 @@ public class Controller {
         b.chooseItemToPick();
         String choice = b.chooseAction();
 
-        if (choice.equalsIgnoreCase("space dollars") || choice.equalsIgnoreCase("money") && currentRoom.getGold() > 0) {
-            int gold = currentRoom.getGold();
+        if (choice.equalsIgnoreCase("space dollars") || choice.equalsIgnoreCase("money") && player.getCurrentRoom().getGold() > 0) {
+            int gold = player.getCurrentRoom().getGold();
 
             player.setBank(gold);
             b.playSound(b.coinSound);
-            currentRoom.setGold(0);
+            player.getCurrentRoom().setGold(0);
             b.youPickedUp(); System.out.println(gold + " Space Doallars\n");
 
         } else {
 
-            Iitem itemToMove = currentRoom.moveFromRoomToInventory(choice);
+            Iitem itemToMove = player.getCurrentRoom().moveFromRoomToInventory(choice);
 
             if (itemToMove == null) {
                 b.nothingHappend();
@@ -297,7 +298,7 @@ public class Controller {
         if (itemToMove == null) {
             b.nothingHappend();
         } else {
-            currentRoom.add(itemToMove);
+            player.getCurrentRoom().add(itemToMove);
 
         }
 
@@ -311,96 +312,14 @@ public class Controller {
         player.useItem(choice, player);
     }
 
-    public Monster combat(Monster monster, Player player) {
-        boolean monsterTurn = true;
-        boolean playerTurn = true;
-        boolean whileFighting = true;
-        int damage = 0;
-        Monster returnMonster = monster;
-        
-        String choice = "";
-        
-        
-        if (monster == null) {
-            whileFighting = false;
-        } else {
-            b.monsterEncounter(monster.getMonsterName());
-            while (whileFighting == true) {
-                
-                if (monster.getMonsterHp() <= 0) {
-                    System.out.println("The monster drops " + monster.getMonsterGold()+"$ into the room " + currentRoom.getGold());
-                    currentRoom.setGold(monster.getMonsterGold());
-                    b.monsterIsDead(monster.getMonsterName());
-                    whileFighting = false;
-                    returnMonster = null;
-                    
-                } else {
-                    System.out.println("Debug: The room contains " + currentRoom.getGold());
-                    while (monsterTurn == true) {
-                        int whatMonsterAttack = rnd.nextInt(5);
-                        
-                        if(whatMonsterAttack > 4){
-                            damage = monster.monsterSpecialAttack(player);
-                            player.setHp(-damage);
-                        
-                        }else if(whatMonsterAttack > 0 && whatMonsterAttack <= 4){
-                            damage = monster.monsterAttack(player);
-                            player.setHp(-damage);
-                        
-                        }else{
-                            System.out.println("Debug: The monster miss the attack");
-                        }
-                        b.monsterAttacksYou(monster.getMonsterName(), damage, player.getHp());
-                        monsterTurn = false;
-                        playerTurn = true;
-
-                    }
-                    while (playerTurn == true) {
-
-                        choice = b.chooseAction();
-                        switch (choice) {
-                            case "help":
-                                b.helpCommand();
-                                break;
-                            case "inventory":
-                                player.showInventory();
-                                break;
-                            case "use":
-                                useItem();
-                                playerTurn = false;
-                                monsterTurn = true;
-                                break;
-                            case "attack":
-                                monster.setMonsterHp(-player.getDmg());
-                                b.playerAttackMonster(monster.getMonsterName(), player.getDmg(), monster.getMonsterHp());
-                                playerTurn = false;
-                                monsterTurn = true;
-                                break;
-                            case "dance":
-                                monster.setMonsterHp(-5000);
-                                b.playerAttackMonster(monster.getMonsterName(), player.getDmg(), monster.getMonsterHp());
-                                playerTurn = false;
-                                monsterTurn = true;
-                                break;
-                            case "exit":
-                                currentRoom = cr.spaceShip;
-                                whileFighting = false;
-                                playerTurn = false;
-                                break;
-                            case "run":
-                                currentRoom = player.getLastRoom();
-                                whileFighting = false;
-                                playerTurn = false;
-                                break;
-                                 default:
-                                b.nothingHappend();
-                        }
-                    }
-                }
-            }
-        }
-        return returnMonster;
-    }
+    
+    
+    
+    
+    
+    
+    
+    
 
     public void equipItem() {
         b.witchItemToEquip();
