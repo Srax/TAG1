@@ -164,9 +164,7 @@ public class Player {
                 } else {
                     b.youCannotUseItem();
                 }
-            } else {
-                b.nothingHappend();
-            }
+            } 
         }
 
     }

@@ -84,11 +84,6 @@ public abstract class Monster {
         return damage;
     }
     
-    public int monsterSpecialAttack (Player p){
-    int damage = 0;
-    
-    
-    return damage;
-    }
+    public abstract int monsterSpecialAttack (Player p);
 
 }
