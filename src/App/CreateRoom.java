@@ -120,10 +120,7 @@ public class CreateRoom {
         
         startRoom.setNorth(room1);
         startRoom.setSouth(spaceShip);
-        startRoom.add(p1);
-        startRoom.add(gun);
-        
-        
+                
         room1.setWest(room2);
         room1.setEast(room3);
         room1.setSouth(startRoom);
@@ -134,13 +131,10 @@ public class CreateRoom {
         room2.setWest(room9);
         room2.setTaxCollector(1);
         
-        
-        
         room3.setWest(room1);
         room3.setNorth(room5);
         room3.setSouth(room4);
         room3.setMonster(spaceWier2);
-        
         
         room4.setNorth(room3);
         room4.add(beatUpEngineeringSpaceSuit);
@@ -303,6 +297,14 @@ public class CreateRoom {
         
         finish.add(gameSpaceCawler);
     
+    }
+    public void addPlayerStartItems(Player player){
+        player.addItemToInventory(gun);
+        player.addItemToInventory(spaceSuit);
+        player.addItemToInventory(p1);
+        player.addItemToInventory(p1);
+        player.checkInventoryAndEquip("Small Laserpistol");
+        player.checkInventoryAndEquip("Space Suit");
     }
         public String startRoom() {
 

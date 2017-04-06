@@ -214,8 +214,9 @@ public class Boundry {
         System.out.println("\nYou went " + action + "\n");
     }
 
-    void walkIntoWall() {
-        System.out.println("You are trying to walk into a wall\n");
+    void walkIntoWall(Player p) {
+        p.setHp(-1);
+        System.out.println("You are trying to walk into a wall!\n -1HP\n");
     }
 
     void youQuit(Room currentRoom, Player p) {

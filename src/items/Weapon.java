@@ -40,7 +40,7 @@ public class Weapon implements Iitem{
 
     @Override
     public String toString() {
-        return "Weapon >" + "\""+name+"\"" + " DMG +"+attackDMG + " Description: \""+getDescription()+"\"";
+        return "Weapon > " + "\""+name+"\"" + " DMG +"+attackDMG + " Description: \""+getDescription()+"\"";
     }
 
     @Override

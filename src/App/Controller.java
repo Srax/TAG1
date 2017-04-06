@@ -26,7 +26,9 @@ public class Controller {
         boolean checkVictory = true;
 
         cr.roomFeatures();
+        cr.addPlayerStartItems(player);
         b.welcomeToGame();
+        
         //b.createName(player);
         currentRoom = cr.startRoom;
 
@@ -182,7 +184,7 @@ public class Controller {
                 break;
         }
         if (goToRoom == null) {
-            b.walkIntoWall();
+            b.walkIntoWall(player);
             return takingAction = true;
         } else {
             tempRoom = goToRoom;
