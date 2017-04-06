@@ -146,14 +146,15 @@ public class Controller {
                     equipItem();
                     break;
                 case "unequip":
-                case "un equip":
+                case "un equip":   
+                 
                     unEquipItem();
                     break;
                 case "stats":
                     System.out.println(player.toString());
                     break;
-                //cheat to debug
-                case "heal":
+                    //cheat to debug
+                case "make it rain":
                     player.setHp(+50);
                     break;
                 default:
@@ -276,6 +277,7 @@ public class Controller {
             player.setBank(gold);
             b.playSound(b.coinSound);
             player.getCurrentRoom().setGold(0);
+            b.youPickedUp(); System.out.println(gold + " Space Doallars\n");
 
         } else {
 
@@ -286,6 +288,7 @@ public class Controller {
 
             } else {
                 player.addItemToInventory(itemToMove);
+                b.youPickedUp(); System.out.println(itemToMove+"\n");
 
             }
         }
