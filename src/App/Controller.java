@@ -7,7 +7,6 @@ import java.util.Random;
 
 public class Controller {
     Random rnd = new Random();
-    Monster mon;
     Boundry b = new Boundry();
     Player player = new Player();
     CreateRoom cr = new CreateRoom();
@@ -82,84 +81,67 @@ public class Controller {
         while (takingAction) {
             String action = b.chooseAction();
 
-            switch (action) {
+            switch (action.toLowerCase()) {
 
                 case "inspect":
-                case "Inspect":
                     System.out.println(currentRoom.toString());
                     taxRobot();
                     currentRoom.availableDirections();
                     break;
                 case "search":
-                case "Search":
                     trap();
                     currentRoom.showLoot();
                     checkGold();
                     break;
 
                 case "north":
-                case "North":
                     takingAction = directionChoice(action);
                     break;
 
                 case "south":
-                case "South":
                     takingAction = directionChoice(action);
                     break;
 
                 case "east":
-                case "East":
                     takingAction = directionChoice(action);
                     break;
 
                 case "west":
-                case "West":
                     takingAction = directionChoice(action);
                     break;
                 case "help":
-                case "Help":
                     b.helpCommand();
                     break;
                 case "pickup":
-                case "Pickup":
                 case "pick up":
-                case "Pick up":
                     pickUpItem();
                     break;
                 case "drop":
-                case "Drop":
                     dropItem();
                     break;
                 case "bank":
-                case "Bank":
-                    b.showBank(player);
+                
+                   b.showBank(player);
                     break;
                 case "exit":
-                case "Exit":
                     tempRoom = cr.spaceShip;
                     takingAction = false;
                     break;
                 case "inventory":
-                case "Inventory":
                     player.showInventory();
                     break;
                 case "use":
-                case "Use":
                     useItem();
                     break;
                 case "equip":
-                case "Equip":
                     equipItem();
                     break;
                 case "unequip":
-                case "Unequip":
                 case "un equip":   
                 case "Un equip":   
-                case "Un Equip":   
                     unEquipItem();
                     break;
                 case "stats":
-                case "Stats":
                     System.out.println(player.toString());
                     break;
                 default:
@@ -276,7 +258,7 @@ public class Controller {
         b.chooseItemToPick();
         String choice = b.chooseAction();
 
-        if (choice.equalsIgnoreCase("space dollars") && currentRoom.getGold() > 0) {
+        if (choice.equalsIgnoreCase("space dollars") || choice.equalsIgnoreCase("money") && currentRoom.getGold() > 0) {
             int gold = currentRoom.getGold();
 
             player.setBank(gold);

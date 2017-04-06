@@ -5,6 +5,8 @@
  */
 package MonsterTypes;
 
+import App.Player;
+
 /**
  *
  * @author thoma
@@ -25,5 +27,13 @@ public class Styhr extends Monster {
                 +"\n"
                 + "Armor: " + getMonsterArmor();
     }
-    
+   public int monsterSpecialAttack(Player p) {
+        int damage = 0;
+
+        System.out.println("The Wier hisses at you and  release a powerfull electricfield"
+                + "it hits you for a great amount of damage");
+        damage = this.getMonsterDmg() * 2 - p.getDef();
+
+        return damage;
+    } 
 }
