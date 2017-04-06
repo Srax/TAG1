@@ -6,7 +6,7 @@ import items.Iitem;
 import java.util.Random;
 
 public class Controller {
-    CombatController combatControle = new CombatController();
+    CombatController combatController = new CombatController();
     Random rnd = new Random();
     Boundry b = new Boundry();
     CreateRoom cr = new CreateRoom();
@@ -47,7 +47,7 @@ public class Controller {
                 b.playSound(b.doorSound);
                 player.setLastRoom(player.getCurrentRoom());
                 playerAction(player.getCurrentRoom());
-                combatControle.combat(player.getCurrentRoom(),player);
+                combatController.combat(player.getCurrentRoom(),player);
                
                 
             }
