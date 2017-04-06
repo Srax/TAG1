@@ -27,7 +27,9 @@ public class Controller {
         boolean checkVictory = true;
 
         cr.roomFeatures();
+        cr.addPlayerStartItems(player);
         b.welcomeToGame();
+        
         //b.createName(player);
     player.setCurrentRoom(cr.startRoom); 
         System.out.println(player.getCurrentRoom().toString());
@@ -86,7 +88,6 @@ public class Controller {
 
                 case "inspect":
                     System.out.println(currentRoom.toString());
-                    taxRobot();
                     currentRoom.availableDirections();
                     break;
                 case "search":
@@ -144,6 +145,10 @@ public class Controller {
                 case "stats":
                     System.out.println(player.toString());
                     break;
+                    //cheat to debug
+                case "heal":
+                    player.setHp(+50);
+                    break;
                 default:
                     b.nothingHappend();
                     break;
@@ -179,7 +184,7 @@ public class Controller {
                 break;
         }
         if (goToRoom == null) {
-            b.walkIntoWall();
+            b.walkIntoWall(player);
             return takingAction = true;
         } else {
             player.setCurrentRoom(goToRoom);
@@ -278,7 +283,6 @@ public class Controller {
             }
         }
     }
-
     /**
      * This method allows the player to drop an object and and move it from the
      * players inventory array into the currentRooms loot array.
@@ -296,7 +300,6 @@ public class Controller {
         }
 
     }
-
     /**
      * Runs method for using items in the Inventory Class
      */

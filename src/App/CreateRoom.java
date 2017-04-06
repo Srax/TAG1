@@ -47,7 +47,28 @@ public class CreateRoom {
     Room room16 = new Room(r.nextInt(101)+30, hallWay3());
     Room room17 = new Room(r.nextInt(101)+30, hallWay3());
     Room room18 = new Room(r.nextInt(101)+30, lab());
-    Room room19 = new Room(r.nextInt(101)+30, closet());
+    Room room19 = new Room(r.nextInt(101)+30, hallWay2());
+    Room room21 = new Room(0, hallWay2());
+    Room room22 = new Room(0, hallWay2());
+    Room room23 = new Room(0, hallWay2());
+    Room room24 = new Room(0, hallWay2());
+    Room room25 = new Room(0, hallWay2());
+    Room room26 = new Room(0, hallWay2());
+    Room room27 = new Room(0, hallWay2());
+    Room room28 = new Room(0, hallWay2());
+    Room room29 = new Room(0, hallWay2());
+    Room room30 = new Room(0, hallWay2());
+    Room room31 = new Room(0, hallWay2());
+    Room room32 = new Room(0, hallWay2());
+    Room room33 = new Room(0, hallWay2());
+    Room room34 = new Room(0, hallWay2());
+    Room room35 = new Room(0, hallWay2());
+    Room room36 = new Room(0, hallWay2());
+    Room room37 = new Room(0, hallWay2());
+    Room room38 = new Room(0, hallWay2());
+    Room room39 = new Room(0, hallWay2());
+    Room room40 = new Room(0, hallWay2());
+    Room room41 = new Room(0 , lab());
     
     
     // Items that will be created weapons
@@ -58,6 +79,7 @@ public class CreateRoom {
     Iitem sonicSwordOfTheWhisperMen = new Weapon("Sonic sword of The Whisper Men", "A Sword that makes a sonic vibration which sounds like a whisper", 13);
     Iitem plasmaCannon = new Weapon("Plasma Cannon", "Fires a plasma discharge in the form of a beam", 6);
     Iitem blaster = new Weapon("Blaster", "This blaster was once owned by a guy called Han", 17);
+    Iitem godBlaster = new Weapon("God Blaster", "This blaster was once owned by GOD", 2000);
     
     //Armors
     Iitem spaceSuit = new Armor("Space Suit", "Standard issued space suit", 1);
@@ -86,10 +108,10 @@ public class CreateRoom {
 //        Monster commonLurker = new Lurker("Common Lurker", 5, 1, 0, 1);
   //      Monster patheticLurker = new Lurker("Pathetic Lurker", 1, 1, 0, 1);
     
-    //TIER 2 MONSTERS (NAME, HP, DAMAGE, ARMOR, TIER)
+    //TIER 2 MONSTERS (NAME, HP, DAMAGE, ARMOR, TIER, gold)
         //Taint Slasher - Protect your privates
-        Monster Styhr = new Styhr("Slasher", 5, 30, 7, 2,1);
-        Monster Styhr2 = new Styhr("Killer Pland", 8, 40, 9, 2, 1);
+        Monster Styhr = new Styhr("Slasher", 5, 30, 7, 2,30);
+        Monster Styhr2 = new Styhr("Killer Pland", 40, 8, 2, 2, 40);
         
         
     
@@ -98,26 +120,21 @@ public class CreateRoom {
         
         startRoom.setNorth(room1);
         startRoom.setSouth(spaceShip);
-        startRoom.add(p1);
-        startRoom.add(gun);
-        
-        
+                
         room1.setWest(room2);
         room1.setEast(room3);
         room1.setSouth(startRoom);
         room1.setMonster(spaceWier);
+        room1.setNorth(room21);
         
         room2.setEast(room1);
         room2.setWest(room9);
         room2.setTaxCollector(1);
         
-        
-        
         room3.setWest(room1);
         room3.setNorth(room5);
         room3.setSouth(room4);
         room3.setMonster(spaceWier2);
-        
         
         room4.setNorth(room3);
         room4.add(beatUpEngineeringSpaceSuit);
@@ -171,6 +188,8 @@ public class CreateRoom {
         room15.setEast(room17);
         room15.setWest(room16);
         room15.setSouth(room7);
+        room15.setNorth(room21);
+        
         room15.setTrap(1);
         room15.add(officersUniform);
         room15.add(blaster);
@@ -190,8 +209,102 @@ public class CreateRoom {
         room19.setNorth(room18);
         room19.setTaxCollector(1);
         
+        
+        room21.setEast(room15);
+        room21.setNorth(room22);
+        room21.setTaxCollector(1);
+        
+        room22.setEast(room21);        
+        room22.setNorth(room23);
+        room22.setTaxCollector(1);
+        
+        room23.setEast(room22);        
+        room23.setNorth(room24);
+        room23.setTaxCollector(1);
+        
+        room24.setEast(room23);        
+        room24.setNorth(room25);
+        room24.setTaxCollector(1);
+        
+        room25.setEast(room24);        
+        room25.setNorth(room26);
+        room25.setTaxCollector(1);
+        
+        room26.setEast(room25);
+        room26.setNorth(room27);
+        room26.setTaxCollector(1);
+        
+        room27.setEast(room26);
+        room27.setNorth(room28);
+        room27.setTaxCollector(1);
+        
+        room28.setEast(room27);
+        room28.setNorth(room29);
+        room28.setTaxCollector(1);
+        
+        room29.setEast(room28);
+        room29.setNorth(room30);
+        room29.setTaxCollector(1);
+        
+        room30.setEast(room29);
+        room30.setNorth(room31);
+        room30.setTaxCollector(1);
+        
+        room31.setSouth(room30);
+        room31.setNorth(room32);
+        room31.setTaxCollector(1);
+        
+        room32.setEast(room31);
+        room32.setNorth(room33);
+        room32.setTaxCollector(1);
+        
+        room33.setEast(room32);
+        room33.setNorth(room34);
+        room33.setTaxCollector(1);
+        
+        room34.setEast(room33);
+        room34.setNorth(room35);
+        room34.setTaxCollector(1);
+        
+        room35.setEast(room34);
+        room35.setNorth(room36);
+        room35.setTaxCollector(1);
+        
+        room36.setEast(room35);
+        room36.setNorth(room37);
+        room36.setTaxCollector(1);
+        
+        room37.setEast(room36);
+        room37.setNorth(room38);
+        room37.setTaxCollector(1);
+        
+        room38.setEast(room37);
+        room38.setNorth(room39);
+        room38.setTaxCollector(1);
+        
+        room39.setEast(room38);
+        room39.setNorth(room40);
+        room39.setTaxCollector(1);
+        
+        room40.setEast(room39);
+        room40.setNorth(room41);
+        room40.setTaxCollector(1);
+        
+        room41.setEast(room40);
+        room41.setTaxCollector(1);
+        room41.add(godBlaster);
+        
+        
         finish.add(gameSpaceCawler);
     
+    }
+    public void addPlayerStartItems(Player player){
+        player.addItemToInventory(gun);
+        player.addItemToInventory(spaceSuit);
+        player.addItemToInventory(p1);
+        player.addItemToInventory(p1);
+        player.checkInventoryAndEquip("Small Laserpistol");
+        player.checkInventoryAndEquip("Space Suit");
     }
         public String startRoom() {
 
