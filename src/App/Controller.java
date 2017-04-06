@@ -263,7 +263,7 @@ public class Controller {
         b.chooseItemToPick();
         String choice = b.chooseAction();
 
-        if (choice.equalsIgnoreCase("space dollars") || choice.equalsIgnoreCase("money") && player.getCurrentRoom().getGold() > 0) {
+        if (choice.equalsIgnoreCase("space dollars") && player.getCurrentRoom().getGold() > 0 || choice.equalsIgnoreCase("money") && player.getCurrentRoom().getGold() > 0) {
             int gold = player.getCurrentRoom().getGold();
 
             player.setBank(gold);
@@ -308,16 +308,6 @@ public class Controller {
         String choice = b.chooseAction();
         player.useItem(choice, player);
     }
-
-    
-    
-    
-    
-    
-    
-    
-    
-
     public void equipItem() {
         b.witchItemToEquip();
         String choice = b.chooseAction();
