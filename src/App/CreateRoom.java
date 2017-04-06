@@ -108,10 +108,10 @@ public class CreateRoom {
 //        Monster commonLurker = new Lurker("Common Lurker", 5, 1, 0, 1);
   //      Monster patheticLurker = new Lurker("Pathetic Lurker", 1, 1, 0, 1);
     
-    //TIER 2 MONSTERS (NAME, HP, DAMAGE, ARMOR, TIER)
+    //TIER 2 MONSTERS (NAME, HP, DAMAGE, ARMOR, TIER, gold)
         //Taint Slasher - Protect your privates
-        Monster Styhr = new Styhr("Slasher", 5, 30, 7, 2,1);
-        Monster Styhr2 = new Styhr("Killer Pland", 8, 40, 9, 2, 1);
+        Monster Styhr = new Styhr("Slasher", 5, 30, 7, 2,30);
+        Monster Styhr2 = new Styhr("Killer Pland", 40, 8, 2, 2, 40);
         
         
     
@@ -128,6 +128,7 @@ public class CreateRoom {
         room1.setEast(room3);
         room1.setSouth(startRoom);
         room1.setMonster(spaceWier);
+        room1.setNorth(room21);
         
         room2.setEast(room1);
         room2.setWest(room9);
@@ -268,7 +269,7 @@ public class CreateRoom {
         room33.setTaxCollector(1);
         
         room34.setEast(room33);
-        room34.setNorth(room34);
+        room34.setNorth(room35);
         room34.setTaxCollector(1);
         
         room35.setEast(room34);

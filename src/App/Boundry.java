@@ -105,6 +105,7 @@ public class Boundry {
     public String chooseAction() {
         System.out.print("Choose your action: ");
         String action = scan.nextLine();
+        System.out.print("\n");
         return action;
     }
 
@@ -113,26 +114,31 @@ public class Boundry {
      * as an input and get a list of all possible actions in the game.
      */
     public void helpCommand() {
-        System.out.println("\n======== HELP ========");
-        System.out.println("- Inspect");
-        System.out.println("- Search");
-        System.out.println("- Bank");
-        System.out.println("- North / South / East / West");
-        System.out.println("- Pay");
-        System.out.println("- Deny");
-//        System.out.println("- Run");        
-        System.out.println("- Use");
-        System.out.println("- Equip");        
-        System.out.println("- Unequip");        
-        System.out.println("- Inventory");
-        System.out.println("- Stats");
-        System.out.println("- Attack");  
-        System.out.println("- Help");
-        System.out.println("- Exit");
+        System.out.println("\n============ HELP ===========");
+        
+        System.out.println("Unequip\tInventory\n"
+                + "Search\tBank\tInspect\n"
+                + "North\tSouth\tEast\tWest\n"
+                + "Pay\tDeny\tUse\tHelp\n"
+                + "Equip\tStats\tAttack\tExit\n"
+                + "_____________________________\n");
+        
+        
+//        
+//        System.out.println("- Inspect\t- Search\t- Bank");
+//
+//        System.out.println("- North / South / East / West\n");
+//        System.out.println("- Pay\t- Deny\t- Use");
+//
+//        System.out.println("- Equip\t- Unequip\t- Inventory ");        
+//
+//        System.out.println("- Stats\t- Attack\t- Help");
+//
+//        System.out.println("- Exit\n");
     }
 
     public void attackHelp() {
-        System.out.println("\n======== HELP ========");
+        System.out.println("\n=========== HELP ===========");
         System.out.println("- attack");
         System.out.println("- run");
         System.out.println("- inventory");
@@ -147,28 +153,30 @@ public class Boundry {
      */
     public void taxCollectorMeeting() {
 
+        System.out.println("===================================================================================\n");
         System.out.println("The door close behind you.");
         System.out.println("A big robot in a dark coat stands in your way");
         System.out.println("He is the \"TAXCOLLETOR\" and he is here to collect your money");
         System.out.println("You must pay his price to exit the room");
-        System.out.println("You must pay me, 20 dollars");
+        System.out.println("You must pay me, 20 dollars\n");
+        System.out.println("===================================================================================\n");
     }
 
     public void taxCollectorPay(Player player) {
         System.out.println("-20 Space dollars your Bank balance is now :" + player.getBank() + "$\n");
         System.out.println("You pay the robot and he looks satisfied");
-        System.out.println("The Robot powers down while whispering finally. The robot should no longer be a problem");
+        System.out.println("The Robot powers down while whispering finally. The robot should no longer be a problem\n");
     }
 
     public void taxCollectorDeny(Player player) {
         System.out.println("The Robot bitchslaps you, and steals all your money. you now have " + player.getHp() + "HP");
-        System.out.println("The Robot powers down, and drops its money\nThe robot should no longer be a problem");
+        System.out.println("The Robot powers down, and drops its money\nThe robot should no longer be a problem\n");
     }
 
     public void taxCollectorCantPay(Player player) {
         System.out.println("You were unable to pay the Robot");
         System.out.println("The Robot bitchslaps you, you now have " + player.getHp() + "HP");
-        System.out.println("The Robot powers down, and drops its money\nThe robot should no longer be a problem");
+        System.out.println("The Robot powers down, and drops its money\nThe robot should no longer be a problem\n");
     }
 
     void trapInteraction() {
@@ -270,7 +278,7 @@ public class Boundry {
     }
 
     void chooseItemToUse() {
-        System.out.println("Witch item do you wish to use?");
+        System.out.println("Witch item do you wish to use?\n");
     }
 
     void youDropped(String item) {
@@ -282,37 +290,40 @@ public class Boundry {
     }
 
     void youCannotUseItem() {
-        System.out.println("You cannot use this item");
+        System.out.println("You cannot use this item\n");
     }
 
     ///////////////////// COMBAT DISPLAY ////////////////////////
     
     public void monsterEncounter(String monsterName){
+        System.out.println("===================================================================================\n");
         System.out.println("You float into the next room, but suddenly infront of you you see a monster!!!!!."
                 + "\n"
                 + "It is an enemy " + monsterName + " ready to fight you!"
-                + "\n"
-                + "\n"
-                + "Before you can react, the" + monsterName + " attacks you!");
+                + "\n"               
+                + "\n"               
+                + "Before you can react, the " + monsterName + " attacks you!");
 
     }
     public void monsterAttacksYou(String monsterName,int damage, int hp){
         System.out.println("The "+monsterName+" attacks you and hits you"
                 + " for " + damage + " damage.");
-        System.out.println("You now have " + hp + " HP left");
+        System.out.println("You now have " + hp + " HP left\n");
+        
             
     
     } 
     
     public void playerAttackMonster(String monsterName,int damage, int hp){
         System.out.println("You attack the "+ monsterName + " for " + damage + " damage.");
-        System.out.println("The "+monsterName+" now has "+hp+"HP left");
+        System.out.println("The "+monsterName+" now has "+hp+"HP left\n");
     }
     
     public void monsterIsDead(String monsterName){
         System.out.println("The "+monsterName+"is hit one last time and stops moving.\n"
                 + "Congratulation, you killed the " +monsterName+"!!");
-        System.out.println("You can now explore the room.");
+        System.out.println("You can now explore the room.\n");
+        System.out.println("===================================================================================\n");
 
     }
 

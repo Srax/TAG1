@@ -27,11 +27,11 @@ public class Controller {
 
         cr.roomFeatures();
         b.welcomeToGame();
-        b.createName(player);
+        //b.createName(player);
         currentRoom = cr.startRoom;
 
         System.out.println(currentRoom.toString());
-        Thread.sleep(500);
+        Thread.sleep(100);
 
         while (checkVictory) {
             Thread.sleep(500);
@@ -142,6 +142,10 @@ public class Controller {
                     break;
                 case "stats":
                     System.out.println(player.toString());
+                    break;
+                    //cheat to debug
+                case "heal":
+                    player.setHp(+50);
                     break;
                 default:
                     b.nothingHappend();
