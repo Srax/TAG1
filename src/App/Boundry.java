@@ -334,7 +334,7 @@ public class Boundry {
         System.out.println("You cannot equip this item");
     }
 
-    void witchItemToUnequip() {
+    public void witchItemToUnequip() {
         System.out.println("To unequip armor, type \"Armor\", for weapon type \"Weapon\"");
     }
 }

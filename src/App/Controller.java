@@ -48,7 +48,7 @@ public class Controller {
                 player.setLastRoom(currentRoom);
                 currentRoom = playerAction(currentRoom);
                 currentRoom.setMonster(combat(currentRoom.getMonster(), player));
-                
+                taxRobot();
             }
         }
         //Prints highscore
@@ -85,7 +85,6 @@ public class Controller {
 
                 case "inspect":
                     System.out.println(currentRoom.toString());
-                    taxRobot();
                     currentRoom.availableDirections();
                     break;
                 case "search":
@@ -278,7 +277,6 @@ public class Controller {
             }
         }
     }
-
     /**
      * This method allows the player to drop an object and and move it from the
      * players inventory array into the currentRooms loot array.
@@ -296,7 +294,6 @@ public class Controller {
         }
 
     }
-
     /**
      * Runs method for using items in the Inventory Class
      */
