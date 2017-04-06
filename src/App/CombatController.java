@@ -28,7 +28,6 @@ public class CombatController {
         int damage = 0;
         boolean takingaction = true;
         Monster monster = currentRoom.getMonster();
-        Room returnRoom = currentRoom;
         String choice = "";
         
         
@@ -40,7 +39,7 @@ public class CombatController {
                 
                 if (monster.getMonsterHp() <= 0) {
                     System.out.println("Debug: The monster drops " + monster.getMonsterGold()+"$ into the room " + currentRoom.getGold());
-                    currentRoom.setGold(monster.getMonsterGold());
+                    currentRoom.setMonsterGold(monster.getMonsterGold());
                     b.monsterIsDead(monster.getMonsterName());
                     whileFighting = false;
                     currentRoom.setMonster(null);
