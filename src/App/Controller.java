@@ -324,13 +324,6 @@ public class Controller {
         player.useItem(choice, player);
     }
 
-    
-    
-    
-    
-    
-    
-    
     public Monster combat(Monster monster, Player player) {
         boolean monsterTurn = true;
         boolean playerTurn = true;
@@ -415,13 +408,9 @@ public class Controller {
                                  default:
                                 b.nothingHappend();
                         }
-
                     }
-
                 }
-
             }
-
         }
         return returnMonster;
     }
