@@ -7,7 +7,7 @@ import items.Weapon;
 import java.util.ArrayList;
 
 public class Player {
-    
+    private Room currentRoom = null;
     private String name="Random Guy";
     private int dmg = 1, bank, def = 0;
     private int hp = 100;
@@ -15,14 +15,20 @@ public class Player {
     private Weapon equippedWeapon = null;
     private Armor equippedArmor = null;
     private ArrayList<Iitem> inventory = new ArrayList<>();
+    
+     public Room getCurrentRoom() {
+        return currentRoom;
+    }
 
+    public void setCurrentRoom(Room currentRoom) {
+        this.currentRoom = currentRoom;
+    }
     public Weapon getEquippedWeapon() {
         return equippedWeapon;
     }
     public void setEquippedWeapon(Weapon equippedWeapon) {
         this.equippedWeapon = equippedWeapon;
     }
-
     public Armor getEquippedArmor() {
         return equippedArmor;
     }
