@@ -80,6 +80,9 @@ public class Room {
         return gold;
     }
     public void setGold(int gold) {
+        this.gold = gold;
+    }
+    public void setMonsterGold(int gold){
         this.gold += gold;
     }
 
