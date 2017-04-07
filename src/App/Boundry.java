@@ -13,7 +13,7 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class Boundry {
-
+    
     Scanner scan = new Scanner(System.in); //used for actions
     Scanner scan2 = new Scanner(System.in); //Used in creatName
     public static String coinSound = System.getProperty("user.dir") + "\\src\\sounds\\coin.wav";
@@ -82,20 +82,7 @@ public class Boundry {
         System.out.println("\n=== GAME : RUNNING ===");
     }
 
-    /**
-     * When encountering gold in the game, takeGold will display the following
-     * statement.
-     *
-     * @return choice
-     */
-    public String takeGold() {
-        String choice;
-        System.out.println("\nDo you wish to pick up the gold ?");
-        System.out.println("YES/NO");
-        choice = scan.next();
-        return choice;
-    }
-
+    
     /**
      * This Method lets the player know that he/she can preform an action in
      * various situations
@@ -351,5 +338,11 @@ public class Boundry {
 
     public void witchItemToUnequip() {
         System.out.println("To unequip armor, type \"Armor\", for weapon type \"Weapon\"");
+    }
+    public void youDied(){
+        System.out.println("\"\\n===💀 YOU ARE DEAD 💀===\\n\"\n" +
+"            + \"You are dead, you dead body is now floating in the endless space\"\n" +
+"            + \"for eternity, dead\\n\"\n" +
+"            + \"\\n💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀\\n\"; ");
     }
 }

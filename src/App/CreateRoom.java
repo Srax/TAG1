@@ -24,8 +24,7 @@ import java.util.Random;
  */
 public class CreateRoom {
     
-    Random r = new Random();
-       
+    Random r = new Random();   
     Room spaceShip = new Room(0, spaceShip());
     Room finish = new Room(0, commandBridge());
     Room startRoom = new Room(0, startRoom());
@@ -451,4 +450,6 @@ public class CreateRoom {
                 
         return desc;
     }
+
+    
 }
