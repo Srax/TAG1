@@ -125,6 +125,7 @@ public class CreateRoom {
         room1.setSouth(startRoom);
         room1.setMonster(spaceWier);
         room1.setNorth(room21);
+        room1.setTrap(1);
         
         room2.setEast(room1);
         room2.setWest(room9);

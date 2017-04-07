@@ -1,8 +1,6 @@
 package App;
 
-import MonsterTypes.Monster;
 import highscore.HighscoreManager;
-import items.Iitem;
 import java.util.Random;
 
 public class Controller {
@@ -12,6 +10,7 @@ public class Controller {
     CreateRoom cr = new CreateRoom();
     Player player = new Player();
     HighscoreManager hm = new HighscoreManager();
+    PlayerActionController playerActionCtrl = new PlayerActionController();
 
 //    Room currentRoom;
 //    Room tempRoom = currentRoom;
@@ -36,6 +35,9 @@ public class Controller {
 
         while (checkVictory) {
             Thread.sleep(500);
+            taxRobot();
+            trap();
+            
             if (player.getCurrentRoom().equals(cr.finish)) {
                 b.youWon(player.getCurrentRoom(), player);
                 hm.addScore(player.getName(), player.getBank(), player.getHp());
@@ -155,11 +157,6 @@ System.out.print (hm.getHighscoreString());
 
     }
 
-    /**
-     * This method allows the player to pick up an object from the rooms loot
-     * array and moves it to the players inventory array
-     */
-    public void pickUpItem() {
 
         b.chooseItemToPick();
         String choice = b.chooseAction();
