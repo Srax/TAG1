@@ -5,6 +5,8 @@
  */
 package App;
 
+import MonsterTypes.Monster;
+
 /**
  *
  * @author Stanislav
@@ -27,16 +29,15 @@ public class PlayerActionController {
             String action = b.chooseAction();
 
             switch (action.toLowerCase()) {
-//                case "dance":
-//                    combatController.dance(player.getCurrentRoom());
-//                    break;
-//                
-//                case "run":
-//                    combatController.run(player.getCurrentRoom());
-//                    break;
-//                case "attack":
-//                    combatController.attack(player.getCurrentRoom());
-//                    break;
+                case "dance":
+                    dance(player);
+                    break;
+                case "run":
+                    run(player);
+                    break;
+                case "attack":
+                    attack(player);
+                    break;
                 case "inspect":
                     System.out.println(player.getCurrentRoom().toString());
                     player.getCurrentRoom().availableDirections();
@@ -153,5 +154,39 @@ public class PlayerActionController {
         }
     }
 
-    
+    public void attack(Player player) {
+        Monster monster = player.getCurrentRoom().getMonster();
+        
+        if (monster != null) {
+           
+            monster.setMonsterHp(-player.getDmg());
+            b.playerAttackMonster(monster.getMonsterName(), player.getDmg(), monster.getMonsterHp());
+
+        } else {
+            b.nothingHappend();
+        }
+
+    }
+
+    public void run(Player player) {
+        Monster monster = player.getCurrentRoom().getMonster();
+        if (monster != null) {
+            player.setCurrentRoom(player.getLastRoom());
+        } else {
+
+            b.nothingHappend();
+        }
+    }
+
+    public void dance(Player player) {
+        Monster monster = player.getCurrentRoom().getMonster();
+        if (monster != null) {
+            monster.setMonsterHp(-500000);
+            b.playerAttackMonster(monster.getMonsterName(), player.getDmg(), monster.getMonsterHp());
+
+        } else {
+            b.nothingHappend();
+        }
+
+    }
 }
