@@ -12,9 +12,11 @@ import MonsterTypes.Monster;
  * @author Stanislav
  */
 public class PlayerActionController {
+
     Boundry b = new Boundry();
     ItemController iCtrl = new ItemController();
     CreateRoom cr = new CreateRoom();
+
     /**
      * Manages the players action input. The method is set up to print out all
      * the possible directions in the currentRoom. It then returns a new room to
@@ -34,9 +36,11 @@ public class PlayerActionController {
                     break;
                 case "run":
                     run(player);
+                    takingAction = false;
                     break;
                 case "attack":
                     attack(player);
+                    takingAction = false;
                     break;
                 case "inspect":
                     System.out.println(player.getCurrentRoom().toString());
@@ -89,16 +93,19 @@ public class PlayerActionController {
                     iCtrl.equipItem(player);
                     break;
                 case "unequip":
-                case "un equip":   
+                case "un equip":
                     iCtrl.unEquipItem(player);
                     break;
                 case "stats":
                     System.out.println(player.toString());
                     break;
-                    //cheat to debug
+                //cheat to debug
                 case "make it rain":
                     player.setHp(+50);
                     break;
+                case "win":
+                    player.setCurrentRoom(cr.finish);
+                    takingAction = false;
                 default:
                     b.nothingHappend();
                     break;
@@ -106,9 +113,9 @@ public class PlayerActionController {
         }
 
     }
-    
+
     /**
-     * Takes a action, and checks if the direction is possible, in the current
+     * Takes an action, and checks if the direction is possible, in the current
      * room then sets the current Room to the room if available, else returns a
      * statement that the direction is not possible.
      *
@@ -118,7 +125,7 @@ public class PlayerActionController {
     public boolean directionChoice(String action, Player player) {
         boolean takingAction = true;
         Room goToRoom = null;
-
+       
         switch (action.toLowerCase()) {
             case "north":
                 goToRoom = player.getCurrentRoom().getNorth();
@@ -133,6 +140,7 @@ public class PlayerActionController {
                 goToRoom = player.getCurrentRoom().getWest();
                 break;
         }
+       
         if (goToRoom == null) {
             b.walkIntoWall(player);
             return takingAction = true;
@@ -142,7 +150,8 @@ public class PlayerActionController {
 
         }
     }
-        /**
+
+    /**
      * When the player choose to collect the money in the room, and modifies the
      * player gold entity
      */
@@ -156,9 +165,9 @@ public class PlayerActionController {
 
     public void attack(Player player) {
         Monster monster = player.getCurrentRoom().getMonster();
-        
+
         if (monster != null) {
-           
+
             monster.setMonsterHp(-player.getDmg());
             b.playerAttackMonster(monster.getMonsterName(), player.getDmg(), monster.getMonsterHp());
 

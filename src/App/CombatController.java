@@ -16,7 +16,7 @@ import java.util.Random;
 public class CombatController {
 
     public int combat(Player player) {
-        int combatOutcome = 0;
+        int combatOutcome;
         Boundry b = new Boundry();
         Random rnd = new Random();
 
@@ -30,7 +30,6 @@ public class CombatController {
 
         if (monster.getMonsterHp() <= 0) {
             player.getCurrentRoom().setGold(monster.getMonsterGold());
-            b.monsterIsDead(monster.getMonsterName());
             player.getCurrentRoom().setMonster(null);
             combatOutcome = 1;
         } else if (player.getHp() <= 0) {
@@ -40,14 +39,14 @@ public class CombatController {
             if (RollForMonsterAttack > 4) {
                 damage = monster.monsterSpecialAttack(player);
                 player.setHp(-damage);
-                combatOutcome = 0;
+                combatOutcome = 1;
             } else if (RollForMonsterAttack > 0 && RollForMonsterAttack <= 4) {
                 damage = monster.monsterAttack(player);
                 player.setHp(-damage);
-                combatOutcome = 0;
+                combatOutcome = 1;
             } else {
-                System.out.println("Debug: The monster miss the attack");
-                combatOutcome = 0;
+                System.out.println("Debug: The monster missed the attack");
+                combatOutcome = 1;
             }
             b.monsterAttacksYou(monster.getMonsterName(), damage, player.getHp());
 

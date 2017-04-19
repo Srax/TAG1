@@ -28,54 +28,45 @@ public class Controller {
         cr.roomFeatures();
         cr.addPlayerStartItems(player);
         b.welcomeToGame();
-        int combatOutcome = 1;
         //b.createName(player);
         player.setCurrentRoom(cr.startRoom);
         System.out.println(player.getCurrentRoom().toString());
         Thread.sleep(500);
-
         while (checkVictory) {
             Thread.sleep(500);
             b.playSound(b.doorSound);
             taxRobot();
             trap();
-            
-            
             if (player.getCurrentRoom().equals(cr.finish) ) {
                 b.youWon(player.getCurrentRoom(), player);
                 checkVictory = false;
             } else if (player.getCurrentRoom().equals(cr.spaceShip)) {
                 b.youQuit(player.getCurrentRoom(), player);
                 checkVictory = false;
-            } else if (player.getCurrentRoom().getMonster() != null) {
+            } else if (player.getCurrentRoom().getMonster() !=null) {
                 b.monsterEncounter(player.getCurrentRoom().getMonster().getMonsterName());
-               int  combatStatus = 1; 
-                
+             boolean  combatStatus = true; 
+             int combatOutcome = 0;
                
-               
-               while (combatStatus == 1) {
+               while (combatStatus) {
                     combatOutcome = combatCtrl.combat(player);
                     playerActionCtrl.playerAction(player);
                     switch (combatOutcome) {
                         case 0:
                             //Battle continues
-                            combatStatus = 1;
                             break;
                         case 1: //monster is dead
-                            combatStatus = 0;
+                             b.monsterIsDead(player.getCurrentRoom().getMonster().getMonsterName());
+                            combatStatus = false;
                             break;
                         case 3:
                             //Player died
                             b.youDied();
                             checkVictory = false;
-                            combatStatus = 0;
+                            combatStatus = false;
                             break;
                         default:
-                            //Monster died
-                            
-                            
-                            
-                    }
+                          }
                 }
             } else {
                 player.setLastRoom(player.getCurrentRoom());

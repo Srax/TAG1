@@ -7,37 +7,54 @@ import items.Weapon;
 import java.util.ArrayList;
 
 public class Player {
+
+    //Players position, and last position
     private Room currentRoom = null;
-    private String name="Random Guy";
+    private Room lastRoom = null;
+
+    //Player Stats
+    private String name = "Random Guy";
     private int dmg = 1, bank, def = 0;
     private int hp = 100;
-    private Room lastRoom = null;
+
+    //Plyer inventory and management
+    private ArrayList<Iitem> inventory = new ArrayList<>();
     private Weapon equippedWeapon = null;
     private Armor equippedArmor = null;
-    private ArrayList<Iitem> inventory = new ArrayList<>();
-    
-     public Room getCurrentRoom() {
+
+    //Getters
+    public Room getCurrentRoom() {
         return currentRoom;
     }
 
-    public void setCurrentRoom(Room currentRoom) {
-        this.currentRoom = currentRoom;
-    }
     public Weapon getEquippedWeapon() {
         return equippedWeapon;
     }
-    public void setEquippedWeapon(Weapon equippedWeapon) {
-        this.equippedWeapon = equippedWeapon;
-    }
+
     public Armor getEquippedArmor() {
         return equippedArmor;
-    }
-    public void setEquippedArmor(Armor equippedArmor) {
-        this.equippedArmor = equippedArmor;
     }
 
     public int getDmg() {
         return dmg;
+    }
+
+    //Setters
+    public void setCurrentRoom(Room currentRoom) {
+        this.currentRoom = currentRoom;
+    }
+
+    public void setEquippedWeapon(Weapon equippedWeapon) {
+        this.equippedWeapon = equippedWeapon;
+    }
+
+    public void setEquippedArmor(Armor equippedArmor) {
+        this.equippedArmor = equippedArmor;
+    }
+
+    public void setDmg(int dmg) {
+        this.dmg = dmg;
+
     }
 
     public Room getLastRoom() {
@@ -47,10 +64,6 @@ public class Player {
     public void setLastRoom(Room lastRoom) {
         this.lastRoom = lastRoom;
     }
-    public void setDmg(int dmg) {
-        this.dmg = dmg;
-
-    }
 
     public Player() {
     }
@@ -58,15 +71,16 @@ public class Player {
     @Override
     public String toString() {
         return "=============================================================================="
-                + "\nPlayer: " + name + "\nHP: " + hp + "\nBank: " + bank + " Space dollars" +
-                "\nWeapon: " + equippedWeapon + "\nArmor: " + equippedArmor +
-                 "\nDamage: "+ dmg + "\nDefence: "+ def +
-                "\n=============================================================================";
+                + "\nPlayer: " + name + "\nHP: " + hp + "\nBank: " + bank + " Space dollars"
+                + "\nWeapon: " + equippedWeapon + "\nArmor: " + equippedArmor
+                + "\nDamage: " + dmg + "\nDefence: " + def
+                + "\n=============================================================================";
     }
 
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -74,6 +88,7 @@ public class Player {
     public int getHp() {
         return hp;
     }
+
     public void setHp(int hp) {
         this.hp += hp;
         if (this.hp > 100) {
@@ -84,14 +99,16 @@ public class Player {
     public int getBank() {
         return bank;
     }
+
     public void setBank(int bank) {
-        
+
         this.bank += bank;
     }
 
     public int getDef() {
         return def;
     }
+
     public void setDef(int def) {
         this.def = def;
     }
@@ -170,7 +187,7 @@ public class Player {
                 } else {
                     b.youCannotUseItem();
                 }
-            } 
+            }
         }
 
     }
@@ -198,6 +215,5 @@ public class Player {
             setEquippedArmor(equippedArmor = null);
         }
     }
-
 
 }
