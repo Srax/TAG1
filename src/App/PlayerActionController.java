@@ -25,62 +25,98 @@ public class PlayerActionController {
      * @param player
      */
     public void playerAction(Player player) {
+
+        String action = b.chooseAction();
+
+        switch (action.toLowerCase()) {
+            case "inspect":
+                System.out.println(player.getCurrentRoom().toString());
+                player.getCurrentRoom().availableDirections();
+                break;
+            case "search":
+                player.getCurrentRoom().showLoot();
+                checkGold(player);
+                break;
+
+            case "north":
+                directionChoice(action, player);
+                break;
+
+            case "south":
+                directionChoice(action, player);
+                break;
+
+            case "east":
+                directionChoice(action, player);
+                break;
+
+            case "west":
+                directionChoice(action, player);
+                break;
+            case "help":
+                b.helpCommand();
+                break;
+            case "pickup":
+            case "pick up":
+                iCtrl.pickUpItem(player);
+                break;
+            case "drop":
+                iCtrl.dropItem(player);
+                break;
+            case "bank":
+                b.showBank(player);
+                break;
+            case "exit":
+                player.setCurrentRoom(cr.spaceShip);
+                break;
+            case "inventory":
+                player.showInventory();
+                break;
+            case "use":
+                iCtrl.useItem(player);
+                break;
+            case "equip":
+                iCtrl.equipItem(player);
+                break;
+            case "unequip":
+            case "un equip":
+                iCtrl.unEquipItem(player);
+                break;
+            case "stats":
+                System.out.println(player.toString());
+                break;
+            //cheat to debug
+            case "make it rain":
+                player.setHp(+50);
+                break;
+            case "win":
+                player.setCurrentRoom(cr.finish);
+                break;
+            default:
+                b.nothingHappend();
+                break;
+        }
+
+    }
+
+    public boolean combatAction(Player player) {
         boolean takingAction = true;
+        boolean combatStatus = true;
 
         while (takingAction) {
             String action = b.chooseAction();
-
             switch (action.toLowerCase()) {
                 case "dance":
                     dance(player);
+                    takingAction = false;
                     break;
                 case "run":
                     run(player);
+                    combatStatus = false;
                     takingAction = false;
                     break;
                 case "attack":
                     attack(player);
-                    takingAction = false;
-                    break;
-                case "inspect":
-                    System.out.println(player.getCurrentRoom().toString());
-                    player.getCurrentRoom().availableDirections();
-                    break;
-                case "search":
-                    player.getCurrentRoom().showLoot();
-                    checkGold(player);
-                    break;
-
-                case "north":
-                    takingAction = directionChoice(action, player);
-                    break;
-
-                case "south":
-                    takingAction = directionChoice(action, player);
-                    break;
-
-                case "east":
-                    takingAction = directionChoice(action, player);
-                    break;
-
-                case "west":
-                    takingAction = directionChoice(action, player);
-                    break;
-                case "help":
-                    b.helpCommand();
-                    break;
-                case "pickup":
-                case "pick up":
-                    iCtrl.pickUpItem(player);
-                    break;
-                case "drop":
-                    iCtrl.dropItem(player);
-                    break;
-                case "bank":
-                    b.showBank(player);
-                    break;
-                case "exit":
-                    player.setCurrentRoom(cr.spaceShip);
                     takingAction = false;
                     break;
                 case "inventory":
@@ -89,29 +125,12 @@ public class PlayerActionController {
                 case "use":
                     iCtrl.useItem(player);
                     break;
-                case "equip":
-                    iCtrl.equipItem(player);
-                    break;
-                case "unequip":
-                case "un equip":
-                    iCtrl.unEquipItem(player);
-                    break;
-                case "stats":
-                    System.out.println(player.toString());
-                    break;
-                //cheat to debug
-                case "make it rain":
-                    player.setHp(+50);
-                    break;
-                case "win":
-                    player.setCurrentRoom(cr.finish);
-                    takingAction = false;
                 default:
                     b.nothingHappend();
-                    break;
             }
         }
-
+            return combatStatus;
+        
     }
 
     /**
@@ -125,7 +144,7 @@ public class PlayerActionController {
     public boolean directionChoice(String action, Player player) {
         boolean takingAction = true;
         Room goToRoom = null;
-       
+
         switch (action.toLowerCase()) {
             case "north":
                 goToRoom = player.getCurrentRoom().getNorth();
@@ -140,7 +159,7 @@ public class PlayerActionController {
                 goToRoom = player.getCurrentRoom().getWest();
                 break;
         }
-       
+
         if (goToRoom == null) {
             b.walkIntoWall(player);
             return takingAction = true;

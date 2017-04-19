@@ -93,6 +93,8 @@ public class Player {
         this.hp += hp;
         if (this.hp > 100) {
             this.hp = 100;
+        }else if (this.hp <0){
+            this.hp = 0;
         }
     }
 

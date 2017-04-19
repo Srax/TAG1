@@ -1,6 +1,5 @@
 package App;
 
-import App.Boundry;
 import MonsterTypes.Monster;
 import java.util.Random;
 
@@ -15,45 +14,61 @@ import java.util.Random;
  */
 public class CombatController {
 
-    public int combat(Player player) {
-        int combatOutcome;
-        Boundry b = new Boundry();
-        Random rnd = new Random();
+    Boundry b = new Boundry();
+    PlayerActionController playerActionCtrl = new PlayerActionController();
+    Random rnd = new Random();
 
-        Monster monster = player.getCurrentRoom().getMonster();
-
-//        boolean monsterTurn = true;
-//        boolean playerTurn = true;
-//        boolean whileFighting = true;
-//        
+    public void combat(Player player) {
         int damage = 0;
+        Monster monster = player.getCurrentRoom().getMonster();
+        boolean combatStatus = true;
 
-        if (monster.getMonsterHp() <= 0) {
-            player.getCurrentRoom().setGold(monster.getMonsterGold());
-            player.getCurrentRoom().setMonster(null);
-            combatOutcome = 1;
-        } else if (player.getHp() <= 0) {
-            combatOutcome = 3;
-        } else {
-            int RollForMonsterAttack = rnd.nextInt(5);
-            if (RollForMonsterAttack > 4) {
-                damage = monster.monsterSpecialAttack(player);
-                player.setHp(-damage);
-                combatOutcome = 1;
-            } else if (RollForMonsterAttack > 0 && RollForMonsterAttack <= 4) {
-                damage = monster.monsterAttack(player);
-                player.setHp(-damage);
-                combatOutcome = 1;
+        while (combatStatus) {
+
+            //     if (monster != null) {
+            if (monster.getMonsterHp() <= 0) {
+                player.getCurrentRoom().setGold(monster.getMonsterGold());
+                b.monsterIsDead(monster.getMonsterName());
+                monster.setMonsterHp(0);
+                combatStatus = false;
+                monster = null;
+                player.getCurrentRoom().setMonster(null);
             } else {
-                System.out.println("Debug: The monster missed the attack");
-                combatOutcome = 1;
+                int rollForMonsterAttack = rnd.nextInt(5);
+                if (rollForMonsterAttack > 4) {
+                    damage = monster.monsterSpecialAttack(player);
+                    player.setHp(-damage);
+                    b.monsterAttacksYou(monster.getMonsterName(), damage, player.getHp());
+
+                    if (player.getHp() <= 0) {
+                        player.setHp(0);
+                        combatStatus = false;
+                        monster = null;
+                        player.getCurrentRoom().setMonster(null);
+                    } else {
+                        combatStatus = playerActionCtrl.combatAction(player);
+                    }
+                } else if (rollForMonsterAttack >= 1 && rollForMonsterAttack <= 4) {
+                    damage = monster.monsterAttack(player);
+                    player.setHp(-damage);
+                    b.monsterAttacksYou(monster.getMonsterName(), damage, player.getHp());
+                    if (player.getHp() <= 0) {
+                        player.setHp(0);
+                        combatStatus = false;
+                        monster = null;
+                        player.getCurrentRoom().setMonster(null);
+                    } else {
+                        combatStatus = playerActionCtrl.combatAction(player);
+                    }
+                } else {
+                    System.out.println("Debug: The monster missed the attack");
+                }
             }
-            b.monsterAttacksYou(monster.getMonsterName(), damage, player.getHp());
 
+//            } else if (monster == null){
+//                combatStatus = false;
         }
-
-        return combatOutcome;
-
     }
 
 }
+//}

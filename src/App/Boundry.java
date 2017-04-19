@@ -318,13 +318,6 @@ public class Boundry {
 
     }
 
-//    void monsterIsWeakend(String monsterName){
-//        System.out.println("The "+ monsterName + " looks weakend");
-//    }
-//    void monsterIsDying(String monsterName){
-//        System.out.println("The "+ monsterName + " looks almost dead, hurry up and finish it off");
-//                
-//    }
     public void monsterDroppedGold(String monsterName, int monsterGold) {
         System.out.println(monsterName + " dropped " + monsterGold + " space dollars.");
     }
@@ -340,9 +333,9 @@ public class Boundry {
         System.out.println("To unequip armor, type \"Armor\", for weapon type \"Weapon\"");
     }
     public void youDied(){
-        System.out.println("\"\\n===💀 YOU ARE DEAD 💀===\\n\"\n" +
-"            + \"You are dead, you dead body is now floating in the endless space\"\n" +
-"            + \"for eternity, dead\\n\"\n" +
-"            + \"\\n💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀\\n\"; ");
+        System.out.println("\n\t\t===💀 YOU ARE DEAD 💀===\n" +
+"You are dead, you dead body is now floating in the endless space\n" +
+"\t\t  for eternity, dead\n" +
+"\n💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀\n");
     }
 }

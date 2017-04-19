@@ -29,6 +29,7 @@ public class Controller {
         cr.addPlayerStartItems(player);
         b.welcomeToGame();
         //b.createName(player);
+        player.setLastRoom(cr.spaceShip);
         player.setCurrentRoom(cr.startRoom);
         System.out.println(player.getCurrentRoom().toString());
         Thread.sleep(500);
@@ -37,41 +38,22 @@ public class Controller {
             b.playSound(b.doorSound);
             taxRobot();
             trap();
-            if (player.getCurrentRoom().equals(cr.finish) ) {
+            if(player.getCurrentRoom().getMonster() != null){
+            combatCtrl.combat(player);}
+            
+            if (player.getCurrentRoom().equals(cr.finish)) {
                 b.youWon(player.getCurrentRoom(), player);
                 checkVictory = false;
             } else if (player.getCurrentRoom().equals(cr.spaceShip)) {
                 b.youQuit(player.getCurrentRoom(), player);
                 checkVictory = false;
-            } else if (player.getCurrentRoom().getMonster() !=null) {
-                b.monsterEncounter(player.getCurrentRoom().getMonster().getMonsterName());
-             boolean  combatStatus = true; 
-             int combatOutcome = 0;
-               
-               while (combatStatus) {
-                    combatOutcome = combatCtrl.combat(player);
-                    playerActionCtrl.playerAction(player);
-                    switch (combatOutcome) {
-                        case 0:
-                            //Battle continues
-                            break;
-                        case 1: //monster is dead
-                             b.monsterIsDead(player.getCurrentRoom().getMonster().getMonsterName());
-                            combatStatus = false;
-                            break;
-                        case 3:
-                            //Player died
-                            b.youDied();
-                            checkVictory = false;
-                            combatStatus = false;
-                            break;
-                        default:
-                          }
-                }
+            } else if (player.getHp()<=0){
+                b.youDied();
+                checkVictory = false;
             } else {
                 player.setLastRoom(player.getCurrentRoom());
                 playerActionCtrl.playerAction(player);
-               }
+            }
         }
         hm.addScore(player.getName(), player.getBank(), player.getHp());
         System.out.print(hm.getHighscoreString());

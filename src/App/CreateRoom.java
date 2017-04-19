@@ -124,8 +124,6 @@ public class CreateRoom {
         room1.setEast(room3);
         room1.setSouth(startRoom);
         room1.setMonster(spaceWier);
-        room1.setNorth(room21);
-        room1.setTrap(1);
         
         room2.setEast(room1);
         room2.setWest(room9);
@@ -139,7 +137,8 @@ public class CreateRoom {
         room4.setNorth(room3);
         room4.add(beatUpEngineeringSpaceSuit);
         room4.add(particlelRemovalMop);
-
+        room4.setTrap(1);
+        
         room5.setNorth(room8);
         room5.setWest(room6);
         room5.setSouth(room3);
