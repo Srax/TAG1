@@ -77,8 +77,6 @@ public abstract class Monster {
         this.monsterArmor = MonsterArmor;
     }
     
-    
-    
     public int monsterAttack(Player p) {
         int damage = 0;
         
@@ -86,7 +84,5 @@ public abstract class Monster {
         
         return damage;
     }
-    
     public abstract int monsterSpecialAttack (Player p);
-
 }

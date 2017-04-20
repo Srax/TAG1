@@ -18,14 +18,13 @@ public class CombatController {
     PlayerActionController playerActionCtrl = new PlayerActionController();
     Random rnd = new Random();
 
-    public void combat(Player player) {
+    public void combat(Player player) throws InterruptedException {
         int damage = 0;
         Monster monster = player.getCurrentRoom().getMonster();
         boolean combatStatus = true;
 
         while (combatStatus) {
 
-            //     if (monster != null) {
             if (monster.getMonsterHp() <= 0) {
                 player.getCurrentRoom().setGold(monster.getMonsterGold());
                 b.monsterIsDead(monster.getMonsterName());
@@ -39,7 +38,8 @@ public class CombatController {
                     damage = monster.monsterSpecialAttack(player);
                     player.setHp(-damage);
                     b.monsterAttacksYou(monster.getMonsterName(), damage, player.getHp());
-
+                    Thread.sleep(1000);
+                    b.playSound(b.smashSound);
                     if (player.getHp() <= 0) {
                         player.setHp(0);
                         combatStatus = false;
@@ -52,6 +52,8 @@ public class CombatController {
                     damage = monster.monsterAttack(player);
                     player.setHp(-damage);
                     b.monsterAttacksYou(monster.getMonsterName(), damage, player.getHp());
+                    Thread.sleep(1000);
+                    b.playSound(b.smashSound);
                     if (player.getHp() <= 0) {
                         player.setHp(0);
                         combatStatus = false;
@@ -59,16 +61,13 @@ public class CombatController {
                         player.getCurrentRoom().setMonster(null);
                     } else {
                         combatStatus = playerActionCtrl.combatAction(player);
+                        b.playSound(b.pewpewSound);
                     }
                 } else {
                     System.out.println("Debug: The monster missed the attack");
                 }
             }
-
-//            } else if (monster == null){
-//                combatStatus = false;
         }
     }
 
 }
-//}

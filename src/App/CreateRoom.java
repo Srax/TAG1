@@ -6,10 +6,8 @@
 package App;
 
 import MonsterTypes.CorruptedWiers;
-import MonsterTypes.Lurker;
 import MonsterTypes.Monster;
 import MonsterTypes.Styhr;
-import MonsterTypes.Plants;
 import items.KeyItem;
 import items.Weapon;
 import items.Iitem;
@@ -47,6 +45,8 @@ public class CreateRoom {
     Room room17 = new Room(r.nextInt(101)+30, hallWay3());
     Room room18 = new Room(r.nextInt(101)+30, lab());
     Room room19 = new Room(r.nextInt(101)+30, hallWay2());
+ 
+    //Test rooms for further expanding
     Room room21 = new Room(0, hallWay2());
     Room room22 = new Room(0, hallWay2());
     Room room23 = new Room(0, hallWay2());
@@ -70,7 +70,7 @@ public class CreateRoom {
     Room room41 = new Room(0 , lab());
     
     
-    // Items that will be created weapons
+    // Weapons
     Iitem gun = new Weapon("Small Laserpistol", "PewPewPew", 2);   
     Iitem laserBlade = new Weapon("Laser blade", "This can be used too all kinds of things, even making food", 4);
     Iitem darlekRifle = new Weapon("Darlek Rifle", "This Rifle is build from a Darlek's laser shooter", 14);
@@ -87,6 +87,7 @@ public class CreateRoom {
     Iitem gardenersArmor = new Armor("Gardeners Armor", "Its a heavily armored suit, that has alot of bitemarks all over it", 5);
     Iitem officersUniform = new Armor("Officers Uniform", "This uniform creates a small force field around it's wearer, that protects the wearer from harm", 7);
     Iitem labCoat = new Armor("Lab Coat", "This lab coat is just a normal lab coat with many strange things spilled on it", 1);     
+    
     //Potions  
     Iitem p3 = new Potion("Super Stimpack", "Increases HP with 30",3);
     Iitem p2 = new Potion("Medium Stimpack", "Increases HP with 20",2);
@@ -96,7 +97,7 @@ public class CreateRoom {
     Iitem gameSpaceCawler = new KeyItem("The Game SPACE CAWLER", "Cause Space Invaders was already taken");
     
     
-    // ** CREATE MONSTERS ** //
+    // ****** CREATE MONSTERS ****** //
     
     // TIER 1 MONSTERS (NAME, HP, DAMAGE, ARMOR, TIER)
         //Space Wier - purposely misspelled
@@ -207,7 +208,6 @@ public class CreateRoom {
         
         room19.setNorth(room18);
         room19.setTaxCollector(1);
-        
         
         room21.setEast(room15);
         room21.setNorth(room22);
@@ -444,7 +444,7 @@ public class CreateRoom {
     //Bruges på rum 18
     public String lab() {
         String desc = "\n=== LAbBOrRATORY ===\n"
-                + "You inter the ships lab the first thing you see, is the surprising lack of dust in the room,\n"
+                + "You enter the ships lab the first thing you see, is the surprising lack of dust in the room,\n"
                 + "and the weird wiers that spark all over the place.\n"
                 + "__________________________________________________________________\n";
                 
