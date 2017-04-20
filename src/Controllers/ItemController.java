@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package App;
+package Controllers;
 
+import Boundry.Boundry;
+import Enteties.Player;
 import items.Iitem;
 
 /**
@@ -90,7 +92,7 @@ public class ItemController {
      * @param player
      */
     public void unEquipItem(Player player) {
-        b.witchItemToUnequip();
+        b.witchItemToUnequip(player);
         String choice = b.chooseAction();
         player.checkEquippedItemAndUnequip(choice);
     }

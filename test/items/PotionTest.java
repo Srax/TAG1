@@ -5,7 +5,7 @@
  */
 package items;
 
-import App.Player;
+import Enteties.Player;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;

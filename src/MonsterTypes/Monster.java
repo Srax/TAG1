@@ -5,8 +5,8 @@
  */
 package MonsterTypes;
 
-import App.Boundry;
-import App.Player;
+import Boundry.Boundry;
+import Enteties.Player;
 import items.Iitem;
 import java.util.ArrayList;
 
@@ -33,42 +33,16 @@ public abstract class Monster {
         this.monsterTier = tier;
         this.monsterGold = gold;
     }
-    public void addLoot(Iitem item){
-        monsterLoot.add(item);
-    }
-public void MoveMonsterItemToRoom(Player player){
-    
-    Monster monster = player.getCurrentRoom().getMonster();
-    for(int i = 0; i < monster.monsterLoot.size(); i++){
-        player.getCurrentRoom().add(monster.monsterLoot.get(i));
-        b.monsterDropped(monster.monsterLoot.get(i).toString());
-        monster.monsterLoot.remove(i);
-    }
-    }
-    
-    
-    
     
     public int getMonsterGold() {
         return monsterGold;
     }
-
     public void setMonsterGold(int monsterGold) {
         this.monsterGold = monsterGold;
     }
 
     public String getMonsterName() {
         return monsterName;
-    }
-    public int getMonsterTier() {
-        return monsterTier;
-    }
-
-    public void setMonsterTier(int monsterTier) {
-        this.monsterTier = monsterTier;
-    }
-        public void setMonsterName(String monsterName) {
-        this.monsterName = monsterName;
     }
 
     public int getMonsterHp() {
@@ -80,20 +54,16 @@ public void MoveMonsterItemToRoom(Player player){
             this.monsterHp = 0;
         }
     }
+
     public int getMonsterDmg() {
         return monsterDmg;
     }
-
     public void setMonsterDmg(int monsterDmg) {
         this.monsterDmg = monsterDmg;
     }
 
     public int getMonsterArmor() {
         return monsterArmor;
-    }
-
-    public void setMonsterArmor(int MonsterArmor) {
-        this.monsterArmor = MonsterArmor;
     }
     
     public int monsterAttack(Player p) {
@@ -104,7 +74,18 @@ public void MoveMonsterItemToRoom(Player player){
         return damage;
     }
     public abstract int monsterSpecialAttack (Player p);
-
     
+    public void addLoot(Iitem item){
+        monsterLoot.add(item);
+    }
+    public void moveMonsterItemToRoom(Player player){
+    
+    Monster monster = player.getCurrentRoom().getMonster();
+    for(int i = 0; i < monster.monsterLoot.size(); i++){
+        player.getCurrentRoom().add(monster.monsterLoot.get(i));
+        b.monsterDropped(monster.monsterLoot.get(i).toString());
+        monster.monsterLoot.remove(i);
+    }
+    }
    
 }

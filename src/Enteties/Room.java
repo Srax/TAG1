@@ -1,5 +1,6 @@
-package App;
+package Enteties;
 
+import Boundry.Boundry;
 import MonsterTypes.Monster;
 import items.Iitem;
 import java.util.ArrayList;

@@ -5,7 +5,7 @@
  */
 package items;
 
-import App.Player;
+import Enteties.Player;
 
 /**
  *

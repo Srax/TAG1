@@ -3,8 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package App;
+package Controllers;
 
+import Boundry.Boundry;
+import Enteties.Player;
+import Enteties.Room;
 import MonsterTypes.Monster;
 
 /**
@@ -191,36 +194,18 @@ public class PlayerActionController {
 
     public void attack(Player player) {
         Monster monster = player.getCurrentRoom().getMonster();
-
-        if (monster != null) {
-
-            monster.setMonsterHp(-player.getDmg());
-            b.playerAttackMonster(monster.getMonsterName(), player.getDmg(), monster.getMonsterHp());
-
-        } else {
-            b.nothingHappend();
-        }
-
+        
+        monster.setMonsterHp(-player.getDmg());
+        b.playerAttackMonster(monster.getMonsterName(), player.getDmg(), monster.getMonsterHp());
     }
 
     public void run(Player player) {
-        Monster monster = player.getCurrentRoom().getMonster();
-        if (monster != null) {
             player.setCurrentRoom(player.getLastRoom());
-        } else {
-
-            b.nothingHappend();
-        }
     }
 
     public void dance(Player player) {
         Monster monster = player.getCurrentRoom().getMonster();
-        if (monster != null) {
-            monster.setMonsterHp(-500000);
-            b.playerAttackMonster(monster.getMonsterName(), player.getDmg(), monster.getMonsterHp());
-
-        } else {
-            b.nothingHappend();
-        }
+        monster.setMonsterHp(-500000);
+        b.playerAttackMonster(monster.getMonsterName(), player.getDmg(), monster.getMonsterHp());
     }
 }

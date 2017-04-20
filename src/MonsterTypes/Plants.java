@@ -5,7 +5,7 @@
  */
 package MonsterTypes;
 
-import App.Player;
+import Enteties.Player;
 
 /**
  *

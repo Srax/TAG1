@@ -1,5 +1,7 @@
-package App;
+package Boundry;
 
+import Enteties.Player;
+import Enteties.Room;
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
@@ -168,7 +170,7 @@ public class Boundry {
         System.out.println("The Robot powers down, and drops its money\nThe robot should no longer be a problem\n");
     }
 
-    void trapInteraction() {
+    public void trapInteraction() {
         System.out.println("THERE SOUNDS A LOUD BANG!!!\n");
         System.out.println("Some of the ceiling collapses\n");
         System.out.println("You get hit by some rubble and lose 10 HP\n");
@@ -182,11 +184,11 @@ public class Boundry {
         System.out.println("There are no space dollars in here.");
     }
 
-    void getHp(Player hp) {
+    public void getHp(Player hp) {
         System.out.println("You now have: " + hp.getHp() + "HP");
     }
 
-    void nothingHappend() {
+    public void nothingHappend() {
         System.out.println("Nothing happend\n");
     }
 
@@ -194,27 +196,27 @@ public class Boundry {
         System.out.println("From this room you can go : ");
     }
 
-    void showBank(Player p) {
+    public void showBank(Player p) {
         System.out.print("Your current Bank balance is:");
         System.out.println(p.getBank() + "$");
     }
 
-    void directionChoice(String action) {
+    public void directionChoice(String action) {
         System.out.println("\nYou went " + action + "\n");
     }
 
-    void walkIntoWall(Player p) {
+    public void walkIntoWall(Player p) {
         p.setHp(-1);
         System.out.println("You are trying to walk into a wall!\n -1HP\n");
     }
 
-    void youQuit(Room currentRoom, Player p) {
+    public void youQuit(Room currentRoom, Player p) {
         System.out.println(currentRoom.getDescription());
         System.out.println(p.toString());
 
     }
 
-    void youWon(Room currentRoom, Player p) {
+    public void youWon(Room currentRoom, Player p) {
         System.out.println(currentRoom.getDescription());
         System.out.println(p.toString());
         System.out.println("*********************************");
@@ -224,15 +226,15 @@ public class Boundry {
         System.out.println("*********************************");
     }
 
-    void chooseItemToPick() {
+    public void chooseItemToPick() {
         System.out.println("Which item do you wish to pick up?");
 
     }
-    void youPickedUp(){
+    public void youPickedUp(){
         System.out.println("You picked up ");
     }
 
-    void chooseItemToDrop() {
+    public void chooseItemToDrop() {
         System.out.println("Which item do you wish to drop?");
     }
 
@@ -270,19 +272,19 @@ public class Boundry {
         }
     }
 
-    void chooseItemToUse() {
+    public void chooseItemToUse() {
         System.out.println("Witch item do you wish to use?\n");
     }
 
-    void youDropped(String item) {
+    public void youDropped(String item) {
         System.out.println("\nYOU DROPPED: " + item + "\n");
     }
 
-    void youUsed(String item) {
+    public void youUsed(String item) {
         System.out.println("\nYOU USED: " + item + "\n");
     }
 
-    void youCannotUseItem() {
+    public void youCannotUseItem() {
         System.out.println("You cannot use this item\n");
     }
 
@@ -331,8 +333,8 @@ public class Boundry {
         System.out.println("You cannot equip this item");
     }
 
-    public void witchItemToUnequip() {
-        System.out.println("To unequip armor, type \"Armor\", for weapon type \"Weapon\"");
+    public void witchItemToUnequip(Player player) {
+        System.out.println("Wich item do you wish to unequip?\nArmor: "+player.getEquippedArmor()+"\nWeapon: "+player.getEquippedWeapon());
     }
     public void youDied(){
         System.out.println("\n\t\t===💀 YOU ARE DEAD 💀===\n" +

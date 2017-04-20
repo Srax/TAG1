@@ -5,6 +5,8 @@
  */
 package App;
 
+import Enteties.Room;
+import Enteties.Player;
 import MonsterTypes.Monster;
 import items.Armor;
 import items.Iitem;

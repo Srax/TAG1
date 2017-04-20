@@ -1,5 +1,8 @@
-package App;
+package Controllers;
 
+import Boundry.Boundry;
+import Enteties.Player;
+import Controllers.PlayerActionController;
 import MonsterTypes.Monster;
 import java.util.Random;
 
@@ -28,7 +31,7 @@ public class CombatController {
 
             
             if (monster.getMonsterHp() <= 0) {
-                monster.MoveMonsterItemToRoom(player);
+                monster.moveMonsterItemToRoom(player);
                 player.getCurrentRoom().setMonsterGold(monster.getMonsterGold());
                 b.monsterIsDead(monster.getMonsterName());
                 monster.setMonsterHp(0);
