@@ -32,10 +32,11 @@ public class Controller {
         
         
         System.out.println(player.getCurrentRoom().toString());
-        Thread.sleep(500);
+        Thread.sleep(1000);
+        
         while (checkVictory) {
             Thread.sleep(500);
-            taxRobot();
+            taxRobot(player);
             trap();
             
             if (player.getCurrentRoom().getMonster() != null) {
@@ -57,7 +58,8 @@ public class Controller {
 
     public boolean gameEndConditions(Player player) {
         boolean checkVictory = true;
-        if (player.getCurrentRoom().equals(cr.finish)) {
+
+        if (player.getCurrentRoom().getMonster() == null && player.getCurrentRoom().equals(cr.finish)) {
             b.youWon(player.getCurrentRoom(), player);
             checkVictory = false;
         } else if (player.getCurrentRoom() == cr.spaceShip) {
@@ -71,8 +73,9 @@ public class Controller {
      * Interacts with the taxCollector. After a checking if there is a tax
      * collector in the room this method runs the possible outcomes of this
      * encounter based on player input.
+     * @param player
      */
-    public void taxRobot() {
+    public void taxRobot(Player player) {
         int taxRobot = player.getCurrentRoom().getTaxCollector();
         if (taxRobot > 0) {
             b.taxCollectorMeeting();
@@ -102,9 +105,9 @@ public class Controller {
                     b.helpCommand();
                 } else if (choice.equalsIgnoreCase("pay") || choice.equalsIgnoreCase("deny") && player.getBank() < 20) {
                     player.getCurrentRoom().setGold(player.getBank());
-
-                    player.setHp(rnd.nextInt(5)+5);
-                    b.taxCollectorCantPay(player);
+                    int dmg = rnd.nextInt(5)+5;
+                    player.setHp(-dmg);
+                    b.taxCollectorCantPay(player, dmg);
                     player.getCurrentRoom().setTaxCollector(0);
                     interaction = false;
                 } else {

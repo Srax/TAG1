@@ -162,9 +162,9 @@ public class Boundry {
         System.out.println("The Robot powers down, and drops its money\nThe robot should no longer be a problem\n");
     }
 
-    public void taxCollectorCantPay(Player player) {
+    public void taxCollectorCantPay(Player player, int dmg) {
         System.out.println("You were unable to pay the Robot");
-        System.out.println("The Robot bitchslaps you, you now have " + player.getHp() + "HP");
+        System.out.println("The Robot bitchslaps you for "+dmg+"DMG, you now have " + player.getHp() + "HP");
         System.out.println("The Robot powers down, and drops its money\nThe robot should no longer be a problem\n");
     }
 

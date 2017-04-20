@@ -22,7 +22,8 @@ public class CombatController {
         int damage = 0;
         Monster monster = player.getCurrentRoom().getMonster();
         boolean combatStatus = true;
-
+        
+        b.monsterEncounter(monster.getMonsterName());
         while (combatStatus) {
 
             if (monster.getMonsterHp() <= 0) {
@@ -33,7 +34,7 @@ public class CombatController {
                 monster = null;
                 player.getCurrentRoom().setMonster(null);
             } else {
-                int rollForMonsterAttack = rnd.nextInt(5);
+                int rollForMonsterAttack = rnd.nextInt(6);
                 
                 if (rollForMonsterAttack > 4) {
                     damage = monster.monsterSpecialAttack(player);

@@ -15,7 +15,7 @@ public class Player {
     //Player Stats
     private String name = "Random Guy";
     private int dmg = 1, bank, def = 0;
-    private int hp = 14;
+    private int hp = 100;
 
     //Plyer inventory and management
     private ArrayList<Iitem> inventory = new ArrayList<>();

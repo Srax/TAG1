@@ -95,7 +95,7 @@ public class CreateRoom {
     Iitem p1 = new Potion("Small Stimpack", "Increases Hp with 10",1);
     
     //Misc items
-    Iitem gameSpaceCawler = new KeyItem("The Game SPACE CAWLER", "Cause Space Invaders was already taken");
+    Iitem gameSpaceCawler = new KeyItem("The game SPACE CAWLER cause Space Invaders was already taken", "");
     
     
     // ****** CREATE MONSTERS ****** //
@@ -117,11 +117,13 @@ public class CreateRoom {
         
         startRoom.setNorth(room1);
         startRoom.setSouth(spaceShip);
-                
+               
+        
         room1.setWest(room2);
         room1.setEast(room3);
         room1.setSouth(startRoom);
         room1.setMonster(spaceWier);
+        finish.setMonster(Styhr);
         
         room2.setEast(room1);
         room2.setWest(room9);
@@ -131,7 +133,7 @@ public class CreateRoom {
         room3.setNorth(room5);
         room3.setSouth(room4);
         room3.setMonster(spaceWier2);
-        
+
         room4.setNorth(room3);
         room4.add(beatUpEngineeringSpaceSuit);
         room4.add(particlelRemovalMop);
