@@ -33,7 +33,7 @@ public class CombatController {
                 monster = null;
                 player.getCurrentRoom().setMonster(null);
             } else {
-                int rollForMonsterAttack = rnd.nextInt(5);
+                int rollForMonsterAttack = rnd.nextInt(6);
                 
                 if (rollForMonsterAttack > 4) {
                     damage = monster.monsterSpecialAttack(player);
