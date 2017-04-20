@@ -340,4 +340,8 @@ public class Boundry {
 "\t\t  for eternity, dead\n" +
 "\n💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀\n");
     }
+
+    public void monsterMissed() {
+        System.out.println("\nThe monster missed!!\n");
+    }
 }

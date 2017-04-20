@@ -103,7 +103,7 @@ public class Controller {
                 } else if (choice.equalsIgnoreCase("pay") || choice.equalsIgnoreCase("deny") && player.getBank() < 20) {
                     player.getCurrentRoom().setGold(player.getBank());
 
-                    player.setHp(-20);
+                    player.setHp(rnd.nextInt(5)+5);
                     b.taxCollectorCantPay(player);
                     player.getCurrentRoom().setTaxCollector(0);
                     interaction = false;

@@ -34,6 +34,7 @@ public class CombatController {
                 player.getCurrentRoom().setMonster(null);
             } else {
                 int rollForMonsterAttack = rnd.nextInt(5);
+                
                 if (rollForMonsterAttack > 4) {
                     damage = monster.monsterSpecialAttack(player);
                     player.setHp(-damage);
@@ -64,7 +65,9 @@ public class CombatController {
                         b.playSound(b.pewpewSound);
                     }
                 } else {
-                    System.out.println("Debug: The monster missed the attack");
+                    b.monsterMissed();
+                    combatStatus = playerActionCtrl.combatAction(player);
+                    b.playSound(b.pewpewSound);
                 }
             }
         }
