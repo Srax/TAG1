@@ -150,6 +150,10 @@ public class CreateRoom {
         room6.add(darlekRifle);
         room6.add(plasmaCannon);
         room6.add(gardenersArmor);
+        room6.add(p3);
+        room6.add(p1);
+        room6.add(p1);
+        
         
         room7.setNorth(room15);
         room7.setEast(room8);
