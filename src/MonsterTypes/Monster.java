@@ -23,7 +23,7 @@ public abstract class Monster {
     private int monsterArmor;
     private int monsterTier; 
     private int monsterGold;
-    public ArrayList<Iitem> monsterLoot = new ArrayList<>();
+    private ArrayList<Iitem> monsterLoot = new ArrayList<>();
 
     public Monster(String name, int hp, int dmg, int armor, int tier, int gold) {
         this.monsterName = name;
@@ -33,10 +33,18 @@ public abstract class Monster {
         this.monsterTier = tier;
         this.monsterGold = gold;
     }
-    public void add(Iitem item){
+    public void addLoot(Iitem item){
         monsterLoot.add(item);
     }
-
+public void MoveMonsterItemToRoom(Player player){
+    
+    Monster monster = player.getCurrentRoom().getMonster();
+    for(int i = 0; i < monster.monsterLoot.size(); i++){
+        player.getCurrentRoom().add(monster.monsterLoot.get(i));
+        b.monsterDropped(monster.monsterLoot.get(i).toString());
+        monster.monsterLoot.remove(i);
+    }
+    }
     
     
     
@@ -88,8 +96,6 @@ public abstract class Monster {
         this.monsterArmor = MonsterArmor;
     }
     
-    
-    
     public int monsterAttack(Player p) {
         int damage = 0;
         
@@ -97,7 +103,6 @@ public abstract class Monster {
         
         return damage;
     }
-    
     public abstract int monsterSpecialAttack (Player p);
 
     

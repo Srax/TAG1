@@ -18,7 +18,9 @@ public class Boundry {
     Scanner scan2 = new Scanner(System.in); //Used in creatName
     public static String coinSound = System.getProperty("user.dir") + "\\src\\sounds\\coin.wav";
     public static String doorSound = System.getProperty("user.dir") + "\\src\\sounds\\doorShortLoud.wav";
-
+    public static String smashSound = System.getProperty("user.dir") + "\\src\\sounds\\smash.wav";
+    public static String pewpewSound = System.getProperty("user.dir") + "\\src\\sounds\\pewpewpew.wav";
+    
     /**
      * Creates a player name
      *
@@ -227,7 +229,7 @@ public class Boundry {
 
     }
     void youPickedUp(){
-        System.out.println("you picked up ");
+        System.out.println("You picked up ");
     }
 
     void chooseItemToDrop() {
@@ -341,5 +343,10 @@ public class Boundry {
 
     public void monsterDropped(String item) {
         System.out.println("The monster dropped " + item);
+    }
+    
+    
+    public void monsterMissed() {
+        System.out.println("\nThe monster missed!!\n");
     }
 }

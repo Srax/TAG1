@@ -18,7 +18,7 @@ public class CombatController {
     PlayerActionController playerActionCtrl = new PlayerActionController();
     Random rnd = new Random();
 
-    public void combat(Player player) {
+    public void combat(Player player) throws InterruptedException {
         int damage = 0;
         Monster monster = player.getCurrentRoom().getMonster();
         boolean combatStatus = true;
@@ -27,8 +27,8 @@ public class CombatController {
 
             
             if (monster.getMonsterHp() <= 0) {
-                MoveMonsterItemToRoom(player);
-                player.getCurrentRoom().setGold(monster.getMonsterGold());
+                monster.MoveMonsterItemToRoom(player);
+                player.getCurrentRoom().setMonsterGold(monster.getMonsterGold());
                 b.monsterIsDead(monster.getMonsterName());
                 monster.setMonsterHp(0);
                 combatStatus = false;
@@ -36,11 +36,13 @@ public class CombatController {
                 player.getCurrentRoom().setMonster(null);
             } else {
                 int rollForMonsterAttack = rnd.nextInt(5);
+                
                 if (rollForMonsterAttack > 4) {
                     damage = monster.monsterSpecialAttack(player);
                     player.setHp(-damage);
                     b.monsterAttacksYou(monster.getMonsterName(), damage, player.getHp());
-
+                    Thread.sleep(1000);
+                    b.playSound(b.smashSound);
                     if (player.getHp() <= 0) {
                         player.setHp(0);
                         combatStatus = false;
@@ -53,6 +55,8 @@ public class CombatController {
                     damage = monster.monsterAttack(player);
                     player.setHp(-damage);
                     b.monsterAttacksYou(monster.getMonsterName(), damage, player.getHp());
+                    Thread.sleep(1000);
+                    b.playSound(b.smashSound);
                     if (player.getHp() <= 0) {
                         player.setHp(0);
                         combatStatus = false;
@@ -60,24 +64,19 @@ public class CombatController {
                         player.getCurrentRoom().setMonster(null);
                     } else {
                         combatStatus = playerActionCtrl.combatAction(player);
+                        b.playSound(b.pewpewSound);
                     }
                 } else {
-                    System.out.println("Debug: The monster missed the attack");
+                    b.monsterMissed();
+                    combatStatus = playerActionCtrl.combatAction(player);
+                    b.playSound(b.pewpewSound);
                 }
             }
 
 
         }
     }
- public void MoveMonsterItemToRoom(Player player){
-    
-    Monster monster = player.getCurrentRoom().getMonster();
-    for(int i = 0; i < monster.monsterLoot.size(); i++){
-        player.getCurrentRoom().add(monster.monsterLoot.get(i));
-        b.monsterDropped(monster.monsterLoot.get(i).toString());
-        monster.monsterLoot.remove(i);
-    }
-    }
+ 
     
    
     

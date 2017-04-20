@@ -6,6 +6,8 @@
 package MonsterTypes;
 
 import App.Player;
+import items.Iitem;
+import items.Potion;
 
 /**
  *
@@ -38,5 +40,5 @@ public class CorruptedWiers extends Monster {
 
         return damage;
     }
-
+ 
 }

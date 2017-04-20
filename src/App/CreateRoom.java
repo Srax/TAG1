@@ -9,7 +9,6 @@ import MonsterTypes.CorruptedWiers;
 import MonsterTypes.Lurker;
 import MonsterTypes.Monster;
 import MonsterTypes.Styhr;
-import MonsterTypes.Plants;
 import items.KeyItem;
 import items.Weapon;
 import items.Iitem;
@@ -47,6 +46,8 @@ public class CreateRoom {
     Room room17 = new Room(r.nextInt(101)+30, hallWay3());
     Room room18 = new Room(r.nextInt(101)+30, lab());
     Room room19 = new Room(r.nextInt(101)+30, hallWay2());
+ 
+    //Test rooms for further expanding
     Room room21 = new Room(0, hallWay2());
     Room room22 = new Room(0, hallWay2());
     Room room23 = new Room(0, hallWay2());
@@ -70,7 +71,7 @@ public class CreateRoom {
     Room room41 = new Room(0 , lab());
     
     
-    // Items that will be created weapons
+    // Weapons
     Iitem gun = new Weapon("Small Laserpistol", "PewPewPew", 2);   
     Iitem laserBlade = new Weapon("Laser blade", "This can be used too all kinds of things, even making food", 4);
     Iitem darlekRifle = new Weapon("Darlek Rifle", "This Rifle is build from a Darlek's laser shooter", 14);
@@ -87,6 +88,7 @@ public class CreateRoom {
     Iitem gardenersArmor = new Armor("Gardeners Armor", "Its a heavily armored suit, that has alot of bitemarks all over it", 5);
     Iitem officersUniform = new Armor("Officers Uniform", "This uniform creates a small force field around it's wearer, that protects the wearer from harm", 7);
     Iitem labCoat = new Armor("Lab Coat", "This lab coat is just a normal lab coat with many strange things spilled on it", 1);     
+    
     //Potions  
     Iitem p3 = new Potion("Super Stimpack", "Increases HP with 30",3);
     Iitem p2 = new Potion("Medium Stimpack", "Increases HP with 20",2);
@@ -96,19 +98,16 @@ public class CreateRoom {
     Iitem gameSpaceCawler = new KeyItem("The Game SPACE CAWLER", "Cause Space Invaders was already taken");
     
     
-    // ** CREATE MONSTERS ** //
+    // ****** CREATE MONSTERS ****** //
     
-    // TIER 1 MONSTERS (NAME, HP, DAMAGE, ARMOR, TIER)
-        //Space Wier - purposely misspelled
+        // TIER 1 MONSTERS (NAME, HP, DAMAGE, ARMOR, TIER, GOLD)
         Monster spaceWier = new CorruptedWiers("Wier", 6, 5, 0, 1, 20);
+        
         Monster spaceWier2 = new CorruptedWiers("Wier", 6, 5, 0, 1, 20);
+        Monster commonLurker = new Lurker("Common Lurker", 5, 1, 0, 1, 5);
+        Monster patheticLurker = new Lurker("Pathetic Lurker", 1, 1, 0, 1, 5);
     
-        //Lurkers - Common and weak monster
-//        Monster commonLurker = new Lurker("Common Lurker", 5, 1, 0, 1);
-  //      Monster patheticLurker = new Lurker("Pathetic Lurker", 1, 1, 0, 1);
-    
-    //TIER 2 MONSTERS (NAME, HP, DAMAGE, ARMOR, TIER, gold)
-        //Taint Slasher - Protect your privates
+        //TIER 2 MONSTERS (NAME, HP, DAMAGE, ARMOR, TIER, gold)
         Monster Styhr = new Styhr("Slasher", 5, 30, 7, 2,30);
         Monster Styhr2 = new Styhr("Killer Pland", 40, 8, 2, 2, 40);
         
@@ -116,6 +115,11 @@ public class CreateRoom {
     
     public void roomFeatures() {
         //Map and Room direction rules
+        spaceWier.addLoot(p1);
+        spaceWier2.addLoot(p2);
+        Styhr.addLoot(gun);
+        
+        
         
         startRoom.setNorth(room1);
         startRoom.setSouth(spaceShip);
@@ -123,21 +127,23 @@ public class CreateRoom {
         room1.setWest(room2);
         room1.setEast(room3);
         room1.setSouth(startRoom);
-        room1.setMonster(spaceWier);
+      
         
         room2.setEast(room1);
         room2.setWest(room9);
         room2.setTaxCollector(1);
         
+        
         room3.setWest(room1);
         room3.setNorth(room5);
         room3.setSouth(room4);
-        room3.setMonster(spaceWier2);
+       
         
         room4.setNorth(room3);
         room4.add(beatUpEngineeringSpaceSuit);
         room4.add(particlelRemovalMop);
         room4.setTrap(1);
+     
         
         room5.setNorth(room8);
         room5.setWest(room6);
@@ -152,6 +158,10 @@ public class CreateRoom {
         room6.add(darlekRifle);
         room6.add(plasmaCannon);
         room6.add(gardenersArmor);
+        room6.add(p3);
+        room6.add(p1);
+        room6.add(p1);
+        
         
         room7.setNorth(room15);
         room7.setEast(room8);
@@ -207,7 +217,6 @@ public class CreateRoom {
         
         room19.setNorth(room18);
         room19.setTaxCollector(1);
-        
         
         room21.setEast(room15);
         room21.setNorth(room22);
@@ -444,7 +453,7 @@ public class CreateRoom {
     //Bruges på rum 18
     public String lab() {
         String desc = "\n=== LAbBOrRATORY ===\n"
-                + "You inter the ships lab the first thing you see, is the surprising lack of dust in the room,\n"
+                + "You enter the ships lab the first thing you see, is the surprising lack of dust in the room,\n"
                 + "and the weird wiers that spark all over the place.\n"
                 + "__________________________________________________________________\n";
                 

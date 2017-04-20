@@ -13,8 +13,6 @@ public class Controller {
     PlayerActionController playerActionCtrl = new PlayerActionController();
     CombatController combatCtrl = new CombatController();
 
-//    Room currentRoom;
-//    Room tempRoom = currentRoom;
     /**
      * Manages game, movement form room, to next room, checks for winning room,
      * collection of gold.
@@ -31,28 +29,25 @@ public class Controller {
         //b.createName(player);
         player.setLastRoom(cr.spaceShip);
         player.setCurrentRoom(cr.startRoom);
+        
+        
         System.out.println(player.getCurrentRoom().toString());
         Thread.sleep(500);
         while (checkVictory) {
             Thread.sleep(500);
-            b.playSound(b.doorSound);
             taxRobot();
             trap();
-            if(player.getCurrentRoom().getMonster() != null){
-            combatCtrl.combat(player);}
             
-            if (player.getCurrentRoom().equals(cr.finish)) {
-                b.youWon(player.getCurrentRoom(), player);
-                checkVictory = false;
-            } else if (player.getCurrentRoom().equals(cr.spaceShip)) {
-                b.youQuit(player.getCurrentRoom(), player);
-                checkVictory = false;
-            } else if (player.getHp()<=0){
+            if (player.getCurrentRoom().getMonster() != null) {
+                combatCtrl.combat(player);
+            } else if (player.getHp() <= 0) {
                 b.youDied();
                 checkVictory = false;
             } else {
+                
                 player.setLastRoom(player.getCurrentRoom());
-                playerActionCtrl.playerAction(player);
+                playerActionCtrl.playerAction(player, cr);
+                checkVictory = gameEndConditions(player);
             }
         }
         hm.addScore(player.getName(), player.getBank(), player.getHp());
@@ -60,13 +55,18 @@ public class Controller {
 
     }
 
-    /**
-     * Manages the players action input. The method is set up to print out all
-     * the possible directions in the currentRoom. It then returns a new room to
-     * place the player in.
-     *
-     * @param currentRoom
-     */
+    public boolean gameEndConditions(Player player) {
+        boolean checkVictory = true;
+        if (player.getCurrentRoom().equals(cr.finish)) {
+            b.youWon(player.getCurrentRoom(), player);
+            checkVictory = false;
+        } else if (player.getCurrentRoom() == cr.spaceShip) {
+            b.youQuit(player.getCurrentRoom(), player);
+            checkVictory = false;
+        }
+        return checkVictory;
+    }
+
     /**
      * Interacts with the taxCollector. After a checking if there is a tax
      * collector in the room this method runs the possible outcomes of this
@@ -103,7 +103,7 @@ public class Controller {
                 } else if (choice.equalsIgnoreCase("pay") || choice.equalsIgnoreCase("deny") && player.getBank() < 20) {
                     player.getCurrentRoom().setGold(player.getBank());
 
-                    player.setHp(-20);
+                    player.setHp(rnd.nextInt(5)+5);
                     b.taxCollectorCantPay(player);
                     player.getCurrentRoom().setTaxCollector(0);
                     interaction = false;
@@ -128,6 +128,3 @@ public class Controller {
 
     }
 }
-
-//Prints highscore
-

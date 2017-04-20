@@ -13,9 +13,8 @@ import MonsterTypes.Monster;
  */
 public class PlayerActionController {
 
-    Boundry b = new Boundry();
     ItemController iCtrl = new ItemController();
-    CreateRoom cr = new CreateRoom();
+    Boundry b = new Boundry();
 
     /**
      * Manages the players action input. The method is set up to print out all
@@ -23,9 +22,10 @@ public class PlayerActionController {
      * place the player in.
      *
      * @param player
+     * @param cr
      */
-    public void playerAction(Player player) {
-
+    public void playerAction(Player player, CreateRoom cr) {
+        
         String action = b.chooseAction();
 
         switch (action.toLowerCase()) {
@@ -89,7 +89,7 @@ public class PlayerActionController {
             case "make it rain":
                 player.setHp(+50);
                 break;
-            case "win":
+            case "winnow":
                 player.setCurrentRoom(cr.finish);
                 break;
             default:
@@ -106,10 +106,6 @@ public class PlayerActionController {
         while (takingAction) {
             String action = b.chooseAction();
             switch (action.toLowerCase()) {
-                case "dance":
-                    dance(player);
-                    takingAction = false;
-                    break;
                 case "run":
                     run(player);
                     combatStatus = false;
@@ -128,6 +124,11 @@ public class PlayerActionController {
                 case "help":
                     b.attackHelp();
                     break;
+                //Cheats
+                case "dance":
+                    dance(player);
+                    takingAction = false;
+                    break;
                 default:
                     b.nothingHappend();
             }
@@ -142,6 +143,7 @@ public class PlayerActionController {
      * statement that the direction is not possible.
      *
      * @param action
+     * @param player
      * @return takingAction
      */
     public boolean directionChoice(String action, Player player) {
@@ -168,6 +170,7 @@ public class PlayerActionController {
             return takingAction = true;
         } else {
             player.setCurrentRoom(goToRoom);
+            b.playSound(b.doorSound);
             return takingAction = false;
 
         }
@@ -176,6 +179,7 @@ public class PlayerActionController {
     /**
      * When the player choose to collect the money in the room, and modifies the
      * player gold entity
+     * @param player
      */
     public void checkGold(Player player) {
         int gold = player.getCurrentRoom().getGold();
@@ -218,6 +222,5 @@ public class PlayerActionController {
         } else {
             b.nothingHappend();
         }
-
     }
 }
