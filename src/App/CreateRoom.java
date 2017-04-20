@@ -102,14 +102,13 @@ public class CreateRoom {
     
         // TIER 1 MONSTERS (NAME, HP, DAMAGE, ARMOR, TIER, GOLD)
         Monster spaceWier = new CorruptedWiers("Wier", 6, 5, 0, 1, 20);
-        
         Monster spaceWier2 = new CorruptedWiers("Wier", 6, 5, 0, 1, 20);
         Monster commonLurker = new Lurker("Common Lurker", 5, 1, 0, 1, 5);
         Monster patheticLurker = new Lurker("Pathetic Lurker", 1, 1, 0, 1, 5);
     
         //TIER 2 MONSTERS (NAME, HP, DAMAGE, ARMOR, TIER, gold)
         Monster Styhr = new Styhr("Slasher", 5, 30, 7, 2,30);
-        Monster Styhr2 = new Styhr("Killer Pland", 40, 8, 2, 2, 40);
+        Monster Styhr2 = new Styhr("Killer Plant", 40, 8, 2, 2, 40);
         
         
     
@@ -119,14 +118,13 @@ public class CreateRoom {
         spaceWier2.addLoot(p2);
         Styhr.addLoot(gun);
         
-        
-        
         startRoom.setNorth(room1);
         startRoom.setSouth(spaceShip);
                 
         room1.setWest(room2);
         room1.setEast(room3);
         room1.setSouth(startRoom);
+        room1.setTrap(1);
       
         
         room2.setEast(room1);
