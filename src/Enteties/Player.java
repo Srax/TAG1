@@ -197,5 +197,13 @@ public class Player {
             this.def = 0;
         }
     }
-
+    public Iitem checkInventoryForWinItem(String item){
+        Iitem returnItem = null;
+        for (int i = 0; i < inventory.size(); i++) {
+            if (inventory.get(i).getName().equalsIgnoreCase(item))
+                returnItem = inventory.get(i);
+        }
+                return returnItem;
+    }
+        
 }

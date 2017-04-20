@@ -134,6 +134,7 @@ public class PlayerActionController {
                     break;
                 default:
                     b.nothingHappend();
+                    break;
             }
         }
             return combatStatus;

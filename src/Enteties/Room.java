@@ -15,6 +15,7 @@ public class Room {
     private Room east = null;
     private int taxCollector;
     private int trap;
+    private int lockedDoorNorth;////////////////////////
     private Monster monster=null;
     
     ArrayList<Iitem> loot = new ArrayList<>();
@@ -94,13 +95,22 @@ public class Room {
         this.description = Description;
     }
 
-    public Room getNorth() {
+    public Room getNorth() {////////////////////////////////////////////77
+        if(this.lockedDoorNorth > 0){
+            return null;
+        }else 
         return north;
     }
     public void setNorth(Room North) {
         this.north = North;
     }
-
+    public void lockedDoorNorth(int lock){
+        this.lockedDoorNorth = lock;
+    }///////////////////////
+    public int getLockedDoorNorth(){
+        return lockedDoorNorth;
+    }/////////////////////////
+    
     public Room getSouth() {
         return south;
     }

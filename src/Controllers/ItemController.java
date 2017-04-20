@@ -31,7 +31,7 @@ public class ItemController {
             player.setBank(gold);
             b.playSound(b.coinSound);
             player.getCurrentRoom().setGold(0);
-            b.youPickedUp(); System.out.println(gold + " Space Doallars\n");
+            b.youPickedUp(); System.out.println(gold + " Space Dollars\n");
 
         } else {
 

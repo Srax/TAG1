@@ -210,14 +210,14 @@ public class Boundry {
         System.out.println("You are trying to walk into a wall!\n -1HP\n");
     }
 
-    public void youQuit(Room currentRoom, Player p) {
-        System.out.println(currentRoom.getDescription());
+    public void youQuit(Player p) {
+        System.out.println(p.getCurrentRoom().getDescription());
         System.out.println(p.toString());
 
     }
 
-    public void youWon(Room currentRoom, Player p) {
-        System.out.println(currentRoom.getDescription());
+    public void youWon(Player p) {
+        System.out.println(p.getCurrentRoom().getDescription());
         System.out.println(p.toString());
         System.out.println("*********************************");
         System.out.println("*                               *");

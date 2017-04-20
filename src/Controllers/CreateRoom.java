@@ -98,7 +98,7 @@ public class CreateRoom {
     Iitem p1 = new Potion("Small Stimpack", "Increases Hp with 10", 1);
 
     //Misc items
-    Iitem gameSpaceCawler = new KeyItem("The game SPACE CAWLER cause Space Invaders was already taken", "");
+    Iitem gameSpaceCrawler = new KeyItem("The game SPACE CRAWLER cause Space Invaders was already taken", "");
 
     // ****** CREATE MONSTERS ****** //
     // TIER 1 MONSTERS (NAME, HP, DAMAGE, ARMOR, TIER, GOLD)
@@ -126,9 +126,6 @@ public class CreateRoom {
         room1.setWest(room2);
         room1.setEast(room3);
         room1.setSouth(startRoom);
-        //room1.setMonster(spaceWier);
-
-        finish.setMonster(WierCorruptedGeneral);
 
         room2.setEast(room1);
         room2.setWest(room9);
@@ -137,6 +134,7 @@ public class CreateRoom {
         room3.setWest(room1);
         room3.setNorth(room5);
         room3.setSouth(room4);
+        room3.setMonster(spaceWier);
 
         room4.setNorth(room3);
         room4.add(beatUpEngineeringSpaceSuit);
@@ -148,7 +146,8 @@ public class CreateRoom {
         room5.setSouth(room3);
         room5.add(laserBlade);
         room5.add(p2);
-
+        room5.setMonster(spaceWier2);
+        
         room6.setNorth(room7);
         room6.setWest(room14);
         room6.setEast(room5);
@@ -200,7 +199,7 @@ public class CreateRoom {
 
         room16.setSouth(finish);
         room16.setEast(room15);
-        room16.setMonster(WierCorruptedGeneral);
+        
 
         room17.setEast(room18);
         room17.setWest(room15);
@@ -297,8 +296,10 @@ public class CreateRoom {
         room41.setEast(room40);
         room41.setTaxCollector(1);
         room41.add(godBlaster);
-
-        finish.add(gameSpaceCawler);
+        
+        finish.setNorth(room16);
+        finish.add(gameSpaceCrawler);
+        finish.setMonster(WierCorruptedGeneral);
 
     }
 

@@ -55,7 +55,7 @@ public class KeyItem implements Iitem{
 
     @Override
     public void use(Player player) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override

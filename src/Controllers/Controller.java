@@ -43,32 +43,31 @@ public class Controller {
             Thread.sleep(500);
             taxRobot(player);
             trap();
+            checkVictory = gameEndConditions(player);
             
             if (player.getCurrentRoom().getMonster() != null) {
                 combatCtrl.combat(player);
             } else if (player.getHp() <= 0) {
                 b.youDied();
                 checkVictory = false;
-            } else {
-                
+            } else if (cr.gameSpaceCrawler != player.checkInventoryForWinItem("The game SPACE CRAWLER cause Space Invaders was already taken")){
                 player.setLastRoom(player.getCurrentRoom());
                 playerActionCtrl.playerAction(player, cr);
-                checkVictory = gameEndConditions(player);
             }
         }
         hm.addScore(player.getName(), player.getBank(), player.getHp());
         System.out.print(hm.getHighscoreString());
+        
 
     }
 
     public boolean gameEndConditions(Player player) {
         boolean checkVictory = true;
-
-        if (player.getCurrentRoom().getMonster() == null && player.getCurrentRoom().equals(cr.finish)) {
-            b.youWon(player.getCurrentRoom(), player);
+        if (cr.gameSpaceCrawler == player.checkInventoryForWinItem("The game SPACE CRAWLER cause Space Invaders was already taken")){
+            b.youWon(player);
             checkVictory = false;
         } else if (player.getCurrentRoom() == cr.spaceShip) {
-            b.youQuit(player.getCurrentRoom(), player);
+            b.youQuit(player);
             checkVictory = false;
         }
         return checkVictory;
@@ -131,10 +130,16 @@ public class Controller {
         int trap = player.getCurrentRoom().getTrap();
         if (trap > 0) {
             b.trapInteraction();
-            player.setHp(-10);
+            player.setHp(rnd.nextInt(3)+7);
             b.getHp(player);
             player.getCurrentRoom().setTrap(0);
         }
 
     }
+    
+    public void lockedDoor(){////////////////////////////////////////////////////
+        if(player.getCurrentRoom().getLockedDoorNorth() > 0)
+            System.out.println("It appears the door is locked");
+    }
+        
 }
