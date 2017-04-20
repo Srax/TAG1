@@ -125,6 +125,9 @@ public class PlayerActionController {
                 case "use":
                     iCtrl.useItem(player);
                     break;
+                case "help":
+                    b.attackHelp();
+                    break;
                 default:
                     b.nothingHappend();
             }

@@ -338,4 +338,8 @@ public class Boundry {
 "\t\t  for eternity, dead\n" +
 "\n💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀\n");
     }
+
+    public void monsterDropped(String item) {
+        System.out.println("The monster dropped " + item);
+    }
 }

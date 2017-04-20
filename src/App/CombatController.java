@@ -25,8 +25,9 @@ public class CombatController {
 
         while (combatStatus) {
 
-            //     if (monster != null) {
+            
             if (monster.getMonsterHp() <= 0) {
+                MoveMonsterItemToRoom(player);
                 player.getCurrentRoom().setGold(monster.getMonsterGold());
                 b.monsterIsDead(monster.getMonsterName());
                 monster.setMonsterHp(0);
@@ -65,10 +66,23 @@ public class CombatController {
                 }
             }
 
-//            } else if (monster == null){
-//                combatStatus = false;
+
         }
     }
-
+ public void MoveMonsterItemToRoom(Player player){
+    
+    Monster monster = player.getCurrentRoom().getMonster();
+    for(int i = 0; i < monster.monsterLoot.size(); i++){
+        player.getCurrentRoom().add(monster.monsterLoot.get(i));
+        b.monsterDropped(monster.monsterLoot.get(i).toString());
+        monster.monsterLoot.remove(i);
+    }
+    }
+    
+   
+    
+    
+    
+    
 }
-//}
+

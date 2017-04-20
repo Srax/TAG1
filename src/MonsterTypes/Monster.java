@@ -5,14 +5,17 @@
  */
 package MonsterTypes;
 
+import App.Boundry;
 import App.Player;
+import items.Iitem;
+import java.util.ArrayList;
 
 /**
  *
  * @author DD
  */
 public abstract class Monster {
-
+    Boundry b = new Boundry();
     private String monsterName;
     
     private int monsterHp;
@@ -20,6 +23,7 @@ public abstract class Monster {
     private int monsterArmor;
     private int monsterTier; 
     private int monsterGold;
+    public ArrayList<Iitem> monsterLoot = new ArrayList<>();
 
     public Monster(String name, int hp, int dmg, int armor, int tier, int gold) {
         this.monsterName = name;
@@ -29,7 +33,14 @@ public abstract class Monster {
         this.monsterTier = tier;
         this.monsterGold = gold;
     }
+    public void add(Iitem item){
+        monsterLoot.add(item);
+    }
 
+    
+    
+    
+    
     public int getMonsterGold() {
         return monsterGold;
     }
@@ -89,4 +100,6 @@ public abstract class Monster {
     
     public abstract int monsterSpecialAttack (Player p);
 
+    
+   
 }

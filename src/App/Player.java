@@ -142,7 +142,7 @@ public class Player {
         }
     }
 
-    /**
+   /**
      * When given objects name as a string, this method moves the targeted
      * object from the room loot array to the players inventory array
      *
@@ -164,7 +164,7 @@ public class Player {
         }
         return null;
 
-    }
+    } 
 
     /**
      * Checks if the item exist in the Inventory Array, thereafter checks if the
