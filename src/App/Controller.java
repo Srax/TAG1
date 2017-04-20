@@ -80,7 +80,7 @@ public class Controller {
         if (taxRobot > 0) {
             b.taxCollectorMeeting();
             boolean interaction = true;
-
+            int dmg = rnd.nextInt(8)+8;
             while (interaction) {
                 String choice = b.chooseAction();
                 if (player.getBank() > 20) {
@@ -93,7 +93,9 @@ public class Controller {
                     } else if (choice.equalsIgnoreCase("deny")) {
                         player.getCurrentRoom().setGold(player.getBank());
                         player.setBank(-player.getBank());
-                        player.setHp(-20);
+                        
+                        player.setHp(-dmg);
+                        b.playSound(b.smashSound);
                         b.taxCollectorDeny(player);
                         player.getCurrentRoom().setTaxCollector(0);
                         interaction = false;
@@ -105,8 +107,8 @@ public class Controller {
                     b.helpCommand();
                 } else if (choice.equalsIgnoreCase("pay") || choice.equalsIgnoreCase("deny") && player.getBank() < 20) {
                     player.getCurrentRoom().setGold(player.getBank());
-                    int dmg = rnd.nextInt(5)+5;
                     player.setHp(-dmg);
+                    b.playSound(b.smashSound);
                     b.taxCollectorCantPay(player, dmg);
                     player.getCurrentRoom().setTaxCollector(0);
                     interaction = false;
