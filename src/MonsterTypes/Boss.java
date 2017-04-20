@@ -6,16 +6,14 @@
 package MonsterTypes;
 
 import App.Player;
-import items.Iitem;
-import items.Potion;
 
 /**
  *
- * @author DD
+ * @author thoma
  */
-public class CorruptedWiers extends Monster {
-
-    public CorruptedWiers(String name, int hp, int dmg, int armor, int tier, int gold) {
+public class Boss extends Monster {
+    
+    public Boss(String name, int hp, int dmg, int armor, int tier, int gold) {
         super(name, hp, dmg, armor, tier, gold);
     }
 
@@ -24,21 +22,20 @@ public class CorruptedWiers extends Monster {
         return "Name: " + getMonsterName()
                 + "\n"
                 + "HP: " + getMonsterHp()
-                + "\n"
+                +"\n"
                 + "Damage: " + getMonsterDmg()
-                + "\n"
+                +"\n"
                 + "Armor: " + getMonsterArmor();
     }
-
-    @Override
     public int monsterSpecialAttack(Player p) {
         int damage = 0;
 
-        System.out.println("The Wier hisses at you and  release a powerfull electricfield"
+        System.out.println("The General release a powerfull electricfield"
                 + "it hits you for a great amount of damage");
         damage = this.getMonsterDmg() * 2 - p.getDef();
 
         return damage;
     }
- 
+    
+    
 }

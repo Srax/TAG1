@@ -26,8 +26,10 @@ public class CombatController {
         b.monsterEncounter(monster.getMonsterName());
         while (combatStatus) {
 
+            
             if (monster.getMonsterHp() <= 0) {
-                player.getCurrentRoom().setGold(monster.getMonsterGold());
+                monster.MoveMonsterItemToRoom(player);
+                player.getCurrentRoom().setMonsterGold(monster.getMonsterGold());
                 b.monsterIsDead(monster.getMonsterName());
                 monster.setMonsterHp(0);
                 combatStatus = false;
@@ -71,7 +73,16 @@ public class CombatController {
                     b.playSound(b.pewpewSound);
                 }
             }
+
+
         }
     }
-
+ 
+    
+   
+    
+    
+    
+    
 }
+

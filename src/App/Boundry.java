@@ -341,6 +341,11 @@ public class Boundry {
 "\n💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀\n");
     }
 
+    public void monsterDropped(String item) {
+        System.out.println("The monster dropped " + item);
+    }
+    
+    
     public void monsterMissed() {
         System.out.println("\nThe monster missed!!\n");
     }

@@ -121,6 +121,9 @@ public class PlayerActionController {
                 case "use":
                     iCtrl.useItem(player);
                     break;
+                case "help":
+                    b.attackHelp();
+                    break;
                 //Cheats
                 case "dance":
                     dance(player);

@@ -9,6 +9,7 @@ import MonsterTypes.CorruptedWiers;
 import MonsterTypes.Lurker;
 import MonsterTypes.Monster;
 import MonsterTypes.Styhr;
+import MonsterTypes.Boss;
 import items.KeyItem;
 import items.Weapon;
 import items.Iitem;
@@ -72,7 +73,7 @@ public class CreateRoom {
     
     
     // Weapons
-    Iitem gun = new Weapon("Small Laserpistol", "PewPewPew", 2);   
+    Iitem gun = new Weapon("Small Laserpistol", "PewPewPew", 17);   
     Iitem laserBlade = new Weapon("Laser blade", "This can be used too all kinds of things, even making food", 4);
     Iitem darlekRifle = new Weapon("Darlek Rifle", "This Rifle is build from a Darlek's laser shooter", 14);
     Iitem particlelRemovalMop = new Weapon("Particle removal mop", "Just a normal hightech mop, but you can still hit things with it", 1);
@@ -82,7 +83,7 @@ public class CreateRoom {
     Iitem godBlaster = new Weapon("God Blaster", "This blaster was once owned by GOD", 2000);
     
     //Armors
-    Iitem spaceSuit = new Armor("Space Suit", "Standard issued space suit", 1);
+    Iitem spaceSuit = new Armor("Space Suit", "Standard issued space suit", 10);
     Iitem beatUpEngineeringSpaceSuit = new Armor("Beat up engineering space suit", "This old suit have taken alot of damage, and is bearly holding it self together", 2);
     Iitem cybermanArmor = new Armor("Cyberman Armor", "You will be upgraded", 10);
     Iitem gardenersArmor = new Armor("Gardeners Armor", "Its a heavily armored suit, that has alot of bitemarks all over it", 5);
@@ -107,13 +108,20 @@ public class CreateRoom {
         Monster patheticLurker = new Lurker("Pathetic Lurker", 1, 1, 0, 1, 5);
     
         //TIER 2 MONSTERS (NAME, HP, DAMAGE, ARMOR, TIER, gold)
-        Monster Styhr = new Styhr("Slasher", 5, 30, 7, 2,30);
-        Monster Styhr2 = new Styhr("Killer Pland", 40, 8, 2, 2, 40);
+        Monster Styhr = new Styhr("Slasher", 5, 10, 7, 2,30);
+        Monster Styhr2 = new Styhr("Killer Plant", 30, 15, 2, 2, 40);
+        
+        //TIER 3 BOSS MONSTERS (NAME, HP, DAMAGE, ARMOR, TIER, gold)
+        Monster WierCorruptedGeneral = new Boss("Wier Corrupted General", 60, r.nextInt(5)+21, r.nextInt(5), 3,r.nextInt(70)+70);
+       
         
         
     
     public void roomFeatures() {
         //Map and Room direction rules
+        spaceWier.addLoot(p1);
+        spaceWier2.addLoot(p2);
+        Styhr.addLoot(gun);
         
         startRoom.setNorth(room1);
         startRoom.setSouth(spaceShip);
@@ -122,22 +130,24 @@ public class CreateRoom {
         room1.setWest(room2);
         room1.setEast(room3);
         room1.setSouth(startRoom);
-        room1.setMonster(spaceWier);
-        finish.setMonster(Styhr);
+        //room1.setMonster(spaceWier);
+        finish.setMonster(WierCorruptedGeneral);
         
         room2.setEast(room1);
         room2.setWest(room9);
         room2.setTaxCollector(1);
         
+        
         room3.setWest(room1);
         room3.setNorth(room5);
         room3.setSouth(room4);
-        room3.setMonster(spaceWier2);
-
+       
+        
         room4.setNorth(room3);
         room4.add(beatUpEngineeringSpaceSuit);
         room4.add(particlelRemovalMop);
         room4.setTrap(1);
+     
         
         room5.setNorth(room8);
         room5.setWest(room6);
@@ -199,6 +209,7 @@ public class CreateRoom {
         
         room16.setSouth(finish);
         room16.setEast(room15);
+        room16.setMonster(WierCorruptedGeneral);
 
         room17.setEast(room18);
         room17.setWest(room15);
