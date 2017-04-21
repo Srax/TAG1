@@ -13,8 +13,8 @@ import Enteties.Player;
  */
 public class Styhr extends Monster {
     
-    public Styhr(String name, int hp, int dmg, int armor, int tier, int gold) {
-        super(name, hp, dmg, armor, tier, gold);
+    public Styhr(String name, int hp, int dmg, int armor,  int gold) {
+        super(name, hp, dmg, armor, gold);
     }
     
     @Override

@@ -2,7 +2,6 @@ package Controllers;
 
 import Boundry.Boundry;
 import Enteties.Player;
-import Controllers.PlayerActionController;
 import MonsterTypes.Monster;
 import java.util.Random;
 
@@ -68,8 +67,7 @@ public class CombatController {
                         player.getCurrentRoom().setMonster(null);
                     } else {
                         combatStatus = playerActionCtrl.combatAction(player);
-                        b.playSound(b.pewpewSound);
-                    }
+                        }
                 } else {
                     b.monsterMissed();
                     combatStatus = playerActionCtrl.combatAction(player);
@@ -80,12 +78,6 @@ public class CombatController {
 
         }
     }
- 
-    
-   
-    
-    
-    
     
 }
 

@@ -174,6 +174,7 @@ public class PlayerActionController {
             return takingAction = true;
         } else {
             player.setCurrentRoom(goToRoom);
+            b.youWent(action);
             b.playSound(b.doorSound);
             return takingAction = false;
 
@@ -195,7 +196,7 @@ public class PlayerActionController {
 
     public void attack(Player player) {
         Monster monster = player.getCurrentRoom().getMonster();
-        
+        b.playSound(b.pewpewSound);
         monster.setMonsterHp(-player.getDmg());
         b.playerAttackMonster(monster.getMonsterName(), player.getDmg(), monster.getMonsterHp());
     }

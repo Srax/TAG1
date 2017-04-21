@@ -13,15 +13,14 @@ import Enteties.Player;
  */
 public class Plants extends Monster{
     
-    public Plants(String name, int hp, int dmg, int armor, int tier, int gold) {
-        super(name, hp, dmg, armor, tier, gold);
+    public Plants(String name, int hp, int dmg, int armor,  int gold) {
+        super(name, hp, dmg, armor, gold);
     }
     
     public int monsterSpecialAttack(Player p) {
         int damage = 0;
 
-        System.out.println("The Wier hisses at you and  release a powerfull electricfield"
-                + "it hits you for a great amount of damage");
+        System.out.println("The killer plant uses vinewhip, it was super effective.");
         damage = this.getMonsterDmg() * 2 - p.getDef();
 
         return damage;

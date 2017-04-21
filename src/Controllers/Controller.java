@@ -35,7 +35,6 @@ public class Controller {
         player.setLastRoom(cr.spaceShip);
         player.setCurrentRoom(cr.startRoom);
         
-        
         System.out.println(player.getCurrentRoom().toString());
         Thread.sleep(1000);
         
@@ -50,15 +49,13 @@ public class Controller {
             } else if (player.getHp() <= 0) {
                 b.youDied();
                 checkVictory = false;
-            } else if (cr.gameSpaceCrawler != player.checkInventoryForWinItem("The game SPACE CRAWLER cause Space Invaders was already taken")){
+            } else if (cr.gameSpaceCrawler != player.checkInventoryForWinItem("The game SPACE CRAWLER cause Space Invaders was already taken") && player.getCurrentRoom() != cr.spaceShip){
                 player.setLastRoom(player.getCurrentRoom());
                 playerActionCtrl.playerAction(player, cr);
             }
         }
         hm.addScore(player.getName(), player.getBank(), player.getHp());
         System.out.print(hm.getHighscoreString());
-        
-
     }
 
     public boolean gameEndConditions(Player player) {
@@ -137,5 +134,4 @@ public class Controller {
 
     }
     
-    
-}
+  }

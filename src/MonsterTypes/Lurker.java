@@ -13,8 +13,8 @@ import Enteties.Player;
  */
 public class Lurker extends Monster {
     
-    public Lurker(String name, int hp, int dmg, int armor, int tier, int gold) {
-        super(name, hp, dmg, armor, tier, gold);
+    public Lurker(String name, int hp, int dmg, int armor,  int gold) {
+        super(name, hp, dmg, armor,  gold);
     }
 
     @Override

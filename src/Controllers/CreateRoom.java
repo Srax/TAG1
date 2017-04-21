@@ -12,6 +12,8 @@ import MonsterTypes.Lurker;
 import MonsterTypes.Monster;
 import MonsterTypes.Styhr;
 import MonsterTypes.Boss;
+import MonsterTypes.Plants;
+import MonsterTypes.PossessedChef;
 import items.KeyItem;
 import items.Weapon;
 import items.Iitem;
@@ -31,7 +33,7 @@ public class CreateRoom {
     Room spaceShip = new Room(0, spaceShip());
     Room finish = new Room(0, commandBridge());
     Room startRoom = new Room(0, startRoom());
-    Room room1 = new Room(r.nextInt(101), hallWay1());
+    Room room1 = new Room(r.nextInt(10)+5, hallWay1());
     Room room2 = new Room(r.nextInt(21), hallWay3());
     Room room3 = new Room(r.nextInt(21), dinningRoom());
     Room room4 = new Room(r.nextInt(21), closet());
@@ -80,226 +82,234 @@ public class CreateRoom {
     Iitem darlekRifle = new Weapon("Darlek Rifle", "This Rifle is build from a Darlek's laser shooter", 14);
     Iitem particlelRemovalMop = new Weapon("Particle removal mop", "Just a normal hightech mop, but you can still hit things with it", 1);
     Iitem sonicSwordOfTheWhisperMen = new Weapon("Sonic sword of The Whisper Men", "A Sword that makes a sonic vibration which sounds like a whisper", 13);
-    Iitem plasmaCannon = new Weapon("Plasma Cannon", "Fires a plasma discharge in the form of a beam", 6);
+    Iitem plasmaRifle = new Weapon("Plasma Rifle", "Fires a plasma discharge in the form of a beam", 6);
     Iitem blaster = new Weapon("Blaster", "This blaster was once owned by a guy called Han", 17);
     Iitem godBlaster = new Weapon("God Blaster", "This blaster was once owned by GOD", 2000);
 
     //Armors
-    Iitem spaceSuit = new Armor("Space Suit", "Standard issued space suit", 10);
+    Iitem spaceSuit = new Armor("Space Suit", "Standard issued space suit", 1);
+    Iitem improvedSpaceSuit = new Armor("Guards Space Suit", "Standard issued military armor", 5);
     Iitem beatUpEngineeringSpaceSuit = new Armor("Beat up engineering space suit", "This old suit have taken alot of damage, and is bearly holding it self together", 2);
     Iitem cybermanArmor = new Armor("Cyberman Armor", "You will be upgraded", 10);
-    Iitem gardenersArmor = new Armor("Gardeners Armor", "Its a heavily armored suit, that has alot of bitemarks all over it", 5);
+    Iitem gardenersArmor = new Armor("Gardeners Armor", "Its a heavily armored suit, that has alot of bitemarks all over it", 4);
     Iitem officersUniform = new Armor("Officers Uniform", "This uniform creates a small force field around it's wearer, that protects the wearer from harm", 7);
     Iitem labCoat = new Armor("Lab Coat", "This lab coat is just a normal lab coat with many strange things spilled on it", 1);
 
     //Potions  
-    Iitem p3 = new Potion("Super Stimpack", "Increases HP with 30", 3);
-    Iitem p2 = new Potion("Medium Stimpack", "Increases HP with 20", 2);
-    Iitem p1 = new Potion("Small Stimpack", "Increases Hp with 10", 1);
-
+   Iitem p3 = new Potion("Super Stimpack", "Restores 30 HP", 3);
+   Iitem p2 = new Potion("Medium Stimpack", "Restores 20 HP", 2);
+   Iitem p1 = new Potion("Small Stimpack", "Restores 10 HP", 1);
+   Iitem c1 = new Potion("A Moldy Space Chicken", "The Chicken looks strangely green", 4);
     //Misc items
     Iitem gameSpaceCrawler = new KeyItem("The game SPACE CRAWLER cause Space Invaders was already taken", "");
+    Iitem mapFloor1= new KeyItem("old datapad", "The Datapad shows a map: Dinningroom > Kitchen > Botanic Garden > Officer Lounge > Left > Command Bridge");
 
     // ****** CREATE MONSTERS ****** //
     // TIER 1 MONSTERS (NAME, HP, DAMAGE, ARMOR, TIER, GOLD)
-    Monster spaceWier = new CorruptedWiers("Wier", 6, 5, 0, 1, 20);
-    Monster spaceWier2 = new CorruptedWiers("Wier", 6, 5, 0, 1, 20);
-    Monster commonLurker = new Lurker("Common Lurker", 5, 1, 0, 1, 5);
-    Monster patheticLurker = new Lurker("Pathetic Lurker", 1, 1, 0, 1, 5);
-
+    Monster spaceWier = new CorruptedWiers("Wier", 4, 3, 0,  r.nextInt(10)+5);
+    Monster spaceWier2 = new CorruptedWiers("Wier", 4, 3, 0,  r.nextInt(10)+5);
+    Monster spaceWier3 = new CorruptedWiers("Wier", 4, 3, 0,  r.nextInt(10)+5);
+    Monster spaceWier4 = new CorruptedWiers("Wier", 4, 3, 0,  r.nextInt(10)+5);
+    Monster mutatedSpaceWier4 = new CorruptedWiers("Giant Mutated Space Wier", 8, 6, 2,  r.nextInt(20)+5);
+    Monster killerPlant = new Plants("Evil Killer PLant", 10, 6, 6, 0);
+            
+    Monster possessedChef = new PossessedChef("Parasite Possessed Chef", 10, 4, 1, r.nextInt(15)+5);
+    Monster commonLurker = new Lurker("Common Lurker", 5, 1, 0,  5);
+    Monster patheticLurker = new Lurker("Pathetic Lurker", 1, 1, 0,  5);
+    
+    
     //TIER 2 MONSTERS (NAME, HP, DAMAGE, ARMOR, TIER, gold)
-    Monster Styhr = new Styhr("Slasher", 5, 10, 7, 2, 30);
-    Monster Styhr2 = new Styhr("Killer Plant", 30, 15, 2, 2, 40);
+    Monster slasher = new Styhr("Slasher", 5, 10, 7,  30);
+    
 
     //TIER 3 BOSS MONSTERS (NAME, HP, DAMAGE, ARMOR, TIER, gold)
-    Monster WierCorruptedGeneral = new Boss("Wier Corrupted General", 60, r.nextInt(5) + 21, r.nextInt(5), 3, r.nextInt(70) + 70);
+    Monster WierCorruptedGeneral = new Boss("Wier Corrupted General", 60, r.nextInt(5) + 21, r.nextInt(5),  r.nextInt(150) + 70);
+    Monster CorruptedOfficer = new Boss("A corrupted Officer", 15, r.nextInt(5)+9, 3,  r.nextInt(70) + 70);
 
     public void roomFeatures() {
         //Map and Room direction rules
-        spaceWier.addLoot(p1);
-        spaceWier2.addLoot(p2);
-        Styhr.addLoot(gun);
-
+        
+        
+        //Start room
         startRoom.setNorth(room1);
         startRoom.setSouth(spaceShip);
 
+        
+        
+        
+        //Room 1 directions
         room1.setWest(room2);
         room1.setEast(room3);
         room1.setSouth(startRoom);
-
+        //Room 1 items
+        room1.add(p1);
+        
+        
+        
+        //Room 2 directions
         room2.setEast(room1);
         room2.setWest(room9);
-        room2.setTaxCollector(1);
-
+      
+        
+        //Room 3 (Dinning Room)directions
         room3.setWest(room1);
         room3.setNorth(room5);
         room3.setSouth(room4);
+        //Room 3 loot
+        room3.add(c1);
+        //Room 3 monsters
         room3.setMonster(spaceWier);
-
+        //Monster loot
+        spaceWier.addLoot(p1);
+        
+        
+        //Room 4 Directions
         room4.setNorth(room3);
+        //Room 4 Items
         room4.add(beatUpEngineeringSpaceSuit);
         room4.add(particlelRemovalMop);
-        room4.setTrap(1);
+       
 
+        //Room 5 (Kitchen) directions
         room5.setNorth(room8);
         room5.setWest(room6);
         room5.setSouth(room3);
-        room5.add(laserBlade);
-        room5.add(p2);
-        room5.setMonster(spaceWier2);
+        //Room 5 monster
+        room5.setMonster(possessedChef);
+        //Monster loot
+        possessedChef.addLoot(laserBlade);
+     
         
+        //room 6 (Barracks) directions
         room6.setNorth(room7);
         room6.setWest(room14);
         room6.setEast(room5);
+        //Room 6 Traps
         room6.setTrap(1);
+        //room 6 loot
         room6.add(darlekRifle);
-        room6.add(plasmaCannon);
-        room6.add(gardenersArmor);
-        room6.add(p3);
-        room6.add(p1);
-
+        room6.add(plasmaRifle);
+        
+        
+        
+        
+        //Room 7 (Botanic Garden) directions
         room7.setNorth(room15);
         room7.setEast(room8);
         room7.setSouth(room6);
-        room7.setMonster(Styhr2);
-
+        //Room 7 monster
+        room7.setMonster(killerPlant);
+        //Room 7 monster loot
+        killerPlant.addLoot(p3);
+        //Room 7 loot
+        room7.add(p3);
+        room7.add(p3);
+        room7.add(gardenersArmor);
+       
+        //Room 8 directions
         room8.setWest(room7);
         room8.setSouth(room5);
 
+        
+        //Room 9 directions
         room9.setNorth(room13);
         room9.setSouth(room10);
         room9.setEast(room2);
         room9.setWest(room12);
+        //Traps
+        room9.setTaxCollector(1);
 
+        
+        
+        //Room 10 directions
         room10.setNorth(room9);
         room10.setWest(room11);
-
+        //Room 10 loot
+        room10.add(p2);
+        //Room 10 Monsters
+        room10.setMonster(spaceWier2);
+        
+        
+        
+        
+        //Room 11 directions
         room11.setNorth(room12);
         room11.setEast(room10);
-        room11.add(sonicSwordOfTheWhisperMen);
-
+        //Room 11 traps
+        room11.setTrap(1);
+      
+        
+        //Room 12 directions
         room12.setEast(room9);
         room12.setSouth(room11);
-        room12.add(p3);
-
+        //Room 12 Monsters
+        room12.setMonster(commonLurker);
+        //Monster loot
+        commonLurker.addLoot(mapFloor1);
+        
+        //Room 13 directions
         room13.setSouth(room9);
         room13.setEast(room14);
-
+        //Room 13 Monster
+        room13.setMonster(spaceWier3);
+        //Room traps
+        room13.setTrap(1);
+        
+        //Room 14 directions
         room14.setEast(room6);
         room14.setWest(room13);
-
+        //Room 14 traps
+        room14.setTaxCollector(0);
+        
+        
+        //Room 15 (Officers Lounge) directions
         room15.setEast(room17);
         room15.setWest(room16);
         room15.setSouth(room7);
-                                     //room15.setNorth(room21);
-
-        room15.setTrap(1);
-        room15.add(officersUniform);
-        room15.add(blaster);
-
+        //Room 15 Monsters
+        room15.setMonster(CorruptedOfficer);
+        //Monster Loot
+        CorruptedOfficer.addLoot(darlekRifle);
+        CorruptedOfficer.addLoot(officersUniform);
+        CorruptedOfficer.addLoot(p3);
+        CorruptedOfficer.addLoot(p3);
+        
+        //Room 16 directions
         room16.setSouth(finish);
         room16.setEast(room15);
-        
+        //Room 16 Traps
+        room16.setTrap(1);
 
+        
+        
+        //room 17 directions
         room17.setEast(room18);
         room17.setWest(room15);
-        room17.add(p1);
-
+       
+        //Room 18 (Lab) directions
         room18.setWest(room17);
         room18.setSouth(room19);
+        //Room 18 Monsters
+        room18.setMonster(mutatedSpaceWier4);
+        //Room 18 Loot
         room18.add(labCoat);
-        room18.add(cybermanArmor);
-
-        room19.setNorth(room18);
-        room19.setTaxCollector(1);
-
-        room21.setEast(room15);
-        room21.setNorth(room22);
-        room21.setTaxCollector(1);
-
-        room22.setEast(room21);
-        room22.setNorth(room23);
-        room22.setTaxCollector(1);
-
-        room23.setEast(room22);
-        room23.setNorth(room24);
-        room23.setTaxCollector(1);
-
-        room24.setEast(room23);
-        room24.setNorth(room25);
-        room24.setTaxCollector(1);
-
-        room25.setEast(room24);
-        room25.setNorth(room26);
-        room25.setTaxCollector(1);
-
-        room26.setEast(room25);
-        room26.setNorth(room27);
-        room26.setTaxCollector(1);
-
-        room27.setEast(room26);
-        room27.setNorth(room28);
-        room27.setTaxCollector(1);
-
-        room28.setEast(room27);
-        room28.setNorth(room29);
-        room28.setTaxCollector(1);
-
-        room29.setEast(room28);
-        room29.setNorth(room30);
-        room29.setTaxCollector(1);
-
-        room30.setEast(room29);
-        room30.setNorth(room31);
-        room30.setTaxCollector(1);
-
-        room31.setSouth(room30);
-        room31.setNorth(room32);
-        room31.setTaxCollector(1);
-
-        room32.setEast(room31);
-        room32.setNorth(room33);
-        room32.setTaxCollector(1);
-
-        room33.setEast(room32);
-        room33.setNorth(room34);
-        room33.setTaxCollector(1);
-
-        room34.setEast(room33);
-        room34.setNorth(room35);
-        room34.setTaxCollector(1);
-
-        room35.setEast(room34);
-        room35.setNorth(room36);
-        room35.setTaxCollector(1);
-
-        room36.setEast(room35);
-        room36.setNorth(room37);
-        room36.setTaxCollector(1);
-
-        room37.setEast(room36);
-        room37.setNorth(room38);
-        room37.setTaxCollector(1);
-
-        room38.setEast(room37);
-        room38.setNorth(room39);
-        room38.setTaxCollector(1);
-
-        room39.setEast(room38);
-        room39.setNorth(room40);
-        room39.setTaxCollector(1);
-
-        room40.setEast(room39);
-        room40.setNorth(room41);
-        room40.setTaxCollector(1);
-
-        room41.setEast(room40);
-        room41.setTaxCollector(1);
-        room41.add(godBlaster);
+        room18.add(sonicSwordOfTheWhisperMen);
         
+        
+        //Room19 (closet) directions
+        room19.setNorth(room18);
+        //Room19 Loot
+        room19.add(c1);
+        room19.add(c1);
+        room19.add(c1);
+        
+        //Room Finish directions
         finish.setNorth(room16);
-        finish.add(gameSpaceCrawler);
+        //Room finish Monsters
         finish.setMonster(WierCorruptedGeneral);
+        //Room Finish Loot
+        WierCorruptedGeneral.addLoot(gameSpaceCrawler);
+    
 
     }
 

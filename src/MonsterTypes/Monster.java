@@ -21,16 +21,16 @@ public abstract class Monster {
     private int monsterHp;
     private int monsterDmg;
     private int monsterArmor;
-    private int monsterTier; 
+   
     private int monsterGold;
     private ArrayList<Iitem> monsterLoot = new ArrayList<>();
 
-    public Monster(String name, int hp, int dmg, int armor, int tier, int gold) {
+    public Monster(String name, int hp, int dmg, int armor,  int gold) {
         this.monsterName = name;
         this.monsterHp = hp;
         this.monsterDmg = dmg;
         this.monsterArmor = armor;
-        this.monsterTier = tier;
+  
         this.monsterGold = gold;
     }
     

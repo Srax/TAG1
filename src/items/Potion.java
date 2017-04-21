@@ -12,6 +12,7 @@ import Enteties.Player;
  * @author jonas
  */
 public class Potion implements Iitem{
+    
     String name, description;
     private int hpRestore;
     private boolean usable = true, equipable = false;
@@ -27,6 +28,7 @@ public class Potion implements Iitem{
                     break;
             case 3: this.hpRestore = 30;
                     break;
+            case 4: this.hpRestore = -10;
              }
     }
 
