@@ -1,6 +1,7 @@
 package Boundry;
 
 import Enteties.Player;
+import items.Weapon;
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
@@ -286,6 +287,16 @@ public class Boundry {
 
     public void youUsed(String item) {
         System.out.println("\nYOU USED: " + item + "\n");
+    }
+    
+    public String youEquipped() {
+        String s = "You equipped: ";
+        return s;
+    }
+    
+    public String youUnequipped() {
+        String s = "You unequipped: ";
+        return s;
     }
 
     public void youCannotUseItem() {

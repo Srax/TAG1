@@ -189,23 +189,36 @@ public class Player {
             if (inventory.get(i).getName().equalsIgnoreCase(item)) {
                 if (this.inventory.get(i).equipable() == true) {
                     this.inventory.get(i).equip(this);
+                    
+                    System.out.println(b.youEquipped() + this.inventory.get(i).getName() + "\n");
+                    
                     this.inventory.remove(i);
                 } else {
                     b.youCannotEquipItem();
                 }
-            }
+            } 
         }
     }
 
     public void checkEquippedItemAndUnequip(String item) {
+        Boundry b = new Boundry();
         if (equippedWeapon != null && item.equalsIgnoreCase(equippedWeapon.getName())) {
             addItemToInventory(equippedWeapon);
+            
+            System.out.println(b.youUnequipped() + equippedWeapon.getName() + "\n");
+            
             setEquippedWeapon(equippedWeapon = null);
             this.dmg = 1;
         } else if (equippedArmor != null && item.equalsIgnoreCase(equippedArmor.getName())) {
             addItemToInventory(equippedArmor);
+            
+            System.out.println(b.youUnequipped() + equippedArmor.getName() + "\n");
+            
             setEquippedArmor(equippedArmor = null);
             this.def = 0;
+            
+        } else {
+            b.nothingHappend();
         }
     }
 
