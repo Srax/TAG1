@@ -114,7 +114,7 @@ public class CreateRoom {
     Monster killerPlant = new Plants("Evil Killer PLant", 10, 6, 6, 0);
             
     Monster possessedChef = new PossessedChef("Parasite Possessed Chef", 10, 4, 1, r.nextInt(15)+5);
-    Monster commonLurker = new Lurker("Common Lurker", 5, 1, 0,  5);
+    Monster commonLurker = new Lurker("Common Lurker", 5, 3, 0,  5);
     Monster patheticLurker = new Lurker("Pathetic Lurker", 1, 1, 0,  5);
     
     
