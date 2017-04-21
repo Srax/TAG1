@@ -137,9 +137,5 @@ public class Controller {
 
     }
     
-    public void lockedDoor(){////////////////////////////////////////////////////
-        if(player.getCurrentRoom().getLockedDoorNorth() > 0)
-            System.out.println("It appears the door is locked");
-    }
-        
+    
 }

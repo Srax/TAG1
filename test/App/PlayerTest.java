@@ -211,17 +211,7 @@ public class PlayerTest {
         fail("The test case is a prototype.");
     }
 
-    @Test
-    public void testPlayerAttack() {
-        System.out.println("playerAttack");
-        Monster m = null;
-        Player instance = new Player();
-        int expResult = 0;
-        int result = instance.playerAttack(m);
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
-    }
-
+    
     @Test
     public void testAddItemToInventory() {
         System.out.println("addItemToInventory");
