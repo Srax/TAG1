@@ -141,14 +141,10 @@ public class HighscoreManager {
      */
     public String getHighscoreString() {
         
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
-        String date = sdf.format(new Date());
-        System.out.println(date); //15/10/2013
-        
         
         String highscoreString = "\n=== HIGHSCORES ===\n\n"
-                + "No\tPLAYER\t\tBANK\t\tHP\t\tDATE\n"
-                + "-----------------------------------------------------------------\n";
+                + "No\tPLAYER\t\tBANK\t\tHP\n"
+                + "---------------------------------------------\n";
         
 	int maxDisplayedPlayers = 10; //The maximum number of players displayed in the highscore.dat file.
 
@@ -164,12 +160,23 @@ public class HighscoreManager {
             //If the players name is shorter than 8 characters, add an extra 'tab' at the end of the name.
             //We added this function so that the score will be displayed with the same 'space' between Name, Bank and Hp as long as your name is between 1-12 characters.
             if (scores.get(i).getHighscoreName().length()<8) { //If the length of the name is less than 8 characters, add an extra \t after the name is displayed.
-                highscoreString += (i + 1) + ".\t" + scores.get(i).getHighscoreName() + "\t\t" + scores.get(i).getHighscoreBank() + "$\t\t" + scores.get(i).getHighscoreHp()+ "HP\t\t" + date + "\n";
+                highscoreString += (i + 1) + ".\t" + COLOR_BLUE + scores.get(i).getHighscoreName() + COLOR_RESET + "\t\t" + COLOR_GREEN + scores.get(i).getHighscoreBank() + COLOR_RESET + "$\t\t" + COLOR_RED + scores.get(i).getHighscoreHp()+ COLOR_RESET + "HP\t\t" + "\n";
             } else {
-                highscoreString += (i + 1) + ".\t" + scores.get(i).getHighscoreName() + "\t" + scores.get(i).getHighscoreBank() + "$\t\t" + scores.get(i).getHighscoreHp()+ "HP\t\t" + date + "\n";
+                highscoreString += (i + 1) + ".\t" + COLOR_BLUE + scores.get(i).getHighscoreName() + COLOR_RESET + "\t" + COLOR_GREEN + scores.get(i).getHighscoreBank() + COLOR_RESET + "$\t\t" + COLOR_RED + scores.get(i).getHighscoreHp()+ COLOR_RESET + "HP\t\t" + "\n";
             }
             i++; // adds +1 to i
         }
         return highscoreString;
     }
+    
+    /* COLORS */
+    public static final String COLOR_RESET = "\u001B[0m";
+    public static final String COLOR_BLACK = "\u001B[30m";
+    public static final String COLOR_RED = "\u001B[31m";
+    public static final String COLOR_GREEN = "\u001B[32m";
+    public static final String COLOR_YELLOW = "\u001B[33m";
+    public static final String COLOR_BLUE = "\u001B[34m";
+    public static final String COLOR_PURPLE = "\u001B[35m";
+    public static final String COLOR_CYAN = "\u001B[36m";
+    public static final String COLOR_WHITE = "\u001B[37m";
 }

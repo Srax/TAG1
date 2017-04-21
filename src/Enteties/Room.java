@@ -15,7 +15,6 @@ public class Room {
     private Room east = null;
     private int taxCollector;
     private int trap;
-    private int lockedDoorNorth;////////////////////////
     private Monster monster=null;
     
     ArrayList<Iitem> loot = new ArrayList<>();
@@ -95,21 +94,13 @@ public class Room {
         this.description = Description;
     }
 
-    public Room getNorth() {////////////////////////////////////////////77
-        if(this.lockedDoorNorth > 0){
-            return null;
-        }else 
+    public Room getNorth() {
+
         return north;
     }
     public void setNorth(Room North) {
         this.north = North;
     }
-    public void lockedDoorNorth(int lock){
-        this.lockedDoorNorth = lock;
-    }///////////////////////
-    public int getLockedDoorNorth(){
-        return lockedDoorNorth;
-    }/////////////////////////
     
     public Room getSouth() {
         return south;
@@ -136,19 +127,19 @@ public class Room {
         Boundry b = new Boundry();
         b.canGo();
         if (getNorth() != null) {
-            System.out.println(" North");
+            System.out.println(COLOR_BLUE+" North"+COLOR_RESET);
         }
 
         if (getSouth() != null) {
-            System.out.println(" South");
+            System.out.println(COLOR_BLUE+" South"+COLOR_RESET);
         }
 
         if (getWest() != null) {
-            System.out.println(" West");
+            System.out.println(COLOR_BLUE+" West"+COLOR_RESET);
         }
 
         if (getEast() != null) {
-            System.out.println(" East");
+            System.out.println(COLOR_BLUE+" East"+COLOR_RESET);
         }
     }
 
@@ -158,5 +149,9 @@ public class Room {
         return description;
 
     }
+    
+    /* COLORS */
+    public static final String COLOR_RESET = "\u001B[0m";
+    public static final String COLOR_BLUE = "\u001B[34m";
 
 }

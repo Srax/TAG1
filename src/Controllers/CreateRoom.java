@@ -93,9 +93,9 @@ public class CreateRoom {
     Iitem labCoat = new Armor("Lab Coat", "This lab coat is just a normal lab coat with many strange things spilled on it", 1);
 
     //Potions  
-    Iitem p3 = new Potion("Super Stimpack", "Increases HP with 30", 3);
-    Iitem p2 = new Potion("Medium Stimpack", "Increases HP with 20", 2);
-    Iitem p1 = new Potion("Small Stimpack", "Increases Hp with 10", 1);
+    Iitem p3 = new Potion("Super Stimpack", "Increases HP by 30", 3);
+    Iitem p2 = new Potion("Medium Stimpack", "Increases HP by 20", 2);
+    Iitem p1 = new Potion("Small Stimpack", "Increases Hp by 10", 1);
 
     //Misc items
     Iitem gameSpaceCrawler = new KeyItem("The game SPACE CRAWLER cause Space Invaders was already taken", "");
@@ -191,7 +191,7 @@ public class CreateRoom {
         room15.setEast(room17);
         room15.setWest(room16);
         room15.setSouth(room7);
-                                     //room15.setNorth(room21);
+                                    //room15.setNorth(room21);
 
         room15.setTrap(1);
         room15.add(officersUniform);

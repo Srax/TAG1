@@ -1,7 +1,6 @@
 package Boundry;
 
 import Enteties.Player;
-import Enteties.Room;
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
@@ -18,10 +17,14 @@ public class Boundry {
     
     Scanner scan = new Scanner(System.in); //used for actions
     Scanner scan2 = new Scanner(System.in); //Used in creatName
+    
+    //Path to sounds
     public static String coinSound = System.getProperty("user.dir") + "\\src\\sounds\\coin.wav";
     public static String doorSound = System.getProperty("user.dir") + "\\src\\sounds\\doorShortLoud.wav";
     public static String smashSound = System.getProperty("user.dir") + "\\src\\sounds\\smash.wav";
-    public static String pewpewSound = System.getProperty("user.dir") + "\\src\\sounds\\pewpewpew.wav";
+    public static String stimpackSound = System.getProperty("user.dir") + "\\src\\sounds\\stimpack.wav";
+    public static String pewpewSound = System.getProperty("user.dir") + "\\src\\sounds\\laserGun.wav";
+    //public static String laserGunSound = System.getProperty("user.dir") + "\\src\\sounds\\LaserGunLow.wav";
     
     /**
      * Creates a player name
@@ -107,12 +110,12 @@ public class Boundry {
     public void helpCommand() {
         System.out.println("\n============ HELP ===========");
         
-        System.out.println("Unequip\tInventory\n"
-                + "Search\tBank\tInspect\n"
+        System.out.println("Unequip\t\tInventory\n"
                 + "North\tSouth\tEast\tWest\n"
                 + "Pay\tDeny\tUse\tHelp\n"
                 + "Equip\tStats\tAttack\tExit\n"
-                + "_____________________________\n");
+                + "Search\tBank\tInspect\n"
+                + "=============================\n");
         
         
 //        
@@ -144,13 +147,13 @@ public class Boundry {
      */
     public void taxCollectorMeeting() {
 
-        System.out.println("===================================================================================\n");
+        System.out.println("================================================================================\n");
         System.out.println("The door close behind you.");
         System.out.println("A big robot in a dark coat stands in your way");
         System.out.println("He is the" + COLOR_PURPLE+ " Tax Collector " + COLOR_RESET + "and he is here to collect your money");
         System.out.println("You must pay his price to exit the room");
         System.out.println("You must pay me 20 dollars\n");
-        System.out.println("===================================================================================\n");
+        System.out.println("================================================================================\n");
     }
 
     public void taxCollectorPay(Player player) {
@@ -197,8 +200,9 @@ public class Boundry {
     }
 
     public void showBank(Player p) {
-        System.out.print("Your current Bank balance is:");
+        System.out.print("Your current Bank balance is: ");
         System.out.println(p.getBank() + "$");
+        System.out.println("");
     }
 
     public void directionChoice(String action) {
@@ -291,7 +295,7 @@ public class Boundry {
     ///////////////////// COMBAT DISPLAY ////////////////////////
     
     public void monsterEncounter(String monsterName){
-        System.out.println("===================================================================================\n");
+        System.out.println("==================================================================\n");
         System.out.println("You float into the next room, but suddenly infront of you you see a monster!!!!!."
                 + "\n"
                 + "It is an enemy " + monsterName + " ready to fight you!"
@@ -348,9 +352,12 @@ public class Boundry {
         System.out.println("The monster dropped " + item);
     }
     
-    
     public void monsterMissed() {
         System.out.println("\nThe monster missed!!\n");
+    }
+    
+    public void youWent(String action) {
+        System.out.println("You went: "+COLOR_BLUE+action+COLOR_RESET + "\n");
     }
     
     
