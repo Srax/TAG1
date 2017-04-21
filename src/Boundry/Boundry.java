@@ -1,7 +1,6 @@
 package Boundry;
 
 import Enteties.Player;
-import Enteties.Room;
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
@@ -338,17 +337,20 @@ public class Boundry {
     }
     public void youDied(){
         System.out.println("\n\t\t===💀 YOU ARE DEAD 💀===\n" +
-"You are dead, you dead body is now floating in the endless space\n" +
-"\t\t  for eternity, dead\n" +
-"\n💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀\n");
+        "You are dead, you dead body is now floating in the endless space\n" +
+        "\t\t  for eternity, dead\n" +
+        "\n💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀\n");
     }
 
     public void monsterDropped(String item) {
         System.out.println("The monster dropped " + item);
     }
     
-    
     public void monsterMissed() {
         System.out.println("\nThe monster missed!!\n");
+    }
+
+    public void youWent(String action) {
+        System.out.println("You went :"+action);
     }
 }

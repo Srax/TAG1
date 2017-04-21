@@ -191,7 +191,7 @@ public class CreateRoom {
         room15.setEast(room17);
         room15.setWest(room16);
         room15.setSouth(room7);
-                                     //room15.setNorth(room21);
+                                    //room15.setNorth(room21);
 
         room15.setTrap(1);
         room15.add(officersUniform);
