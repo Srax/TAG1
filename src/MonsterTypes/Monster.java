@@ -15,13 +15,14 @@ import java.util.ArrayList;
  * @author DD
  */
 public abstract class Monster {
+
     Boundry b = new Boundry();
     private String monsterName;
-    
+
     private int monsterHp;
     private int monsterDmg;
     private int monsterArmor;
-    private int monsterTier; 
+    private int monsterTier;
     private int monsterGold;
     private ArrayList<Iitem> monsterLoot = new ArrayList<>();
 
@@ -33,24 +34,26 @@ public abstract class Monster {
         this.monsterTier = tier;
         this.monsterGold = gold;
     }
-    
+
     public int getMonsterGold() {
         return monsterGold;
     }
+
     public void setMonsterGold(int monsterGold) {
         this.monsterGold = monsterGold;
     }
 
     public String getMonsterName() {
-        return monsterName;
+        return COLOR_RED + monsterName + COLOR_RESET;
     }
 
     public int getMonsterHp() {
         return monsterHp;
     }
+
     public void setMonsterHp(int monsterHp) {
         this.monsterHp += monsterHp;
-        if(this.monsterHp<0){
+        if (this.monsterHp < 0) {
             this.monsterHp = 0;
         }
     }
@@ -58,6 +61,7 @@ public abstract class Monster {
     public int getMonsterDmg() {
         return monsterDmg;
     }
+
     public void setMonsterDmg(int monsterDmg) {
         this.monsterDmg = monsterDmg;
     }
@@ -65,27 +69,32 @@ public abstract class Monster {
     public int getMonsterArmor() {
         return monsterArmor;
     }
-    
+
     public int monsterAttack(Player p) {
         int damage = 0;
-        
+
         damage = this.monsterDmg - p.getDef();
-        
+
         return damage;
     }
-    public abstract int monsterSpecialAttack (Player p);
-    
-    public void addLoot(Iitem item){
+
+    public abstract int monsterSpecialAttack(Player p);
+
+    public void addLoot(Iitem item) {
         monsterLoot.add(item);
     }
-    public void moveMonsterItemToRoom(Player player){
+
+    public void moveMonsterItemToRoom(Player player) {
+
+        Monster monster = player.getCurrentRoom().getMonster();
+        for (int i = 0; i < monster.monsterLoot.size(); i++) {
+            player.getCurrentRoom().add(monster.monsterLoot.get(i));
+            b.monsterDropped(monster.monsterLoot.get(i).toString());
+            monster.monsterLoot.remove(i);
+        }
+    }
     
-    Monster monster = player.getCurrentRoom().getMonster();
-    for(int i = 0; i < monster.monsterLoot.size(); i++){
-        player.getCurrentRoom().add(monster.monsterLoot.get(i));
-        b.monsterDropped(monster.monsterLoot.get(i).toString());
-        monster.monsterLoot.remove(i);
-    }
-    }
-   
+    public static final String COLOR_RESET = "\u001B[0m";
+    public static final String COLOR_RED = "\u001B[31m";
+
 }
