@@ -85,6 +85,7 @@ public class ItemController {
         b.witchItemToEquip();
         String choice = b.chooseAction();
         player.checkInventoryAndEquip(choice);
+        
     }
 
     /**

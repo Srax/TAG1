@@ -127,7 +127,7 @@ public class Controller {
         int trap = player.getCurrentRoom().getTrap();
         if (trap > 0) {
             b.trapInteraction();
-            player.setHp(rnd.nextInt(3)+7);
+            player.setHp(-(rnd.nextInt(3)+7));
             b.getHp(player);
             player.getCurrentRoom().setTrap(0);
         }

@@ -1,6 +1,7 @@
 package Boundry;
 
 import Enteties.Player;
+import items.Weapon;
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
@@ -17,10 +18,14 @@ public class Boundry {
     
     Scanner scan = new Scanner(System.in); //used for actions
     Scanner scan2 = new Scanner(System.in); //Used in creatName
+    
+    //Path to sounds
     public static String coinSound = System.getProperty("user.dir") + "\\src\\sounds\\coin.wav";
     public static String doorSound = System.getProperty("user.dir") + "\\src\\sounds\\doorShortLoud.wav";
     public static String smashSound = System.getProperty("user.dir") + "\\src\\sounds\\smash.wav";
-    public static String pewpewSound = System.getProperty("user.dir") + "\\src\\sounds\\pewpewpew.wav";
+    public static String stimpackSound = System.getProperty("user.dir") + "\\src\\sounds\\stimpack.wav";
+    public static String pewpewSound = System.getProperty("user.dir") + "\\src\\sounds\\laserGun.wav";
+    //public static String laserGunSound = System.getProperty("user.dir") + "\\src\\sounds\\LaserGunLow.wav";
     
     /**
      * Creates a player name
@@ -106,12 +111,12 @@ public class Boundry {
     public void helpCommand() {
         System.out.println("\n============ HELP ===========");
         
-        System.out.println("Unequip\tInventory\n"
-                + "Search\tBank\tInspect\n"
+        System.out.println("Unequip\t\tInventory\n"
                 + "North\tSouth\tEast\tWest\n"
                 + "Pay\tDeny\tUse\tHelp\n"
                 + "Equip\tStats\tAttack\tExit\n"
-                + "_____________________________\n");
+                + "Search\tBank\tInspect\n"
+                + "=============================\n");
         
         
 //        
@@ -143,13 +148,13 @@ public class Boundry {
      */
     public void taxCollectorMeeting() {
 
-        System.out.println("===================================================================================\n");
+        System.out.println("================================================================================\n");
         System.out.println("The door close behind you.");
         System.out.println("A big robot in a dark coat stands in your way");
-        System.out.println("He is the \"TAXCOLLETOR\" and he is here to collect your money");
+        System.out.println("He is the" + COLOR_PURPLE+ " Tax Collector " + COLOR_RESET + "and he is here to collect your money");
         System.out.println("You must pay his price to exit the room");
-        System.out.println("You must pay me, 20 dollars\n");
-        System.out.println("===================================================================================\n");
+        System.out.println("You must pay me 20 dollars\n");
+        System.out.println("================================================================================\n");
     }
 
     public void taxCollectorPay(Player player) {
@@ -196,8 +201,9 @@ public class Boundry {
     }
 
     public void showBank(Player p) {
-        System.out.print("Your current Bank balance is:");
+        System.out.print("Your current Bank balance is: ");
         System.out.println(p.getBank() + "$");
+        System.out.println("");
     }
 
     public void directionChoice(String action) {
@@ -282,6 +288,16 @@ public class Boundry {
     public void youUsed(String item) {
         System.out.println("\nYOU USED: " + item + "\n");
     }
+    
+    public String youEquipped() {
+        String s = "You equipped: ";
+        return s;
+    }
+    
+    public String youUnequipped() {
+        String s = "You unequipped: ";
+        return s;
+    }
 
     public void youCannotUseItem() {
         System.out.println("You cannot use this item\n");
@@ -290,7 +306,7 @@ public class Boundry {
     ///////////////////// COMBAT DISPLAY ////////////////////////
     
     public void monsterEncounter(String monsterName){
-        System.out.println("===================================================================================\n");
+        System.out.println("==================================================================\n");
         System.out.println("You float into the next room, but suddenly infront of you you see a monster!!!!!."
                 + "\n"
                 + "It is an enemy " + monsterName + " ready to fight you!"
@@ -314,10 +330,10 @@ public class Boundry {
     }
     
     public void monsterIsDead(String monsterName){
-        System.out.println("The "+monsterName+"is hit one last time and stops moving.\n"
+        System.out.println("The "+monsterName+" is hit one last time and stops moving.\n"
                 + "Congratulation, you killed the " +monsterName+"!!");
         System.out.println("You can now explore the room.\n");
-        System.out.println("===================================================================================\n");
+        System.out.println("================================================================\n");
 
     }
 
@@ -335,11 +351,12 @@ public class Boundry {
     public void witchItemToUnequip(Player player) {
         System.out.println("Wich item do you wish to unequip?\nArmor: "+player.getEquippedArmor()+"\nWeapon: "+player.getEquippedWeapon());
     }
+    
+    
+    //Print text when you die.
     public void youDied(){
-        System.out.println("\n\t\t===💀 YOU ARE DEAD 💀===\n" +
-        "You are dead, you dead body is now floating in the endless space\n" +
-        "\t\t  for eternity, dead\n" +
-        "\n💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀\n");
+        System.out.println("\n=== 💀" + COLOR_RED +  " YOU DIED " + COLOR_RESET + "💀===\n");
+        System.out.println("You ran out of health, therefore you lost the game.");
     }
 
     public void monsterDropped(String item) {
@@ -349,8 +366,22 @@ public class Boundry {
     public void monsterMissed() {
         System.out.println("\nThe monster missed!!\n");
     }
-
+    
     public void youWent(String action) {
-        System.out.println("You went :"+action);
+        System.out.println("You went: "+COLOR_BLUE+action+COLOR_RESET + "\n");
     }
+    
+    
+    
+    /* COLORS */
+    public static final String COLOR_RESET = "\u001B[0m";
+    public static final String COLOR_BLACK = "\u001B[30m";
+    public static final String COLOR_RED = "\u001B[31m";
+    public static final String COLOR_GREEN = "\u001B[32m";
+    public static final String COLOR_YELLOW = "\u001B[33m";
+    public static final String COLOR_BLUE = "\u001B[34m";
+    public static final String COLOR_PURPLE = "\u001B[35m";
+    public static final String COLOR_CYAN = "\u001B[36m";
+    public static final String COLOR_WHITE = "\u001B[37m";
+    
 }

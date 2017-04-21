@@ -7,13 +7,13 @@ import items.Weapon;
 import java.util.ArrayList;
 
 public class Player {
-    
+
     //Players position, and last position
     private Room currentRoom = null;
     private Room lastRoom = null;
 
     //Player Stats
-    private String name = "Random Guy";
+    private String name = "Guest";
     private int dmg = 1, bank, def = 0;
     private int hp = 100;
 
@@ -29,20 +29,23 @@ public class Player {
     public Room getCurrentRoom() {
         return currentRoom;
     }
+
     public void setCurrentRoom(Room currentRoom) {
         this.currentRoom = currentRoom;
     }
-    
+
     public void setLastRoom(Room lastRoom) {
         this.lastRoom = lastRoom;
     }
+
     public Room getLastRoom() {
         return lastRoom;
     }
- 
+
     public Weapon getEquippedWeapon() {
         return equippedWeapon;
     }
+
     public void setEquippedWeapon(Weapon equippedWeapon) {
         this.equippedWeapon = equippedWeapon;
     }
@@ -50,6 +53,7 @@ public class Player {
     public Armor getEquippedArmor() {
         return equippedArmor;
     }
+
     public void setEquippedArmor(Armor equippedArmor) {
         this.equippedArmor = equippedArmor;
     }
@@ -58,6 +62,7 @@ public class Player {
         this.dmg = dmg;
 
     }
+
     public int getDmg() {
         return dmg;
     }
@@ -65,6 +70,7 @@ public class Player {
     public void setName(String name) {
         this.name = name;
     }
+
     public String getName() {
         return name;
     }
@@ -72,6 +78,7 @@ public class Player {
     public int getHp() {
         return hp;
     }
+
     public void setHp(int hp) {
         this.hp += hp;
         if (this.hp > 100) {
@@ -84,6 +91,7 @@ public class Player {
     public int getBank() {
         return bank;
     }
+
     public void setBank(int bank) {
 
         this.bank += bank;
@@ -92,10 +100,11 @@ public class Player {
     public int getDef() {
         return def;
     }
+
     public void setDef(int def) {
         this.def = def;
     }
-   
+
     @Override
     public String toString() {
         return "=============================================================================="
@@ -104,7 +113,7 @@ public class Player {
                 + "\nDamage: " + dmg + "\nDefence: " + def
                 + "\n=============================================================================";
     }
-    
+
 ///////////////////////// INVENTORY /////////////////////////////////////////////
     /**
      * Adds the target object to the inventory array.
@@ -114,6 +123,7 @@ public class Player {
     public void addItemToInventory(Iitem item) {
         inventory.add(item);
     }
+
     /**
      * Prints out the inventory array.
      */
@@ -123,9 +133,9 @@ public class Player {
             System.out.print(inventory.get(i) + "\n");
         }
     }
+
     /**
-     * When given objects name as a string, this method moves the targeted
-     * object from the room loot array to the players inventory array
+     * When given objects name as a string, this method moves the targeted object from the room loot array to the players inventory array
      *
      * @param item
      * @return temp
@@ -146,10 +156,9 @@ public class Player {
         return null;
 
     }
+
     /**
-     * Checks if the item exist in the Inventory Array, thereafter checks if the
-     * item is usable. If usable it runs the use() method in the item, then it
-     * removes item from the Inventory.
+     * Checks if the item exist in the Inventory Array, thereafter checks if the item is usable. If usable it runs the use() method in the item, then it removes item from the Inventory.
      *
      * @param item
      * @param player
@@ -173,37 +182,54 @@ public class Player {
         }
 
     }
+
     public void checkInventoryAndEquip(String item) {
         Boundry b = new Boundry();
         for (int i = 0; i < inventory.size(); i++) {
             if (inventory.get(i).getName().equalsIgnoreCase(item)) {
                 if (this.inventory.get(i).equipable() == true) {
                     this.inventory.get(i).equip(this);
+                    
+                    System.out.println(b.youEquipped() + this.inventory.get(i).getName() + "\n");
+                    
                     this.inventory.remove(i);
                 } else {
                     b.youCannotEquipItem();
                 }
-            }
+            } 
         }
     }
+
     public void checkEquippedItemAndUnequip(String item) {
+        Boundry b = new Boundry();
         if (equippedWeapon != null && item.equalsIgnoreCase(equippedWeapon.getName())) {
             addItemToInventory(equippedWeapon);
+            
+            System.out.println(b.youUnequipped() + equippedWeapon.getName() + "\n");
+            
             setEquippedWeapon(equippedWeapon = null);
             this.dmg = 1;
         } else if (equippedArmor != null && item.equalsIgnoreCase(equippedArmor.getName())) {
             addItemToInventory(equippedArmor);
+            
+            System.out.println(b.youUnequipped() + equippedArmor.getName() + "\n");
+            
             setEquippedArmor(equippedArmor = null);
             this.def = 0;
+            
+        } else {
+            b.nothingHappend();
         }
     }
-    public Iitem checkInventoryForWinItem(String item){
+
+    public Iitem checkInventoryForWinItem(String item) {
         Iitem returnItem = null;
         for (int i = 0; i < inventory.size(); i++) {
-            if (inventory.get(i).getName().equalsIgnoreCase(item))
+            if (inventory.get(i).getName().equalsIgnoreCase(item)) {
                 returnItem = inventory.get(i);
+            }
         }
-                return returnItem;
+        return returnItem;
     }
-        
+
 }

@@ -130,19 +130,19 @@ public class Room {
         Boundry b = new Boundry();
         b.canGo();
         if (getNorth() != null) {
-            System.out.println(" North");
+            System.out.println(COLOR_BLUE+" North"+COLOR_RESET);
         }
 
         if (getSouth() != null) {
-            System.out.println(" South");
+            System.out.println(COLOR_BLUE+" South"+COLOR_RESET);
         }
 
         if (getWest() != null) {
-            System.out.println(" West");
+            System.out.println(COLOR_BLUE+" West"+COLOR_RESET);
         }
 
         if (getEast() != null) {
-            System.out.println(" East");
+            System.out.println(COLOR_BLUE+" East"+COLOR_RESET);
         }
     }
 
@@ -152,5 +152,9 @@ public class Room {
         return description;
 
     }
+    
+    /* COLORS */
+    public static final String COLOR_RESET = "\u001B[0m";
+    public static final String COLOR_BLUE = "\u001B[34m";
 
 }
