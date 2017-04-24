@@ -167,6 +167,9 @@ public class PlayerActionController {
             case "west":
                 goToRoom = player.getCurrentRoom().getWest();
                 break;
+            default:
+                b.nothingHappend();
+                break;
         }
 
         if (goToRoom == null) {

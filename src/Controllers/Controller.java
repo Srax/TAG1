@@ -28,7 +28,7 @@ public class Controller {
 
         boolean checkVictory = true;
 
-        cr.roomFeatures();
+        cr.roomFeatures(); 
         cr.addPlayerStartItems(player);
         b.welcomeToGame();
         //b.createName(player);
