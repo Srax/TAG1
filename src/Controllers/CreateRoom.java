@@ -28,7 +28,8 @@ import java.util.Random;
  * @author thomas
  */
 public class CreateRoom {
-
+    
+    // the rooms get made with the random gold and description 
     Random r = new Random();
     Room spaceShip = new Room(0, spaceShip());
     Room finish = new Room(0, commandBridge());
@@ -55,6 +56,7 @@ public class CreateRoom {
 
 
     // Weapons
+    // The weapons are made with name, description and dmg.
     Iitem gun = new Weapon("Small Laserpistol", "PewPewPew", 2);
     Iitem laserBlade = new Weapon("Laser blade", "This can be used too all kinds of things, even making food", 4);
     Iitem darlekRifle = new Weapon("Darlek Rifle", "This Rifle is build from a Darlek's laser shooter", 14);
@@ -65,6 +67,7 @@ public class CreateRoom {
     Iitem godBlaster = new Weapon("God Blaster", "This blaster was once owned by GOD", 2000);
 
     //Armors
+    // The armors are made with name, description and defence.
     Iitem spaceSuit = new Armor("Space Suit", "Standard issued space suit", 1);
     Iitem improvedSpaceSuit = new Armor("Guards Space Suit", "Standard issued military armor", 5);
     Iitem beatUpEngineeringSpaceSuit = new Armor("Beat up engineering space suit", "This old suit have taken alot of damage, and is bearly holding it self together", 2);
@@ -74,11 +77,14 @@ public class CreateRoom {
     Iitem labCoat = new Armor("Lab Coat", "This lab coat is just a normal lab coat with many strange things spilled on it", 1);
 
     //Potions  
+    //Potions have a name, description and tier for what kind of potion it is 
    Iitem p3 = new Potion("Super Stimpack", "Restores 30 HP", 3);
    Iitem p2 = new Potion("Medium Stimpack", "Restores 20 HP", 2);
    Iitem p1 = new Potion("Small Stimpack", "Restores 10 HP", 1);
    Iitem c1 = new Potion("A Moldy Space Chicken", "The Chicken looks strangely green", 4);
+   
     //Misc items
+   //Fun items don't realy do anything.
     Iitem gameSpaceCrawler = new KeyItem("The game SPACE CRAWLER cause Space Invaders was already taken", "");
     Iitem mapFloor1= new KeyItem("old datapad", "The Datapad shows a map: Dinningroom > Kitchen > Botanic Garden > Officer Lounge > Left > Command Bridge");
 
@@ -103,8 +109,9 @@ public class CreateRoom {
     //TIER 3 BOSS MONSTERS (NAME, HP, DAMAGE, ARMOR, TIER, gold)
     Monster WierCorruptedGeneral = new Boss("Wier Corrupted General", 60, r.nextInt(5) + 21, r.nextInt(5),  r.nextInt(150) + 70);
     Monster CorruptedOfficer = new Boss("A corrupted Officer", 15, r.nextInt(5)+9, 3,  r.nextInt(70) + 70);
+    
     /**
-     * Adds the directions, the items, and monster to the diffrent rooms.
+     * Adds the directions, the items, and monster to the different rooms.
      */
     public void roomFeatures() {
         //Map and Room direction rules
