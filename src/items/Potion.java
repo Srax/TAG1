@@ -32,6 +32,8 @@ public class Potion implements Iitem{
                     break;
             case 3: this.hpRestore = 30;
                     break;
+            case 4: this.hpRestore = -10;
+                   
              }
     }
 
