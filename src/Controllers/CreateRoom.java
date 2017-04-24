@@ -109,8 +109,9 @@ public class CreateRoom {
     //TIER 3 BOSS MONSTERS (NAME, HP, DAMAGE, ARMOR, TIER, gold)
     Monster WierCorruptedGeneral = new Boss("Wier Corrupted General", 60, r.nextInt(5) + 21, r.nextInt(5),  r.nextInt(150) + 70);
     Monster CorruptedOfficer = new Boss("A corrupted Officer", 15, r.nextInt(5)+9, 3,  r.nextInt(70) + 70);
+    
     /**
-     * Adds the directions, the items, and monster to the diffrent rooms.
+     * Adds the directions, the items, and monster to the different rooms.
      */
     public void roomFeatures() {
         //Map and Room direction rules

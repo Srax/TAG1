@@ -113,26 +113,26 @@ public class PlayerActionController {
         while (takingAction) {
             String action = b.chooseAction();
             switch (action.toLowerCase()) {
-                case "run":
+                case "run": //The player runs form battle
                     run(player);
                     combatStatus = false;
                     takingAction = false;
                     break;
-                case "attack":
+                case "attack": //The player attacks in battle
                     attack(player);
                     takingAction = false;
                     break;
-                case "inventory":
+                case "inventory": //The player checks his inventory
                     player.showInventory();
                     break;
-                case "use":
+                case "use": //The player enters the "use item" menu
                     iCtrl.useItem(player);
                     break;
-                case "help":
+                case "help"://The player gets the "Help" menu
                     b.attackHelp();
                     break;
                 //Cheats
-                case "dance":
+                case "dance": //Kills everything
                     dance(player);
                     takingAction = false;
                     break;
@@ -159,16 +159,16 @@ public class PlayerActionController {
         Room goToRoom = null;
 
         switch (action.toLowerCase()) {
-            case "north":
+            case "north": //Goes north
                 goToRoom = player.getCurrentRoom().getNorth();
                 break;
-            case "south":
+            case "south": //Goes south
                 goToRoom = player.getCurrentRoom().getSouth();
                 break;
-            case "east":
+            case "east": //Goes east
                 goToRoom = player.getCurrentRoom().getEast();
                 break;
-            case "west":
+            case "west": //Goes west
                 goToRoom = player.getCurrentRoom().getWest();
                 break;
             default:
