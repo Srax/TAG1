@@ -67,6 +67,12 @@ public class Weapon implements Iitem{
     public void use(Player player) {
         throw new UnsupportedOperationException("Not supported yet."); 
     }
+    
+    /**
+     * If the players equipped weapon is not null, add the weapon to inventory and equip it and set the players 'dmg' int to the value of the weapons.
+     * 
+     * @param player 
+     */
     @Override
     public void equip(Player player){
     if(player.getEquippedWeapon()!= null){
