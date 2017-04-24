@@ -8,7 +8,6 @@ package items;
 import Enteties.Player;
 
 /**
- *
  * @author jonas
  */
 public class KeyItem implements Iitem{

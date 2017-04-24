@@ -10,6 +10,7 @@ import Enteties.Player;
 /**
  *
  * @author jonas
+ * This is a 'potion'. Potions are used to regain HP.
  */
 public class Potion implements Iitem{
     
@@ -17,10 +18,13 @@ public class Potion implements Iitem{
     private int hpRestore;
     private boolean usable = true, equipable = false;
 
+    
+    //Construct potion using name, description and type.
     public Potion(String name, String description, int type) {
         this.name = name;
         this.description = description;
-                    
+               
+        //Depending on the potion type, it will heal 10, 20 or 30.
         switch(type){
             case 1: this.hpRestore = 10;
                     break;
@@ -28,7 +32,6 @@ public class Potion implements Iitem{
                     break;
             case 3: this.hpRestore = 30;
                     break;
-            case 4: this.hpRestore = -10;
              }
     }
 
@@ -64,6 +67,11 @@ public class Potion implements Iitem{
     public void setUsable(boolean usable) {
         this.usable = usable;
     }
+    
+    /**
+     * If the player use the potion, the potions hpRestore value will be added to the players hp.
+     * @param player 
+     */
     @Override
     public void use(Player player){
         player.setHp(hpRestore);

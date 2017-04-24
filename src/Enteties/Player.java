@@ -29,7 +29,7 @@ public class Player {
     public Room getCurrentRoom() {
         return currentRoom;
     }
-
+    
     public void setCurrentRoom(Room currentRoom) {
         this.currentRoom = currentRoom;
     }
@@ -79,6 +79,7 @@ public class Player {
         return hp;
     }
 
+    //If the players HP goes below 0, set hp to 0 so that it won't display minus.
     public void setHp(int hp) {
         this.hp += hp;
         if (this.hp > 100) {
