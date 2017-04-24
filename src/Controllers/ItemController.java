@@ -78,7 +78,7 @@ public class ItemController {
     }
 
     /**
-     *
+     *  Searches player inventory for chosen item, and runs the equip method in Player class.
      * @param player
      */
     public void equipItem(Player player) {
@@ -89,7 +89,7 @@ public class ItemController {
     }
 
     /**
-     *
+     * Searches player equipped items, for chosen item, and runs the unequip method in Player class
      * @param player
      */
     public void unEquipItem(Player player) {

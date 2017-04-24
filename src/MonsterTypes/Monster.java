@@ -83,7 +83,10 @@ public abstract class Monster {
     public void addLoot(Iitem item) {
         monsterLoot.add(item);
     }
-
+    /**
+     * When monster is dead, it runs through monsterLoot, arraylist and moves everything to the Room.
+     * @param player 
+     */
     public void moveMonsterItemToRoom(Player player) {
 
         Monster monster = player.getCurrentRoom().getMonster();

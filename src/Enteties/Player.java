@@ -182,7 +182,10 @@ public class Player {
         }
 
     }
-
+    /**
+     * Runs through the inventory, and if String item matches, name String of chosen item in invenotry, it equips the item, to player equipped items.
+     * @param item 
+     */
     public void checkInventoryAndEquip(String item) {
         Boundry b = new Boundry();
         for (int i = 0; i < inventory.size(); i++) {
@@ -199,7 +202,10 @@ public class Player {
             } 
         }
     }
-
+    /**
+     * Runs through the inventory, and if String item matches, name String of chosen item, it unequips and puts the item in player inventory.
+     * @param item 
+     */
     public void checkEquippedItemAndUnequip(String item) {
         Boundry b = new Boundry();
         if (equippedWeapon != null && item.equalsIgnoreCase(equippedWeapon.getName())) {
@@ -221,7 +227,11 @@ public class Player {
             b.nothingHappend();
         }
     }
-
+    /**
+     * Runs through the inventory, and checks if the player is in posession, of the win item, and returns the item if found.
+     * @param item
+     * @return returnItem
+     */
     public Iitem checkInventoryForWinItem(String item) {
         Iitem returnItem = null;
         for (int i = 0; i < inventory.size(); i++) {

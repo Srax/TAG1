@@ -20,7 +20,7 @@ public class Controller {
 
     /**
      * Manages game, movement form room, to next room, checks for winning room,
-     * collection of gold.
+     * and checks for monsters.
      *
      * @throws java.lang.InterruptedException
      */
@@ -31,7 +31,7 @@ public class Controller {
         cr.roomFeatures();
         cr.addPlayerStartItems(player);
         b.welcomeToGame();
-        //b.createName(player);
+        b.createName(player);
         player.setLastRoom(cr.spaceShip);
         player.setCurrentRoom(cr.startRoom);
         
@@ -57,7 +57,12 @@ public class Controller {
         hm.addScore(player.getName(), player.getBank(), player.getHp());
         System.out.print(hm.getHighscoreString());
     }
-
+    /**
+    * Runs a check for win conditions, and returns a boolean, 
+    * to end the game() loop if found.
+    * @param player
+    * @return 
+    */
     public boolean gameEndConditions(Player player) {
         boolean checkVictory = true;
         if (cr.gameSpaceCrawler == player.checkInventoryForWinItem("The game SPACE CRAWLER cause Space Invaders was already taken")){

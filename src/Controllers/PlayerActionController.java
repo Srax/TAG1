@@ -101,7 +101,11 @@ public class PlayerActionController {
         }
 
     }
-
+    /**
+ * Combat menu, used only when combatController is active.
+ * @param player
+ * @return 
+ */
     public boolean combatAction(Player player) {
         boolean takingAction = true;
         boolean combatStatus = true;
@@ -193,18 +197,27 @@ public class PlayerActionController {
 
         }
     }
-
+    /**
+ * Calculates the attack damage, on monster.
+ * @param player 
+ */
     public void attack(Player player) {
         Monster monster = player.getCurrentRoom().getMonster();
         b.playSound(b.pewpewSound);
         monster.setMonsterHp(-player.getDmg());
         b.playerAttackMonster(monster.getMonsterName(), player.getDmg(), monster.getMonsterHp());
     }
-
+    /**
+    * Sets the current Room to the last room, 
+    * @param player 
+    */
     public void run(Player player) {
             player.setCurrentRoom(player.getLastRoom());
     }
-
+    /**
+     * Debug (Cheat function) instantly kills monster.
+     * @param player 
+     */
     public void dance(Player player) {
         Monster monster = player.getCurrentRoom().getMonster();
         monster.setMonsterHp(-500000);

@@ -19,7 +19,11 @@ public class CombatController {
     Boundry b = new Boundry();
     PlayerActionController playerActionCtrl = new PlayerActionController();
     Random rnd = new Random();
-
+/**
+ * Creates a combat loop, and continues until player or monster is dead.
+ * @param player
+ * @throws InterruptedException 
+ */
     public void combat(Player player) throws InterruptedException {
         int damage = 0;
         Monster monster = player.getCurrentRoom().getMonster();

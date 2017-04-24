@@ -27,6 +27,12 @@ public class Lurker extends Monster {
                 +"\n"
                 + "Armor: " + getMonsterArmor();
     }
+        /**
+     * Runs monster individual special attack, and returns int for CombatController with the DMG
+     * @param p
+     * @return 
+     */
+    @Override
     public int monsterSpecialAttack(Player p) {
         int damage = 0;
 
