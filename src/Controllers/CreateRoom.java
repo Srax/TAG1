@@ -62,7 +62,7 @@ public class CreateRoom {
     Iitem sonicSwordOfTheWhisperMen = new Weapon("Sonic sword of The Whisper Men", "A Sword that makes a sonic vibration which sounds like a whisper", 13);
     Iitem plasmaRifle = new Weapon("Plasma Rifle", "Fires a plasma discharge in the form of a beam", 6);
     Iitem blaster = new Weapon("Blaster", "This blaster was once owned by a guy called Han", 17);
-   // Iitem godBlaster = new Weapon("God Blaster", "This blaster was once owned by GOD", 2000);
+    Iitem godBlaster = new Weapon("God Blaster", "This blaster was once owned by GOD", 2000);
 
     //Armors
     Iitem spaceSuit = new Armor("Space Suit", "Standard issued space suit", 1);
