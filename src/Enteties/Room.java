@@ -41,7 +41,7 @@ public class Room {
      */
     public Iitem moveFromRoomToInventory(String item) {
         Iitem temp;
-      
+        
         for (int i = 0; i < loot.size(); i++) {
             if (loot.get(i).getName().equalsIgnoreCase(item)) {
                 temp = loot.get(i);
@@ -61,8 +61,6 @@ public class Room {
     public Monster getMonster() {
         return monster;
         
-        
-        
     }
     public void setMonster(Monster monster) {
         this.monster = monster;
@@ -78,8 +76,10 @@ public class Room {
     public int getTaxCollector() {
         return taxCollector;
     }
+    
     public void setTaxCollector(int taxCollector) {
         this.taxCollector = taxCollector;
+        //If the room has a taxCollector, the room will not have any gold.
         if (taxCollector > 0) {
             this.setGold(0);
         }
@@ -136,6 +136,7 @@ public class Room {
     public void availableDirections() {
         Boundry b = new Boundry();
         b.canGo();
+        //If the rooms, have an exit it will print the direction.
         if (getNorth() != null) {
             System.out.println(COLOR_BLUE+" North"+COLOR_RESET);
         }

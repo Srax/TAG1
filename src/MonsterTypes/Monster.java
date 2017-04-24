@@ -73,6 +73,7 @@ public abstract class Monster {
     public int monsterAttack(Player p) {
         int damage = 0;
 
+    //Calculates the damage delt to the player.
         damage = this.monsterDmg - p.getDef();
 
         return damage;
