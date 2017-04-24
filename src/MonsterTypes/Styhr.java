@@ -12,22 +12,31 @@ import Enteties.Player;
  * @author thoma
  */
 public class Styhr extends Monster {
-    
-    public Styhr(String name, int hp, int dmg, int armor,  int gold) {
+
+    public Styhr(String name, int hp, int dmg, int armor, int gold) {
         super(name, hp, dmg, armor, gold);
     }
-    
+
     @Override
     public String toString() {
         return "Name: " + getMonsterName()
                 + "\n"
                 + "HP: " + getMonsterHp()
-                +"\n"
+                + "\n"
                 + "Damage: " + getMonsterDmg()
-                +"\n"
+                + "\n"
                 + "Armor: " + getMonsterArmor();
     }
-   public int monsterSpecialAttack(Player p) {
+
+    /**
+     * Runs monster individual special attack, and returns int for
+     * CombatController with the DMG
+     *
+     * @param p
+     * @return
+     */
+    @Override
+    public int monsterSpecialAttack(Player p) {
         int damage = 0;
 
         System.out.println("The Wier hisses at you and  release a powerfull electricfield"
@@ -35,5 +44,5 @@ public class Styhr extends Monster {
         damage = this.getMonsterDmg() * 2 - p.getDef();
 
         return damage;
-    } 
+    }
 }

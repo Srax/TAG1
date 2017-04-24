@@ -16,7 +16,12 @@ public class Plants extends Monster{
     public Plants(String name, int hp, int dmg, int armor,  int gold) {
         super(name, hp, dmg, armor, gold);
     }
-    
+            /**
+     * Runs monster individual special attack, and returns int for CombatController with the DMG
+     * @param p
+     * @return 
+     */
+    @Override
     public int monsterSpecialAttack(Player p) {
         int damage = 0;
 

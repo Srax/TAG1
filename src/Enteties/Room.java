@@ -33,7 +33,12 @@ public class Room {
 
     public Room() {
     }
-
+    /**
+     * Moves item form Room, to inventory, if string matches, item name.
+     *
+     * @param item
+     * @return 
+     */
     public Iitem moveFromRoomToInventory(String item) {
         Iitem temp;
       
@@ -125,7 +130,9 @@ public class Room {
     public void setEast(Room East) {
         this.east = East;
     }
-
+    /**
+     * Runs through Room, and checks witch of the North, South, East or West, are not null.
+     */
     public void availableDirections() {
         Boundry b = new Boundry();
         b.canGo();

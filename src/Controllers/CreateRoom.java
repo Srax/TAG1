@@ -53,28 +53,6 @@ public class CreateRoom {
     Room room18 = new Room(r.nextInt(101) + 30, lab());
     Room room19 = new Room(r.nextInt(101) + 30, hallWay2());
 
-    //Test rooms for further expanding
-    Room room21 = new Room(0, hallWay2());
-    Room room22 = new Room(0, hallWay2());
-    Room room23 = new Room(0, hallWay2());
-    Room room24 = new Room(0, hallWay2());
-    Room room25 = new Room(0, hallWay2());
-    Room room26 = new Room(0, hallWay2());
-    Room room27 = new Room(0, hallWay2());
-    Room room28 = new Room(0, hallWay2());
-    Room room29 = new Room(0, hallWay2());
-    Room room30 = new Room(0, hallWay2());
-    Room room31 = new Room(0, hallWay2());
-    Room room32 = new Room(0, hallWay2());
-    Room room33 = new Room(0, hallWay2());
-    Room room34 = new Room(0, hallWay2());
-    Room room35 = new Room(0, hallWay2());
-    Room room36 = new Room(0, hallWay2());
-    Room room37 = new Room(0, hallWay2());
-    Room room38 = new Room(0, hallWay2());
-    Room room39 = new Room(0, hallWay2());
-    Room room40 = new Room(0, hallWay2());
-    Room room41 = new Room(0, lab());
 
     // Weapons
     Iitem gun = new Weapon("Small Laserpistol", "PewPewPew", 2);
@@ -84,7 +62,7 @@ public class CreateRoom {
     Iitem sonicSwordOfTheWhisperMen = new Weapon("Sonic sword of The Whisper Men", "A Sword that makes a sonic vibration which sounds like a whisper", 13);
     Iitem plasmaRifle = new Weapon("Plasma Rifle", "Fires a plasma discharge in the form of a beam", 6);
     Iitem blaster = new Weapon("Blaster", "This blaster was once owned by a guy called Han", 17);
-    Iitem godBlaster = new Weapon("God Blaster", "This blaster was once owned by GOD", 2000);
+   // Iitem godBlaster = new Weapon("God Blaster", "This blaster was once owned by GOD", 2000);
 
     //Armors
     Iitem spaceSuit = new Armor("Space Suit", "Standard issued space suit", 1);
@@ -125,7 +103,9 @@ public class CreateRoom {
     //TIER 3 BOSS MONSTERS (NAME, HP, DAMAGE, ARMOR, TIER, gold)
     Monster WierCorruptedGeneral = new Boss("Wier Corrupted General", 60, r.nextInt(5) + 21, r.nextInt(5),  r.nextInt(150) + 70);
     Monster CorruptedOfficer = new Boss("A corrupted Officer", 15, r.nextInt(5)+9, 3,  r.nextInt(70) + 70);
-
+    /**
+     * Adds the directions, the items, and monster to the diffrent rooms.
+     */
     public void roomFeatures() {
         //Map and Room direction rules
         
@@ -312,7 +292,10 @@ public class CreateRoom {
     
 
     }
-
+    /**
+     * Adds items, to player inventory and to player equipped items.
+     * @param player 
+     */
     public void addPlayerStartItems(Player player) {
         player.addItemToInventory(gun);
         player.addItemToInventory(spaceSuit);

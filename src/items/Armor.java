@@ -20,6 +20,7 @@ public class Armor implements Iitem{
        
     }    
 
+    
     public Armor(String name, String description, int defense) {
         this.name = name;
         this.description = description;
@@ -72,6 +73,12 @@ public class Armor implements Iitem{
     public boolean equipable() {
         return this.equipable;
     }
+    
+    /**
+     * If the players equipped armor is not null, add armor to inventory and equip it and set the players 'defense' int to the value of the armors.
+     * 
+     * @param player 
+     */
     @Override
     public void equip(Player player){
         if(player.getEquippedArmor()!= null){
